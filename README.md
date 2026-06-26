@@ -77,7 +77,7 @@ email: "picoiudavid@gmail.com",
 
 ### Cambiar precios y textos de servicios
 Los textos visibles de las tarjetas y precios están en dos sitios:
-- **`index.html`** → el texto que se ve (busca, por ejemplo, `Desde 245 €`).
+- **`index.html`** → el texto que se ve (busca, por ejemplo, `Desde 320 €`).
 - **`lib/manifest.js`** → dentro de `i18n` → `es` y `en` (las traducciones).
 
 Para que un cambio salga en español **y** en inglés, edítalo en `index.html`
@@ -306,6 +306,35 @@ testimonios inventados**: usa solo opiniones reales que te den tus clientes.
 - El **mantenimiento** incluye **hasta 60 min de cambios al mes**. Está dicho en
   la web para que no haya malentendidos.
 - Las webs incluyen **una ronda de revisión**; cambios extra se presupuestan aparte.
+
+---
+
+## 14. Antes de publicar (resumen)
+
+Lo que **ya está hecho**:
+
+- **Precios** actualizados: Landing 190 €, Web completa 320 €, Mantenimiento 55 €/mes.
+- **Datos legales** rellenados (David Picoiu · Viladrau · Hostinger). El **DNI no se
+  publica** a propósito (riesgo de suplantación): figura como "disponible bajo
+  solicitud", que es lo correcto y suficiente.
+- **Favicon** (el iconito de la pestaña) e **imagen para compartir**
+  (`assets/og-image.png`) creados.
+- Sección **"Antes y después"** (deslizable) y **FAQ de objeciones** añadidas.
+
+Lo que **tienes que hacer tú**:
+
+1. **Imagen al compartir** — para que salga la portada al pegar tu enlace en
+   WhatsApp/Instagram, cuando tengas dominio edita en `index.html` la línea
+   `og:image` y pon la **URL completa**:
+   `content="https://tudominio.com/assets/og-image.png"` (está marcado con un
+   comentario `EDITAR` justo al lado).
+2. **Reseñas** — las 3 de la sección "Reseñas" son de ejemplo. Sustitúyelas por
+   reales (claves `testi.*` en `lib/manifest.js`) o dímelo para quitarlas.
+3. **Xalet La Coromina** — está como "Proyecto real". Si aún no es un encargo
+   entregado, cámbialo a "Proyecto de ejemplo" para mantener la honestidad.
+4. **SSL** — al subir a Hostinger, activa el certificado SSL (gratis) y descomenta
+   el bloque "Forzar HTTPS" del `.htaccess`.
+5. (Opcional) Que una **gestoría** revise las páginas legales para tu caso.
 
 ---
 

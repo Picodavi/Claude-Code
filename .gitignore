@@ -1,0 +1,10 @@
+# Configuración local de Claude Code (específica de esta máquina)
+.claude/settings.local.json
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Artefactos npm sueltos (no forman parte de la web)
+package-lock.json
+.claude/package-lock.json
