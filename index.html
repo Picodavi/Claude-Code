@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260627" />
+  <link rel="stylesheet" href="css/styles.css?v=20260628" />
 </head>
 <body>
 
@@ -911,6 +911,26 @@
           </div>
         </div>
 
+        <!-- Planes recurrentes (opcionales): Tranquilidad → Mantenimiento -->
+        <div class="recurring reveal">
+          <h3 class="recurring__title" data-i18n="rec.heading">Cada mes (opcional)</h3>
+          <p class="recurring__lead" data-i18n="rec.lead">Dos formas de quedarte tranquilo una vez tu web está online. Sin permanencia: te das de baja cuando quieras.</p>
+          <div class="recurring__grid">
+            <article class="reccard">
+              <h4 class="reccard__name" data-i18n="rec.1name">Tranquilidad</h4>
+              <p class="reccard__price"><span class="mono" data-i18n="rec.1price">12 € / mes</span></p>
+              <p class="reccard__desc" data-i18n="rec.1desc">Tu web siempre online, segura y con copias de seguridad. Me encargo del alojamiento y de que tu dominio funcione. No incluye cambios de contenido.</p>
+            </article>
+            <article class="reccard reccard--feature">
+              <span class="reccard__badge" data-i18n="rec.2badge">Más completo</span>
+              <h4 class="reccard__name" data-i18n="rec.2name">Mantenimiento</h4>
+              <p class="reccard__price"><span class="mono" data-i18n="rec.2price">55 € / mes</span></p>
+              <p class="reccard__desc" data-i18n="rec.2desc">Todo lo del plan Tranquilidad y, además, hasta 60 min de cambios al mes: textos, fotos, precios u horarios. Tu web siempre al día sin que toques nada.</p>
+            </article>
+          </div>
+          <p class="recurring__note" data-i18n="rec.note">El dominio (~12 €/año) se registra siempre a tu nombre: tu web es tuya. Con pago anual, 2 meses de regalo.</p>
+        </div>
+
         <ul class="guarantees reveal" role="list">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg> <span data-i18n="guar.1">Presupuesto sin compromiso</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg> <span data-i18n="guar.2">1 ronda de revisión incluida</span></li>
@@ -985,6 +1005,26 @@
           <details class="faq__item">
             <summary data-cursor="leer"><span data-i18n="faq.q12">Estás empezando, ¿puedo fiarme?</span><span class="faq__plus" aria-hidden="true"></span></summary>
             <div class="faq__a"><p data-i18n="faq.a12">Sí, y te lo digo de frente: estoy empezando, y por eso te doy lo que una agencia grande no puede: dedicación total, trato directo conmigo y un precio justo. Cada proyecto me importa de verdad, y antes de pagar nada ves el diseño.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary data-cursor="leer"><span data-i18n="faq.q13">¿De quién es el dominio y la web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p data-i18n="faq.a13">Tuyos. El dominio se registra a tu nombre desde el primer día y la web es tuya. Si algún día quieres llevártela a otro sitio, te entrego todos los archivos. Nada de webs «secuestradas».</p></div>
+          </details>
+          <details class="faq__item">
+            <summary data-cursor="leer"><span data-i18n="faq.q14">¿Qué pasa si dejo de pagar la cuota mensual?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p data-i18n="faq.a14">Nada de un día para otro. Te aviso con margen; si no se reanuda, pauso la web (no se borra) y te entrego tus archivos. Tu dominio sigue siendo tuyo. Todo esto te lo dejo por escrito antes de empezar.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary data-cursor="leer"><span data-i18n="faq.q15">¿Tengo que preocuparme del hosting y lo técnico?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p data-i18n="faq.a15">No. Con el plan mensual me encargo yo del alojamiento, la seguridad y las copias de seguridad. Tú solo tienes tu web funcionando. Si prefieres tu propio hosting, también se puede montar así.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary data-cursor="leer"><span data-i18n="faq.q16">¿Quién hace las copias de seguridad?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p data-i18n="faq.a16">Yo. Guardo una copia de cada web; si algún día pasara algo, se restaura. Es parte de tu tranquilidad.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary data-cursor="leer"><span data-i18n="faq.q17">¿Y si quiero cambiarme de proveedor más adelante?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__a"><p data-i18n="faq.a17">Sin problema. Como el dominio ya está a tu nombre y te doy tus archivos, el cambio es indoloro. Trabajo para que te quedes a gusto, no porque no puedas irte.</p></div>
           </details>
         </div>
       </div>
@@ -1124,9 +1164,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260627"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260627"></script>
-  <script defer src="lib/manifest.js?v=20260627"></script>
-  <script defer src="js/main.js?v=20260627"></script>
+  <script defer src="lib/gsap.min.js?v=20260628"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260628"></script>
+  <script defer src="lib/manifest.js?v=20260628"></script>
+  <script defer src="js/main.js?v=20260628"></script>
 </body>
 </html>
