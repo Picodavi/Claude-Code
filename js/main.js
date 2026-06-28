@@ -391,6 +391,32 @@
   }
 
   /* ======================================================================
+     13) SEO — autocorrige las URLs absolutas al dominio real donde se publique.
+         Si olvidas cambiar el dominio de ejemplo (picodavi.com), aquí se ajusta
+         solo a partir del dominio real cuando Google rastrea la web publicada.
+     ====================================================================== */
+  function initSeoUrls() {
+    if (location.protocol.indexOf("http") !== 0) return;          // file:// → no tocar
+    var host = location.hostname;
+    if (!host || host === "localhost" || host === "127.0.0.1") return; // dev → no tocar
+    var origin = location.origin;
+    function swap(url) { return url ? url.replace(/^https?:\/\/[^/]+/, origin) : url; }
+
+    var can = doc.querySelector('link[rel="canonical"]');
+    if (can) can.setAttribute("href", swap(can.getAttribute("href")));
+    var ogUrl = doc.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", swap(ogUrl.getAttribute("content")));
+    var ogImg = doc.querySelector('meta[property="og:image"]');
+    if (ogImg) ogImg.setAttribute("content", swap(ogImg.getAttribute("content")));
+
+    $all('script[type="application/ld+json"]').forEach(function (s) {
+      if (s.textContent.indexOf("https://picodavi.com") !== -1) {
+        s.textContent = s.textContent.split("https://picodavi.com").join(origin);
+      }
+    });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -405,6 +431,7 @@
     safe(initProcess, "process");
     safe(initCookies, "cookies");
     safe(initBeforeAfter, "before-after");
+    safe(initSeoUrls, "seo-urls");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);

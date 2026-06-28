@@ -46,4 +46,5 @@ AddDefaultCharset UTF-8
 # </IfModule>
 
 # --- Páginas de error ------------------------------------------------------
-ErrorDocument 404 /index.html
+# Servimos una 404 real (no la home) para que Google no la lea como "soft 404".
+ErrorDocument 404 /404.html

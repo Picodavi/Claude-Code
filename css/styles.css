@@ -100,8 +100,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
   display: grid; place-items: center;
   background: var(--bg);
   transition: opacity .6s var(--ease), visibility .6s;
+  /* Red de seguridad en CSS puro: si el JS no se ejecuta (o un buscador
+     no lo espera), el splash se oculta solo a los 4,5 s y deja ver la web. */
+  animation: splashSafetyHide .6s var(--ease) 4.5s forwards;
 }
 .splash.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes splashSafetyHide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 .splash__inner { width: min(80vw, 520px); text-align: center; }
 .splash__word { font-family: var(--font-display); font-weight: 800; color: var(--ink);
   font-size: clamp(2.5rem, 11vw, 6rem); letter-spacing: -0.04em; display: flex; justify-content: center; }
