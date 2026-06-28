@@ -323,11 +323,11 @@ Lo que **ya está hecho**:
 
 Lo que **tienes que hacer tú**:
 
-1. **Imagen al compartir** — para que salga la portada al pegar tu enlace en
-   WhatsApp/Instagram, cuando tengas dominio edita en `index.html` la línea
-   `og:image` y pon la **URL completa**:
-   `content="https://tudominio.com/assets/og-image.png"` (está marcado con un
-   comentario `EDITAR` justo al lado).
+1. **⚠️ Pon tu dominio.** La web trae el dominio de ejemplo `picodavi.com` en el SEO
+   (canonical, sitemap, imagen al compartir y datos estructurados). **Si tu dominio
+   es OTRO**, abre estos archivos y reemplaza `https://picodavi.com` por tu dominio
+   real: `index.html`, `proyectos/*.html`, `robots.txt` y `sitemap.xml`. (En el Bloc
+   de notas: *Edición → Reemplazar*.) Si tu dominio sí es picodavi.com, no toques nada.
 2. **Reseñas** — las 3 de la sección "Reseñas" son de ejemplo. Sustitúyelas por
    reales (claves `testi.*` en `lib/manifest.js`) o dímelo para quitarlas.
 3. **Xalet La Coromina** — está como "Proyecto real". Si aún no es un encargo
@@ -335,6 +335,30 @@ Lo que **tienes que hacer tú**:
 4. **SSL** — al subir a Hostinger, activa el certificado SSL (gratis) y descomenta
    el bloque "Forzar HTTPS" del `.htaccess`.
 5. (Opcional) Que una **gestoría** revise las páginas legales para tu caso.
+
+---
+
+## 15. SEO técnico (qué lleva y qué te toca a ti)
+
+La web sale con **SEO técnico avanzado de serie** (esto es lo que controla el código):
+
+- **Datos estructurados (JSON-LD):** ficha de negocio (`ProfessionalService`) y FAQ
+  marcada, para que Google entienda quién eres, tu zona, tus servicios y tus dudas
+  frecuentes (pueden salir como resultados enriquecidos).
+- **`sitemap.xml`** y **`robots.txt`** en la raíz.
+- **`canonical`** y **Open Graph** (`og:url`, `og:image`) en cada página.
+- Títulos y descripciones únicos por página, un solo `<h1>`, textos `alt`, estructura
+  semántica y carga muy rápida.
+
+**Lo que mueve el ranking de verdad lo haces tú** (esto NO es código):
+
+1. **Google Business Profile** (gratis) — lo más importante para negocio local.
+   Date de alta como "Picodavi · Diseño web", zona Viladrau / Barcelona.
+2. **Google Search Console** — añade tu web y envía el `sitemap.xml`.
+3. **Reseñas reales** y aparecer en **directorios locales**.
+
+> Honestidad: el código está impecable, pero estar el nº 1 en Google lleva semanas o
+> meses de eso de arriba. Nadie serio te promete "primero en una semana".
 
 ---
 

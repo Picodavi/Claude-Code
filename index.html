@@ -13,25 +13,253 @@
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
+  <!-- IMPORTANTE: si tu dominio NO es picodavi.com, busca y reemplaza
+       "https://picodavi.com" por tu dominio real en TODOS los archivos
+       (index.html, proyectos/*, robots.txt, sitemap.xml). -->
+  <link rel="canonical" href="https://picodavi.com/" />
+
   <!-- Open Graph / redes sociales -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Picodavi · Webs que trabajan para tu negocio" />
   <meta property="og:description" content="Diseño y desarrollo web para negocios locales en Catalunya. Rápido, claro, sin complicaciones." />
   <meta property="og:locale" content="es_ES" />
-  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:url" content="https://picodavi.com/" />
+  <meta property="og:image" content="https://picodavi.com/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <!-- EDITAR (cuando tengas dominio): para que la imagen salga al compartir por
-       WhatsApp/redes, pon la URL COMPLETA en og:image, p. ej.
-       content="https://tudominio.com/assets/og-image.png" (e igual en og:url). -->
 
   <!-- Fuentes (única dependencia externa aceptada) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260628" />
+  <link rel="stylesheet" href="css/styles.css?v=20260629" />
+  <!-- Datos estructurados (SEO): negocio + FAQ -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://picodavi.com/#picodavi",
+  "name": "Picodavi",
+  "alternateName": "Picodavi · Diseño y desarrollo web",
+  "description": "Diseño y desarrollo web para negocios locales en Catalunya: restaurantes, hoteles, clínicas, comercios y servicios.",
+  "url": "https://picodavi.com/",
+  "image": "https://picodavi.com/assets/og-image.png",
+  "logo": "https://picodavi.com/assets/apple-touch-icon.png",
+  "founder": {
+    "@type": "Person",
+    "name": "David Picoiu"
+  },
+  "email": "picoiudavid@gmail.com",
+  "telephone": "+34643780753",
+  "priceRange": "€€",
+  "knowsLanguage": [
+    "es",
+    "ca",
+    "en"
+  ],
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Catalunya"
+    },
+    {
+      "@type": "City",
+      "name": "Barcelona"
+    },
+    {
+      "@type": "City",
+      "name": "Viladrau"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Viladrau",
+    "addressRegion": "Catalunya",
+    "addressCountry": "ES"
+  },
+  "sameAs": [
+    "https://instagram.com/picodavi"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "190",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Landing page",
+        "description": "Una página enfocada en un objetivo: reservas, llamadas o ventas."
+      }
+    },
+    {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "320",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Web completa",
+        "description": "Web moderna de hasta 5 páginas con formulario, mapa y páginas legales básicas."
+      }
+    },
+    {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "55",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Mantenimiento mensual",
+        "description": "Hasta 60 min de cambios al mes y alojamiento de la web."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda mi web en estar lista?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre 7 y 10 días desde que me das los textos y las fotos. Si vamos justos de material, te ayudo a prepararlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué necesitas de mí para empezar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Poco: los textos básicos de tu negocio, fotos si tienes (si no, lo vemos) y 20 minutos para que me cuentes qué haces y qué quieres conseguir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿La web será mía?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, la web es tuya. Te la entrego publicada y a tu nombre. Sin ataduras raras ni dependencias."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo editarla yo mismo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Te explico lo básico para cambiar textos y fotos, o si lo prefieres me encargo yo con el mantenimiento mensual y tú no tocas nada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Incluye el dominio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El dominio (tudominio.com) se registra a tu nombre y tiene un coste aparte de unos 10–15 €/año. Te acompaño en todo el proceso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si quiero cambios después?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cada web incluye una ronda de revisión. A partir de ahí, cambios puntuales se presupuestan aparte, o contratas el mantenimiento mensual desde 55 €/mes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajas solo con negocios de Catalunya?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajo preferentemente con negocios locales de mi zona, pero puedo hacerlo en remoto con cualquiera. La cercanía es una ventaja, no una frontera."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Las webs aparecen en Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se entregan con optimización técnica de SEO avanzada de serie: datos estructurados para que Google entienda tu negocio, sitemap, etiquetas correctas y carga muy rápida. Aun así, posicionar arriba también depende de factores externos (tus reseñas, tu ficha de Google Business, enlaces de otras webs) y lleva tiempo: te lo explico con honestidad, sin promesas mágicas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué no eres más barato? He visto webs por mucho menos.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puedes encontrar plantillas genéricas muy baratas, pero acaban pareciéndose a otras mil y rinden poco. Yo te hago una web a medida, optimizada para que te traiga clientes, y a un precio justo para empezar. Pagas una vez y es tuya."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si no me gusta el resultado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Antes de publicar nada te enseño el diseño y hacemos una ronda de ajustes incluida. Trabajamos sobre tus comentarios hasta que estés a gusto. No publico nada que no hayas visto y aprobado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tardas de verdad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre 7 y 10 días desde que tengo tus textos y fotos. Lo que más alarga un proyecto es esperar el contenido, no el diseño; si te falta material, te ayudo a prepararlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Estás empezando, ¿puedo fiarme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y te lo digo de frente: estoy empezando, y por eso te doy lo que una agencia grande no puede: dedicación total, trato directo conmigo y un precio justo. Cada proyecto me importa de verdad, y antes de pagar nada ves el diseño."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿De quién es el dominio y la web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tuyos. El dominio se registra a tu nombre desde el primer día y la web es tuya. Si algún día quieres llevártela a otro sitio, te entrego todos los archivos. Nada de webs «secuestradas»."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si dejo de pagar la cuota mensual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nada de un día para otro. Te aviso con margen; si no se reanuda, pauso la web (no se borra) y te entrego tus archivos. Tu dominio sigue siendo tuyo. Todo esto te lo dejo por escrito antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tengo que preocuparme del hosting y lo técnico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Con el plan mensual me encargo yo del alojamiento, la seguridad y las copias de seguridad. Tú solo tienes tu web funcionando. Si prefieres tu propio hosting, también se puede montar así."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Quién hace las copias de seguridad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yo. Guardo una copia de cada web; si algún día pasara algo, se restaura. Es parte de tu tranquilidad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si quiero cambiarme de proveedor más adelante?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sin problema. Como el dominio ya está a tu nombre y te doy tus archivos, el cambio es indoloro. Trabajo para que te quedes a gusto, no porque no puedas irte."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -988,7 +1216,7 @@
           </details>
           <details class="faq__item">
             <summary data-cursor="leer"><span data-i18n="faq.q8">¿Las webs aparecen en Google?</span><span class="faq__plus" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p data-i18n="faq.a8">Se entregan optimizadas para SEO básico, así que parten bien. Posicionar arriba depende de muchos factores y lleva tiempo: te lo explico con honestidad, sin promesas mágicas.</p></div>
+            <div class="faq__a"><p data-i18n="faq.a8">Se entregan con optimización técnica de SEO avanzada de serie: datos estructurados para que Google entienda tu negocio, sitemap, etiquetas correctas y carga muy rápida. Aun así, posicionar arriba también depende de factores externos (tus reseñas, tu ficha de Google Business, enlaces de otras webs) y lleva tiempo: te lo explico con honestidad, sin promesas mágicas.</p></div>
           </details>
           <details class="faq__item">
             <summary data-cursor="leer"><span data-i18n="faq.q9">¿Por qué no eres más barato? He visto webs por mucho menos.</span><span class="faq__plus" aria-hidden="true"></span></summary>
@@ -1164,9 +1392,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260628"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260628"></script>
-  <script defer src="lib/manifest.js?v=20260628"></script>
-  <script defer src="js/main.js?v=20260628"></script>
+  <script defer src="lib/gsap.min.js?v=20260629"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260629"></script>
+  <script defer src="lib/manifest.js?v=20260629"></script>
+  <script defer src="js/main.js?v=20260629"></script>
 </body>
 </html>
