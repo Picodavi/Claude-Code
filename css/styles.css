@@ -841,3 +841,18 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
   .faq__groups { grid-template-columns: 1fr; gap: clamp(1.75rem, 6vw, 2.5rem); }
 }
 
+/* ==========================================================================
+   PULIDO MÓVIL FINAL — targets táctiles cómodos y cero desbordes en pantallas
+   muy estrechas (320 px). El <body> ya recorta, esto lo deja pixel-perfecto.
+   ========================================================================== */
+/* Objetivo táctil del toggle de idioma (mín. ~44 px de alto cómodo en el dedo) */
+.nav__lang { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; }
+/* Botón flotante de WhatsApp un pelín más separado del borde en móvil */
+@media (max-width: 480px) {
+  .hero__title-offset { padding-left: clamp(0.4rem, 6vw, 2.5rem); }
+  .wa-float { right: 14px; bottom: 14px; }
+}
+/* Red de seguridad: ningún medio (imagen/svg/tabla/pre) puede desbordar su caja */
+img, svg, video, table { max-width: 100%; }
+.hero__title, .section__title, .dhero__title, .step__title { overflow-wrap: break-word; }
+
