@@ -16,8 +16,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/styles.css?v=20260703" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=20260704" />
 </head>
 <body>
 
@@ -53,7 +53,7 @@
     <!-- Imagen grande -->
     <div class="dshot wrap">
       <figure class="ph ph--wide">
-        <img src="../assets/img/xalet.jpg" alt="Interior acogedor de un restaurante rural con mesas de madera"
+        <img fetchpriority="high" decoding="async" src="../assets/img/xalet.jpg" alt="Interior acogedor de un restaurante rural con mesas de madera"
              data-i18n-alt="xa.img1Alt"
              onerror="this.style.display='none';this.closest('.ph').classList.add('ph--empty');" />
         <figcaption class="ph__hint" aria-hidden="true">
@@ -110,7 +110,7 @@
             </svg>
           </figure>
           <figure class="ph">
-            <img src="../assets/img/xalet2.jpg" alt="Entorno de bosque y montaña del Montseny"
+            <img decoding="async" src="../assets/img/xalet2.jpg" alt="Entorno de bosque y montaña del Montseny"
                  data-i18n-alt="xa.img3Alt" loading="lazy"
                  onerror="this.style.display='none';this.closest('.ph').classList.add('ph--empty');" />
             <figcaption class="ph__hint" aria-hidden="true"><span class="ph__name">assets/img/xalet2.jpg</span></figcaption>
@@ -151,9 +151,7 @@
     </div>
   </footer>
 
-  <script defer src="../lib/gsap.min.js?v=20260703"></script>
-  <script defer src="../lib/ScrollTrigger.min.js?v=20260703"></script>
-  <script defer src="../lib/manifest.js?v=20260703"></script>
-  <script defer src="../js/main.js?v=20260703"></script>
+  <script defer src="../lib/manifest.js?v=20260704"></script>
+  <script defer src="../js/main.js?v=20260704"></script>
 </body>
 </html>

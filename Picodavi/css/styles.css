@@ -240,6 +240,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 
 .hero__lead { margin-bottom: var(--s-6); max-width: 44ch; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--s-4); }
+/* Gancho de venta bajo los CTAs: precio + velocidad + sin riesgo, de un vistazo */
+.hero__hook { margin-top: var(--s-4); font-size: .82rem; color: var(--muted); letter-spacing: .01em; }
 
 .hero__art { position: relative; }
 .browser { width: 100%; height: auto; filter: drop-shadow(0 40px 60px -30px rgba(10,10,10,.3)); }

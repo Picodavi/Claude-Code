@@ -81,8 +81,9 @@
         "hero.title1": "Webs que hacen",
         "hero.title2": "trabajar.",
         "hero.lead": "Para restaurantes, hoteles, clínicas y negocios locales que quieren crecer online.",
-        "hero.ctaPrimary": "Ver mis proyectos →",
-        "hero.ctaSecondary": "¿Qué incluye?",
+        "hero.ctaPrimary": "Empieza tu web →",
+        "hero.ctaSecondary": "Ver proyectos",
+        "hero.hook": "Desde 190 € · Online en 7–10 días · Presupuesto gratis",
         "hero.mockupCaption": "tu-negocio.com",
 
         // Marquee
@@ -507,8 +508,9 @@
         "hero.title1": "Websites that",
         "hero.title2": "work.",
         "hero.lead": "For restaurants, hotels, clinics and local businesses that want to grow online.",
-        "hero.ctaPrimary": "See my work →",
-        "hero.ctaSecondary": "What's included?",
+        "hero.ctaPrimary": "Start your website →",
+        "hero.ctaSecondary": "See my work",
+        "hero.hook": "From €190 · Online in 7–10 days · Free quote",
         "hero.mockupCaption": "your-business.com",
 
         "marquee.main": "Restaurants · Hotels · Clinics · Shops · Professional services · Tourism · Barcelona · Catalonia · Websites that work for your business",
