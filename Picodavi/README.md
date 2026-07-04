@@ -166,10 +166,8 @@ descargar la versión nueva.
 │   ├── manifest.js     TUS DATOS: contacto, servicios, proyectos, traducciones
 │   ├── gsap.min.js     Librería de animación (opcional)
 │   └── ScrollTrigger.min.js
-├── proyectos/          Páginas de detalle de cada proyecto del portfolio
-│   ├── xalet-la-coromina.html
-│   ├── clinica-dental-mas.html
-│   └── hotel-rural-can-roig.html
+├── proyectos/          Caso de estudio del proyecto real
+│   └── xalet-la-coromina.html
 └── assets/
     ├── credits.json    Origen y licencia de cada foto de stock
     └── img/            Las fotos (puedes sustituirlas por las tuyas)
@@ -197,8 +195,6 @@ Fotos que usa la web (todas en `assets/img/`):
 |---|---|
 | `sobre-mi.jpg` | Sección "Sobre mí" |
 | `xalet.jpg`, `xalet2.jpg` | Página del Xalet La Coromina |
-| `clinica.jpg`, `clinica2.jpg` | Página de la Clínica Dental Mas |
-| `hotel.jpg`, `hotel2.jpg` | Página del Hotel Rural Can Roig |
 | `hero.jpg`, `process.jpg` | De reserva (no se usan ahora; puedes aprovecharlas) |
 
 Las fotos actuales son de **Unsplash** (uso libre). Su origen está documentado en
@@ -214,9 +210,7 @@ del `index.html` ya enlazan a ellas.
 
 - **Editar el texto** de una página de proyecto: casi todo el texto está en
   `lib/manifest.js`, dentro de `i18n`. Las claves empiezan por:
-  - `xa.` → Xalet La Coromina
-  - `cl.` → Clínica Dental Mas
-  - `ho.` → Hotel Rural Can Roig
+  - `xa.` → Xalet La Coromina (proyecto real: xaletlacoromina.com)
   - `dp.` → textos comunes (títulos "El reto", "La solución", botones…)
 - **Cambiar la foto** de una página: sustituye su archivo en `assets/img/`
   (ver punto 8).
@@ -245,7 +239,8 @@ Todo el texto de las secciones nuevas vive en `lib/manifest.js`, dentro de `i18n
 - **Qué incluye siempre** → claves `inc.1t`/`inc.1d`… (`t` = título, `d` = detalle).
 - **Lo que tu negocio gana** (beneficios) → claves `val.1t`/`val.1d`…
 - **¿A quién va dirigido?** → claves `aud.1t`/`aud.1d`… y `aud.close` / `aud.cta`.
-- **Reseñas / testimonios** → claves `testi.*` (ver punto 12).
+- **Mi compromiso** → claves `comp.*` (las tres promesas firmadas).
+- **Caso destacado y sectores** → claves `feat.*` y `sect.*`.
 - **Barra de confianza** → claves `trust.1`…`trust.5`.
 - **Garantías (en Precios)** → claves `guar.1`…`guar.4`.
 - **Banda de tecnología** → claves `tech.heading` y `tech.text`.
@@ -280,21 +275,12 @@ web no usa cookies de seguimiento ni analítica, así que es informativo.
 
 ---
 
-## 12. Testimonios de ejemplo (sustituir por reales)
+## 12. Reseñas: qué hay ahora y qué hacer cuando las tengas
 
-En la sección **Reseñas** hay 3 testimonios de **ejemplo**, marcados con una
-etiqueta «Ejemplo» y un aviso. Sirven para enseñar el formato. Cuando tengas
-reseñas reales de clientes, cámbialas en `lib/manifest.js`:
-
-- Texto de la reseña → `testi.q1`, `testi.q2`, `testi.q3`.
-- Nombre del cliente → `testi.n1`, `testi.n2`, `testi.n3`.
-- Negocio y ciudad → `testi.b1`, `testi.b2`, `testi.b3`.
-
-Cuando sean reales, puedes borrar el aviso `testi.note` y la etiqueta «Ejemplo»
-(quita los `<span class="testi-card__badge">` del `index.html`). **No publiques
-testimonios inventados**: usa solo opiniones reales que te den tus clientes.
-
----
+La web **no muestra reseñas** (no inventamos opiniones). En su lugar hay una
+sección **«Mi compromiso»** con tres promesas firmadas por ti — genera confianza
+sin mentir. Cuando tengas reseñas reales de clientes, dímelo y montamos la
+sección de reseñas con opiniones verdaderas (idealmente enlazadas a Google).
 
 ## 13. Notas honestas (importante)
 
@@ -328,13 +314,9 @@ Lo que **tienes que hacer tú**:
    es OTRO**, abre estos archivos y reemplaza `https://picodavi.com` por tu dominio
    real: `index.html`, `proyectos/*.html`, `robots.txt` y `sitemap.xml`. (En el Bloc
    de notas: *Edición → Reemplazar*.) Si tu dominio sí es picodavi.com, no toques nada.
-2. **Reseñas** — las 3 de la sección "Reseñas" son de ejemplo. Sustitúyelas por
-   reales (claves `testi.*` en `lib/manifest.js`) o dímelo para quitarlas.
-3. **Xalet La Coromina** — está como "Proyecto real". Si aún no es un encargo
-   entregado, cámbialo a "Proyecto de ejemplo" para mantener la honestidad.
-4. **SSL** — al subir a Hostinger, activa el certificado SSL (gratis) y descomenta
+2. **SSL** — al subir a Hostinger, activa el certificado SSL (gratis) y descomenta
    el bloque "Forzar HTTPS" del `.htaccess`.
-5. (Opcional) Que una **gestoría** revise las páginas legales para tu caso.
+3. (Opcional) Que una **gestoría** revise las páginas legales para tu caso.
 
 ---
 
