@@ -27,9 +27,10 @@ jobs:
           port: 21
           # Solo se publica el contenido de la carpeta Picodavi/ ...
           local-dir: ./Picodavi/
-          # ... y va a la carpeta pública del hosting.
-          # (Si tu cuenta FTP ya entra directamente en public_html, cambia esto por "./")
-          server-dir: /public_html/
+          # ... y va al docroot REAL del dominio picodavi.com en Hostinger.
+          # (Verificado por diagnóstico FTP: el dominio se sirve desde aquí,
+          #  no desde /public_html/, que es el de la cuenta principal.)
+          server-dir: /domains/picodavi.com/public_html/
           # NO se publican los archivos internos (leads, guías, presupuestos, etc.)
           exclude: |
             **/.git*
