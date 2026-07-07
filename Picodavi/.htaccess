@@ -36,7 +36,14 @@ AddDefaultCharset UTF-8
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Picodavi-Guard "v3"
 </IfModule>
+
+# --- Blindar archivos internos (mod_alias, fiable en LiteSpeed) ------------
+# Devuelve 403 a documentos internos que pudieran haber quedado en el servidor
+# de una subida manual antigua (leads, guías, presupuestos, configs, locks…).
+RedirectMatch 403 (?i)/(docs|\.claude|\.git)(/|$)
+RedirectMatch 403 (?i)\.(md|markdown|ya?ml|json|lock|log)$
 
 # --- Forzar HTTPS (SSL ya activo en picodavi.com) --------------------------
 <IfModule mod_rewrite.c>
@@ -44,16 +51,13 @@ AddDefaultCharset UTF-8
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-  # --- Blindar archivos internos ------------------------------------------
-  # Aunque el despliegue no los sube, si quedaron de una subida antigua,
-  # aquí se bloquea su acceso público (leads, guías, presupuestos, configs).
-  RewriteRule "(^|/)\.(?!well-known)" - [F]   # cualquier archivo/carpeta oculto (.claude, .git…)
-  RewriteRule "^docs(/|$)"            - [F]   # carpeta de documentos internos
+  # Refuerzo por rewrite (por si mod_alias estuviera limitado).
+  RewriteRule "(^|/)\.(?!well-known)" - [F]
+  RewriteRule "(^|/)docs(/|$)"        - [F]
 </IfModule>
 
-# Bloquea documentos internos (README, guías, leads, configs, locks…).
-# La web no sirve ningún .md/.json/.yml públicamente, así que es seguro.
-<FilesMatch "\.(md|markdown|yml|yaml|json|lock)$">
+# Refuerzo por autorización de fichero.
+<FilesMatch "\.(md|markdown|yml|yaml|json|lock|log)$">
   Require all denied
 </FilesMatch>
 
