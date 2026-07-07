@@ -43,7 +43,19 @@ AddDefaultCharset UTF-8
   RewriteEngine On
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # --- Blindar archivos internos ------------------------------------------
+  # Aunque el despliegue no los sube, si quedaron de una subida antigua,
+  # aquí se bloquea su acceso público (leads, guías, presupuestos, configs).
+  RewriteRule "(^|/)\.(?!well-known)" - [F]   # cualquier archivo/carpeta oculto (.claude, .git…)
+  RewriteRule "^docs(/|$)"            - [F]   # carpeta de documentos internos
 </IfModule>
+
+# Bloquea documentos internos (README, guías, leads, configs, locks…).
+# La web no sirve ningún .md/.json/.yml públicamente, así que es seguro.
+<FilesMatch "\.(md|markdown|yml|yaml|json|lock)$">
+  Require all denied
+</FilesMatch>
 
 # --- Páginas de error ------------------------------------------------------
 # Servimos una 404 real (no la home) para que Google no la lea como "soft 404".
