@@ -1,0 +1,439 @@
+/* ==========================================================================
+   PICODAVI · main.js
+   --------------------------------------------------------------------------
+   El JS solo ENRIQUECE. Si falla (o no carga), la web se sigue leyendo y los
+   CTAs funcionan. GSAP es opcional: si no está, todo cae a CSS/JS nativo.
+   Patrón: IIFE + safe(fn) try/catch por módulo. Un fallo no tumba el resto.
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var DATA = window.__PICODAVI__ || {};
+  var doc = document;
+  var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGSAP = !!(window.gsap && window.ScrollTrigger);
+
+  /* --- safe(): aísla cada init ------------------------------------------ */
+  function safe(fn, name) {
+    try { fn(); }
+    catch (e) { if (window.console) console.warn("[picodavi] módulo falló:", name, e); }
+  }
+  function $(sel, ctx) { return (ctx || doc).querySelector(sel); }
+  function $all(sel, ctx) { return Array.prototype.slice.call((ctx || doc).querySelectorAll(sel)); }
+
+  /* ======================================================================
+     1) SPLASH — doble red de seguridad (CSS ~3.7s + hide forzado JS)
+     ====================================================================== */
+  function initSplash() {
+    var splash = $("#splash");
+    if (!splash) return;
+    var done = false;
+    function hide() {
+      if (done) return; done = true;
+      splash.classList.add("is-done");
+      doc.documentElement.classList.remove("is-locked");
+      window.setTimeout(function () { if (splash && splash.parentNode) splash.parentNode.removeChild(splash); }, 800);
+    }
+    var delay = REDUCE ? 500 : 2300;
+    window.setTimeout(hide, delay);
+    window.setTimeout(hide, 4500); // safety: nunca colgado
+    window.addEventListener("error", hide, { once: true });
+  }
+
+  /* ======================================================================
+     2) i18n — toggle ES/EN sin recarga, preferencia en localStorage
+     ====================================================================== */
+  var LANG_KEY = "picodavi-lang";
+  var currentLang = "es";
+
+  function getDict(lang) { return (DATA.i18n && DATA.i18n[lang]) || {}; }
+
+  function applyLang(lang) {
+    if (!DATA.i18n || !DATA.i18n[lang]) lang = "es";
+    currentLang = lang;
+    var dict = getDict(lang);
+
+    $all("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (dict[k] != null) el.textContent = dict[k];
+    });
+    $all("[data-i18n-ph]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-ph");
+      if (dict[k] != null) el.setAttribute("placeholder", dict[k]);
+    });
+    $all("[data-i18n-aria]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-aria");
+      if (dict[k] != null) el.setAttribute("aria-label", dict[k]);
+    });
+    $all("[data-i18n-alt]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-alt");
+      if (dict[k] != null) el.setAttribute("alt", dict[k]);
+    });
+    $all("[data-i18n-alt]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-alt");
+      if (dict[k] != null) el.setAttribute("alt", dict[k]);
+    });
+
+    doc.documentElement.setAttribute("lang", lang);
+    // El <title> con data-i18n ya se traduce en el bucle de arriba (cada página
+    // usa su propia clave). Las páginas sin data-i18n en el título lo conservan.
+
+    var toggle = $("#langToggle");
+    if (toggle && dict["nav.langAria"]) toggle.setAttribute("aria-label", dict["nav.langAria"]);
+
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  }
+
+  function initLang() {
+    var saved = "es";
+    try { saved = localStorage.getItem(LANG_KEY) || "es"; } catch (e) {}
+    applyLang(saved);
+    var toggle = $("#langToggle");
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        applyLang(currentLang === "es" ? "en" : "es");
+      });
+    }
+  }
+
+  /* ======================================================================
+     3) ENLACES dinámicos desde el manifest (WhatsApp / email / Instagram)
+     ====================================================================== */
+  function waUrl(text) {
+    var num = (DATA.brand && DATA.brand.whatsapp ? DATA.brand.whatsapp : "").replace(/[^0-9]/g, "");
+    var base = num ? "https://wa.me/" + num : "https://wa.me/";
+    return text ? base + "?text=" + encodeURIComponent(text) : base;
+  }
+  function initLinks() {
+    var email = (DATA.brand && DATA.brand.email) || "picoiudavid@gmail.com";
+    var ig = (DATA.brand && DATA.brand.instagram) || "";
+
+    $all("[data-wa-link]").forEach(function (a) {
+      a.setAttribute("href", waUrl());
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+    });
+    $all("[data-mail-link]").forEach(function (a) { a.setAttribute("href", "mailto:" + email); });
+    $all("[data-ig-link]").forEach(function (a) {
+      a.setAttribute("href", ig ? "https://instagram.com/" + ig : "#");
+      a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+    });
+
+    // Mostrar el número de teléfono en pantalla donde se pida
+    var phone = (DATA.brand && DATA.brand.phoneDisplay) || "";
+    if (phone) $all("[data-phone-display]").forEach(function (el) { el.textContent = phone; });
+
+    // CTA de páginas de proyecto → WhatsApp con mensaje sobre ese proyecto
+    $all("[data-wa-project]").forEach(function (a) {
+      var proj = a.getAttribute("data-wa-project") || "";
+      var msg = currentLang === "en"
+        ? "Hi David, I saw the " + proj + " project on your website and I'd like something similar for my business. Can we talk?"
+        : "Hola David, he visto el proyecto de " + proj + " en tu web y me gustaría algo parecido para mi negocio. ¿Hablamos?";
+      a.setAttribute("href", waUrl(msg));
+      a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+    });
+
+    // CTA de precios → abre WhatsApp con mensaje genérico
+    $all("[data-wa-cta]").forEach(function (a) {
+      var msg = currentLang === "en"
+        ? "Hi David, I saw your pricing and I'm not sure which plan I need. Can we talk?"
+        : "Hola David, he visto los precios y no sé qué plan necesito. ¿Hablamos?";
+      a.setAttribute("href", waUrl(msg));
+      a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+    });
+  }
+
+  /* ======================================================================
+     4) FORMULARIO → WhatsApp con mensaje pre-rellenado
+     ====================================================================== */
+  function initForm() {
+    var form = $("#contactForm");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
+
+      function v(name) { var el = form.elements[name]; return el && el.value ? el.value.trim() : ""; }
+      var name = v("name") || "—";
+      var type = v("type") || "—";
+      var contactInfo = v("contact");
+      var message = v("message");
+
+      var tpl = (DATA.waTemplate && DATA.waTemplate[currentLang]) ||
+                "Hola David, soy {name}. Tengo un negocio de {type} y te escribo desde tu web sobre un proyecto. {message}";
+      var msg = tpl.replace("{name}", name).replace("{type}", type).replace("{message}", message || "");
+      if (contactInfo) {
+        msg += currentLang === "en" ? "  · Contact: " + contactInfo : "  · Contacto: " + contactInfo;
+      }
+      window.open(waUrl(msg), "_blank", "noopener");
+    });
+  }
+
+  /* ======================================================================
+     5) NAV — sólido al bajar, burger móvil
+     ====================================================================== */
+  function initNav() {
+    var nav = $("#nav");
+    var burger = $("#burger");
+    var menu = $("#mobileMenu");
+    if (!nav) return;
+
+    var hero = $("#hero");
+    function onScroll() {
+      var trigger = hero ? hero.offsetHeight * 0.55 : 320;
+      if (window.scrollY > trigger) nav.classList.add("is-solid");
+      else nav.classList.remove("is-solid");
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    function closeMenu() {
+      nav.classList.remove("is-open");
+      if (burger) burger.setAttribute("aria-expanded", "false");
+      if (menu) menu.hidden = true;
+    }
+    if (burger && menu) {
+      burger.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        menu.hidden = !open;
+      });
+      $all("a", menu).forEach(function (a) { a.addEventListener("click", closeMenu); });
+    }
+    // Cerrar con Escape
+    doc.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+  }
+
+  /* ======================================================================
+     6) CURSOR personalizado (oculto en touch vía CSS)
+     ====================================================================== */
+  function initCursor() {
+    if (window.matchMedia && window.matchMedia("(hover: none)").matches) return;
+    var cursor = $("#cursor");
+    if (!cursor) return;
+    var label = $(".cursor__label", cursor);
+    var x = 0, y = 0, raf = null;
+
+    window.addEventListener("mousemove", function (e) {
+      x = e.clientX; y = e.clientY;
+      cursor.classList.add("is-active");
+      if (!raf) raf = requestAnimationFrame(function () {
+        cursor.style.transform = "translate(" + x + "px," + y + "px) translate(-50%,-50%)";
+        raf = null;
+      });
+    });
+    window.addEventListener("mouseout", function (e) { if (!e.relatedTarget) cursor.classList.remove("is-active"); });
+
+    $all("[data-cursor], a, button").forEach(function (el) {
+      el.addEventListener("mouseenter", function () {
+        cursor.classList.add("is-hover");
+        if (label) label.textContent = el.getAttribute("data-cursor") || "";
+      });
+      el.addEventListener("mouseleave", function () {
+        cursor.classList.remove("is-hover");
+        if (label) label.textContent = "";
+      });
+    });
+  }
+
+  /* ======================================================================
+     7) REVEAL — default visible; solo oculta si hay motion (.anim)
+        IntersectionObserver (threshold 0.05) + safety 6s revela todo.
+     ====================================================================== */
+  function initReveal() {
+    var els = $all(".reveal");
+    if (!els.length) return;
+
+    if (REDUCE || !("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("is-in"); });
+      return;
+    }
+    // Activa el modo animado: a partir de aquí los .reveal parten ocultos (CSS)
+    doc.documentElement.classList.add("anim");
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.05, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+
+    // Red de seguridad: nada se queda invisible
+    window.setTimeout(function () { els.forEach(function (el) { el.classList.add("is-in"); }); }, 6000);
+  }
+
+  /* ======================================================================
+     8) WHATSAPP flotante — aparece tras el primer viewport
+     ====================================================================== */
+  function initFloat() {
+    var fab = $("#waFloat");
+    if (!fab) return;
+    function onScroll() {
+      if (window.scrollY > window.innerHeight * 0.9) fab.classList.add("is-visible");
+      else fab.classList.remove("is-visible");
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  /* ======================================================================
+     9) PROCESO — progreso "0X / 03" + pin horizontal opcional (GSAP)
+     ====================================================================== */
+  function initProcess() {
+    var section = $("#process");
+    var viewport = $("#processViewport");
+    var track = $("#processTrack");
+    var progress = $("#processProgress");
+    var steps = $all(".step", track);
+    if (!section || !viewport || !track || !steps.length) return;
+    var n = steps.length;
+
+    function setProgress(i) {
+      if (!progress) return;
+      var idx = Math.min(n, Math.max(1, i + 1));
+      progress.textContent = (idx < 10 ? "0" + idx : idx) + " / " + (n < 10 ? "0" + n : n);
+    }
+
+    var canPin = hasGSAP && !REDUCE && window.innerWidth >= 900 && track.scrollWidth > viewport.clientWidth + 40;
+
+    if (canPin) {
+      // --- Enhancement: pin + scroll horizontal con GSAP ---
+      window.gsap.registerPlugin(window.ScrollTrigger);
+      section.classList.add("is-pinned");
+
+      var getAmount = function () { return Math.max(0, track.scrollWidth - viewport.clientWidth); };
+
+      window.gsap.to(track, {
+        x: function () { return -getAmount(); },
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: function () { return "+=" + getAmount(); },
+          scrub: 0.6,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: function (self) { setProgress(Math.round(self.progress * (n - 1))); }
+        }
+      });
+      window.addEventListener("load", function () { window.ScrollTrigger.refresh(); });
+    } else {
+      // --- Baseline: scroll-snap nativo + progreso por scroll ---
+      var onScroll = function () {
+        var sw = steps[0].offsetWidth + 24;
+        var i = Math.round(viewport.scrollLeft / sw);
+        setProgress(i);
+      };
+      viewport.addEventListener("scroll", onScroll, { passive: true });
+      setProgress(0);
+    }
+  }
+
+  // NOTA: el stagger de reveals con GSAP se eliminó a propósito. Dejaba un
+  // opacity:0 en línea sobre tarjetas/proyectos y, como la sección "Cómo funciona"
+  // está fijada (pin) con ScrollTrigger, sus disparadores no siempre se calculaban
+  // bien y el contenido quedaba invisible. Los reveals los hace ahora el
+  // IntersectionObserver de initReveal() (robusto, con red de seguridad de 6 s).
+
+  /* ======================================================================
+     11) BANNER DE COOKIES — solo almacenamiento técnico; informativo y honesto.
+         Se monta una vez (idempotente) y recuerda la aceptación en localStorage.
+     ====================================================================== */
+  function pathPrefix() {
+    var p = location.pathname;
+    return (p.indexOf("/proyectos/") !== -1 || p.indexOf("/legal/") !== -1) ? "../" : "";
+  }
+  function initCookies() {
+    var KEY = "picodavi-cookies";
+    var accepted = false;
+    try { accepted = localStorage.getItem(KEY) === "accepted"; } catch (e) {}
+    if (accepted) return;
+    if (doc.getElementById("cookieBanner")) return; // idempotente
+
+    var dict = getDict(currentLang);
+    var prefix = pathPrefix();
+
+    var bar = doc.createElement("div");
+    bar.id = "cookieBanner";
+    bar.className = "cookie-banner";
+    bar.setAttribute("role", "dialog");
+    bar.setAttribute("aria-label", "Aviso de cookies");
+    bar.innerHTML =
+      '<p class="cookie-banner__text">' +
+        '<span data-i18n="cookie.text">' + (dict["cookie.text"] || "Uso solo almacenamiento técnico necesario para que la web funcione.") + '</span> ' +
+        '<a class="cookie-banner__more" href="' + prefix + 'legal/cookies.html" data-i18n="cookie.more">' + (dict["cookie.more"] || "Política de cookies") + '</a>' +
+      '</p>' +
+      '<button type="button" class="cookie-banner__btn btn btn--primary" data-cursor="ver" data-i18n="cookie.accept">' + (dict["cookie.accept"] || "Entendido") + '</button>';
+
+    doc.body.appendChild(bar);
+    requestAnimationFrame(function () { bar.classList.add("is-in"); });
+
+    bar.querySelector(".cookie-banner__btn").addEventListener("click", function () {
+      try { localStorage.setItem(KEY, "accepted"); } catch (e) {}
+      bar.classList.remove("is-in");
+      window.setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, 400);
+    });
+  }
+
+  /* ======================================================================
+     12) COMPARADOR ANTES / DESPUÉS — deslizable (ratón, táctil y teclado)
+     ====================================================================== */
+  function initBeforeAfter() {
+    var s = $("#baSlider");
+    if (!s) return;
+    var frame = $(".ba__frame", s);
+    var range = $(".ba__range", s);
+    if (!frame || !range) return;
+    function set(v) { frame.style.setProperty("--pos", v + "%"); }
+    set(range.value);
+    range.addEventListener("input", function () { set(range.value); });
+  }
+
+  /* ======================================================================
+     13) SEO — autocorrige las URLs absolutas al dominio real donde se publique.
+         Si olvidas cambiar el dominio de ejemplo (picodavi.com), aquí se ajusta
+         solo a partir del dominio real cuando Google rastrea la web publicada.
+     ====================================================================== */
+  function initSeoUrls() {
+    if (location.protocol.indexOf("http") !== 0) return;          // file:// → no tocar
+    var host = location.hostname;
+    if (!host || host === "localhost" || host === "127.0.0.1") return; // dev → no tocar
+    var origin = location.origin;
+    function swap(url) { return url ? url.replace(/^https?:\/\/[^/]+/, origin) : url; }
+
+    var can = doc.querySelector('link[rel="canonical"]');
+    if (can) can.setAttribute("href", swap(can.getAttribute("href")));
+    var ogUrl = doc.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", swap(ogUrl.getAttribute("content")));
+    var ogImg = doc.querySelector('meta[property="og:image"]');
+    if (ogImg) ogImg.setAttribute("content", swap(ogImg.getAttribute("content")));
+
+    $all('script[type="application/ld+json"]').forEach(function (s) {
+      if (s.textContent.indexOf("https://picodavi.com") !== -1) {
+        s.textContent = s.textContent.split("https://picodavi.com").join(origin);
+      }
+    });
+  }
+
+  /* ======================================================================
+     ARRANQUE
+     ====================================================================== */
+  function boot() {
+    safe(initSplash, "splash");
+    safe(initLang, "i18n");
+    safe(initLinks, "links");
+    safe(initForm, "form");
+    safe(initNav, "nav");
+    safe(initCursor, "cursor");
+    safe(initReveal, "reveal");
+    safe(initFloat, "float");
+    safe(initProcess, "process");
+    safe(initCookies, "cookies");
+    safe(initBeforeAfter, "before-after");
+    safe(initSeoUrls, "seo-urls");
+  }
+
+  if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();

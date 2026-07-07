@@ -1,0 +1,50 @@
+# ==========================================================================
+# PICODAVI · .htaccess para Hostinger / Apache
+# Optimización básica: compresión, caché de estáticos y seguridad mínima.
+# No necesitas tocar nada aquí. Sube este archivo junto al resto.
+# ==========================================================================
+
+# --- Página por defecto ---------------------------------------------------
+DirectoryIndex index.html
+
+# --- Codificación ----------------------------------------------------------
+AddDefaultCharset UTF-8
+
+# --- Compresión GZIP (webs más rápidas) -----------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE image/svg+xml application/json
+</IfModule>
+
+# --- Caché del navegador ---------------------------------------------------
+# El cache-buster ?v=YYYYMMDD del HTML obliga a recargar cuando publicas cambios.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html              "access plus 0 seconds"
+  ExpiresByType text/css               "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/svg+xml          "access plus 1 month"
+  ExpiresByType image/png              "access plus 6 months"
+  ExpiresByType image/jpeg             "access plus 6 months"
+  ExpiresByType image/webp             "access plus 6 months"
+  ExpiresByType font/woff2             "access plus 1 year"
+</IfModule>
+
+# --- Cabeceras de seguridad básicas ---------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- Forzar HTTPS (SSL ya activo en picodavi.com) --------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# --- Páginas de error ------------------------------------------------------
+# Servimos una 404 real (no la home) para que Google no la lea como "soft 404".
+ErrorDocument 404 /404.html

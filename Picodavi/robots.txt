@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Las páginas legales llevan "noindex" en su propio HTML.
+
+Sitemap: https://picodavi.com/sitemap.xml
