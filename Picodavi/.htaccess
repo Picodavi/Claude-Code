@@ -38,12 +38,12 @@ AddDefaultCharset UTF-8
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# --- Forzar HTTPS (descomenta cuando tengas el certificado SSL activo) -----
-# <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteCond %{HTTPS} off
-#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-# </IfModule>
+# --- Forzar HTTPS (SSL ya activo en picodavi.com) --------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
 
 # --- Páginas de error ------------------------------------------------------
 # Servimos una 404 real (no la home) para que Google no la lea como "soft 404".
