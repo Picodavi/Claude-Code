@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260708" />
+  <link rel="stylesheet" href="css/styles.css?v=20260709" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -122,6 +122,16 @@
         "name": "Panel de edición",
         "description": "Panel sencillo para que el cliente edite textos, fotos, precios y horarios. Extra premium opcional."
       }
+    },
+    {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "390",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Landing Express",
+        "description": "Página única a medida enfocada en un objetivo: reservas, llamadas o citas."
+      }
     }
   ]
 }
@@ -152,7 +162,7 @@
       "name": "¿Puedo editarla yo mismo?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. Te explico lo básico para cambiar textos y fotos, o si lo prefieres me encargo yo con el mantenimiento mensual y tú no tocas nada."
+        "text": "Sí. Puedes añadir el Panel de edición (extra premium) y cambiar tú mismo textos, fotos, precios u horarios desde un panel sencillo. Y si prefieres no tocar nada, me encargo yo con el mantenimiento mensual."
       }
     },
     {
@@ -168,7 +178,15 @@
       "name": "¿Y si quiero cambios después?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cada web incluye una ronda de revisión. A partir de ahí, cambios puntuales se presupuestan aparte, o contratas el mantenimiento mensual desde 55 €/mes."
+        "text": "Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h, siempre con presupuesto cerrado antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Solo necesito una página, no una web entera. ¿Haces landings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. La Landing Express es una página única enfocada en un objetivo (reservas, llamadas o citas), con el mismo diseño a medida y optimización que una web completa, desde 390 € pago único."
       }
     },
     {
@@ -457,7 +475,7 @@
         <!-- Planes -->
         <div class="plans-intro reveal">
           <h3 class="plans-intro__title" data-i18n="services.plansTitle">Elige por dónde empezar</h3>
-          <p class="plans-intro__lead" data-i18n="services.plansLead">Dos formas de tener tu web y un extra para editarla tú mismo. Precio cerrado y todo por escrito desde el primer día. Para trabajos puntuales, también trabajo por horas.</p>
+          <p class="plans-intro__lead" data-i18n="services.plansLead">Dos formas de tener tu web y un extra para editarla tú mismo. Precio cerrado y todo por escrito desde el primer día. ¿Solo necesitas una página? Landing Express desde 390 €. Para trabajos puntuales, también trabajo por horas.</p>
         </div>
 
         <div class="cards">
@@ -475,7 +493,7 @@
             <p class="card__price"><span class="mono" data-i18n="s1.price">Desde 450 € + 55 €/mes</span> <em data-i18n="s1.priceNote">incluye 6 meses de lanzamiento</em></p>
           </article>
 
-          <!-- Landing page -->
+          <!-- Web profesional -->
           <article class="card reveal">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1178,11 +1196,15 @@
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q6">¿Y si quiero cambios después?</span><span class="faq__plus" aria-hidden="true"></span></summary>
-              <div class="faq__a"><p data-i18n="faq.a6">Cada web incluye una ronda de revisión. A partir de ahí, cambios puntuales se presupuestan aparte, o contratas el mantenimiento mensual desde 55 €/mes.</p></div>
+              <div class="faq__a"><p data-i18n="faq.a6">Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h, siempre con presupuesto cerrado antes de empezar.</p></div>
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q9">¿Por qué no eres más barato? He visto webs por mucho menos.</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a9">Puedes encontrar plantillas genéricas muy baratas, pero acaban pareciéndose a otras mil y rinden poco. Yo te hago una web a medida, optimizada para que te traiga clientes y a un precio justo. La pagas una vez y es tuya.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary data-cursor="leer"><span data-i18n="faq.q19">Solo necesito una página, no una web entera. ¿Haces landings?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__a"><p data-i18n="faq.a19">Sí. La Landing Express es una página única enfocada en un objetivo (reservas, llamadas o citas), con el mismo diseño a medida y optimización que una web completa, desde 390 € pago único. Y si más adelante quieres crecer a web completa, lo pagado se descuenta.</p></div>
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q12">¿Por qué elegirte a ti y no a una agencia?</span><span class="faq__plus" aria-hidden="true"></span></summary>
@@ -1373,9 +1395,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260708"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260708"></script>
-  <script defer src="lib/manifest.js?v=20260708"></script>
-  <script defer src="js/main.js?v=20260708"></script>
+  <script defer src="lib/gsap.min.js?v=20260709"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260709"></script>
+  <script defer src="lib/manifest.js?v=20260709"></script>
+  <script defer src="js/main.js?v=20260709"></script>
 </body>
 </html>

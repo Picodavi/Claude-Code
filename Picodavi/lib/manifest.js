@@ -106,7 +106,7 @@
         "val.6t": "Crecimiento online",
         "val.6d": "Una base sólida y lista para crecer: añadir páginas, idiomas o funciones cuando lo necesites.",
         "services.plansTitle": "Elige cómo quieres trabajar",
-        "services.plansLead": "Dos formas de tener tu web y un extra para editarla tú mismo. Precio cerrado y todo por escrito desde el primer día. Para trabajos puntuales, también trabajo por horas.",
+        "services.plansLead": "Dos formas de tener tu web y un extra para editarla tú mismo. Precio cerrado y todo por escrito desde el primer día. ¿Solo necesitas una página? Landing Express desde 390 €. Para trabajos puntuales, también trabajo por horas.",
         "s1.title": "Web + Mantenimiento",
         "s1.desc": "Tu web profesional a medida y yo cuidándola por ti: alojamiento, dominio, seguridad, copias de seguridad y hasta 60 min de cambios al mes. Tú te ocupas de tu negocio; de lo técnico me encargo yo.",
         "s1.price": "Desde 450 € + 55 €/mes",
@@ -264,7 +264,7 @@
         "price.changes1": "Por horas",
         "price.rowChanges": "Editas tú mismo (panel)",
         "price.changes3": "Hasta 60 min",
-        "price.note": "Precios de partida; el total depende de las páginas y funciones. El plan mensual incluye un plan de lanzamiento de 6 meses y después continúa mes a mes: lo dejas cuando quieras. ¿Algo puntual y sin plan? También trabajo por horas, con presupuesto cerrado por mensaje.",
+        "price.note": "Precios de partida; el total depende de las páginas y funciones. El plan mensual incluye un plan de lanzamiento de 6 meses y después continúa mes a mes: lo dejas cuando quieras. ¿Solo necesitas una página? Landing Express desde 390 €. ¿Algo puntual? Encargos por horas a 45 €/h, con presupuesto cerrado antes de empezar.",
         "price.cta": "¿No sabes cuál te conviene? Hablamos 10 minutos y te lo digo. →",
 
         // Contacto (07)
@@ -367,7 +367,7 @@
         "faq.q5": "¿Incluye el dominio?",
         "faq.a5": "El dominio (tudominio.com) se registra a tu nombre y tiene un coste aparte de unos 10–15 €/año. Te acompaño en todo el proceso.",
         "faq.q6": "¿Y si quiero cambios después?",
-        "faq.a6": "Cada web incluye una ronda de revisión. A partir de ahí, cambios puntuales se presupuestan aparte, o contratas el mantenimiento mensual desde 55 €/mes.",
+        "faq.a6": "Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h, siempre con presupuesto cerrado antes de empezar.",
         "faq.q7": "¿Trabajas solo con negocios de Catalunya?",
         "faq.a7": "Trabajo preferentemente con negocios locales de mi zona, pero puedo hacerlo en remoto con cualquiera. La cercanía es una ventaja, no una frontera.",
         "faq.q8": "¿Las webs aparecen en Google?",
@@ -392,6 +392,8 @@
         "faq.a17": "Sin problema. Como el dominio ya está a tu nombre y te doy tus archivos, el cambio es indoloro. Trabajo para que te quedes a gusto, no porque no puedas irte.",
         "faq.q18": "¿Con qué tecnología o herramientas haces las webs?",
         "faq.a18": "Combino mi criterio de diseño con herramientas modernas e inteligencia artificial. Eso me permite entregarte tu web más rápido y a mejor precio, sin renunciar a que sea a medida: yo reviso, ajusto y me responsabilizo de todo el resultado final.",
+        "faq.q19": "Solo necesito una página, no una web entera. ¿Haces landings?",
+        "faq.a19": "Sí. La Landing Express es una página única enfocada en un objetivo (reservas, llamadas o citas), con el mismo diseño a medida y optimización que una web completa, desde 390 € pago único. Y si más adelante quieres crecer a web completa, lo pagado se descuenta.",
 
         // Páginas de detalle (compartido)
         "detail.back": "← Volver al inicio",
@@ -509,7 +511,7 @@
         "val.6t": "Online growth",
         "val.6d": "A solid base ready to grow: add pages, languages or features whenever you need.",
         "services.plansTitle": "Choose how we work together",
-        "services.plansLead": "Two ways to have your website and an extra to edit it yourself. Fixed price and everything in writing from day one. For one-off jobs, I also work by the hour.",
+        "services.plansLead": "Two ways to have your website and an extra to edit it yourself. Fixed price and everything in writing from day one. Only need one page? Landing Express from €390. For one-off jobs, I also work by the hour.",
         "s1.title": "Website + Care",
         "s1.desc": "Your custom professional website, and me looking after it for you: hosting, domain, security, backups and up to 60 min of changes a month. You focus on your business; I handle the technical side.",
         "s1.price": "From €450 + €55/mo",
@@ -662,7 +664,7 @@
         "price.changes1": "By the hour",
         "price.rowChanges": "Edit it yourself (panel)",
         "price.changes3": "Up to 60 min",
-        "price.note": "Starting prices; the total depends on pages and features. The monthly plan includes a 6-month launch plan and then continues month to month: cancel whenever you want. Something one-off with no plan? I also work by the hour, with a fixed quote by message.",
+        "price.note": "Starting prices; the total depends on pages and features. The monthly plan includes a 6-month launch plan and then continues month to month: cancel whenever you want. Only need one page? Landing Express from €390. Something one-off? Jobs by the hour at €45/h, with a fixed quote before starting.",
         "price.cta": "Not sure which one suits you? Let's talk for 10 minutes and I'll tell you. →",
 
         "contact.tag": "Contact",
@@ -757,7 +759,7 @@
         "faq.q5": "Is the domain included?",
         "faq.a5": "The domain (yourdomain.com) is registered in your name and costs around €10–15/year separately. I guide you through the whole process.",
         "faq.q6": "What if I want changes later?",
-        "faq.a6": "Each website includes one round of revisions. After that, one-off changes are quoted separately, or you take the monthly care plan from €55/mo.",
+        "faq.a6": "Each website includes one round of revisions. After that you have two options: the monthly care plan (€55/mo, changes included) or one-off jobs by the hour at €45/h, always with a fixed quote before starting.",
         "faq.q7": "Do you only work with businesses in Catalonia?",
         "faq.a7": "I mainly work with local businesses in my area, but I can do it remotely with anyone. Closeness is an advantage, not a border.",
         "faq.q8": "Do the websites show up on Google?",
@@ -782,6 +784,8 @@
         "faq.a17": "No problem. Since the domain is already in your name and I give you your files, the move is painless. I work so you stay because you're happy, not because you can't leave.",
         "faq.q18": "What technology or tools do you build the websites with?",
         "faq.a18": "I combine my own design judgement with modern tools and artificial intelligence. That lets me deliver your site faster and at a better price, without giving up a custom result: I review, adjust and take responsibility for the final outcome.",
+        "faq.q19": "I only need one page, not a whole website — do you build landings?",
+        "faq.a19": "Yes. The Landing Express is a single page focused on one goal (bookings, calls or appointments), with the same custom design and optimisation as a full website, from €390 one-time. And if you later want to grow into a full website, what you paid is deducted.",
 
         "detail.back": "← Back to home",
         "detail.challengeTitle": "The challenge",
