@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260711" />
+  <link rel="stylesheet" href="css/styles.css?v=20260712" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -142,6 +142,16 @@
         "name": "Chatbot con IA",
         "description": "Asistente de atención al cliente con inteligencia artificial para la web: horarios, servicios y reservas. Desde 290 € más 25 €/mes."
       }
+    },
+    {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "49",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Impulso Google",
+        "description": "Gestión mensual de la ficha de Google Business y las reseñas: 2 publicaciones al mes, seguimiento de reseñas e informe mensual. 49 €/mes."
+      }
     }
   ]
 }
@@ -196,7 +206,7 @@
       "name": "¿Puedes añadir un chatbot u otras funciones a mi web?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento."
+        "text": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales, automatización de avisos y reseñas, o la gestión mensual de tu Google y tus reseñas (Impulso Google). Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento."
       }
     },
     {
@@ -733,71 +743,6 @@
       </div>
     </section>
 
-    <!-- ==================================================================
-         ANTES / DESPUÉS · comparador deslizable (sin número)
-         ================================================================== -->
-    <section class="section ba-section" id="antes-despues" aria-labelledby="ba-h">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="section__tag reveal"><span data-i18n="ba.tag">Antes y después</span></p>
-          <h2 class="section__title reveal" id="ba-h" data-i18n="ba.heading">De web anticuada a web que vende</h2>
-          <p class="section__lead lead reveal" data-i18n="ba.lead">Arrastra el control para ver el cambio. Esto es lo que separa una web vieja de una que te trae clientes.</p>
-        </header>
-
-        <div class="ba reveal" id="baSlider">
-          <div class="ba__frame">
-            <!-- DESPUÉS (base, moderna) -->
-            <div class="ba__layer ba__after" aria-hidden="true">
-              <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                <rect width="800" height="500" fill="#FFFFFF"/>
-                <rect width="800" height="64" fill="#FFFFFF"/><line x1="0" y1="64" x2="800" y2="64" stroke="#E5E7EB" stroke-width="1.5"/>
-                <circle cx="40" cy="32" r="9" fill="#2563EB"/><rect x="58" y="26" width="78" height="12" rx="6" fill="#0A0A0A"/>
-                <rect x="560" y="26" width="54" height="9" rx="4.5" fill="#E5E7EB"/><rect x="628" y="26" width="54" height="9" rx="4.5" fill="#E5E7EB"/>
-                <rect x="706" y="16" width="70" height="30" rx="15" fill="#2563EB"/>
-                <rect x="40" y="120" width="300" height="28" rx="7" fill="#0A0A0A"/>
-                <rect x="40" y="158" width="230" height="28" rx="7" fill="#2563EB"/>
-                <rect x="40" y="210" width="360" height="12" rx="6" fill="#E5E7EB"/><rect x="40" y="230" width="320" height="12" rx="6" fill="#E5E7EB"/>
-                <rect x="40" y="266" width="160" height="42" rx="21" fill="#2563EB"/><rect x="214" y="266" width="128" height="42" rx="21" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
-                <rect x="470" y="116" width="290" height="196" rx="16" fill="#EFF6FF"/>
-                <circle cx="615" cy="205" r="36" fill="#2563EB" opacity="0.16"/><path d="M598 205l11 11 21-25" stroke="#2563EB" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="40" y="352" width="220" height="112" rx="14" fill="#F5F5F3"/><rect x="290" y="352" width="220" height="112" rx="14" fill="#F5F5F3"/><rect x="540" y="352" width="220" height="112" rx="14" fill="#F5F5F3"/>
-                <rect x="62" y="374" width="44" height="10" rx="5" fill="#2563EB"/><rect x="62" y="396" width="150" height="8" rx="4" fill="#E5E7EB"/><rect x="62" y="412" width="120" height="8" rx="4" fill="#E5E7EB"/>
-                <rect x="312" y="374" width="44" height="10" rx="5" fill="#2563EB"/><rect x="312" y="396" width="150" height="8" rx="4" fill="#E5E7EB"/><rect x="312" y="412" width="120" height="8" rx="4" fill="#E5E7EB"/>
-                <rect x="562" y="374" width="44" height="10" rx="5" fill="#2563EB"/><rect x="562" y="396" width="150" height="8" rx="4" fill="#E5E7EB"/><rect x="562" y="412" width="120" height="8" rx="4" fill="#E5E7EB"/>
-              </svg>
-            </div>
-            <!-- ANTES (encima, anticuada, recortada a la izquierda del divisor) -->
-            <div class="ba__layer ba__before" aria-hidden="true">
-              <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                <rect width="800" height="500" fill="#D8D2C0"/>
-                <rect width="800" height="68" fill="#6B0F1A"/><rect y="68" width="800" height="6" fill="#E8B400"/>
-                <text x="22" y="46" font-family="'Times New Roman',serif" font-size="30" font-weight="bold" fill="#F3E6C4">Mi Empresa S.L.</text>
-                <text x="690" y="40" font-family="'Times New Roman',serif" font-size="22" font-weight="bold" fill="#FFE000">¡NUEVO!</text>
-                <text x="24" y="98" font-family="'Times New Roman',serif" font-size="15" fill="#0000EE" text-decoration="underline">Inicio</text>
-                <text x="92" y="98" font-family="'Times New Roman',serif" font-size="15" fill="#0000EE" text-decoration="underline">Productos</text>
-                <text x="196" y="98" font-family="'Times New Roman',serif" font-size="15" fill="#0000EE" text-decoration="underline">Nosotros</text>
-                <text x="300" y="98" font-family="'Times New Roman',serif" font-size="15" fill="#551A8B" text-decoration="underline">Contacto</text>
-                <line x1="20" y1="110" x2="780" y2="110" stroke="#8a8470" stroke-width="1"/>
-                <text x="400" y="146" text-anchor="middle" font-family="'Times New Roman',serif" font-size="27" font-weight="bold" fill="#1A1A6E">BIENVENIDOS A NUESTRA WEB</text>
-                <rect x="24" y="172" width="180" height="132" fill="#BFBFBF" stroke="#777"/>
-                <line x1="24" y1="172" x2="204" y2="304" stroke="#9a9a9a"/><line x1="204" y1="172" x2="24" y2="304" stroke="#9a9a9a"/>
-                <text x="114" y="324" text-anchor="middle" font-family="serif" font-size="12" fill="#555">imagen.jpg</text>
-                <g fill="#5a5648">
-                  <rect x="230" y="178" width="320" height="7"/><rect x="230" y="192" width="345" height="7"/><rect x="230" y="206" width="300" height="7"/><rect x="230" y="220" width="335" height="7"/><rect x="230" y="234" width="310" height="7"/><rect x="230" y="248" width="350" height="7"/><rect x="230" y="262" width="290" height="7"/><rect x="230" y="276" width="330" height="7"/><rect x="230" y="290" width="300" height="7"/>
-                </g>
-                <rect x="24" y="348" width="170" height="34" fill="#000000"/><text x="109" y="371" text-anchor="middle" font-family="'Courier New',monospace" font-size="15" fill="#22DD22">Visitas: 001337</text>
-                <rect y="420" width="800" height="26" fill="#FFFF00"/><text x="400" y="438" text-anchor="middle" font-family="'Times New Roman',serif" font-size="14" font-weight="bold" fill="#CC0000">★ OFERTAS ★ LLAME YA ★ NO SE LO PIERDA ★ OFERTAS ★</text>
-                <text x="400" y="474" text-anchor="middle" font-family="serif" font-size="12" fill="#5a5648">Optimizado para Internet Explorer · Resolución 800×600</text>
-              </svg>
-            </div>
-            <span class="ba__label ba__label--before" data-i18n="ba.before">Antes</span>
-            <span class="ba__label ba__label--after" data-i18n="ba.after">Después</span>
-            <div class="ba__divider" aria-hidden="true"><span class="ba__handle"></span></div>
-            <input type="range" class="ba__range" min="0" max="100" value="50" aria-label="Comparar antes y después" />
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ==================================================================
          04 · PARA QUIÉN
@@ -1199,14 +1144,14 @@
             </li>
             <li>
               <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M11 8v3l2 2"/></svg></span>
-              <div><strong data-i18n="ext.5t">SEO local y Google Business</strong><span data-i18n="ext.5d">Optimización de tu ficha de Google y tu zona. Desde 190 €.</span></div>
+              <div><strong data-i18n="ext.5t">Impulso Google · mensual</strong><span data-i18n="ext.5d">Gestiono tu ficha de Google y tus reseñas para que te encuentren y te elijan: 2 publicaciones al mes, seguimiento de reseñas e informe mensual. 49 €/mes.</span></div>
             </li>
             <li>
               <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg></span>
               <div><strong data-i18n="ext.6t">Automatización de avisos</strong><span data-i18n="ext.6d">Confirmaciones y peticiones de reseña por WhatsApp o email. Desde 120 €.</span></div>
             </li>
           </ul>
-          <p class="note" data-i18n="ext.note">Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 15 % de descuento en cualquier extra.</p>
+          <p class="note" data-i18n="ext.note">Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 15 % de descuento en cualquier extra. Pack Crecimiento: Mantenimiento + Impulso Google juntos por 89 €/mes (en vez de 104 €).</p>
         </div>
 
         <ul class="guarantees reveal" role="list">
@@ -1265,7 +1210,7 @@
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q20">¿Puedes añadir un chatbot u otras funciones a mi web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
-              <div class="faq__a"><p data-i18n="faq.a20">Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento.</p></div>
+              <div class="faq__a"><p data-i18n="faq.a20">Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales, automatización de avisos y reseñas, o la gestión mensual de tu Google y tus reseñas (Impulso Google). Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento.</p></div>
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q12">¿Por qué elegirte a ti y no a una agencia?</span><span class="faq__plus" aria-hidden="true"></span></summary>
@@ -1456,9 +1401,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260711"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260711"></script>
-  <script defer src="lib/manifest.js?v=20260711"></script>
-  <script defer src="js/main.js?v=20260711"></script>
+  <script defer src="lib/gsap.min.js?v=20260712"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260712"></script>
+  <script defer src="lib/manifest.js?v=20260712"></script>
+  <script defer src="js/main.js?v=20260712"></script>
 </body>
 </html>

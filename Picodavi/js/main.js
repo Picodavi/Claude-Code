@@ -377,21 +377,7 @@
   }
 
   /* ======================================================================
-     12) COMPARADOR ANTES / DESPUÉS — deslizable (ratón, táctil y teclado)
-     ====================================================================== */
-  function initBeforeAfter() {
-    var s = $("#baSlider");
-    if (!s) return;
-    var frame = $(".ba__frame", s);
-    var range = $(".ba__range", s);
-    if (!frame || !range) return;
-    function set(v) { frame.style.setProperty("--pos", v + "%"); }
-    set(range.value);
-    range.addEventListener("input", function () { set(range.value); });
-  }
-
-  /* ======================================================================
-     13) SEO — autocorrige las URLs absolutas al dominio real donde se publique.
+     12) SEO — autocorrige las URLs absolutas al dominio real donde se publique.
          Si olvidas cambiar el dominio de ejemplo (picodavi.com), aquí se ajusta
          solo a partir del dominio real cuando Google rastrea la web publicada.
      ====================================================================== */
@@ -430,7 +416,6 @@
     safe(initFloat, "float");
     safe(initProcess, "process");
     safe(initCookies, "cookies");
-    safe(initBeforeAfter, "before-after");
     safe(initSeoUrls, "seo-urls");
   }
 

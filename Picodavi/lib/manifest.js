@@ -402,7 +402,7 @@
         "faq.q19": "Solo necesito una página, no una web entera. ¿Haces landings?",
         "faq.a19": "Sí. La Landing Express es una página única enfocada en un objetivo (reservas, llamadas o citas), con el mismo diseño a medida y optimización que una web completa, desde 390 € pago único. Y si más adelante quieres crecer a web completa, lo pagado se descuenta.",
         "faq.q20": "¿Puedes añadir un chatbot u otras funciones a mi web?",
-        "faq.a20": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento.",
+        "faq.a20": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales, automatización de avisos y reseñas, o la gestión mensual de tu Google y tus reseñas (Impulso Google). Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento.",
 
         // Páginas de detalle (compartido)
         "detail.back": "← Volver al inicio",
@@ -461,12 +461,6 @@
         "guar.3": "Web y dominio a tu nombre",
         "guar.4": "Precio cerrado por escrito",
 
-        "ba.tag": "Antes y después",
-        "ba.heading": "De web anticuada a web que vende",
-        "ba.lead": "Arrastra el control para ver el cambio. Esto es lo que separa una web vieja de una que te trae clientes.",
-        "ba.before": "Antes",
-        "ba.after": "Después",
-
         "rec.heading": "Tu web no termina el día que se publica",
         "rec.lead": "Después del lanzamiento llegan los ajustes de verdad: actualizar precios, cambiar una foto, lanzar una promoción, mantenerlo todo seguro y rápido. El mantenimiento se encarga de todo eso por ti.",
         "rec.1name": "Panel de edición",
@@ -489,11 +483,11 @@
         "ext.3d": "Tu carta siempre actualizada, legible en cualquier móvil. Desde 240 €.",
         "ext.4t": "Idioma adicional",
         "ext.4d": "Tu web en catalán, castellano, inglés o francés. +150 € por idioma.",
-        "ext.5t": "SEO local y Google Business",
-        "ext.5d": "Optimización de tu ficha de Google y tu zona. Desde 190 €.",
+        "ext.5t": "Impulso Google · mensual",
+        "ext.5d": "Gestiono tu ficha de Google y tus reseñas para que te encuentren y te elijan: 2 publicaciones al mes, seguimiento de reseñas e informe mensual. 49 €/mes.",
         "ext.6t": "Automatización de avisos",
         "ext.6d": "Confirmaciones y peticiones de reseña por WhatsApp o email. Desde 120 €.",
-        "ext.note": "Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 15 % de descuento en cualquier extra."
+        "ext.note": "Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 15 % de descuento en cualquier extra. Pack Crecimiento: Mantenimiento + Impulso Google juntos por 89 €/mes (en vez de 104 €)."
       },
 
       en: {
@@ -820,7 +814,7 @@
         "faq.q19": "I only need one page, not a whole website — do you build landings?",
         "faq.a19": "Yes. The Landing Express is a single page focused on one goal (bookings, calls or appointments), with the same custom design and optimisation as a full website, from €390 one-time. And if you later want to grow into a full website, what you paid is deducted.",
         "faq.q20": "Can you add a chatbot or other features to my website?",
-        "faq.a20": "Yes. An AI customer-service chatbot, online bookings, a digital menu with QR code, additional languages or automated notifications and review requests. Every extra comes with a fixed written quote before starting, and care clients get 15% off.",
+        "faq.a20": "Yes. An AI customer-service chatbot, online bookings, a digital menu with QR code, additional languages, automated notifications and review requests, or monthly management of your Google profile and reviews (Google Boost). Every extra comes with a fixed written quote before starting, and care clients get 15% off.",
 
         "detail.back": "← Back to home",
         "detail.challengeTitle": "The challenge",
@@ -873,12 +867,6 @@
         "guar.3": "Website & domain in your name",
         "guar.4": "Fixed price in writing",
 
-        "ba.tag": "Before & after",
-        "ba.heading": "From outdated site to a site that sells",
-        "ba.lead": "Drag the slider to see the change. This is what separates an old website from one that brings you clients.",
-        "ba.before": "Before",
-        "ba.after": "After",
-
         "rec.heading": "Your website doesn't end the day it goes live",
         "rec.lead": "After launch come the real adjustments: updating prices, swapping a photo, running a promotion, keeping everything secure and fast. Care handles all of that for you.",
         "rec.1name": "Editing panel",
@@ -901,11 +889,11 @@
         "ext.3d": "Your menu always up to date, readable on any phone. From €240.",
         "ext.4t": "Additional language",
         "ext.4d": "Your website in Catalan, Spanish, English or French. +€150 per language.",
-        "ext.5t": "Local SEO & Google Business",
-        "ext.5d": "Optimisation of your Google profile and your area. From €190.",
+        "ext.5t": "Google Boost · monthly",
+        "ext.5d": "I manage your Google profile and reviews so people find and choose you: 2 posts a month, review monitoring and a monthly report. €49/mo.",
         "ext.6t": "Automated notifications",
         "ext.6d": "Confirmations and review requests via WhatsApp or email. From €120.",
-        "ext.note": "Every extra is quoted in writing before starting. Care clients: 15% off any extra."
+        "ext.note": "Every extra is quoted in writing before starting. Care clients: 15% off any extra. Growth Pack: Care + Google Boost together for €89/mo (instead of €104)."
       }
     },
 

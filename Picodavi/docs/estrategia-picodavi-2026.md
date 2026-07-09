@@ -39,6 +39,8 @@
 | Carta digital QR (restaurantes) | 190 € | **240 €** | 340 € (multidioma + fotos) | YA EN LA WEB (extras) |
 | Reservas / cita previa | 120 € | **150 €** | 290 € (con recordatorios) | YA EN LA WEB (extras) |
 | Automatización de avisos/reseñas | 90 € | **120 €** | 240 € | YA EN LA WEB (extras) |
+| **Impulso Google (mensual)** | 39 €/mes | **49 €/mes** | 79 €/mes | NUEVO 09-07. Gestión ficha Google + reseñas: 2 posts/mes + informe. Tu 2.ª mensualidad, el mayor gancho de retención para locales |
+| **Pack Crecimiento** | — | **89 €/mes** (Mant. + Impulso) | — | Bundle: junta las 2 mensualidades con descuento. Cuanto más servicios mensuales, más difícil que se vayan |
 | Auditoría web | Gratis (3 puntos, vídeo 3 min) | — | 90 € informe completo | El precio del informe se descuenta si contratan |
 
 **Regla de retención (implementada 09-07-2026):** clientes con mantenimiento tienen panel gratis, hora a 35 €/h y 15 % de descuento en todos los extras. Sin mantenimiento, todo cuesta más: panel +150 €, hora a 45 €/h, activación posterior del mantenimiento desde 90 €. El camino barato siempre es quedarse.

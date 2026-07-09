@@ -18,6 +18,8 @@
 | Activar mantenimiento tarde | **+90 €** puesta a punto (gratis si es desde el inicio) |
 | Pago anual del mantenimiento | **2 meses gratis** (550 €/año en vez de 660 €) |
 | Chatbot IA | **290 € + 25 €/mes** |
+| Impulso Google (ficha + reseñas) | **49 €/mes** (2 posts/mes + gestión reseñas + informe) |
+| Pack Crecimiento (Mant. + Impulso) | **89 €/mes** (en vez de 104 €) |
 | Reservas / cita previa | **desde 150 €** |
 | Carta digital QR | **desde 240 €** |
 | Idioma extra | **+150 €/idioma** |
