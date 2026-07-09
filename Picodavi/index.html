@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260709" />
+  <link rel="stylesheet" href="css/styles.css?v=20260710" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -120,7 +120,7 @@
       "itemOffered": {
         "@type": "Service",
         "name": "Panel de edición",
-        "description": "Panel sencillo para que el cliente edite textos, fotos, precios y horarios. Extra premium opcional."
+        "description": "Panel sencillo para que el cliente edite textos, fotos, precios y horarios. Incluido con el plan de mantenimiento; +150 € con la web sola."
       }
     },
     {
@@ -131,6 +131,16 @@
         "@type": "Service",
         "name": "Landing Express",
         "description": "Página única a medida enfocada en un objetivo: reservas, llamadas o citas."
+      }
+    },
+    {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "290",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Chatbot con IA",
+        "description": "Asistente de atención al cliente con inteligencia artificial para la web: horarios, servicios y reservas. Desde 290 € más 25 €/mes."
       }
     }
   ]
@@ -162,7 +172,7 @@
       "name": "¿Puedo editarla yo mismo?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. Puedes añadir el Panel de edición (extra premium) y cambiar tú mismo textos, fotos, precios u horarios desde un panel sencillo. Y si prefieres no tocar nada, me encargo yo con el mantenimiento mensual."
+        "text": "Sí. Con Web + Mantenimiento, el panel de edición está incluido sin coste: cambias tú mismo textos, fotos, precios u horarios cuando quieras. Con la web sola, el panel se añade por 150 €. Y si prefieres no tocar nada, los cambios los hago yo dentro del mantenimiento."
       }
     },
     {
@@ -178,7 +188,15 @@
       "name": "¿Y si quiero cambios después?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h, siempre con presupuesto cerrado antes de empezar."
+        "text": "Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h — 35 €/h si tienes mantenimiento —, siempre con presupuesto cerrado antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedes añadir un chatbot u otras funciones a mi web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 10 % de descuento."
       }
     },
     {
@@ -351,7 +369,7 @@
             <a href="#contact" class="btn btn--primary btn--lg" data-cursor="contactar" data-i18n="hero.ctaPrimary">Empieza tu web →</a>
             <a href="#work" class="btn btn--ghost btn--lg" data-cursor="proyecto" data-i18n="hero.ctaSecondary">Ver proyectos</a>
           </div>
-          <p class="hero__hook mono reveal" data-i18n="hero.hook">Con mantenimiento desde 450 € + 55 €/mes · o 650 € pago único · Presupuesto sin compromiso</p>
+          <p class="hero__hook mono reveal" data-i18n="hero.hook">Con mantenimiento desde 450 € + 55 €/mes, panel de edición incluido · Web sola desde 650 € · Presupuesto sin compromiso</p>
         </div>
 
         <!-- Mockup de navegador (SVG inline, sin imágenes externas) -->
@@ -475,7 +493,7 @@
         <!-- Planes -->
         <div class="plans-intro reveal">
           <h3 class="plans-intro__title" data-i18n="services.plansTitle">Elige por dónde empezar</h3>
-          <p class="plans-intro__lead" data-i18n="services.plansLead">Dos formas de tener tu web y un extra para editarla tú mismo. Precio cerrado y todo por escrito desde el primer día. ¿Solo necesitas una página? Landing Express desde 390 €. Para trabajos puntuales, también trabajo por horas.</p>
+          <p class="plans-intro__lead" data-i18n="services.plansLead">Dos formas de tener tu web, con el panel de edición incluido si eliges mantenimiento. Precio cerrado y todo por escrito desde el primer día. ¿Solo necesitas una página? Landing Express desde 390 €.</p>
         </div>
 
         <div class="cards">
@@ -489,7 +507,7 @@
               </svg>
             </div>
             <h3 class="card__title" data-i18n="s1.title">Web + Mantenimiento</h3>
-            <p class="card__desc" data-i18n="s1.desc">Tu web profesional a medida y yo cuidándola por ti: alojamiento, dominio, seguridad, copias de seguridad y hasta 60 min de cambios al mes. Tú te ocupas de tu negocio; de lo técnico me encargo yo.</p>
+            <p class="card__desc" data-i18n="s1.desc">Tu web profesional a medida y yo cuidándola por ti: alojamiento, dominio, seguridad, copias de seguridad, hasta 60 min de cambios al mes y el panel de edición incluido sin coste. Tú te ocupas de tu negocio; de lo técnico me encargo yo.</p>
             <p class="card__price"><span class="mono" data-i18n="s1.price">Desde 450 € + 55 €/mes</span> <em data-i18n="s1.priceNote">incluye 6 meses de lanzamiento</em></p>
           </article>
 
@@ -501,7 +519,7 @@
               </svg>
             </div>
             <h3 class="card__title" data-i18n="s2.title">Web profesional</h3>
-            <p class="card__desc" data-i18n="s2.desc">Diseño y desarrollo a medida, lista para publicar y entregada en código. Ideal si prefieres gestionar tú el alojamiento; los cambios posteriores se hacen por horas o añadiendo mantenimiento.</p>
+            <p class="card__desc" data-i18n="s2.desc">Diseño y desarrollo a medida, lista para publicar y entregada en código. Ideal si prefieres gestionar tú el alojamiento. Los cambios posteriores se presupuestan por horas y el panel de edición puede añadirse por 150 €.</p>
             <p class="card__price"><span class="mono" data-i18n="s2.price">Desde 650 €</span> <em data-i18n="s2.priceNote">pago único</em></p>
           </article>
 
@@ -514,9 +532,9 @@
               </svg>
             </div>
             <h3 class="card__title" data-i18n="s3.title">Panel de edición</h3>
-            <p class="card__desc" data-i18n="s3.desc">Un panel sencillo, tipo WordPress pero más simple y a medida, para que edites tú mismo textos, fotos, precios u horarios cuando quieras. La parte técnica sigue cubierta por el mantenimiento.</p>
-            <p class="card__price"><span class="mono" data-i18n="s3.price">+ 150 €</span> <em data-i18n="s3.priceNote">extra premium opcional</em></p>
-            <p class="card__small" data-i18n="s3.small">Se añade a cualquier plan · Sin conocimientos técnicos</p>
+            <p class="card__desc" data-i18n="s3.desc">Un panel sencillo y a medida para que edites tú mismo textos, fotos, precios u horarios cuando quieras, sin conocimientos técnicos. Tus cambios se publican al momento; de la parte técnica me sigo encargando yo.</p>
+            <p class="card__price"><span class="mono" data-i18n="s3.price">Incluido con mantenimiento</span> <em data-i18n="s3.priceNote">+150 € con la web sola</em></p>
+            <p class="card__small" data-i18n="s3.small">Editas solo lo que quieras · El resto lo sigo cuidando yo</p>
           </article>
         </div>
 
@@ -836,7 +854,7 @@
         <header class="section__head">
           <p class="section__tag reveal"><span class="section__tag-num">05</span> <span data-i18n="work.tag">Proyectos</span></p>
           <h2 class="section__title reveal" id="work-h" data-i18n="work.heading">Trabajo real, online ahora mismo</h2>
-          <p class="section__lead lead reveal" data-i18n="work.lead">Esta web la he diseñado y publicado yo, y la mantengo online cada día. Entra, tócala y júzgala tú mismo.</p>
+          <p class="section__lead lead reveal" data-i18n="work.lead">Esta web la he diseñado y publicado yo, y la mantengo online cada día. Entra, pruébala y júzgala tú mismo.</p>
         </header>
 
         <!-- ============ CASO DESTACADO · Xalet La Coromina (real, visitable) ============ -->
@@ -1061,7 +1079,7 @@
         <header class="section__head">
           <p class="section__tag reveal"><span class="section__tag-num">07</span> <span data-i18n="price.tag">Precios</span></p>
           <h2 class="section__title reveal" id="pricing-h" data-i18n="price.heading">Precios claros, sin sorpresas</h2>
-          <p class="section__lead lead reveal" data-i18n="price.lead">Estos son los puntos de partida. Lo que cuesta, antes de que preguntes.</p>
+          <p class="section__lead lead reveal" data-i18n="price.lead">Ten tu web y olvídate de lo técnico, o llévala tú por tu cuenta. La opción recomendada te lo deja todo resuelto, con el panel de edición incluido.</p>
         </header>
 
         <div class="ptable reveal" role="table" aria-label="Comparativa de precios">
@@ -1075,7 +1093,7 @@
                     <span class="ptable__featbadge" data-i18n="price.col2badge">Recomendado</span>
                     <span data-i18n="price.col2">Web + Mantenimiento</span>
                   </th>
-                  <th scope="col"><span data-i18n="price.col3">+ Panel de edición</span></th>
+                  <th scope="col"><span data-i18n="price.col3">Landing Express</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -1083,13 +1101,13 @@
                   <th scope="row" data-i18n="price.rowPrice">Precio</th>
                   <td><span class="mono" data-i18n="price.p1">650 € único</span></td>
                   <td class="ptable__feat"><span class="mono" data-i18n="price.p2">450 € + 55 €/mes</span></td>
-                  <td><span class="mono" data-i18n="price.p3">450 € + 55 €/mes + 150 €</span></td>
+                  <td><span class="mono" data-i18n="price.p3">390 € único</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowPages">Páginas incluidas</th>
                   <td class="mono" data-i18n="price.pages1">Hasta 5</td>
                   <td class="ptable__feat mono" data-i18n="price.pages2">Hasta 5</td>
-                  <td class="mono" data-i18n="price.pages3">Hasta 5</td>
+                  <td class="mono" data-i18n="price.pages3">1</td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowDesign">Diseño web a medida</th>
@@ -1101,31 +1119,37 @@
                   <th scope="row" data-i18n="price.rowMobile">Alojamiento y dominio</th>
                   <td><span class="no" aria-label="No incluido">—</span></td>
                   <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="yes" aria-label="Incluido">✓</span></td>
+                  <td><span class="no" aria-label="No incluido">—</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowForm">Seguridad y copias de seguridad</th>
                   <td><span class="no" aria-label="No incluido">—</span></td>
                   <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="yes" aria-label="Incluido">✓</span></td>
+                  <td><span class="no" aria-label="No incluido">—</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowLegal">Cambios cada mes</th>
                   <td class="mono" data-i18n="price.changes1">Por horas</td>
                   <td class="ptable__feat mono"><span class="yes" aria-hidden="true">✓</span> <span data-i18n="price.changes3">Hasta 60 min</span></td>
-                  <td class="mono"><span class="yes" aria-hidden="true">✓</span> <span data-i18n="price.changes3">Hasta 60 min</span></td>
+                  <td class="mono" data-i18n="price.changes1">Por horas</td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowRounds">Soporte prioritario</th>
                   <td><span class="no" aria-label="No incluido">—</span></td>
                   <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="yes" aria-label="Incluido">✓</span></td>
+                  <td><span class="no" aria-label="No incluido">—</span></td>
                 </tr>
                 <tr>
-                  <th scope="row" data-i18n="price.rowChanges">Editas tú mismo (panel)</th>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
-                  <td class="ptable__feat"><span class="no" aria-label="No incluido">—</span></td>
-                  <td><span class="yes" aria-label="Incluido">✓</span></td>
+                  <th scope="row" data-i18n="price.rowChanges">Panel de edición</th>
+                  <td class="mono" data-i18n="price.panel1">+150 €</td>
+                  <td class="ptable__feat mono"><span class="yes" aria-hidden="true">✓</span> <span data-i18n="price.panel2">Incluido</span></td>
+                  <td class="mono" data-i18n="price.panel3">+150 €</td>
+                </tr>
+                <tr>
+                  <th scope="row" data-i18n="price.rowHour">Hora extra</th>
+                  <td class="mono" data-i18n="price.hour1">45 €/h</td>
+                  <td class="ptable__feat mono" data-i18n="price.hour2">35 €/h</td>
+                  <td class="mono" data-i18n="price.hour3">45 €/h</td>
                 </tr>
               </tbody>
             </table>
@@ -1139,17 +1163,50 @@
           <div class="recurring__grid">
             <article class="reccard">
               <h4 class="reccard__name" data-i18n="rec.1name">Panel de edición</h4>
-              <p class="reccard__price"><span class="mono" data-i18n="rec.1price">+ 150 € un pago</span></p>
-              <p class="reccard__desc" data-i18n="rec.1desc">El extra premium para editar tú mismo textos, fotos, precios u horarios desde un panel sencillo. La seguridad y la parte técnica siguen de mi parte.</p>
+              <p class="reccard__price"><span class="mono" data-i18n="rec.1price">Incluido con mantenimiento</span></p>
+              <p class="reccard__desc" data-i18n="rec.1desc">Edita tú mismo textos, fotos, precios u horarios desde un panel sencillo, sin conocimientos técnicos. Incluido sin coste con Web + Mantenimiento; con la web sola, se añade por 150 €.</p>
             </article>
             <article class="reccard reccard--feature">
               <span class="reccard__badge" data-i18n="rec.2badge">Recomendado</span>
               <h4 class="reccard__name" data-i18n="rec.2name">Mantenimiento</h4>
               <p class="reccard__price"><span class="mono" data-i18n="rec.2price">55 € / mes</span></p>
-              <p class="reccard__desc" data-i18n="rec.2desc">Alojamiento y dominio gestionados, seguridad, copias de seguridad y hasta 60 min de cambios al mes. Por menos de 2 € al día, tu web siempre cuidada, protegida y al día, sin que toques nada.</p>
+              <p class="reccard__desc" data-i18n="rec.2desc">Alojamiento y dominio gestionados, seguridad, copias de seguridad, hasta 60 min de cambios al mes, panel de edición incluido y descuento en todos los extras. Por menos de 2 € al día, tu web siempre cuidada y al día.</p>
             </article>
           </div>
           <p class="recurring__note" data-i18n="rec.note">Los primeros 6 meses son tu plan de lanzamiento, cuando la web más se ajusta; después continúas mes a mes y lo dejas cuando quieras. El dominio se registra siempre a tu nombre: tu web es tuya.</p>
+        </div>
+
+        <!-- Extras a medida: ampliaciones con presupuesto cerrado -->
+        <div class="includes reveal">
+          <h3 class="includes__title" data-i18n="ext.heading">Extras a medida</h3>
+          <p class="includes__lead" data-i18n="ext.lead">Ampliaciones que se añaden a cualquier web, con presupuesto cerrado antes de empezar.</p>
+          <ul class="includes__grid" role="list">
+            <li>
+              <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span>
+              <div><strong data-i18n="ext.1t">Chatbot con IA</strong><span data-i18n="ext.1d">Responde a tus clientes al momento: horarios, servicios, reservas. Desde 290 € + 25 €/mes.</span></div>
+            </li>
+            <li>
+              <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16M9 15h2m2 0h2"/></svg></span>
+              <div><strong data-i18n="ext.2t">Reservas y cita previa</strong><span data-i18n="ext.2d">Tus clientes reservan mesa o piden cita desde la web. Desde 150 €.</span></div>
+            </li>
+            <li>
+              <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><path d="M13 13h3v3h-3zM17 17h3v3h-3z"/></svg></span>
+              <div><strong data-i18n="ext.3t">Carta digital con QR</strong><span data-i18n="ext.3d">Tu carta siempre actualizada, legible en cualquier móvil. Desde 240 €.</span></div>
+            </li>
+            <li>
+              <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg></span>
+              <div><strong data-i18n="ext.4t">Idioma adicional</strong><span data-i18n="ext.4d">Tu web en catalán, castellano, inglés o francés. +150 € por idioma.</span></div>
+            </li>
+            <li>
+              <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M11 8v3l2 2"/></svg></span>
+              <div><strong data-i18n="ext.5t">SEO local y Google Business</strong><span data-i18n="ext.5d">Optimización de tu ficha de Google y tu zona. Desde 190 €.</span></div>
+            </li>
+            <li>
+              <span class="includes__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg></span>
+              <div><strong data-i18n="ext.6t">Automatización de avisos</strong><span data-i18n="ext.6d">Confirmaciones y peticiones de reseña por WhatsApp o email. Desde 120 €.</span></div>
+            </li>
+          </ul>
+          <p class="note" data-i18n="ext.note">Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 10 % de descuento en cualquier extra.</p>
         </div>
 
         <ul class="guarantees reveal" role="list">
@@ -1159,7 +1216,7 @@
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg> <span data-i18n="guar.4">Precio cerrado por escrito</span></li>
         </ul>
 
-        <p class="note reveal" data-i18n="price.note">Precios de partida. El precio final depende del número de páginas y funcionalidades. Cambios o funciones fuera de lo incluido se presupuestan aparte.</p>
+        <p class="note reveal" data-i18n="price.note">Precios de partida; el total depende de las páginas y funciones. El mantenimiento incluye 6 meses de lanzamiento y después continúa mes a mes: lo dejas cuando quieras. Contratarlo desde el inicio no tiene coste de activación; añadirlo más adelante incluye una puesta a punto técnica desde 90 €.</p>
         <p class="pricing__cta reveal">
           <a href="#contact" class="link-strong" data-wa-cta data-cursor="contactar" data-i18n="price.cta">¿No sabes cuál necesitas? Hablamos 10 minutos y te lo digo. →</a>
         </p>
@@ -1175,7 +1232,7 @@
         <header class="section__head">
           <p class="section__tag reveal"><span class="section__tag-num">08</span> <span data-i18n="faq.tag">Preguntas frecuentes</span></p>
           <h2 class="section__title reveal" id="faq-h" data-i18n="faq.heading">Lo que sueles preguntarte</h2>
-          <p class="section__lead lead reveal" data-i18n="faq.lead">Las dudas más habituales antes de empezar. Si te queda otra, me escribes y ya está.</p>
+          <p class="section__lead lead reveal" data-i18n="faq.lead">Las dudas más habituales antes de empezar. Si te queda alguna otra, escríbeme y te respondo en el día.</p>
         </header>
 
                 <div class="faq__groups reveal">
@@ -1196,7 +1253,7 @@
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q6">¿Y si quiero cambios después?</span><span class="faq__plus" aria-hidden="true"></span></summary>
-              <div class="faq__a"><p data-i18n="faq.a6">Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h, siempre con presupuesto cerrado antes de empezar.</p></div>
+              <div class="faq__a"><p data-i18n="faq.a6">Cada web incluye una ronda de revisión. A partir de ahí tienes dos opciones: el mantenimiento mensual (55 €/mes, con cambios incluidos) o encargos puntuales por horas a 45 €/h — 35 €/h si tienes mantenimiento —, siempre con presupuesto cerrado antes de empezar.</p></div>
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q9">¿Por qué no eres más barato? He visto webs por mucho menos.</span><span class="faq__plus" aria-hidden="true"></span></summary>
@@ -1205,6 +1262,10 @@
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q19">Solo necesito una página, no una web entera. ¿Haces landings?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a19">Sí. La Landing Express es una página única enfocada en un objetivo (reservas, llamadas o citas), con el mismo diseño a medida y optimización que una web completa, desde 390 € pago único. Y si más adelante quieres crecer a web completa, lo pagado se descuenta.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary data-cursor="leer"><span data-i18n="faq.q20">¿Puedes añadir un chatbot u otras funciones a mi web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__a"><p data-i18n="faq.a20">Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 10 % de descuento.</p></div>
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q12">¿Por qué elegirte a ti y no a una agencia?</span><span class="faq__plus" aria-hidden="true"></span></summary>
@@ -1225,7 +1286,7 @@
             <div class="faq__list">
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q4">¿Puedo editarla yo mismo?</span><span class="faq__plus" aria-hidden="true"></span></summary>
-              <div class="faq__a"><p data-i18n="faq.a4">Sí. Te explico lo básico para cambiar textos y fotos, o si lo prefieres me encargo yo con el mantenimiento mensual y tú no tocas nada.</p></div>
+              <div class="faq__a"><p data-i18n="faq.a4">Sí. Con Web + Mantenimiento, el panel de edición está incluido sin coste: cambias tú mismo textos, fotos, precios u horarios cuando quieras. Con la web sola, el panel se añade por 150 €. Y si prefieres no tocar nada, los cambios los hago yo dentro del mantenimiento.</p></div>
             </details>
             <details class="faq__item">
               <summary data-cursor="leer"><span data-i18n="faq.q5">¿Incluye el dominio?</span><span class="faq__plus" aria-hidden="true"></span></summary>
@@ -1271,7 +1332,7 @@
           <header class="section__head">
             <p class="section__tag reveal"><span class="section__tag-num">09</span> <span data-i18n="contact.tag">Contacto</span></p>
             <h2 class="section__title reveal" id="contact-h" data-i18n="contact.heading">Cuéntame tu proyecto</h2>
-            <p class="section__lead lead reveal" data-i18n="contact.lead">Rellena esto y se abre WhatsApp con tu mensaje listo para enviar. O escríbeme directo, como prefieras.</p>
+            <p class="section__lead lead reveal" data-i18n="contact.lead">Rellena esto y se abre WhatsApp con tu mensaje listo para enviar. O escríbeme directamente, como prefieras.</p>
           </header>
 
           <form class="form reveal" id="contactForm" novalidate>
@@ -1395,9 +1456,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260709"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260709"></script>
-  <script defer src="lib/manifest.js?v=20260709"></script>
-  <script defer src="js/main.js?v=20260709"></script>
+  <script defer src="lib/gsap.min.js?v=20260710"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260710"></script>
+  <script defer src="lib/manifest.js?v=20260710"></script>
+  <script defer src="js/main.js?v=20260710"></script>
 </body>
 </html>
