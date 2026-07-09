@@ -241,7 +241,14 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 .hero__lead { margin-bottom: var(--s-6); max-width: 44ch; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--s-4); }
 /* Gancho de venta bajo los CTAs: precio + velocidad + sin riesgo, de un vistazo */
-.hero__hook { margin-top: var(--s-4); font-size: .82rem; color: var(--muted); letter-spacing: .01em; }
+.hero__chips { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
+.hero__chips li { display: inline-flex; align-items: center; gap: .45em;
+  font-family: var(--font-mono); font-size: .78rem; color: var(--text);
+  background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 7px 13px;
+  transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); }
+.hero__chips li:hover { border-color: var(--blue); transform: translateY(-2px);
+  box-shadow: 0 8px 18px -12px rgba(37,99,235,.5); }
+.hero__chips svg { width: 13px; height: 13px; color: var(--blue); flex: 0 0 auto; }
 
 .hero__art { position: relative; }
 .browser { width: 100%; height: auto; filter: drop-shadow(0 40px 60px -30px rgba(10,10,10,.3)); }
@@ -282,7 +289,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 .card__title { font-size: 1.4rem; font-weight: 700; margin-bottom: var(--s-3); }
 .card__desc { color: var(--text); margin-bottom: var(--s-5); font-size: .98rem; flex: 1; }
 .card__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5em; padding-top: var(--s-4); border-top: 1px solid var(--border); }
-.card__price .mono { font-size: 1.45rem; font-weight: 700; color: var(--ink); }
+.card__price .mono { font-size: 1.05rem; font-weight: 700; color: var(--text); transition: color .25s var(--ease); }
+.card:hover .card__price .mono { color: var(--ink); }
 .card__price em { font-style: normal; font-size: .82rem; color: var(--muted); }
 .card__small { margin-top: var(--s-3); font-size: .78rem; color: var(--muted); line-height: 1.5; }
 
@@ -469,8 +477,24 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
    REVEAL — solo se oculta cuando JS confirma motion (.anim en <html>).
    Sin JS o con reduced-motion: el contenido es visible por defecto.
    ========================================================================== */
-.anim .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); will-change: opacity, transform; }
-.anim .reveal.is-in { opacity: 1; transform: none; }
+.anim .reveal { opacity: 0; transform: translateY(20px); filter: blur(5px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
+  will-change: opacity, transform, filter; }
+.anim .reveal.is-in { opacity: 1; transform: none; filter: none; }
+
+/* --- STAGGER — los hijos entran en cascada. Sin JS: todo visible. --------- */
+.anim .reveal.stagger > *,
+.anim .reveal .stagger > * { opacity: 0; transform: translateY(16px);
+  transition: opacity .55s var(--ease), transform .55s var(--ease); }
+.anim .reveal.stagger.is-in > *,
+.anim .reveal.is-in .stagger > * { opacity: 1; transform: none; }
+.anim .stagger.is-in > *:nth-child(1), .anim .reveal.is-in .stagger > *:nth-child(1) { transition-delay: .06s; }
+.anim .stagger.is-in > *:nth-child(2), .anim .reveal.is-in .stagger > *:nth-child(2) { transition-delay: .14s; }
+.anim .stagger.is-in > *:nth-child(3), .anim .reveal.is-in .stagger > *:nth-child(3) { transition-delay: .22s; }
+.anim .stagger.is-in > *:nth-child(4), .anim .reveal.is-in .stagger > *:nth-child(4) { transition-delay: .30s; }
+.anim .stagger.is-in > *:nth-child(5), .anim .reveal.is-in .stagger > *:nth-child(5) { transition-delay: .38s; }
+.anim .stagger.is-in > *:nth-child(6), .anim .reveal.is-in .stagger > *:nth-child(6) { transition-delay: .46s; }
+.anim .stagger.is-in > *:nth-child(n+7), .anim .reveal.is-in .stagger > *:nth-child(n+7) { transition-delay: .54s; }
 /* Red de seguridad defensiva: estos nunca quedan invisibles */
 .reveal[data-split] { opacity: 1; transform: none; }
 .anim .reveal[data-split] { opacity: 0; transform: translateY(22px); }
@@ -514,7 +538,11 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
   .marquee__track, .footer__display .marquee__track { animation: none; transform: none; }
   .marquee__track { white-space: normal; flex-wrap: wrap; }
   .pulse, .rocket, .browser__btn { animation: none; }
-  .anim .reveal, .anim .reveal[data-split] { opacity: 1 !important; transform: none !important; transition: opacity .3s ease; }
+  .anim .reveal, .anim .reveal[data-split] { opacity: 1 !important; transform: none !important; filter: none !important; transition: opacity .3s ease; }
+  .anim .stagger > *, .anim .reveal .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero::before { animation: none; }
+  body::after { display: none; }
+  .btn--primary::after { display: none; }
   * { scroll-behavior: auto !important; }
 }
 
@@ -537,6 +565,14 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
   border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(1.75rem, 3.5vw, 3rem); }
 .includes__title { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem); font-weight: 800; margin-bottom: var(--s-2); }
 .includes__lead { color: var(--muted); margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.includes__chips { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.includes__chips li { display: inline-flex; align-items: center; gap: .5em;
+  font-size: .92rem; font-weight: 600; color: var(--ink);
+  background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 10px 16px;
+  transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); }
+.includes__chips li:hover { border-color: var(--blue); transform: translateY(-2px);
+  box-shadow: 0 10px 20px -14px rgba(37,99,235,.55); }
+.includes__chips svg { width: 17px; height: 17px; color: var(--blue); flex: 0 0 auto; }
 .includes__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(1.1rem, 2.4vw, 1.75rem); }
 .includes__grid li { display: flex; gap: var(--s-3); align-items: flex-start; }
 .includes__icon { flex: 0 0 40px; width: 40px; height: 40px; display: grid; place-items: center;
@@ -896,3 +932,67 @@ img, svg, video, table { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .featured__live i { animation: none; }
 }
+
+
+/* ==========================================================================
+   ============================  ITERACIÓN 4  ===============================
+   Dopamina elegante: micro-interacciones, progreso de scroll, halo del hero,
+   apertura suave de FAQ. Todo respeta prefers-reduced-motion (bloque arriba).
+   ========================================================================== */
+
+::selection { background: var(--blue); color: #fff; }
+
+/* Barra de progreso de lectura (CSS scroll-driven, sin JS) */
+body::after { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--blue); transform-origin: 0 50%; transform: scaleX(0);
+  z-index: 9400; pointer-events: none; }
+@supports (animation-timeline: scroll()) {
+  body::after { animation: pd-progress linear both; animation-timeline: scroll(root); }
+}
+@keyframes pd-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Halo ambiental del hero */
+.hero { overflow: hidden; }
+.hero::before { content: ""; position: absolute; top: -12%; right: -6%; width: 46vw; height: 46vw;
+  max-width: 640px; max-height: 640px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(37,99,235,.10) 0%, rgba(37,99,235,.045) 45%, transparent 70%);
+  animation: pd-orb 14s var(--ease-soft) infinite alternate; }
+.hero__grid { position: relative; z-index: 1; }
+@keyframes pd-orb { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(-4%,6%,0) scale(1.12); } }
+
+/* Botón primario: barrido de brillo */
+.btn { overflow: hidden; }
+.btn--primary::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.32) 50%, transparent 58%);
+  transform: translateX(-130%); transition: transform .05s; }
+.btn--primary:hover::after, .btn--primary:focus-visible::after { transform: translateX(130%); transition: transform .65s var(--ease); }
+.btn:active { transform: translateY(0) scale(.98); }
+
+/* Iconos que responden */
+.card__icon, .valuegrid__icon, .sector__icon, .includes__icon, .step__icon { transition: transform .3s var(--ease), background-color .3s var(--ease); }
+.card:hover .card__icon { transform: scale(1.08) rotate(-3deg); }
+.valuegrid__grid li:hover .valuegrid__icon { transform: scale(1.1) rotate(-4deg); }
+.sector:hover .sector__icon { transform: scale(1.1) rotate(3deg); }
+.includes__grid li:hover .includes__icon { transform: scale(1.08) rotate(-3deg); }
+
+/* Piezas que se elevan al pasar */
+.sector, .reccard, .audience__item, .commit { transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.sector:hover, .reccard:hover, .commit:hover { transform: translateY(-4px); }
+.audience__item:hover { transform: translateX(4px); }
+.why__item { transition: transform .3s var(--ease), border-color .3s var(--ease); }
+.why__item:hover { transform: translateY(-4px); border-top-color: rgba(255,255,255,.45); }
+.trustbar__list li { transition: color .25s var(--ease); }
+.trustbar__list li:hover { color: var(--ink); }
+.trustbar__list svg { transition: transform .25s var(--ease); }
+.trustbar__list li:hover svg { transform: scale(1.2); }
+
+/* FAQ: apertura suave (mejora progresiva) */
+.faq__item { interpolate-size: allow-keywords; }
+.faq__item::details-content { block-size: 0; overflow: clip;
+  transition: block-size .38s var(--ease), content-visibility .38s allow-discrete; }
+.faq__item[open]::details-content { block-size: auto; }
+.faq__plus::before, .faq__plus::after { transition: transform .3s var(--ease), opacity .3s var(--ease); }
+
+/* Tabla de precios: fila iluminada */
+.ptable__grid tbody tr { transition: background-color .2s var(--ease); }
+.ptable__grid tbody tr:hover { background: var(--blue-tint); }
