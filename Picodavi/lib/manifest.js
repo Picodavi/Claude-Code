@@ -31,7 +31,7 @@
       phoneDisplay: "643 78 07 53",
 
       // EDITAR: Instagram — pon tu usuario SIN la @. Ejemplo: "picodavi"
-      instagram: "picodavi",
+      instagram: "picodavi_",
 
       location: "Catalunya, España",
       areas: ["Barcelona", "Catalunya", "Online · resto de España"],
@@ -402,7 +402,7 @@
         "faq.q19": "Solo necesito una página, no una web entera. ¿Haces landings?",
         "faq.a19": "Sí. La Landing Express es una página única enfocada en un objetivo (reservas, llamadas o citas), con el mismo diseño a medida y optimización que una web completa, desde 390 € pago único. Y si más adelante quieres crecer a web completa, lo pagado se descuenta.",
         "faq.q20": "¿Puedes añadir un chatbot u otras funciones a mi web?",
-        "faq.a20": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 10 % de descuento.",
+        "faq.a20": "Sí. Chatbot de atención al cliente con inteligencia artificial, reservas online, carta digital con código QR, idiomas adicionales o automatización de avisos y reseñas. Cada extra tiene presupuesto cerrado por escrito antes de empezar, y los clientes con mantenimiento tienen un 15 % de descuento.",
 
         // Páginas de detalle (compartido)
         "detail.back": "← Volver al inicio",
@@ -475,8 +475,8 @@
         "rec.2name": "Mantenimiento",
         "rec.2price": "55 € / mes",
         "rec.2badge": "Recomendado",
-        "rec.2desc": "Alojamiento y dominio gestionados, seguridad, copias de seguridad, hasta 60 min de cambios al mes, panel de edición incluido y descuento en todos los extras. Por menos de 2 € al día, tu web siempre cuidada y al día.",
-        "rec.note": "Los primeros 6 meses son tu plan de lanzamiento, cuando la web más se ajusta; después continúas mes a mes y lo dejas cuando quieras. El dominio se registra siempre a tu nombre: tu web es tuya.",
+        "rec.2desc": "Alojamiento y dominio gestionados, seguridad, copias de seguridad y hasta 60 min de cambios al mes. Y ventajas que solo tienes con el plan: panel de edición gratis (150 € por separado), tus horas extra a 35 € en vez de 45 € y un 15 % de descuento en todos los extras. Por menos de 2 € al día.",
+        "rec.note": "Los primeros 6 meses son tu plan de lanzamiento, cuando la web más se ajusta; después continúas mes a mes y lo dejas cuando quieras. Con pago anual, 2 meses gratis (ahorras 110 €). El dominio se registra siempre a tu nombre: tu web es tuya.",
 
         // Extras a medida
         "ext.heading": "Extras a medida",
@@ -493,7 +493,7 @@
         "ext.5d": "Optimización de tu ficha de Google y tu zona. Desde 190 €.",
         "ext.6t": "Automatización de avisos",
         "ext.6d": "Confirmaciones y peticiones de reseña por WhatsApp o email. Desde 120 €.",
-        "ext.note": "Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 10 % de descuento en cualquier extra."
+        "ext.note": "Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 15 % de descuento en cualquier extra."
       },
 
       en: {
@@ -820,7 +820,7 @@
         "faq.q19": "I only need one page, not a whole website — do you build landings?",
         "faq.a19": "Yes. The Landing Express is a single page focused on one goal (bookings, calls or appointments), with the same custom design and optimisation as a full website, from €390 one-time. And if you later want to grow into a full website, what you paid is deducted.",
         "faq.q20": "Can you add a chatbot or other features to my website?",
-        "faq.a20": "Yes. An AI customer-service chatbot, online bookings, a digital menu with QR code, additional languages or automated notifications and review requests. Every extra comes with a fixed written quote before starting, and care clients get 10% off.",
+        "faq.a20": "Yes. An AI customer-service chatbot, online bookings, a digital menu with QR code, additional languages or automated notifications and review requests. Every extra comes with a fixed written quote before starting, and care clients get 15% off.",
 
         "detail.back": "← Back to home",
         "detail.challengeTitle": "The challenge",
@@ -887,8 +887,8 @@
         "rec.2name": "Care",
         "rec.2price": "€55 / mo",
         "rec.2badge": "Recommended",
-        "rec.2desc": "Managed hosting and domain, security, backups, up to 60 min of changes a month, the editing panel included and a discount on every extra. For less than €2 a day, your website always looked after and up to date.",
-        "rec.note": "The first 6 months are your launch plan, when the site gets adjusted most; after that you continue month to month and cancel whenever you want. The domain is always registered in your name: your website is yours.",
+        "rec.2desc": "Managed hosting and domain, security, backups and up to 60 min of changes a month. Plus perks only the plan gives you: the editing panel free (€150 on its own), your extra hours at €35 instead of €45 and 15% off every extra. For less than €2 a day.",
+        "rec.note": "The first 6 months are your launch plan, when the site gets adjusted most; after that you continue month to month and cancel whenever you want. Pay yearly and get 2 months free (save €110). The domain is always registered in your name: your website is yours.",
 
         // Custom extras
         "ext.heading": "Custom extras",
@@ -905,7 +905,7 @@
         "ext.5d": "Optimisation of your Google profile and your area. From €190.",
         "ext.6t": "Automated notifications",
         "ext.6d": "Confirmations and review requests via WhatsApp or email. From €120.",
-        "ext.note": "Every extra is quoted in writing before starting. Care clients: 10% off any extra."
+        "ext.note": "Every extra is quoted in writing before starting. Care clients: 15% off any extra."
       }
     },
 

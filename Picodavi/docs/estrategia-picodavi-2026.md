@@ -41,7 +41,7 @@
 | Automatización de avisos/reseñas | 90 € | **120 €** | 240 € | YA EN LA WEB (extras) |
 | Auditoría web | Gratis (3 puntos, vídeo 3 min) | — | 90 € informe completo | El precio del informe se descuenta si contratan |
 
-**Regla de retención (implementada 09-07-2026):** clientes con mantenimiento tienen panel gratis, hora a 35 €/h y 10 % de descuento en todos los extras. Sin mantenimiento, todo cuesta más: panel +150 €, hora a 45 €/h, activación posterior del mantenimiento desde 90 €. El camino barato siempre es quedarse.
+**Regla de retención (implementada 09-07-2026):** clientes con mantenimiento tienen panel gratis, hora a 35 €/h y 15 % de descuento en todos los extras. Sin mantenimiento, todo cuesta más: panel +150 €, hora a 45 €/h, activación posterior del mantenimiento desde 90 €. El camino barato siempre es quedarse.
 
 **Límites de cada plan (dilos siempre por escrito):**
 - Web: hasta 5 páginas, 1 idioma, 1 formulario, 1 ronda de revisión, SEO técnico incluido. Extra: +150 €/idioma, +90 €/página extra, formularios avanzados por horas.

@@ -16,13 +16,14 @@
 | Panel de edición | **GRATIS con mantenimiento · +150 € sin él** |
 | Hora extra | **45 €/h · 35 €/h si tiene mantenimiento** |
 | Activar mantenimiento tarde | **+90 €** puesta a punto (gratis si es desde el inicio) |
+| Pago anual del mantenimiento | **2 meses gratis** (550 €/año en vez de 660 €) |
 | Chatbot IA | **290 € + 25 €/mes** |
 | Reservas / cita previa | **desde 150 €** |
 | Carta digital QR | **desde 240 €** |
 | Idioma extra | **+150 €/idioma** |
 | SEO local + Google Business | **desde 190 €** |
 | Automatización avisos/reseñas | **desde 120 €** |
-| Cliente con mantenimiento | **–10 % en todos los extras** |
+| Cliente con mantenimiento | **–15 % en todos los extras** |
 
 **Reglas de oro:** todo son precios "desde" · cobra 50 % al empezar, 50 % antes de publicar · cuota por adelantado · los 60 min/mes NO se acumulan · nada fuera de presupuesto sin escribirlo antes.
 
@@ -38,6 +39,11 @@
 
 **"No quiero pagar cada mes"**
 > Sin problema: web sola por 650 € y tú gestionas el alojamiento. El mantenimiento existe porque la mayoría prefiere olvidarse de lo técnico (y sale con panel incluido y descuentos), pero es opcional de verdad.
+
+**Empujar al pago anual (dilo cuando cierres el mantenimiento):**
+> Una cosa: si prefieres, puedes pagar el mantenimiento por año y te salen 2 meses gratis — 550 € en vez de 660 €. Muchos lo hacen por olvidarse del recibo mensual. ¿Cómo lo ves?
+
+**Por qué el mensual conviene (para tenerlo claro tú):** con mantenimiento el cliente paga MENOS por casi todo — panel gratis (150 € suelto), hora a 35 € (vs 45 €), 15 % en extras y 2 meses gratis al año. Ir suelto siempre sale más caro: ese es el gancho. Que lo note.
 
 **"Me lo tengo que pensar"**
 > Claro, sin prisa. ¿Qué parte te genera más duda — el precio, el plazo o el resultado? Te lo aclaro ahora y así decides con todo sobre la mesa.

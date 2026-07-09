@@ -58,7 +58,7 @@ NIF/CIF: [SI LO TIENE]
    · Idioma adicional ....................... +150 € por idioma
    · SEO local y Google Business ............ desde 190 €
    · Automatización de avisos y reseñas ..... desde 120 €
-   [SI TIENE MANTENIMIENTO: aplica el 10 % de descuento en extras]
+   [SI TIENE MANTENIMIENTO: aplica el 15 % de descuento en extras]
 
 
 3) PRECIO TOTAL
@@ -71,6 +71,7 @@ NIF/CIF: [SI LO TIENE]
    · Entrega estimada: 7–10 días desde que recibo textos y fotos.
    · Forma de pago: 50 % al aceptar y 50 % antes de publicar.
    · La cuota mensual se cobra por adelantado, del 1 al 5 de cada mes.
+   · Opción de pago anual: 12 meses por el precio de 10 (2 meses gratis).
    · Incluye 1 ronda de revisión antes de publicar. Cambios fuera de lo
      presupuestado se valoran aparte, siempre por escrito antes de hacerlos.
 
@@ -82,7 +83,7 @@ NIF/CIF: [SI LO TIENE]
    · Los cambios se piden por WhatsApp o email y se publican en un máximo
      de 2 días laborables.
    · Lo que exceda de 60 minutos o sea una función nueva (sección nueva,
-     idioma nuevo, chatbot…) se presupuesta aparte, con descuento del 10 %.
+     idioma nuevo, chatbot…) se presupuesta aparte, con descuento del 15 %.
 
 
 6) DOMINIO, PROPIEDAD Y BAJA  (importante)
@@ -152,7 +153,7 @@ Tax ID: [IF ANY]
    · Additional language .................... +€150 per language
    · Local SEO & Google Business ............ from €190
    · Automated notifications & reviews ...... from €120
-   [IF THEY HAVE CARE: apply the 10% discount on extras]
+   [IF THEY HAVE CARE: apply the 15% discount on extras]
 
 
 3) TOTAL PRICE
@@ -165,6 +166,7 @@ Tax ID: [IF ANY]
    · Estimated delivery: 7–10 days from receiving your text and photos.
    · Payment: 50% on acceptance, 50% before launch.
    · The monthly fee is charged in advance, on the 1st–5th of each month.
+   · Annual payment option: 12 months for the price of 10 (2 months free).
    · Includes 1 round of revisions before launch. Anything beyond the
      quote is priced separately, always in writing before doing it.
 
@@ -176,7 +178,7 @@ Tax ID: [IF ANY]
    · Changes are requested via WhatsApp or email and published within a
      maximum of 2 working days.
    · Anything over 60 minutes or any new feature (new section, new
-     language, chatbot…) is quoted separately, with a 10% discount.
+     language, chatbot…) is quoted separately, with a 15% discount.
 
 
 6) DOMAIN, OWNERSHIP AND CANCELLATION  (important)
