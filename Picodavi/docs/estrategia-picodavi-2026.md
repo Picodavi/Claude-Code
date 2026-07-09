@@ -28,15 +28,20 @@
 |---|---|---|---|---|
 | Landing Express (1 página) | 350 € | **390 €** | 490 € (con copy + 2 idiomas) | Entrada de la escalera. Mantenimiento 55 €/mes opcional |
 | Web hasta 5 páginas | 650 € | **750 €** | 950 € | El "desde 650 €" es suelo, no precio habitual. Presupuesta 750+ |
-| Web multidioma | — | **+150 €/idioma** | — | CA/EN son tu ventaja natural |
-| Web + Mantenimiento | — | **450 € + 55 €/mes** | — | 6 meses de lanzamiento. Tu producto core |
-| Mantenimiento suelto | — | **55 €/mes** | 95 €/mes "Pro" | Pro (120 min + informe mensual): lánzalo cuando tengas 5+ clientes en mantenimiento |
-| Panel de edición | 150 € | **190 €** | 250 € (con vídeo-formación) | Está a 150 € en la web; súbelo a 190 € cuando tengas los primeros testimonios |
-| Hora extra | 40 € | **45 €** | 65 € urgente | Siempre presupuesto cerrado antes de empezar |
+| Web multidioma | — | **+150 €/idioma** | — | CA/EN son tu ventaja natural. YA EN LA WEB (extras) |
+| Web + Mantenimiento | — | **450 € + 55 €/mes** | — | 6 meses de lanzamiento. Tu producto core. **Panel incluido gratis** |
+| Mantenimiento suelto | — | **55 €/mes** | 95 €/mes "Pro" | Activarlo tarde = puesta a punto desde 90 € (ya en la web). Pro: cuando tengas 5+ clientes |
+| Panel de edición | — | **Incluido con mantenimiento · +150 € con web sola** | — | Rediseñado 09-07: ahora es EL incentivo para elegir mantenimiento |
+| Hora extra | — | **45 €/h · 35 €/h clientes con mantenimiento** | 65 € urgente | Ya en la web. El descuento de cliente refuerza la retención |
 | Urgencias 48 h | — | **+50 % recargo** | — | Mínimo 90 €. Solo si de verdad puedes cumplir |
-| SEO local básico | 150 € | **190 €** | 290 € | Ficha Google Business + on-page + reseñas setup |
-| Carta digital QR (restaurantes) | 190 € | **240 €** | 340 € (multidioma + fotos) | Producto gancho perfecto para restaurantes |
+| Chatbot con IA | 240 € | **290 € + 25 €/mes** | 490 € (con integraciones) | YA EN LA WEB. Mercado: 500–2.000 € setup + 80–250 €/mes → vas muy competitivo |
+| SEO local básico | 150 € | **190 €** | 290 € | YA EN LA WEB (extras) |
+| Carta digital QR (restaurantes) | 190 € | **240 €** | 340 € (multidioma + fotos) | YA EN LA WEB (extras) |
+| Reservas / cita previa | 120 € | **150 €** | 290 € (con recordatorios) | YA EN LA WEB (extras) |
+| Automatización de avisos/reseñas | 90 € | **120 €** | 240 € | YA EN LA WEB (extras) |
 | Auditoría web | Gratis (3 puntos, vídeo 3 min) | — | 90 € informe completo | El precio del informe se descuenta si contratan |
+
+**Regla de retención (implementada 09-07-2026):** clientes con mantenimiento tienen panel gratis, hora a 35 €/h y 10 % de descuento en todos los extras. Sin mantenimiento, todo cuesta más: panel +150 €, hora a 45 €/h, activación posterior del mantenimiento desde 90 €. El camino barato siempre es quedarse.
 
 **Límites de cada plan (dilos siempre por escrito):**
 - Web: hasta 5 páginas, 1 idioma, 1 formulario, 1 ronda de revisión, SEO técnico incluido. Extra: +150 €/idioma, +90 €/página extra, formularios avanzados por horas.
