@@ -21,7 +21,7 @@
       name: "Picodavi",
       founder: "David",
       slogan: "Webs que trabajan para tu negocio.",
-      email: "picoiudavid@gmail.com",
+      email: "hola@picodavi.com",
 
       // EDITAR: WhatsApp — número real ya puesto (643 78 07 53).
       // Formato: prefijo de país + número, solo dígitos. España = 34.
@@ -84,6 +84,7 @@
         "hero.chip1": "Online en 7–10 días",
         "hero.chip2": "La ves antes de pagar",
         "hero.chip3": "Cambios en el momento",
+        "hero.scroll": "Descubre",
         "hero.mockupCaption": "tu-negocio.com",
 
         // Marquee
@@ -279,7 +280,7 @@
         "contact.ph4": "Qué tienes en mente, plazos, lo que sea",
         "contact.submit": "Enviar por WhatsApp →",
         "contact.altPre": "…o escríbeme directamente a ",
-        "contact.altLink": "picoiudavid@gmail.com →",
+        "contact.altLink": "hola@picodavi.com →",
         "contact.sideTitle": "Hablamos",
         "contact.sideEmail": "Email",
         "contact.sideWhats": "WhatsApp",
@@ -475,6 +476,7 @@
         "hero.chip1": "Live in 7–10 days",
         "hero.chip2": "See it before you pay",
         "hero.chip3": "Changes on the spot",
+        "hero.scroll": "Explore",
         "hero.mockupCaption": "your-business.com",
 
         "marquee.main": "Restaurants · Hotels · Clinics · Shops · Professional services · Tourism · Barcelona · Catalonia · Websites that work for your business",
@@ -662,7 +664,7 @@
         "contact.ph4": "What you have in mind, timing, anything",
         "contact.submit": "Send via WhatsApp →",
         "contact.altPre": "…or write to me directly at ",
-        "contact.altLink": "picoiudavid@gmail.com →",
+        "contact.altLink": "hola@picodavi.com →",
         "contact.sideTitle": "Let's talk",
         "contact.sideEmail": "Email",
         "contact.sideWhats": "WhatsApp",

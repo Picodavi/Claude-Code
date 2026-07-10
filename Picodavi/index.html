@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260719" />
+  <link rel="stylesheet" href="css/styles.css?v=20260720" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -54,7 +54,7 @@
     "@type": "Person",
     "name": "David Picoiu"
   },
-  "email": "picoiudavid@gmail.com",
+  "email": "hola@picodavi.com",
   "telephone": "+34643780753",
   "priceRange": "€€",
   "knowsLanguage": [
@@ -250,17 +250,6 @@
 </head>
 <body>
 
-  <!-- ====================================================================
-       SPLASH · PICODAVI letra a letra + barra de progreso
-       Doble red de seguridad: animación CSS 4.5s + hide forzado en JS.
-       ==================================================================== -->
-  <div id="splash" class="splash" role="presentation" aria-hidden="true">
-    <div class="splash__inner">
-      <div class="splash__word" aria-hidden="true">
-        <span>P</span><span>I</span><span>C</span><span>O</span><span>D</span><span>A</span><span>V</span><span>I</span>
-      </div>
-      <div class="splash__bar"><i></i></div>
-    </div>
   </div>
 
   <!-- Cursor personalizado (oculto en touch) -->
@@ -310,7 +299,16 @@
     <!-- ==================================================================
          HERO
          ================================================================== -->
-    <section class="hero" id="hero" aria-labelledby="hero-title">
+    <section class="hero hero--dark" id="hero" aria-labelledby="hero-title">
+      <!-- Escena: la cresta del Montseny de noche, en tres planos con parallax -->
+      <div class="hero__scene" aria-hidden="true">
+        <div class="hero__glow"></div>
+        <svg class="ridge ridge--back" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,170 C120,130 240,95 360,115 C480,135 560,75 690,85 C820,95 890,145 1010,125 C1130,105 1250,65 1440,105 L1440,320 L0,320 Z"/></svg>
+        <svg class="ridge ridge--mid" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,205 C150,175 280,125 420,155 C560,185 650,115 790,135 C930,155 1050,195 1170,165 C1290,135 1370,155 1440,145 L1440,320 L0,320 Z"/></svg>
+        <svg class="ridge ridge--front" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,245 C180,215 320,185 470,215 C620,245 730,175 880,195 C1030,215 1150,255 1290,225 C1370,209 1410,219 1440,214 L1440,320 L0,320 Z"/></svg>
+        <div class="fireflies"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+
       <div class="hero__grid wrap">
         <div class="hero__col">
           <p class="kicker reveal" data-i18n="hero.kicker">Diseño web · Catalunya, España · Freelance</p>
@@ -320,7 +318,7 @@
           </h1>
           <p class="hero__lead lead reveal" data-i18n="hero.lead">Para restaurantes, hoteles, clínicas y negocios locales que quieren crecer online.</p>
           <div class="hero__cta reveal">
-            <a href="#contact" class="btn btn--primary btn--lg" data-i18n="hero.ctaPrimary">Empieza tu web →</a>
+            <a href="#contact" class="btn btn--spark btn--lg" data-i18n="hero.ctaPrimary">Empieza tu web →</a>
             <a href="#work" class="btn btn--ghost btn--lg" data-i18n="hero.ctaSecondary">Ver proyectos</a>
           </div>
           <ul class="hero__chips reveal stagger" role="list">
@@ -329,41 +327,12 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip3">Cambios en el momento</span></li>
           </ul>
         </div>
-
-        <!-- Mockup de navegador (SVG inline, sin imágenes externas) -->
-        <div class="hero__art reveal" aria-hidden="true">
-          <svg class="browser" viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maqueta de una web en una ventana de navegador">
-            <defs>
-              <clipPath id="winClip"><rect x="20" y="20" width="440" height="320" rx="14" /></clipPath>
-            </defs>
-            <rect x="20" y="20" width="440" height="320" rx="14" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
-            <g clip-path="url(#winClip)">
-              <!-- barra superior -->
-              <rect x="20" y="20" width="440" height="44" fill="#F5F5F3" />
-              <circle cx="44" cy="42" r="5" fill="#E5E7EB" />
-              <circle cx="62" cy="42" r="5" fill="#E5E7EB" />
-              <circle cx="80" cy="42" r="5" fill="#E5E7EB" />
-              <rect x="120" y="34" width="300" height="16" rx="8" fill="#FFFFFF" stroke="#E5E7EB" />
-              <text x="135" y="46" class="browser__url" font-family="'Space Mono', monospace" font-size="11" fill="#6B7280" data-i18n="hero.mockupCaption">tu-negocio.com</text>
-              <!-- contenido -->
-              <rect x="48" y="92" width="150" height="14" rx="7" fill="#0A0A0A" />
-              <rect x="48" y="116" width="250" height="10" rx="5" fill="#E5E7EB" />
-              <rect x="48" y="134" width="200" height="10" rx="5" fill="#E5E7EB" />
-              <rect class="browser__btn" x="48" y="162" width="96" height="30" rx="8" fill="#15533B" />
-              <rect x="300" y="92" width="132" height="120" rx="10" fill="#E7EFEA" />
-              <circle cx="366" cy="140" r="26" fill="#15533B" opacity="0.18" />
-              <path d="M356 140 l8 8 l14 -16" stroke="#15533B" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- grid de tarjetas -->
-              <rect x="48" y="232" width="120" height="76" rx="10" fill="#F5F5F3" />
-              <rect x="184" y="232" width="120" height="76" rx="10" fill="#F5F5F3" />
-              <rect x="320" y="232" width="112" height="76" rx="10" fill="#F5F5F3" />
-              <rect x="64" y="250" width="40" height="8" rx="4" fill="#15533B" />
-              <rect x="200" y="250" width="40" height="8" rx="4" fill="#15533B" />
-              <rect x="336" y="250" width="40" height="8" rx="4" fill="#15533B" />
-            </g>
-          </svg>
-        </div>
       </div>
+
+      <a href="#services" class="hero__scroll" aria-label="Bajar a servicios">
+        <span data-i18n="hero.scroll">Descubre</span>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </a>
     </section>
 
     <!-- ==================================================================
@@ -1156,7 +1125,7 @@
             </div>
             <button type="submit" class="btn btn--primary btn--lg btn--block" data-i18n="contact.submit">Enviar por WhatsApp →</button>
             <p class="form__alt">
-              <span data-i18n="contact.altPre">…o escríbeme directamente a </span><a href="mailto:picoiudavid@gmail.com" data-mail-link data-i18n="contact.altLink">picoiudavid@gmail.com →</a>
+              <span data-i18n="contact.altPre">…o escríbeme directamente a </span><a href="mailto:hola@picodavi.com" data-mail-link data-i18n="contact.altLink">hola@picodavi.com →</a>
             </p>
             <p class="form__privacy">
               <span data-i18n="contact.privacyPre">Al enviar, tus datos se usan solo para responderte. Consulta la </span><a href="legal/privacidad.html" data-i18n="contact.privacyLink">política de privacidad</a><span data-i18n="contact.privacyPost">.</span>
@@ -1169,7 +1138,7 @@
           <ul class="contact__info" role="list">
             <li>
               <span class="contact__infoLabel mono" data-i18n="contact.sideEmail">Email</span>
-              <a href="mailto:picoiudavid@gmail.com" data-mail-link>picoiudavid@gmail.com</a>
+              <a href="mailto:hola@picodavi.com" data-mail-link>hola@picodavi.com</a>
             </li>
             <li>
               <span class="contact__infoLabel mono" data-i18n="contact.sideWhats">WhatsApp</span>
@@ -1210,7 +1179,7 @@
       <div class="footer__col">
         <h4 class="footer__colTitle mono" data-i18n="footer.contactTitle">Contacto</h4>
         <ul role="list">
-          <li><a href="mailto:picoiudavid@gmail.com" data-mail-link>Email</a></li>
+          <li><a href="mailto:hola@picodavi.com" data-mail-link>Email</a></li>
           <li><a href="#" data-wa-link>WhatsApp</a></li>
           <li><a href="#" data-ig-link>Instagram</a></li>
         </ul>
@@ -1247,9 +1216,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260719"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260719"></script>
-  <script defer src="lib/manifest.js?v=20260719"></script>
-  <script defer src="js/main.js?v=20260719"></script>
+  <script defer src="lib/gsap.min.js?v=20260720"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260720"></script>
+  <script defer src="lib/manifest.js?v=20260720"></script>
+  <script defer src="js/main.js?v=20260720"></script>
 </body>
 </html>

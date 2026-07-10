@@ -1053,3 +1053,109 @@ body::after { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3
   .btn--magnetic { transform: none !important; will-change: auto; }
   .anim .cards .card.reveal.is-in { transition-delay: 0s !important; }
 }
+
+/* ==========================================================================
+   ============================  ITERACIÓN 6  ===============================
+   HERO NOCTURNO DEL MONTSENY — la cresta en tres planos con parallax,
+   luciérnagas ámbar y titular coreografiado. Fuera el splash (más rápido,
+   sin doble pantalla de carga). Nav clara sobre el fondo oscuro.
+   ========================================================================== */
+
+/* --- Escenario -------------------------------------------------------------- */
+.hero--dark {
+  background: linear-gradient(180deg, #0C1912 0%, #0F231B 55%, #081109 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: clamp(600px, 96svh, 1000px);
+  padding-top: 88px; padding-bottom: clamp(4.5rem, 12vh, 8rem);
+  overflow: hidden;
+}
+.hero--dark .hero__grid { grid-template-columns: 1fr; width: 100%; }
+.hero--dark .hero__col { max-width: 780px; }
+
+.hero__scene { position: absolute; inset: 0; pointer-events: none; }
+.hero__glow { position: absolute; top: -22%; right: -12%; width: 62vw; height: 62vw;
+  max-width: 920px; max-height: 920px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(222,142,41,.17) 0%, rgba(222,142,41,.05) 45%, transparent 70%); }
+.hero__glow::after { content: ""; position: absolute; top: 30%; right: 70%; width: 70%; height: 70%;
+  border-radius: 50%; background: radial-gradient(circle, rgba(94,161,129,.12) 0%, transparent 65%); }
+
+.ridge { position: absolute; left: -5%; width: 110%; height: clamp(170px, 36vh, 360px); }
+.ridge--back  { bottom: 17%; color: #24493A; opacity: .5; }
+.ridge--mid   { bottom: 7%;  color: #14301F; opacity: .85; }
+.ridge--front { bottom: -2px; color: #060D07; }
+.ridge path { fill: currentColor; }
+
+.fireflies i { position: absolute; width: 5px; height: 5px; border-radius: 50%;
+  background: #FFC46B; box-shadow: 0 0 12px 3px rgba(255,196,107,.65);
+  opacity: 0; animation: firefly 9s ease-in-out infinite; }
+.fireflies i:nth-child(1)  { left: 12%; bottom: 24%; animation-delay: 0s;    animation-duration: 8s; }
+.fireflies i:nth-child(2)  { left: 22%; bottom: 34%; animation-delay: 1.6s;  animation-duration: 10s; }
+.fireflies i:nth-child(3)  { left: 33%; bottom: 20%; animation-delay: 3.1s;  animation-duration: 9s; }
+.fireflies i:nth-child(4)  { left: 46%; bottom: 30%; animation-delay: .8s;   animation-duration: 11s; }
+.fireflies i:nth-child(5)  { left: 58%; bottom: 22%; animation-delay: 2.4s;  animation-duration: 8.5s; }
+.fireflies i:nth-child(6)  { left: 66%; bottom: 38%; animation-delay: 4s;    animation-duration: 10.5s; }
+.fireflies i:nth-child(7)  { left: 74%; bottom: 26%; animation-delay: 1.2s;  animation-duration: 9.5s; }
+.fireflies i:nth-child(8)  { left: 83%; bottom: 33%; animation-delay: 3.6s;  animation-duration: 8s; }
+.fireflies i:nth-child(9)  { left: 90%; bottom: 21%; animation-delay: 5s;    animation-duration: 11s; }
+.fireflies i:nth-child(10) { left: 51%; bottom: 44%; animation-delay: 6.2s;  animation-duration: 12s; }
+@keyframes firefly {
+  0%   { opacity: 0; transform: translate(0, 0) scale(.8); }
+  12%  { opacity: .95; }
+  45%  { opacity: .3; transform: translate(16px, -26px) scale(1.05); }
+  70%  { opacity: .85; }
+  100% { opacity: 0; transform: translate(-10px, -52px) scale(.9); }
+}
+
+/* --- Contenido sobre oscuro -------------------------------------------------- */
+.hero--dark .kicker { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); color: #CBD3C8; }
+.hero--dark .hero__title { color: #F7F5EF; }
+.hero--dark .hero__title-offset { color: var(--spark); }
+.hero--dark .hero__lead { color: #B7C1B4; }
+.hero--dark .hero__chips li { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15); color: #DCE2D8; }
+.hero--dark .hero__chips svg { color: var(--spark); }
+.hero--dark .hero__chips li:hover { border-color: var(--spark); box-shadow: 0 8px 18px -12px rgba(222,142,41,.55); }
+.hero--dark .btn--ghost { background: transparent; color: #F2F1EA; border-color: rgba(255,255,255,.3); }
+.hero--dark .btn--ghost:hover { border-color: #fff; }
+
+/* CTA ámbar: el botón estrella del hero (7:1 sobre el fondo, tinta cálida) */
+.btn--spark { background: var(--spark); color: #16130E; box-shadow: 0 14px 30px -12px rgba(222,142,41,.6); position: relative; }
+.btn--spark:hover { background: #E9A040; transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(222,142,41,.55); }
+.btn--spark::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.4) 50%, transparent 58%);
+  transform: translateX(-130%); transition: transform .05s; }
+.btn--spark:hover::after, .btn--spark:focus-visible::after { transform: translateX(130%); transition: transform .65s var(--ease); }
+
+/* Indicador de scroll */
+.hero__scroll { position: absolute; left: 50%; bottom: clamp(.9rem, 3.5vh, 2rem); transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 4px; z-index: 2;
+  color: #A9B4A6; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.hero__scroll:hover { color: #E8E6DF; }
+.hero__scroll svg { width: 16px; height: 16px; animation: scrollCue 2.2s var(--ease) infinite; }
+@keyframes scrollCue { 0%,100% { transform: translateY(0); opacity: .7; } 50% { transform: translateY(6px); opacity: 1; } }
+
+/* --- Nav clara mientras flota sobre el hero oscuro --------------------------- */
+body:has(.hero--dark) .nav:not(.is-solid) .nav__brand,
+body:has(.hero--dark) .nav:not(.is-solid) .nav__links a,
+body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { color: #F2F1EA; }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { border-color: rgba(255,255,255,.3); }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__links a::after { background: var(--spark); }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F2F1EA; }
+
+/* --- Ritmo de blancos (feedback): aire bajo "Lo que tu negocio gana" ---------- */
+.valuegrid { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.valuegrid__title { margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.valuegrid__grid { gap: clamp(1.75rem, 3.5vw, 2.75rem); }
+
+/* CTA de precios: de huérfano a tarjeta con presencia */
+.pricing__cta { margin-top: clamp(2rem, 4vw, 3rem); padding: clamp(1.5rem, 3.2vw, 2.5rem);
+  background: var(--blue-tint); border: 1px solid var(--border); border-radius: var(--radius-lg); text-align: center; }
+
+/* Color por secciones: menos "todo blanco" */
+.fit { background: var(--surface); }
+.commitment { background: linear-gradient(180deg, #FFFFFF 0%, var(--spark-tint) 100%); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fireflies i { animation: none; opacity: .5; }
+  .hero__scroll svg { animation: none; }
+}

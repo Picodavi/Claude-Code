@@ -493,6 +493,27 @@
   }
 
   /* ======================================================================
+     PARALLAX DEL MONTSENY — las tres crestas y el resplandor se mueven a
+     velocidades distintas al hacer scroll (profundidad real, no decorado).
+     Scrub ligado al scroll: interrumpible por definición. Sin GSAP: estático.
+     ====================================================================== */
+  function initRidges() {
+    if (REDUCE || !hasGSAP) return;
+    var hero = $(".hero--dark");
+    if (!hero) return;
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    [[".ridge--back", -16], [".ridge--mid", -30], [".ridge--front", -48], [".hero__glow", -20]]
+      .forEach(function (p) {
+        var el = $(p[0], hero);
+        if (!el) return;
+        window.gsap.to(el, {
+          yPercent: p[1], ease: "none",
+          scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true }
+        });
+      });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -507,6 +528,7 @@
     safe(initCookies, "cookies");
     safe(initSeoUrls, "seo-urls");
     safe(initGlow, "glow");
+    safe(initRidges, "ridges");
     safe(initTilt, "tilt");
     safe(initHeroIntro, "hero-intro");
     safe(initMagnetic, "magnetic");
