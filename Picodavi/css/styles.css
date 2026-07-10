@@ -16,8 +16,9 @@
   --blue:      #15533B;   /* ACENTO primario = verde pino */
   --blue-700:  #0F3F2D;   /* hover */
   --blue-tint: #E7EFEA;   /* highlight suave */
-  --spark:     #DE8E29;   /* chispa ámbar — detalles (nunca texto sobre blanco) */
-  --spark-700: #B9701A;
+  --spark:     #DE8E29;   /* chispa ámbar — sobre FONDO OSCURO (7.06:1) o como relleno */
+  --spark-700: #B9701A;   /* ámbar medio — solo gráficos/bordes (3.89:1 sobre blanco) */
+  --spark-800: #8F5410;   /* ámbar de TEXTO — 6.10:1 sobre blanco, 5.36:1 sobre el tint (AA) */
   --spark-tint:#FBEFD9;
   --border:    #E5E1D7;   /* borde cálido */
   --watermark: #EFEDE5;
@@ -48,10 +49,8 @@
 
   /* Z-index semántico */
   --z-base: 1;
-  --z-marquee: 5;
   --z-float: 60;
   --z-nav: 100;
-  --z-cursor: 9000;
   --z-splash: 9500;
 }
 
@@ -133,20 +132,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 @keyframes splashBar { to { transform: scaleX(1); } }
 
 /* ==========================================================================
-   CURSOR PERSONALIZADO
-   ========================================================================== */
-.cursor { position: fixed; top: 0; left: 0; z-index: var(--z-cursor); pointer-events: none;
-  width: 34px; height: 34px; border: 1.5px solid var(--blue); border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0.6); opacity: 0;
-  transition: transform .18s var(--ease), opacity .25s, background-color .2s, width .2s, height .2s; }
-.cursor.is-active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-.cursor.is-hover { width: 64px; height: 64px; background: var(--blue); border-color: var(--blue); }
-.cursor__label { font-family: var(--font-mono); font-size: 10px; color: #fff; opacity: 0; transition: opacity .15s;
-  text-transform: lowercase; letter-spacing: .02em; }
-.cursor.is-hover .cursor__label { opacity: 1; }
-@media (hover: none), (pointer: coarse) { .cursor { display: none !important; } }
-
-/* ==========================================================================
    NAV
    ========================================================================== */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-nav);
@@ -158,7 +143,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
   height: 68px; display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); }
 
 .nav__brand { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.04em; color: var(--ink); }
-.nav__dot { color: var(--blue); }
+.nav__dot { color: var(--spark); }   /* punto decorativo de la marca: el toque cálido */
 
 .nav__links { display: flex; gap: clamp(.75rem, 2vw, 2rem); }
 .nav__links a { font-size: .9rem; font-weight: 500; color: var(--text); display: inline-flex; align-items: baseline; gap: 5px;
@@ -217,7 +202,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 .section__head { max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .section__tag { display: inline-flex; align-items: center; gap: .55em; font-family: var(--font-mono); font-size: .82rem;
   color: var(--blue); font-weight: 700; letter-spacing: .02em; margin-bottom: var(--s-4); }
-.section__tag-num { background: var(--spark-tint); color: var(--spark-700); border-radius: 6px; padding: 2px 7px; }
+/* --spark-800 y no -700: el -700 sobre el tint daba 3.42:1 e incumplía AA. */
+.section__tag-num { background: var(--spark-tint); color: var(--spark-800); border-radius: 6px; padding: 2px 7px; }
 .section__tag--light { color: #fff; }
 .section__tag--light .section__tag-num { background: rgba(255,255,255,.12); color: #fff; }
 .section__title { margin-bottom: var(--s-4); }
@@ -260,19 +246,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 @keyframes heroBtn { 0%,100%{opacity:1} 50%{opacity:.6} }
 
 /* ==========================================================================
-   MARQUEE
-   ========================================================================== */
-.marquee { overflow: hidden; background: var(--ink); color: #fff; padding-block: var(--s-4);
-  border-block: 1px solid var(--ink); position: relative; z-index: var(--z-marquee); }
-.marquee--light { background: var(--surface); color: var(--ink); border-color: var(--border); }
-.marquee__track { display: flex; width: max-content; gap: 0; will-change: transform; animation: marquee 38s linear infinite; }
-.marquee--reverse .marquee__track { animation-direction: reverse; animation-duration: 30s; }
-.marquee__track span { font-family: var(--font-mono); font-size: clamp(.85rem, 1.4vw, 1.05rem); white-space: nowrap;
-  padding-right: 2.5rem; letter-spacing: .01em; }
-@keyframes marquee { to { transform: translateX(-50%); } }
-.marquee:hover .marquee__track { animation-play-state: paused; }
-
-/* ==========================================================================
    01 · SERVICIOS — tarjetas
    ========================================================================== */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(1rem, 2vw, 1.5rem); }
@@ -301,7 +274,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 /* ==========================================================================
    02 · PROCESO — carrusel horizontal
    ========================================================================== */
-.process { background: var(--surface); padding-bottom: 0; }
+/* Antes llevaba padding-bottom: 0 porque debajo iba un marquee del mismo color.
+   Sin marquee, la sección recupera su ritmo vertical completo. */
+.process { background: var(--surface); }
 .process__head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-5); }
 .process__progress { font-size: 1.1rem; font-weight: 700; color: var(--blue); background: #fff; border: 1px solid var(--border);
   padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
@@ -385,10 +360,10 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 .why__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
 .why__item { padding-top: var(--s-5); border-top: 1px solid rgba(255,255,255,.14); }
 .why__icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px;
-  background: rgba(21,83,59,.18); color: #93b4ff; margin-bottom: var(--s-5); }
+  background: rgba(222,142,41,.16); color: var(--spark); margin-bottom: var(--s-5); }
 .why__icon svg { width: 24px; height: 24px; }
 .why__num { font-size: 2.4rem; font-weight: 700; color: #fff; letter-spacing: -.03em; line-height: 1; margin-bottom: var(--s-4); }
-.why__num em { font-style: normal; font-size: .85rem; color: #93b4ff; letter-spacing: 0; }
+.why__num em { font-style: normal; font-size: .85rem; color: var(--spark); letter-spacing: 0; }
 .why__title { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: var(--s-2); }
 .why__desc { color: rgba(255,255,255,.66); font-size: .92rem; line-height: 1.55; }
 
@@ -414,7 +389,9 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .ptable .no { color: var(--border); font-weight: 700; }
 .ptable .mono { font-family: var(--font-mono); }
 
-.pricing__cta { margin-top: clamp(2rem, 4vw, 3rem); text-align: center; }
+/* Más pegado a la nota de arriba: así lee como parte del bloque de precios
+   y no como una línea suelta flotando en el vacío del final de sección. */
+.pricing__cta { margin-top: clamp(1.25rem, 2.2vw, 1.75rem); text-align: center; }
 
 /* ==========================================================================
    07 · CONTACTO
@@ -440,7 +417,7 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .contact__info { display: flex; flex-direction: column; gap: var(--s-5); }
 .contact__info li { display: flex; flex-direction: column; gap: 3px; padding-bottom: var(--s-5); border-bottom: 1px solid rgba(255,255,255,.12); }
 .contact__info li:last-child { border-bottom: 0; padding-bottom: 0; }
-.contact__infoLabel { font-size: .72rem; color: #93b4ff; letter-spacing: .04em; }
+.contact__infoLabel { font-size: .72rem; color: var(--spark); letter-spacing: .04em; }
 .contact__info a { color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.3); align-self: flex-start; transition: border-color .2s; }
 .contact__info a:hover { border-bottom-color: var(--blue); }
 
@@ -448,10 +425,6 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
    FOOTER
    ========================================================================== */
 .footer { background: var(--bg); border-top: 1px solid var(--border); padding-top: clamp(3rem, 6vw, 5rem); overflow: hidden; }
-.footer__display { overflow: hidden; margin-bottom: clamp(2.5rem, 5vw, 4rem); opacity: .07; }
-.footer__display .marquee__track { animation: marquee 45s linear infinite; }
-.footer__display span { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 12vw, 9rem);
-  letter-spacing: -.04em; color: var(--ink); white-space: nowrap; padding-right: .3em; line-height: 1; }
 
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .footer__logo { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -.04em; color: var(--ink); margin-bottom: var(--s-3); }
@@ -540,8 +513,6 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
   html { scroll-behavior: auto; }
   .splash__word span { animation: none; opacity: 1; transform: none; }
   .splash__bar i { animation: none; transform: scaleX(1); }
-  .marquee__track, .footer__display .marquee__track { animation: none; transform: none; }
-  .marquee__track { white-space: normal; flex-wrap: wrap; }
   .pulse, .rocket, .browser__btn { animation: none; }
   .anim .reveal, .anim .reveal[data-split] { opacity: 1 !important; transform: none !important; filter: none !important; transition: opacity .3s ease; }
   .anim .stagger > *, .anim .reveal .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -580,12 +551,15 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .includes__chips svg { width: 17px; height: 17px; color: var(--blue); flex: 0 0 auto; }
 .includes__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(1.1rem, 2.4vw, 1.75rem); }
 .includes__grid li { display: flex; gap: var(--s-3); align-items: flex-start; }
+/* Ámbar aquí y pino en .valuegrid__icon: dos familias de color, no un bloque monocromo. */
 .includes__icon { flex: 0 0 40px; width: 40px; height: 40px; display: grid; place-items: center;
-  border-radius: 10px; background: var(--blue-tint); color: var(--blue); }
+  border-radius: 10px; background: var(--spark-tint); color: var(--spark-800); }
 .includes__icon svg { width: 22px; height: 22px; }
 .includes__grid div { display: flex; flex-direction: column; gap: 2px; }
 .includes__grid strong { font-weight: 600; color: var(--ink); font-size: .98rem; }
 .includes__grid span { color: var(--muted); font-size: .88rem; line-height: 1.45; }
+/* El icono es un <span> y la regla de arriba le ganaba en especificidad: se restaura su color. */
+.includes__grid .includes__icon { color: var(--spark-800); }
 
 /* --- Sobre mí ------------------------------------------------------------- */
 .about__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
@@ -686,7 +660,7 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .dfoot__inner { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter);
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s-5); }
 .dfoot__brand { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -.04em; }
-.dfoot__brand .nav__dot { color: var(--blue); }
+.dfoot__brand .nav__dot { color: var(--spark); }   /* punto decorativo de la marca: el toque cálido */
 .dfoot__links { display: flex; flex-wrap: wrap; gap: var(--s-5); }
 .dfoot__links a { color: rgba(255,255,255,.8); font-weight: 600; font-size: .95rem; }
 .dfoot__links a:hover { color: #fff; }
@@ -710,7 +684,9 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .valuegrid { margin-top: clamp(2rem, 4vw, 3rem); }
 .valuegrid__title { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: var(--s-2); }
 .valuegrid__lead { color: var(--muted); margin-bottom: clamp(1.5rem, 3vw, 2.25rem); max-width: 60ch; }
-.valuegrid__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); }
+/* El aire va en la rejilla, no en el párrafo: así no desaparece si se quita el lead. */
+.valuegrid__grid { margin-top: clamp(1.5rem, 3vw, 2.25rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); }
+.valuegrid__lead + .valuegrid__grid { margin-top: 0; }
 .valuegrid__grid li { display: flex; gap: var(--s-4); align-items: flex-start; }
 .valuegrid__icon { flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center;
   border-radius: 12px; background: var(--blue-tint); color: var(--blue); }
@@ -718,6 +694,8 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .valuegrid__grid div { display: flex; flex-direction: column; gap: 4px; }
 .valuegrid__grid strong { font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; color: var(--ink); letter-spacing: -.01em; }
 .valuegrid__grid span { color: var(--text); font-size: .94rem; line-height: 1.5; }
+/* Mismo caso: el icono es un <span> y perdía su color pino frente a la regla de arriba. */
+.valuegrid__grid .valuegrid__icon { color: var(--blue); }
 
 /* --- Intro de planes ------------------------------------------------------ */
 .plans-intro { margin-top: clamp(2.5rem, 5vw, 4rem); margin-bottom: var(--s-6); padding-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--border); }
@@ -742,7 +720,7 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
   box-shadow: 0 24px 50px -18px rgba(10,10,10,.6); transition: transform .45s var(--ease); }
 .cookie-banner.is-in { transform: translate(-50%, 0); }
 .cookie-banner__text { font-size: .86rem; color: rgba(255,255,255,.82); line-height: 1.5; flex: 1 1 320px; margin: 0; }
-.cookie-banner__more { color: #93b4ff; text-decoration: underline; white-space: nowrap; }
+.cookie-banner__more { color: var(--spark); text-decoration: underline; white-space: nowrap; }
 .cookie-banner__more:hover { color: #fff; }
 .cookie-banner__btn { flex: 0 0 auto; padding: 10px 22px; }
 @media (max-width: 560px) {

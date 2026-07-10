@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260718" />
+  <link rel="stylesheet" href="css/styles.css?v=20260719" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -264,29 +264,28 @@
   </div>
 
   <!-- Cursor personalizado (oculto en touch) -->
-  <div id="cursor" class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
   <!-- ====================================================================
        NAV fijo
        ==================================================================== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#top" class="nav__brand" data-cursor="arriba" aria-label="Picodavi — inicio">
+      <a href="#top" class="nav__brand" aria-label="Picodavi — inicio">
         Picodavi<span class="nav__dot">.</span>
       </a>
 
       <nav class="nav__links" aria-label="Navegación principal">
-        <a href="#services" data-cursor="leer"><span data-i18n="nav.services">Servicios</span></a>
-        <a href="#process"  data-cursor="leer"><span data-i18n="nav.process">Cómo funciona</span></a>
-        <a href="#about"    data-cursor="leer"><span data-i18n="nav.about">Sobre mí</span></a>
-        <a href="#work"     data-cursor="leer"><span data-i18n="nav.work">Proyectos</span></a>
-        <a href="#pricing"  data-cursor="leer"><span data-i18n="nav.pricing">Precios</span></a>
+        <a href="#services"><span data-i18n="nav.services">Servicios</span></a>
+        <a href="#process" ><span data-i18n="nav.process">Cómo funciona</span></a>
+        <a href="#about"   ><span data-i18n="nav.about">Sobre mí</span></a>
+        <a href="#work"    ><span data-i18n="nav.work">Proyectos</span></a>
+        <a href="#pricing" ><span data-i18n="nav.pricing">Precios</span></a>
       </nav>
 
       <div class="nav__actions">
         <button type="button" id="langToggle" class="nav__lang" data-i18n="nav.langToggle"
-                data-i18n-aria="nav.langAria" aria-label="Cambiar idioma a inglés" data-cursor="ver">EN</button>
-        <a href="#contact" class="nav__cta btn btn--primary" data-cursor="contactar" data-i18n="nav.contact">Hablamos →</a>
+                data-i18n-aria="nav.langAria" aria-label="Cambiar idioma a inglés">EN</button>
+        <a href="#contact" class="nav__cta btn btn--primary" data-i18n="nav.contact">Hablamos →</a>
         <button type="button" id="burger" class="nav__burger" aria-expanded="false"
                 data-i18n-aria="nav.menuAria" aria-label="Abrir menú" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
@@ -321,8 +320,8 @@
           </h1>
           <p class="hero__lead lead reveal" data-i18n="hero.lead">Para restaurantes, hoteles, clínicas y negocios locales que quieren crecer online.</p>
           <div class="hero__cta reveal">
-            <a href="#contact" class="btn btn--primary btn--lg" data-cursor="contactar" data-i18n="hero.ctaPrimary">Empieza tu web →</a>
-            <a href="#work" class="btn btn--ghost btn--lg" data-cursor="proyecto" data-i18n="hero.ctaSecondary">Ver proyectos</a>
+            <a href="#contact" class="btn btn--primary btn--lg" data-i18n="hero.ctaPrimary">Empieza tu web →</a>
+            <a href="#work" class="btn btn--ghost btn--lg" data-i18n="hero.ctaSecondary">Ver proyectos</a>
           </div>
           <ul class="hero__chips reveal stagger" role="list">
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip1">Online en 7–10 días</span></li>
@@ -366,16 +365,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ==================================================================
-         MARQUEE
-         ================================================================== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track" id="marqueeMain">
-        <span data-i18n="marquee.main">Restaurantes · Hoteles · Clínicas · Comercios · Servicios profesionales · Turismo · Barcelona · Catalunya · Webs que trabajan para tu negocio</span>
-        <span data-i18n="marquee.main">Restaurantes · Hoteles · Clínicas · Comercios · Servicios profesionales · Turismo · Barcelona · Catalunya · Webs que trabajan para tu negocio</span>
-      </div>
-    </div>
 
     <!-- ==================================================================
          BARRA DE CONFIANZA
@@ -605,13 +594,6 @@
 
       <p class="process__hint mono" data-i18n="process.hint">Desliza para ver los pasos →</p>
 
-      <!-- Marquee secundario (gira en sentido inverso) -->
-      <div class="marquee marquee--reverse marquee--light" aria-hidden="true">
-        <div class="marquee__track" id="marqueeProcess">
-          <span data-i18n="process.marquee">Diseño · Desarrollo · Contenido · Publicación · Dominio · Mantenimiento · Soporte · Actualizaciones</span>
-          <span data-i18n="process.marquee">Diseño · Desarrollo · Contenido · Publicación · Dominio · Mantenimiento · Soporte · Actualizaciones</span>
-        </div>
-      </div>
     </section>
 
     <!-- ==================================================================
@@ -689,7 +671,7 @@
 
         <div class="audience__close reveal">
           <p data-i18n="aud.close">¿Te suena? Cuéntame tu caso y te digo cómo lo enfocaría.</p>
-          <a href="#contact" class="btn btn--primary" data-cursor="contactar" data-i18n="aud.cta">Cuéntame tu proyecto →</a>
+          <a href="#contact" class="btn btn--primary" data-i18n="aud.cta">Cuéntame tu proyecto →</a>
         </div>
       </div>
     </section>
@@ -707,7 +689,7 @@
 
         <!-- ============ CASO DESTACADO · Xalet La Coromina (real, visitable) ============ -->
         <article class="featured reveal">
-          <a class="featured__shot" href="https://xaletlacoromina.com" target="_blank" rel="noopener" data-cursor="ver" aria-label="Visitar xaletlacoromina.com (se abre en pestaña nueva)">
+          <a class="featured__shot" href="https://xaletlacoromina.com" target="_blank" rel="noopener" aria-label="Visitar xaletlacoromina.com (se abre en pestaña nueva)">
             <svg viewBox="0 0 720 460" preserveAspectRatio="xMinYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La web real del Xalet La Coromina">
               <defs><clipPath id="featClip"><rect x="0" y="0" width="720" height="460" rx="0"/></clipPath></defs>
               <g clip-path="url(#featClip)">
@@ -773,8 +755,8 @@
               <li data-i18n="feat.4">Reseñas de Google integradas</li>
             </ul>
             <div class="featured__cta">
-              <a href="https://xaletlacoromina.com" target="_blank" rel="noopener" class="btn btn--primary" data-cursor="ver" data-i18n="feat.visit">Visitar la web →</a>
-              <a href="proyectos/xalet-la-coromina.html" class="btn btn--ghost" data-cursor="proyecto" data-i18n="w1.cta">Ver el caso →</a>
+              <a href="https://xaletlacoromina.com" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="feat.visit">Visitar la web →</a>
+              <a href="proyectos/xalet-la-coromina.html" class="btn btn--ghost" data-i18n="w1.cta">Ver el caso →</a>
             </div>
           </div>
         </article>
@@ -810,7 +792,7 @@
         <!-- CTA de cierre -->
         <div class="audience__close reveal">
           <p data-i18n="work.nextName">¿Y si el próximo proyecto online es el tuyo?</p>
-          <a href="#contact" class="btn btn--primary" data-cursor="contactar" data-i18n="work.nextCta">Empezar mi proyecto →</a>
+          <a href="#contact" class="btn btn--primary" data-i18n="work.nextCta">Empezar mi proyecto →</a>
         </div>
       </div>
     </section>
@@ -1064,7 +1046,7 @@
 
         <p class="note reveal" data-i18n="price.note">Precios de partida; el precio final depende de páginas y funciones.</p>
         <p class="pricing__cta reveal">
-          <a href="#contact" class="link-strong" data-wa-cta data-cursor="contactar" data-i18n="price.cta">¿No sabes cuál te conviene? Hablamos 10 minutos y te lo digo. →</a>
+          <a href="#contact" class="link-strong" data-wa-cta data-i18n="price.cta">¿No sabes cuál te conviene? Hablamos 10 minutos y te lo digo. →</a>
         </p>
       </div>
     </section>
@@ -1085,27 +1067,27 @@
             <h3 class="faq__groupTitle mono">El proyecto</h3>
             <div class="faq__list">
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q1">¿Cuánto tarda mi web en estar lista?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q1">¿Cuánto tarda mi web en estar lista?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a1">Entre 7 y 10 días desde que tengo tus textos y fotos. Si te falta material, te ayudo a prepararlo.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q2">¿Qué necesitas de mí para empezar?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q2">¿Qué necesitas de mí para empezar?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a2">Los textos básicos, fotos si tienes y 20 minutos para contarme tu negocio.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q10">¿Y si no me gusta el resultado?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q10">¿Y si no me gusta el resultado?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a10">Te enseño el diseño antes de publicar y lo ajustamos juntos. Nada sale online sin tu visto bueno.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q6">¿Y si quiero cambios después?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q6">¿Y si quiero cambios después?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a6">Una ronda de revisión va incluida. Después: mantenimiento (55 €/mes, con cambios) o encargos por horas a 45 €/h, siempre con presupuesto cerrado.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q12">¿Por qué elegirte a ti y no a una agencia?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q12">¿Por qué elegirte a ti y no a una agencia?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a12">Hablas directamente con quien diseña y programa tu web: cambios en el momento, precio cerrado por escrito y el diseño a la vista antes de pagar el total.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q8">¿Las webs aparecen en Google?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q8">¿Las webs aparecen en Google?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a8">Salen con SEO técnico de serie: datos estructurados, sitemap y carga rápida. Posicionar arriba lleva tiempo y depende también de reseñas y enlaces; te lo explico con claridad.</p></div>
             </details>
             </div>
@@ -1114,23 +1096,23 @@
             <h3 class="faq__groupTitle mono">Precios, dominio y herramientas</h3>
             <div class="faq__list">
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q19">Solo necesito una página, no una web entera. ¿Haces landings?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q19">Solo necesito una página, no una web entera. ¿Haces landings?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a19">Sí: una página a medida enfocada a un objetivo, desde 390 €. Si luego creces a web completa, lo pagado se descuenta.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q20">¿Puedes añadir un chatbot u otras funciones a mi web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q20">¿Puedes añadir un chatbot u otras funciones a mi web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a20">Sí: chatbot con IA, reservas, carta QR, idiomas, automatizaciones o Impulso Google. Presupuesto cerrado por extra y 15 % de descuento con mantenimiento.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q13">¿De quién es el dominio y la web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q13">¿De quién es el dominio y la web?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a13">Tuyos. Dominio a tu nombre desde el día uno; si algún día te quieres ir, te entrego todos los archivos.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q15">¿Tengo que preocuparme del hosting y lo técnico?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q15">¿Tengo que preocuparme del hosting y lo técnico?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a15">No. Me encargo del alojamiento, la seguridad y las copias. Tú solo tienes tu web funcionando.</p></div>
             </details>
             <details class="faq__item">
-              <summary data-cursor="leer"><span data-i18n="faq.q18">¿Con qué tecnología o herramientas haces las webs?</span><span class="faq__plus" aria-hidden="true"></span></summary>
+              <summary><span data-i18n="faq.q18">¿Con qué tecnología o herramientas haces las webs?</span><span class="faq__plus" aria-hidden="true"></span></summary>
               <div class="faq__a"><p data-i18n="faq.a18">Combino mi criterio de diseño con herramientas modernas e inteligencia artificial. Eso me permite entregarte tu web más rápido y a mejor precio, sin renunciar a que sea a medida: yo reviso, ajusto y me responsabilizo de todo el resultado final.</p></div>
             </details>
             </div>
@@ -1172,9 +1154,9 @@
               <textarea id="f-msg" name="message" rows="4"
                         placeholder="Qué tienes en mente, plazos, lo que sea" data-i18n-ph="contact.ph4"></textarea>
             </div>
-            <button type="submit" class="btn btn--primary btn--lg btn--block" data-cursor="enviar" data-i18n="contact.submit">Enviar por WhatsApp →</button>
+            <button type="submit" class="btn btn--primary btn--lg btn--block" data-i18n="contact.submit">Enviar por WhatsApp →</button>
             <p class="form__alt">
-              <span data-i18n="contact.altPre">…o escríbeme directamente a </span><a href="mailto:picoiudavid@gmail.com" data-mail-link data-cursor="contactar" data-i18n="contact.altLink">picoiudavid@gmail.com →</a>
+              <span data-i18n="contact.altPre">…o escríbeme directamente a </span><a href="mailto:picoiudavid@gmail.com" data-mail-link data-i18n="contact.altLink">picoiudavid@gmail.com →</a>
             </p>
             <p class="form__privacy">
               <span data-i18n="contact.privacyPre">Al enviar, tus datos se usan solo para responderte. Consulta la </span><a href="legal/privacidad.html" data-i18n="contact.privacyLink">política de privacidad</a><span data-i18n="contact.privacyPost">.</span>
@@ -1187,11 +1169,11 @@
           <ul class="contact__info" role="list">
             <li>
               <span class="contact__infoLabel mono" data-i18n="contact.sideEmail">Email</span>
-              <a href="mailto:picoiudavid@gmail.com" data-mail-link data-cursor="contactar">picoiudavid@gmail.com</a>
+              <a href="mailto:picoiudavid@gmail.com" data-mail-link>picoiudavid@gmail.com</a>
             </li>
             <li>
               <span class="contact__infoLabel mono" data-i18n="contact.sideWhats">WhatsApp</span>
-              <a href="#" data-wa-link data-phone-display data-cursor="contactar">643 78 07 53</a>
+              <a href="#" data-wa-link data-phone-display>643 78 07 53</a>
             </li>
             <li>
               <span class="contact__infoLabel mono" data-i18n="contact.sideArea">Zona de trabajo</span>
@@ -1212,13 +1194,6 @@
        FOOTER
        ==================================================================== -->
   <footer class="footer" id="footer">
-    <div class="footer__display" aria-hidden="true">
-      <div class="marquee__track" id="marqueeFooter">
-        <span>Picodavi · Picodavi · Picodavi · Picodavi · </span>
-        <span>Picodavi · Picodavi · Picodavi · Picodavi · </span>
-      </div>
-    </div>
-
     <div class="wrap footer__grid">
       <div class="footer__brand">
         <p class="footer__logo">Picodavi<span class="nav__dot">.</span></p>
@@ -1235,9 +1210,9 @@
       <div class="footer__col">
         <h4 class="footer__colTitle mono" data-i18n="footer.contactTitle">Contacto</h4>
         <ul role="list">
-          <li><a href="mailto:picoiudavid@gmail.com" data-mail-link data-cursor="contactar">Email</a></li>
-          <li><a href="#" data-wa-link data-cursor="contactar">WhatsApp</a></li>
-          <li><a href="#" data-ig-link data-cursor="ver">Instagram</a></li>
+          <li><a href="mailto:picoiudavid@gmail.com" data-mail-link>Email</a></li>
+          <li><a href="#" data-wa-link>WhatsApp</a></li>
+          <li><a href="#" data-ig-link>Instagram</a></li>
         </ul>
       </div>
       <div class="footer__col">
@@ -1257,7 +1232,7 @@
         <a href="legal/privacidad.html" data-i18n="footer.legalPriv">Política de privacidad</a>
         <a href="legal/cookies.html" data-i18n="footer.legalCookies">Política de cookies</a>
       </nav>
-      <a href="#top" class="footer__top" data-cursor="arriba" data-i18n="footer.top">↑ Volver arriba</a>
+      <a href="#top" class="footer__top" data-i18n="footer.top">↑ Volver arriba</a>
     </div>
   </footer>
 
@@ -1272,9 +1247,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260718"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260718"></script>
-  <script defer src="lib/manifest.js?v=20260718"></script>
-  <script defer src="js/main.js?v=20260718"></script>
+  <script defer src="lib/gsap.min.js?v=20260719"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260719"></script>
+  <script defer src="lib/manifest.js?v=20260719"></script>
+  <script defer src="js/main.js?v=20260719"></script>
 </body>
 </html>

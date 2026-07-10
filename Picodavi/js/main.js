@@ -206,37 +206,7 @@
     doc.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
   }
 
-  /* ======================================================================
-     6) CURSOR personalizado (oculto en touch vía CSS)
-     ====================================================================== */
-  function initCursor() {
-    if (window.matchMedia && window.matchMedia("(hover: none)").matches) return;
-    var cursor = $("#cursor");
-    if (!cursor) return;
-    var label = $(".cursor__label", cursor);
-    var x = 0, y = 0, raf = null;
-
-    window.addEventListener("mousemove", function (e) {
-      x = e.clientX; y = e.clientY;
-      cursor.classList.add("is-active");
-      if (!raf) raf = requestAnimationFrame(function () {
-        cursor.style.transform = "translate(" + x + "px," + y + "px) translate(-50%,-50%)";
-        raf = null;
-      });
-    });
-    window.addEventListener("mouseout", function (e) { if (!e.relatedTarget) cursor.classList.remove("is-active"); });
-
-    $all("[data-cursor], a, button").forEach(function (el) {
-      el.addEventListener("mouseenter", function () {
-        cursor.classList.add("is-hover");
-        if (label) label.textContent = el.getAttribute("data-cursor") || "";
-      });
-      el.addEventListener("mouseleave", function () {
-        cursor.classList.remove("is-hover");
-        if (label) label.textContent = "";
-      });
-    });
-  }
+  
 
   /* ======================================================================
      7) REVEAL — default visible; solo oculta si hay motion (.anim)
@@ -531,7 +501,6 @@
     safe(initLinks, "links");
     safe(initForm, "form");
     safe(initNav, "nav");
-    safe(initCursor, "cursor");
     safe(initReveal, "reveal");
     safe(initFloat, "float");
     safe(initProcess, "process");
