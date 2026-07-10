@@ -1052,8 +1052,26 @@ body::after { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3
 .hero__art { perspective: 900px; }
 .browser { transition: transform .25s var(--ease); will-change: transform; }
 
-/* Reduced motion: sin linterna ni tilt */
+/* Momento estrella: el titular entra letra a letra girando sobre su base.
+   La perspectiva convierte el rotateX en profundidad real, no en un aplastado. */
+.hero__title { perspective: 700px; }
+/* .wd mantiene cada palabra entera: sin esto, el navegador partiría palabras
+   por la mitad al saltar de línea (cada letra es un inline-block). */
+.hero__title .wd { display: inline-block; white-space: nowrap; }
+.hero__title .ch { display: inline-block; transform-origin: 50% 100%; will-change: transform, opacity; }
+
+/* CTA magnético (GSAP escribe el transform) */
+.btn--magnetic { will-change: transform; }
+
+/* Escalonado de las tarjetas: entran una detrás de otra, no en bloque */
+.anim .cards .card.reveal.is-in:nth-child(2) { transition-delay: .07s; }
+.anim .cards .card.reveal.is-in:nth-child(3) { transition-delay: .14s; }
+
+/* Reduced motion: sin linterna, ni tilt, ni magnetismo, ni letras voladoras */
 @media (prefers-reduced-motion: reduce) {
   .glow::after { display: none; }
   .browser { transition: none; }
+  .hero__title .ch { opacity: 1 !important; transform: none !important; will-change: auto; }
+  .btn--magnetic { transform: none !important; will-change: auto; }
+  .anim .cards .card.reveal.is-in { transition-delay: 0s !important; }
 }

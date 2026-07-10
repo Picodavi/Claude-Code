@@ -32,6 +32,8 @@
       if (done) return; done = true;
       splash.classList.add("is-done");
       doc.documentElement.classList.remove("is-locked");
+      // Avisa a la coreografía del hero: el escenario ya está libre.
+      doc.dispatchEvent(new Event("picodavi:ready"));
       window.setTimeout(function () { if (splash && splash.parentNode) splash.parentNode.removeChild(splash); }, 800);
     }
     var delay = REDUCE ? 500 : 2300;
@@ -442,6 +444,85 @@
   }
 
   /* ======================================================================
+     MOMENTO ESTRELLA — el titular entra letra a letra girando en 3D (rotateX)
+     justo cuando el splash se retira. Es LA animación de la página: todo lo
+     demás se mantiene discreto a propósito.
+     Accesibilidad: el texto real vive en aria-label; las letras son decorativas.
+     Sin GSAP o con reduced-motion, cae al reveal normal (fade) sin tocar nada.
+     ====================================================================== */
+  function initHeroIntro() {
+    if (REDUCE || !window.gsap) return;          // el reveal normal se encarga
+    var title = $(".hero__title");
+    if (!title) return;
+    var parts = $all("[data-split]", title);
+    if (!parts.length) return;
+
+    parts.forEach(function (el) {
+      var text = el.textContent;
+      el.setAttribute("aria-label", text);       // el lector de pantalla lee esto
+      el.textContent = "";
+      // Se agrupa por PALABRAS: cada letra es inline-block y, sin este envoltorio,
+      // el navegador podría partir una palabra por la mitad al saltar de línea.
+      text.split(/(\s+)/).forEach(function (token) {
+        if (!token) return;
+        if (/^\s+$/.test(token)) { el.appendChild(doc.createTextNode(" ")); return; }
+        var word = doc.createElement("span");
+        word.className = "wd";
+        token.split("").forEach(function (c) {
+          var s = doc.createElement("span");
+          s.className = "ch";
+          s.setAttribute("aria-hidden", "true");
+          s.textContent = c;
+          word.appendChild(s);
+        });
+        el.appendChild(word);
+      });
+      el.classList.add("is-in");                 // el contenedor visible; animamos las letras
+    });
+
+    var chars = $all(".ch", title);
+    if (!chars.length) return;
+    var played = false;
+    function play() {
+      if (played) return; played = true;
+      window.gsap.from(chars, {
+        opacity: 0, yPercent: 70, rotateX: -70,
+        duration: 0.6, ease: "expo.out", stagger: 0.018,
+        onComplete: function () { chars.forEach(function (c) { c.style.willChange = "auto"; }); }
+      });
+    }
+    if (!$("#splash")) { play(); return; }        // páginas sin splash: ya
+    doc.addEventListener("picodavi:ready", play, { once: true });
+    window.setTimeout(play, 5000);                // red de seguridad
+  }
+
+  /* ======================================================================
+     CTA MAGNÉTICO — el botón se acerca al cursor y vuelve con rebote elástico.
+     Solo 2 botones focales (más sería ruido). Ratón fino y sin reduced-motion.
+     La fuerza se limita al 30% para que nunca salga de su zona de clic.
+     ====================================================================== */
+  function initMagnetic() {
+    if (REDUCE || !window.gsap || !window.gsap.quickTo) return;
+    if (!(window.matchMedia && window.matchMedia("(pointer: fine)").matches)) return;
+    var targets = [$(".hero__cta .btn--primary"), $(".contact .btn--primary")]
+      .filter(function (el) { return !!el; });
+
+    targets.forEach(function (el) {
+      el.classList.add("btn--magnetic");
+      var xTo = window.gsap.quickTo(el, "x", { duration: 0.4, ease: "elastic.out(1,0.4)" });
+      var yTo = window.gsap.quickTo(el, "y", { duration: 0.4, ease: "elastic.out(1,0.4)" });
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        xTo((e.clientX - r.left - r.width / 2) * 0.3);
+        yTo((e.clientY - r.top - r.height / 2) * 0.3);
+      }, { passive: true });
+      function reset() { xTo(0); yTo(0); }
+      el.addEventListener("pointerleave", reset);
+      el.addEventListener("blur", reset);
+    });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -458,6 +539,8 @@
     safe(initSeoUrls, "seo-urls");
     safe(initGlow, "glow");
     safe(initTilt, "tilt");
+    safe(initHeroIntro, "hero-intro");
+    safe(initMagnetic, "magnetic");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
