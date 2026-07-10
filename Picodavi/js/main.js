@@ -403,6 +403,24 @@
   }
 
   /* ======================================================================
+     BORDE-LINTERNA — el borde de las tarjetas se ilumina siguiendo el cursor.
+     Solo puntero fino (ratón) y sin reduced-motion; en táctil no se activa.
+     ====================================================================== */
+  function initGlow() {
+    if (REDUCE) return;
+    if (!(window.matchMedia && window.matchMedia("(pointer: fine)").matches)) return;
+    var els = $all(".card, .reccard, .sector, .commit, .audience__item, .featured, .step, .about__stats li, .includes");
+    els.forEach(function (el) {
+      el.classList.add("glow");
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      }, { passive: true });
+    });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -417,6 +435,7 @@
     safe(initProcess, "process");
     safe(initCookies, "cookies");
     safe(initSeoUrls, "seo-urls");
+    safe(initGlow, "glow");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);

@@ -996,3 +996,54 @@ body::after { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3
 /* Tabla de precios: fila iluminada */
 .ptable__grid tbody tr { transition: background-color .2s var(--ease); }
 .ptable__grid tbody tr:hover { background: var(--blue-tint); }
+
+/* ==========================================================================
+   ============================  ITERACIÓN 5  ===============================
+   Bordes premium + efecto firma: BORDE-LINTERNA.
+   El borde de cada tarjeta se ilumina en azul siguiendo el cursor (JS pone
+   --mx/--my; solo ratón). En táctil y reduced-motion no se activa.
+   ========================================================================== */
+
+/* --- Borde-linterna ------------------------------------------------------- */
+.glow { position: relative; }
+.glow::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit;
+  pointer-events: none; z-index: 1;
+  padding: 1.5px; /* grosor del borde iluminado */
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
+              rgba(37,99,235,.65), rgba(37,99,235,.18) 45%, transparent 72%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask-composite: exclude;
+  opacity: 0; transition: opacity .35s var(--ease);
+}
+.glow:hover::after { opacity: 1; }
+/* En la sección oscura (why) el halo sería invisible: no aplica ahí. */
+
+/* Radios coherentes para que el borde-linterna abrace bien cada pieza */
+.card, .reccard, .featured, .step { border-radius: var(--radius-lg); }
+.sector, .commit { border-radius: var(--radius); }
+
+/* --- Bordes refinados ------------------------------------------------------ */
+/* Tarjeta destacada y caso real: borde degradado premium (azul → neutro) */
+.card--feature, .featured {
+  border: 1px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+              linear-gradient(135deg, var(--blue) 0%, #93B8F8 35%, var(--border) 80%) border-box;
+}
+/* Tarjetas normales: al pasar, el borde vira a azul suave (no gris) */
+.card:hover { border-color: #BFD3F9; }
+/* La destacada conserva su borde degradado también en hover */
+.card--feature:hover, .featured:hover { border-color: transparent; }
+.reccard:hover, .sector:hover, .commit:hover { border-color: #BFD3F9; }
+/* FAQ: la pregunta abierta se subraya en azul */
+.faq__item { transition: border-color .3s var(--ease); }
+.faq__item[open] { border-bottom-color: var(--blue); }
+/* Chips: halo mínimo al pasar (ya elevan; esto define el borde) */
+.hero__chips li:hover, .includes__chips li:hover { border-color: #93B8F8; }
+
+/* Reduced motion: sin linterna */
+@media (prefers-reduced-motion: reduce) {
+  .glow::after { display: none; }
+}
