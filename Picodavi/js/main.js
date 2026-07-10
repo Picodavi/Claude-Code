@@ -421,6 +421,27 @@
   }
 
   /* ======================================================================
+     TILT — el mockup del hero se inclina suavemente siguiendo el cursor.
+     Máx ~3.5°; solo ratón y sin reduced-motion. Vuelve a su sitio al salir.
+     ====================================================================== */
+  function initTilt() {
+    if (REDUCE) return;
+    if (!(window.matchMedia && window.matchMedia("(pointer: fine)").matches)) return;
+    var art = $(".hero__art");
+    var browser = art && $(".browser", art);
+    if (!art || !browser) return;
+    art.addEventListener("pointermove", function (e) {
+      var r = art.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;   // -0.5 … 0.5
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      browser.style.transform = "rotateY(" + (x * 7) + "deg) rotateX(" + (y * -7) + "deg)";
+    }, { passive: true });
+    art.addEventListener("pointerleave", function () {
+      browser.style.transform = "";
+    });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -436,6 +457,7 @@
     safe(initCookies, "cookies");
     safe(initSeoUrls, "seo-urls");
     safe(initGlow, "glow");
+    safe(initTilt, "tilt");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);

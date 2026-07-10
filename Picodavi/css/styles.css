@@ -505,7 +505,8 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
    ========================================================================== */
 @media (max-width: 960px) {
   .hero__grid { grid-template-columns: 1fr; }
-  .hero__art { order: -1; max-width: 460px; }
+  /* En pantallas medias/móvil el titular va PRIMERO; el mockup, después y centrado */
+  .hero__art { max-width: 430px; margin-inline: auto; margin-top: var(--s-6); }
   .contact__grid { grid-template-columns: 1fr; }
   .contact__side { position: static; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -1043,7 +1044,12 @@ body::after { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3
 /* Chips: halo mínimo al pasar (ya elevan; esto define el borde) */
 .hero__chips li:hover, .includes__chips li:hover { border-color: #93B8F8; }
 
-/* Reduced motion: sin linterna */
+/* Tilt 3D del mockup del hero (JS pone el transform; esto lo suaviza) */
+.hero__art { perspective: 900px; }
+.browser { transition: transform .25s var(--ease); will-change: transform; }
+
+/* Reduced motion: sin linterna ni tilt */
 @media (prefers-reduced-motion: reduce) {
   .glow::after { display: none; }
+  .browser { transition: none; }
 }
