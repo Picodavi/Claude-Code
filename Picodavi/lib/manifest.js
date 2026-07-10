@@ -21,7 +21,7 @@
       name: "Picodavi",
       founder: "David",
       slogan: "Webs que trabajan para tu negocio.",
-      email: "hola@picodavi.com",
+      email: "picoiudavid@gmail.com",
 
       // EDITAR: WhatsApp — número real ya puesto (643 78 07 53).
       // Formato: prefijo de país + número, solo dígitos. España = 34.
@@ -280,7 +280,7 @@
         "contact.ph4": "Qué tienes en mente, plazos, lo que sea",
         "contact.submit": "Enviar por WhatsApp →",
         "contact.altPre": "…o escríbeme directamente a ",
-        "contact.altLink": "hola@picodavi.com →",
+        "contact.altLink": "picoiudavid@gmail.com →",
         "contact.sideTitle": "Hablamos",
         "contact.sideEmail": "Email",
         "contact.sideWhats": "WhatsApp",
@@ -664,7 +664,7 @@
         "contact.ph4": "What you have in mind, timing, anything",
         "contact.submit": "Send via WhatsApp →",
         "contact.altPre": "…or write to me directly at ",
-        "contact.altLink": "hola@picodavi.com →",
+        "contact.altLink": "picoiudavid@gmail.com →",
         "contact.sideTitle": "Let's talk",
         "contact.sideEmail": "Email",
         "contact.sideWhats": "WhatsApp",
