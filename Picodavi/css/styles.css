@@ -8,22 +8,23 @@
 :root {
   /* Color — identidad "taller del Montseny": verde pino + chispa ámbar sobre neutros cálidos.
      Nota: la variable se sigue llamando --blue por historia; su valor ya NO es azul. */
-  --bg:        #101C15;   /* bosque de noche */
-  --surface:   #16241C;   /* claro del bosque */
-  --ink:       #F4F1E7;   /* crema pergamino — titulares */
-  --text:      #C9D2C4;   /* verde niebla claro */
-  --muted:     #93A294;   /* secundario (AA sobre la noche) */
-  --blue:      #DE8E29;   /* ACENTO = ORO cálido (7:1 sobre la noche). Verde+oro: hace juego */
-  --blue-700:  #E9A040;   /* hover */
-  --blue-tint: rgba(222,142,41,.13);
-  --spark:     #DE8E29;   /* chispa ámbar — sobre FONDO OSCURO (7.06:1) o como relleno */
-  --spark-700: #B9701A;   /* ámbar medio — solo gráficos/bordes (3.89:1 sobre blanco) */
-  --spark-800: #F2BE7B;   /* ámbar de TEXTO — 6.10:1 sobre blanco, 5.36:1 sobre el tint (AA) */
-  --spark-tint:rgba(222,142,41,.14);
-  --border:    #263830;   /* borde de sombra */
-  --watermark: rgba(244,241,231,.05);
+  /* TEMA CLARO (definitivo). Blanco cálido + verde pino y oro SOLO como acento. */
+  --bg:        #FFFFFF;   /* blanco */
+  --surface:   #F5F3EE;   /* piedra caliza cálida */
+  --ink:       #16130E;   /* casi negro cálido — titulares */
+  --text:      #2C271F;   /* cuerpo cálido */
+  --muted:     #6E675F;   /* secundario (AA sobre blanco) */
+  --blue:      #15533B;   /* ACENTO primario = verde pino (9:1 sobre blanco) */
+  --blue-700:  #0F3F2D;   /* hover */
+  --blue-tint: #E7EFEA;   /* highlight verde suave */
+  --spark:     #DE8E29;   /* oro — relleno/detalle (no texto sobre blanco) */
+  --spark-700: #B9701A;   /* oro medio — bordes/gráficos */
+  --spark-800: #8F5410;   /* oro de TEXTO — 6.1:1 sobre blanco (AA) */
+  --spark-tint:#FBEFD9;   /* fondo oro muy suave */
+  --border:    #E5E1D7;   /* borde cálido claro */
+  --watermark: #EFEDE5;
 
-  --yes:       #5FC492;
+  --yes:       #15803D;   /* check verde */
 
   /* Tipografía */
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
@@ -137,7 +138,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-nav);
   transition: background-color .35s var(--ease), box-shadow .35s, border-color .35s;
   border-bottom: 1px solid transparent; }
-.nav.is-solid { background: rgba(13,22,17,.88); backdrop-filter: saturate(160%) blur(12px);
+.nav.is-solid { background: rgba(255,255,255,.9); backdrop-filter: saturate(160%) blur(12px);
   box-shadow: 0 1px 0 rgba(10,10,10,.04), 0 8px 24px -16px rgba(10,10,10,.25); border-bottom-color: var(--border); }
 .nav__inner { max-width: var(--wrap); margin-inline: auto; padding: 0 var(--gutter);
   height: 68px; display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); }
@@ -1137,11 +1138,10 @@ body::after { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3
 .hero__scroll svg { width: 16px; height: 16px; animation: scrollCue 2.2s var(--ease) infinite; }
 @keyframes scrollCue { 0%,100% { transform: translateY(0); opacity: .7; } 50% { transform: translateY(6px); opacity: 1; } }
 
-/* --- Nav clara mientras flota sobre el hero oscuro --------------------------- */
-body:has(.hero--dark) .nav:not(.is-solid) .nav__brand,
-body:has(.hero--dark) .nav:not(.is-solid) .nav__links a,
-body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { color: #F2F1EA; }
-body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { border-color: rgba(255,255,255,.3); }
+/* Nav sobre hero claro: texto oscuro (marca en tinta, enlaces en cuerpo). */
+body:has(.hero--dark) .nav:not(.is-solid) .nav__brand { color: var(--ink); }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__links a { color: var(--text); }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { color: var(--ink); border-color: var(--border); }
 body:has(.hero--dark) .nav:not(.is-solid) .nav__links a::after { background: var(--spark); }
 body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F2F1EA; }
 
@@ -1207,5 +1207,69 @@ body::after { background: var(--spark); }
 
 @media (prefers-reduced-motion: reduce) { body::before { display: none; } }
 
-/* Etiqueta "Proyecto real": de menta claro a insignia nocturna */
-.status--real { background: rgba(95,196,146,.14); color: var(--blue); border: 1px solid rgba(95,196,146,.3); }
+/* Etiqueta "Proyecto real" */
+.status--real { background: var(--blue-tint); color: var(--blue); border: 1px solid rgba(21,83,59,.25); }
+
+/* ==========================================================================
+   ============================  TEMA CLARO (definitivo)  ==================
+   Blanco cálido, verde pino + oro como acento. Anula la "noche completa".
+   ========================================================================== */
+
+/* Fuera el grano de película (en oscuro daba textura; en blanco ensucia) */
+body::before { display: none !important; }
+::selection { background: var(--blue-tint); color: var(--ink); }
+
+/* Botones: primario en VERDE PINO con texto blanco (9:1 sobre blanco) */
+.btn--primary { background: var(--blue); color: #fff; box-shadow: 0 12px 26px -14px rgba(21,83,59,.55); }
+.btn--primary:hover { background: var(--blue-700); }
+.card__badge, .reccard__badge { background: var(--blue); color: #fff; }
+.btn--ghost { background: #fff; color: var(--ink); border-color: var(--border); }
+.btn--ghost:hover { border-color: var(--ink); }
+
+/* HERO CLARO — se oculta la escena nocturna y se centra el contenido a lo ancho */
+.hero--dark {
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--surface) 100%);
+  min-height: auto; padding-top: clamp(6.5rem, 12vh, 9rem); padding-bottom: clamp(3.5rem, 8vh, 6rem);
+}
+.hero--dark::before { display: none; }
+.hero__scene { display: none; }
+.hero--dark .hero__grid { grid-template-columns: 1fr; justify-items: center; }
+.hero--dark .hero__col { max-width: 900px; text-align: center; margin-inline: auto; }
+.hero--dark .hero__lead { margin-inline: auto; }
+.hero--dark .hero__cta, .hero--dark .hero__chips { justify-content: center; }
+.hero--dark .kicker { background: #fff; border-color: var(--border); color: var(--muted); }
+.hero--dark .hero__title { color: var(--ink); }
+.hero--dark .hero__title-offset { color: var(--blue); padding-left: 0; }   /* verde pino, centrado */
+.hero--dark .hero__lead { color: var(--text); }
+.hero--dark .hero__chips li { background: #fff; border-color: var(--border); color: var(--text); }
+.hero--dark .hero__chips svg { color: var(--blue); }
+.hero--dark .btn--ghost { background: #fff; color: var(--ink); border-color: var(--border); }
+.hero__scroll { color: var(--muted); }
+/* El botón estrella del hero: oro cálido con texto oscuro (acento, no verde) */
+.hero--dark .btn--spark { color: #16130E; }
+
+/* --- Paneles que eran oscuros -> claros (blanco definitivo, sin bandas verdes) --- */
+/* .why: de panel nocturno a sección clara */
+.why { background: var(--surface); color: var(--text); }
+.why .section__lead { color: var(--muted); }
+.why__item { border-top-color: var(--border); }
+.why__item:hover { border-top-color: var(--blue); }
+.why__num { color: var(--ink); }
+.why__num em { color: var(--spark-800); }
+.why__title { color: var(--ink); }
+.why__desc { color: var(--muted); }
+.why__icon { background: var(--spark-tint); color: var(--spark-800); }
+
+/* Panel lateral de contacto: claro */
+.contact__side { background: var(--surface); color: var(--text); border-color: var(--border); }
+.contact__sideTitle { color: var(--ink); }
+.contact__info li { border-bottom-color: var(--border); }
+.contact__info a { color: var(--ink); border-bottom-color: rgba(22,19,14,.2); }
+.contact__info a:hover { border-bottom-color: var(--blue); }
+.contact__infoLabel { color: var(--spark-800); }
+
+/* Footer principal: claro (su texto ya es oscuro; el fondo forzado lo rompía) */
+.footer { background: var(--bg); }
+
+/* Footer de páginas legales: neutro oscuro limpio (no verde) */
+.dfoot { background: var(--ink); }
