@@ -514,6 +514,49 @@
   }
 
   /* ======================================================================
+     PROFUNDIDAD CON EL RATÓN — al entrar, las crestas, el resplandor y las
+     luciérnagas se separan según su plano siguiendo el cursor: 3D real en vivo.
+     Usa el eje X (horizontal); el scroll usa yPercent, así NO chocan.
+     Solo ratón fino y sin reduced-motion; en táctil no se activa.
+     ====================================================================== */
+  function initSceneMouse() {
+    if (REDUCE || !window.gsap || !window.gsap.quickTo) return;
+    if (!(window.matchMedia && window.matchMedia("(pointer: fine)").matches)) return;
+    var hero = $(".hero--dark");
+    if (!hero) return;
+    // [selector, amplitud X (px), amplitud Y (px)] — más plano = más movimiento.
+    var defs = [
+      [".ridge--back",  7,  0],
+      [".ridge--mid",  14,  0],
+      [".ridge--front", 24, 0],
+      [".hero__glow",  -28, 0],   // en sentido opuesto: refuerza la profundidad
+      [".fireflies",   18, 11]
+    ];
+    var layers = [];
+    defs.forEach(function (d) {
+      var el = $(d[0], hero);
+      if (!el) return;
+      el.style.willChange = "transform";
+      layers.push({
+        xTo: window.gsap.quickTo(el, "x", { duration: 0.8, ease: "power2.out" }),
+        yTo: d[2] ? window.gsap.quickTo(el, "y", { duration: 0.8, ease: "power2.out" }) : null,
+        ax: d[1], ay: d[2]
+      });
+    });
+    if (!layers.length) return;
+
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - 0.5;   // -0.5 … 0.5
+      var ny = (e.clientY - r.top) / r.height - 0.5;
+      layers.forEach(function (l) { l.xTo(nx * l.ax); if (l.yTo) l.yTo(ny * l.ay); });
+    }, { passive: true });
+    hero.addEventListener("pointerleave", function () {
+      layers.forEach(function (l) { l.xTo(0); if (l.yTo) l.yTo(0); });
+    });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -532,6 +575,7 @@
     safe(initTilt, "tilt");
     safe(initHeroIntro, "hero-intro");
     safe(initMagnetic, "magnetic");
+    safe(initSceneMouse, "scene-mouse");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
