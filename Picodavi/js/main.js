@@ -71,11 +71,6 @@
       var k = el.getAttribute("data-i18n-alt");
       if (dict[k] != null) el.setAttribute("alt", dict[k]);
     });
-    $all("[data-i18n-alt]").forEach(function (el) {
-      var k = el.getAttribute("data-i18n-alt");
-      if (dict[k] != null) el.setAttribute("alt", dict[k]);
-    });
-
     doc.documentElement.setAttribute("lang", lang);
     // El <title> con data-i18n ya se traduce en el bucle de arriba (cada página
     // usa su propia clave). Las páginas sin data-i18n en el título lo conservan.
@@ -414,6 +409,44 @@
   }
 
   /* ======================================================================
+     DEMO DE SECTORES — un único momento interactivo que enseña capacidad.
+     Botones reales, teclado y estado accesible; sin autoplay que distraiga.
+     ====================================================================== */
+  function initStudioDemo() {
+    var demo = $("#studioDemo");
+    if (!demo) return;
+    var tabs = $all("[data-demo]", demo);
+    var scenes = $all("[data-scene]", demo);
+    if (!tabs.length || !scenes.length) return;
+
+    function activate(name, moveFocus) {
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute("data-demo") === name;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+        tab.setAttribute("tabindex", active ? "0" : "-1");
+        if (active && moveFocus) tab.focus();
+      });
+      scenes.forEach(function (scene) {
+        var active = scene.getAttribute("data-scene") === name;
+        scene.classList.toggle("is-active", active);
+        scene.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () { activate(tab.getAttribute("data-demo"), false); });
+      tab.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        e.preventDefault();
+        var next = e.key === "ArrowRight" ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+        activate(tabs[next].getAttribute("data-demo"), true);
+      });
+    });
+    activate(tabs[0].getAttribute("data-demo"), false);
+  }
+
+  /* ======================================================================
      MOMENTO ESTRELLA — el titular entra letra a letra girando en 3D (rotateX)
      justo cuando el splash se retira. Es LA animación de la página: todo lo
      demás se mantiene discreto a propósito.
@@ -474,7 +507,7 @@
   function initMagnetic() {
     if (REDUCE || !window.gsap || !window.gsap.quickTo) return;
     if (!(window.matchMedia && window.matchMedia("(pointer: fine)").matches)) return;
-    var targets = [$(".hero__cta .btn--primary"), $(".contact .btn--primary")]
+    var targets = [$(".hero__cta .btn--spark"), $(".contact .btn--primary")]
       .filter(function (el) { return !!el; });
 
     targets.forEach(function (el) {
@@ -568,11 +601,11 @@
     safe(initReveal, "reveal");
     safe(initFloat, "float");
     safe(initProcess, "process");
-    safe(initCookies, "cookies");
     safe(initSeoUrls, "seo-urls");
     safe(initGlow, "glow");
     safe(initRidges, "ridges");
     safe(initTilt, "tilt");
+    safe(initStudioDemo, "studio-demo");
     safe(initHeroIntro, "hero-intro");
     safe(initMagnetic, "magnetic");
     safe(initSceneMouse, "scene-mouse");

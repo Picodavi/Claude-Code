@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="meta.title">Picodavi · Diseño y desarrollo web para negocios locales en Catalunya</title>
-  <meta name="description" content="Diseño y desarrollo web profesional para negocios locales en Catalunya: restaurantes, hoteles, clínicas y comercios. Con mantenimiento mensual desde 450 € + 55 €/mes, o web sin mantenimiento desde 650 €." />
+  <title data-i18n="meta.title">Diseño web en Catalunya para negocios locales | Picodavi</title>
+  <meta name="description" content="Diseño páginas web rápidas y a medida para restaurantes, hoteles, clínicas y negocios locales de Catalunya. Tu web lista en 7–10 días y siempre cuidada." />
   <meta name="author" content="David · Picodavi" />
   <meta name="theme-color" content="#FFFFFF" />
   <!-- Permite a Google mostrar imagen grande y fragmento completo en resultados -->
@@ -22,22 +22,27 @@
 
   <!-- Open Graph / redes sociales -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Picodavi" />
   <meta property="og:title" content="Picodavi · Webs que trabajan para tu negocio" />
-  <meta property="og:description" content="Diseño y desarrollo web para negocios locales en Catalunya. Rápido, claro, sin complicaciones." />
+  <meta property="og:description" content="Webs rápidas, memorables y pensadas para convertir visitas en clientes. Diseño y cuidado web en Catalunya." />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:url" content="https://picodavi.com/" />
   <meta property="og:image" content="https://picodavi.com/assets/og-image.png" />
+  <meta property="og:image:alt" content="Picodavi, diseño web para negocios locales" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Picodavi · Webs que trabajan para tu negocio" />
+  <meta name="twitter:description" content="Diseño web a medida y cuidado continuo para negocios locales." />
+  <meta name="twitter:image" content="https://picodavi.com/assets/og-image.png" />
 
   <!-- Fuentes (única dependencia externa aceptada) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260726" />
+  <link rel="stylesheet" href="css/styles.css?v=20260727" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -92,8 +97,8 @@
       "price": "450",
       "itemOffered": {
         "@type": "Service",
-        "name": "Web + Mantenimiento",
-        "description": "Web profesional a medida más mantenimiento mensual (55 €/mes): alojamiento, dominio, seguridad, copias y hasta 60 min de cambios al mes. Incluye un plan de lanzamiento de 6 meses."
+        "name": "Web + Cuidado",
+        "description": "Web profesional a medida más cuidado mensual (55 €/mes): alojamiento, dominio, seguridad, copias y hasta 60 min de cambios al mes. Compromiso inicial de 6 meses."
       }
     },
     {
@@ -112,7 +117,7 @@
       "price": "55",
       "itemOffered": {
         "@type": "Service",
-        "name": "Mantenimiento mensual",
+        "name": "Cuidado web mensual",
         "description": "Alojamiento, dominio, seguridad, copias de seguridad y hasta 60 min de cambios al mes."
       }
     },
@@ -247,10 +252,22 @@
   ]
 }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://picodavi.com/#website",
+  "url": "https://picodavi.com/",
+  "name": "Picodavi",
+  "alternateName": "Picodavi Diseño Web",
+  "inLanguage": "es",
+  "publisher": { "@id": "https://picodavi.com/#picodavi" }
+}
+  </script>
 </head>
 <body>
 
-  </div>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
   <!-- Cursor personalizado (oculto en touch) -->
 
@@ -274,7 +291,7 @@
       <div class="nav__actions">
         <button type="button" id="langToggle" class="nav__lang" data-i18n="nav.langToggle"
                 data-i18n-aria="nav.langAria" aria-label="Cambiar idioma a inglés">EN</button>
-        <a href="#contact" class="nav__cta btn btn--primary" data-i18n="nav.contact">Hablamos →</a>
+        <a href="#contact" class="nav__cta btn btn--primary" data-i18n="nav.contact">Pide propuesta →</a>
         <button type="button" id="burger" class="nav__burger" aria-expanded="false"
                 data-i18n-aria="nav.menuAria" aria-label="Abrir menú" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
@@ -290,11 +307,11 @@
       <a href="#work"     data-i18n="nav.work">Proyectos</a>
       <a href="#pricing"  data-i18n="nav.pricing">Precios</a>
       <a href="#faq"      data-i18n="nav.faq">FAQ</a>
-      <a href="#contact"  class="btn btn--primary" data-i18n="nav.contact">Hablamos →</a>
+      <a href="#contact"  class="btn btn--primary" data-i18n="nav.contact">Pide propuesta →</a>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main-content">
 
     <!-- ==================================================================
          HERO
@@ -309,22 +326,64 @@
         <div class="fireflies"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
 
-      <div class="hero__grid wrap">
+      <div class="hero__grid wrap" id="top">
         <div class="hero__col">
-          <p class="kicker reveal" data-i18n="hero.kicker">Diseño web · Catalunya, España · Freelance</p>
+          <p class="kicker reveal" data-i18n="hero.kicker">Estudio web independiente · Catalunya</p>
           <h1 class="hero__title" id="hero-title">
-            <span class="reveal" data-split data-i18n="hero.title1">Webs que hacen</span>
-            <span class="hero__title-offset reveal" data-split data-i18n="hero.title2">trabajar.</span>
+            <span class="reveal" data-split data-i18n="hero.title1">Diseño webs que</span>
+            <span class="hero__title-offset reveal" data-split data-i18n="hero.title2">hacen trabajar.</span>
           </h1>
-          <p class="hero__lead lead reveal" data-i18n="hero.lead">Para restaurantes, hoteles, clínicas y negocios locales que quieren crecer online.</p>
+          <p class="hero__lead lead reveal" data-i18n="hero.lead">Webs rápidas, memorables y pensadas para convertir visitas en reservas, llamadas y clientes. Yo también las cuido después de publicar.</p>
           <div class="hero__cta reveal">
-            <a href="#contact" class="btn btn--spark btn--lg" data-i18n="hero.ctaPrimary">Empieza tu web →</a>
-            <a href="#work" class="btn btn--ghost btn--lg" data-i18n="hero.ctaSecondary">Ver proyectos</a>
+            <a href="#contact" class="btn btn--spark btn--lg" data-i18n="hero.ctaPrimary">Cuéntame tu proyecto →</a>
+            <a href="#work" class="btn btn--ghost btn--lg" data-i18n="hero.ctaSecondary">Ver trabajo real</a>
           </div>
           <ul class="hero__chips reveal stagger" role="list">
-            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip1">Online en 7–10 días</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip1">Lista en 7–10 días</span></li>
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip2">La ves antes de pagar</span></li>
-            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip3">Cambios en el momento</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span data-i18n="hero.chip3">Cuidado mensual opcional</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__art hero-lab reveal" id="studioDemo">
+          <div class="hero-lab__top">
+            <p class="hero-lab__eyebrow"><i aria-hidden="true"></i><span data-i18n="demo.label">Diseño en directo</span></p>
+            <div class="hero-lab__tabs" role="tablist" aria-label="Ejemplos por sector">
+              <button type="button" class="is-active" role="tab" aria-selected="true" data-demo="restaurant" data-i18n="demo.tab1">Restaurante</button>
+              <button type="button" role="tab" aria-selected="false" data-demo="clinic" data-i18n="demo.tab2">Clínica</button>
+              <button type="button" role="tab" aria-selected="false" data-demo="hotel" data-i18n="demo.tab3">Hotel</button>
+            </div>
+          </div>
+
+          <div class="hero-lab__stage">
+            <div class="browser" aria-live="polite">
+              <div class="browser__chrome" aria-hidden="true"><span></span><span></span><span></span><i>picodavi.studio/preview</i></div>
+              <div class="demo-scene demo-scene--restaurant is-active" data-scene="restaurant">
+                <div class="demo-scene__nav"><strong>BRASA</strong><span>Menú&nbsp;&nbsp;·&nbsp;&nbsp;Reservas</span></div>
+                <div class="demo-scene__copy"><small>CUINA DE TERRITORI</small><b>Una mesa.<br />Una historia.</b><em>Reservar mesa →</em></div>
+                <div class="demo-scene__orb" aria-hidden="true"></div>
+              </div>
+              <div class="demo-scene demo-scene--clinic" data-scene="clinic">
+                <div class="demo-scene__nav"><strong>CLARA</strong><span>Tratamientos&nbsp;&nbsp;·&nbsp;&nbsp;Equipo</span></div>
+                <div class="demo-scene__copy"><small>SALUD SIN ESPERAS</small><b>Tu bienestar<br />empieza aquí.</b><em>Pedir cita →</em></div>
+                <div class="demo-scene__orb" aria-hidden="true"></div>
+              </div>
+              <div class="demo-scene demo-scene--hotel" data-scene="hotel">
+                <div class="demo-scene__nav"><strong>ARREL</strong><span>Habitaciones&nbsp;&nbsp;·&nbsp;&nbsp;Entorno</span></div>
+                <div class="demo-scene__copy"><small>DESCANSA EN EL MONTSENY</small><b>Fuera del ruido.<br />Dentro del bosque.</b><em>Ver habitaciones →</em></div>
+                <div class="demo-scene__orb" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="demo-phone" aria-hidden="true">
+              <div class="demo-phone__speaker"></div>
+              <div class="demo-phone__screen"><i></i><b>Reserva<br />en 2 clics.</b><span>Continuar →</span></div>
+            </div>
+          </div>
+
+          <ul class="hero-lab__metrics" role="list">
+            <li><strong>100</strong><span>Performance</span></li>
+            <li><strong>AA</strong><span>Accesible</span></li>
+            <li><strong>&lt; 2s</strong><span data-i18n="demo.fast">Carga rápida</span></li>
           </ul>
         </div>
       </div>
@@ -399,8 +458,8 @@
 
         <!-- Planes -->
         <div class="plans-intro reveal">
-          <h3 class="plans-intro__title" data-i18n="services.plansTitle">Elige cómo quieres trabajar</h3>
-          <p class="plans-intro__lead" data-i18n="services.plansLead">Dos formas de tener tu web. ¿Solo necesitas una página? Landing Express desde 390 €.</p>
+          <h3 class="plans-intro__title" data-i18n="services.plansTitle">Empieza con una web. Quédate por la tranquilidad.</h3>
+          <p class="plans-intro__lead" data-i18n="services.plansLead">Puedes llevártela y gestionarla tú, o dejar que yo la mantenga rápida, segura y siempre al día.</p>
         </div>
 
         <div class="cards reveal stagger">
@@ -413,9 +472,9 @@
                 <path d="M14 12l3 2-3 2" /><path d="M19 16h-2" />
               </svg>
             </div>
-            <h3 class="card__title" data-i18n="s1.title">Web + Mantenimiento</h3>
-            <p class="card__desc" data-i18n="s1.desc">Tu web a medida y yo cuidándola: dominio, seguridad, cambios al mes y panel de edición incluido.</p>
-            <p class="card__price"><span class="mono" data-i18n="s1.price">Desde 450 € + 55 €/mes</span> <em data-i18n="s1.priceNote">incluye 6 meses de lanzamiento</em></p>
+            <h3 class="card__title" data-i18n="s1.title">Web + Cuidado</h3>
+            <p class="card__desc" data-i18n="s1.desc">Tu web a medida y yo detrás: alojamiento, seguridad, copias, cambios mensuales y panel incluido.</p>
+            <p class="card__price"><span class="mono" data-i18n="s1.price">Desde 450 € + 55 €/mes</span> <em data-i18n="s1.priceNote">6 meses iniciales; después, mes a mes</em></p>
           </article>
 
           <!-- Web profesional -->
@@ -430,7 +489,7 @@
             <p class="card__price"><span class="mono" data-i18n="s2.price">Desde 650 €</span> <em data-i18n="s2.priceNote">pago único</em></p>
           </article>
 
-          <!-- Mantenimiento -->
+          <!-- Crecimiento recurrente -->
           <article class="card">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -438,9 +497,9 @@
                 <path d="M11 16l3.5 3.5L22 12" />
               </svg>
             </div>
-            <h3 class="card__title" data-i18n="s3.title">Panel de edición</h3>
-            <p class="card__desc" data-i18n="s3.desc">Editas textos, fotos y precios tú mismo, sin tecnicismos. Cambios publicados al momento.</p>
-            <p class="card__price"><span class="mono" data-i18n="s3.price">Incluido con mantenimiento</span> <em data-i18n="s3.priceNote">+150 € con la web sola</em></p>
+            <h3 class="card__title" data-i18n="s3.title">Pack Crecimiento</h3>
+            <p class="card__desc" data-i18n="s3.desc">Web siempre cuidada más tu ficha de Google activa para que te encuentren y te elijan.</p>
+            <p class="card__price"><span class="mono" data-i18n="s3.price">89 €/mes</span> <em data-i18n="s3.priceNote">cuidado + Impulso Google</em></p>
           </article>
         </div>
 
@@ -595,7 +654,7 @@
             <li><span class="about__statL mono" data-i18n="about.stat1L">Zona</span><span class="about__statV mono" data-i18n="about.stat1V">Catalunya</span></li>
             <li><span class="about__statL mono" data-i18n="about.stat2L">Entrega media</span><span class="about__statV mono" data-i18n="about.stat2V">7–10 días</span></li>
             <li><span class="about__statL mono" data-i18n="about.stat3L">Idiomas</span><span class="about__statV mono" data-i18n="about.stat3V">ES · EN · CAT</span></li>
-            <li><span class="about__statL mono" data-i18n="about.stat4L">Respuesta</span><span class="about__statV mono" data-i18n="about.stat4V">< 24 h</span></li>
+            <li><span class="about__statL mono" data-i18n="about.stat4L">Respuesta</span><span class="about__statV mono" data-i18n="about.stat4V">&lt; 24 h</span></li>
           </ul>
         </div>
       </div>
@@ -658,9 +717,9 @@
 
         <!-- ============ CASO DESTACADO · Xalet La Coromina (real, visitable) ============ -->
         <article class="featured reveal">
-          <a class="featured__shot" href="https://xaletlacoromina.com" target="_blank" rel="noopener" aria-label="Visitar xaletlacoromina.com (se abre en pestaña nueva)">
+          <a class="featured__shot" href="https://xaletcoromina.com" target="_blank" rel="noopener" aria-label="Visitar xaletcoromina.com (se abre en pestaña nueva)">
             <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260726" width="1400" height="875" loading="lazy" decoding="async"
-              alt="Portada de la web real xaletlacoromina.com: la casa de piedra del Xalet La Coromina entre los árboles del Montseny"
+              alt="Portada de la web real xaletcoromina.com: la casa de piedra del Xalet La Coromina entre los árboles del Montseny"
               onerror="this.style.display=&quot;none&quot;;this.closest(&quot;.featured__shot&quot;).classList.add(&quot;featured__shot--empty&quot;);" />
             <span class="featured__live"><i aria-hidden="true"></i> <span data-i18n="feat.live">En línea</span></span>
           </a>
@@ -669,7 +728,7 @@
               <span class="status status--real" data-i18n="w1.status">Proyecto real</span>
             </div>
             <h3 class="featured__name" data-i18n="w1.name">Xalet La Coromina</h3>
-            <p class="project__type mono" data-i18n="w1.type">Restaurante & Hotel de montaña · Viladrau (Montseny)</p>
+            <p class="project__type mono" data-i18n="w1.type">Restaurante &amp; Hotel de montaña · Viladrau (Montseny)</p>
             <p class="featured__desc" data-i18n="w1.desc">Tres idiomas, reservas de mesa y habitaciones, carta digital y la historia de la Castanya de Viladrau.</p>
             <ul class="featured__feats" role="list">
               <li data-i18n="feat.1">Reservas online</li>
@@ -678,7 +737,7 @@
               <li data-i18n="feat.4">Reseñas de Google integradas</li>
             </ul>
             <div class="featured__cta">
-              <a href="https://xaletlacoromina.com" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="feat.visit">Visitar la web →</a>
+              <a href="https://xaletcoromina.com" target="_blank" rel="noopener" class="btn btn--primary" data-i18n="feat.visit">Visitar la web →</a>
               <a href="proyectos/xalet-la-coromina.html" class="btn btn--ghost" data-i18n="w1.cta">Ver el caso →</a>
             </div>
           </div>
@@ -829,11 +888,11 @@
       <div class="wrap">
         <header class="section__head">
           <p class="section__tag reveal"><span data-i18n="price.tag">Precios</span></p>
-          <h2 class="section__title reveal" id="pricing-h" data-i18n="price.heading">Precios claros, sin sorpresas</h2>
-          <p class="section__lead lead reveal" data-i18n="price.lead">Primero el valor, luego la cifra: precio cerrado por escrito antes de empezar.</p>
+          <h2 class="section__title reveal" id="pricing-h" data-i18n="price.heading">Una web que empieza bien y sigue funcionando</h2>
+          <p class="section__lead lead reveal" data-i18n="price.lead">La opción recomendada reparte la inversión y me mantiene a tu lado cuando la web ya está online.</p>
         </header>
 
-        <div class="ptable reveal" role="table" aria-label="Comparativa de precios">
+        <div class="ptable reveal">
           <div class="ptable__scroll">
             <table class="ptable__grid">
               <thead>
@@ -842,7 +901,7 @@
                   <th scope="col"><span data-i18n="price.col1">Web profesional</span></th>
                   <th scope="col" class="ptable__feat">
                     <span class="ptable__featbadge" data-i18n="price.col2badge">Recomendado</span>
-                    <span data-i18n="price.col2">Web + Mantenimiento</span>
+                    <span data-i18n="price.col2">Web + Cuidado</span>
                   </th>
                   <th scope="col"><span data-i18n="price.col3">Landing Express</span></th>
                 </tr>
@@ -862,21 +921,21 @@
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowDesign">Diseño web a medida</th>
-                  <td><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="yes" aria-label="Incluido">✓</span></td>
+                  <td><span class="yes" role="img" aria-label="Incluido">✓</span></td>
+                  <td class="ptable__feat"><span class="yes" role="img" aria-label="Incluido">✓</span></td>
+                  <td><span class="yes" role="img" aria-label="Incluido">✓</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowMobile">Alojamiento y dominio</th>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
-                  <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
+                  <td><span class="no" role="img" aria-label="No incluido">—</span></td>
+                  <td class="ptable__feat"><span class="yes" role="img" aria-label="Incluido">✓</span></td>
+                  <td><span class="no" role="img" aria-label="No incluido">—</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowForm">Seguridad y copias de seguridad</th>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
-                  <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
+                  <td><span class="no" role="img" aria-label="No incluido">—</span></td>
+                  <td class="ptable__feat"><span class="yes" role="img" aria-label="Incluido">✓</span></td>
+                  <td><span class="no" role="img" aria-label="No incluido">—</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowLegal">Cambios cada mes</th>
@@ -886,9 +945,9 @@
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowRounds">Soporte prioritario</th>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
-                  <td class="ptable__feat"><span class="yes" aria-label="Incluido">✓</span></td>
-                  <td><span class="no" aria-label="No incluido">—</span></td>
+                  <td><span class="no" role="img" aria-label="No incluido">—</span></td>
+                  <td class="ptable__feat"><span class="yes" role="img" aria-label="Incluido">✓</span></td>
+                  <td><span class="no" role="img" aria-label="No incluido">—</span></td>
                 </tr>
                 <tr>
                   <th scope="row" data-i18n="price.rowChanges">Panel de edición</th>
@@ -909,22 +968,28 @@
 
         <!-- Bloque mantenimiento: por qué el plan mensual + panel de edición -->
         <div class="recurring reveal">
-          <h3 class="recurring__title" data-i18n="rec.heading">Tu web no termina el día que se publica</h3>
-          <p class="recurring__lead" data-i18n="rec.lead">Para quedarte tranquilo una vez online. Sin permanencia.</p>
+          <h3 class="recurring__title" data-i18n="rec.heading">Publicar es el comienzo, no el final</h3>
+          <p class="recurring__lead" data-i18n="rec.lead">Elige cuánto acompañamiento quieres. Siempre sabrás qué incluye y cuánto pagas.</p>
           <div class="recurring__grid stagger">
-            <article class="reccard">
-              <h4 class="reccard__name" data-i18n="rec.1name">Panel de edición</h4>
-              <p class="reccard__price"><span class="mono" data-i18n="rec.1price">Incluido con mantenimiento</span></p>
-              <p class="reccard__desc" data-i18n="rec.1desc">Edita tú mismo textos, fotos, precios u horarios desde un panel sencillo, sin conocimientos técnicos. Incluido sin coste con Web + Mantenimiento; con la web sola, se añade por 150 €.</p>
-            </article>
             <article class="reccard reccard--feature">
               <span class="reccard__badge" data-i18n="rec.2badge">Recomendado</span>
-              <h4 class="reccard__name" data-i18n="rec.2name">Mantenimiento</h4>
+              <h4 class="reccard__name" data-i18n="rec.2name">Cuidado</h4>
               <p class="reccard__price"><span class="mono" data-i18n="rec.2price">55 € / mes</span></p>
               <p class="reccard__desc" data-i18n="rec.2desc">Alojamiento, dominio, seguridad, copias y hasta 60 min de cambios al mes. Además: panel incluido, horas a 35 € y 15 % en extras. Menos de 2 € al día.</p>
             </article>
+            <article class="reccard">
+              <span class="reccard__badge reccard__badge--spark" data-i18n="rec.3badge">Para crecer</span>
+              <h4 class="reccard__name" data-i18n="rec.3name">Cuidado + Google</h4>
+              <p class="reccard__price"><span class="mono" data-i18n="rec.3price">89 € / mes</span></p>
+              <p class="reccard__desc" data-i18n="rec.3desc">Todo el cuidado de la web más gestión de tu ficha de Google: publicaciones, seguimiento de reseñas e informe mensual.</p>
+            </article>
+            <article class="reccard">
+              <h4 class="reccard__name" data-i18n="rec.1name">Panel de edición</h4>
+              <p class="reccard__price"><span class="mono" data-i18n="rec.1price">Incluido con Cuidado</span></p>
+              <p class="reccard__desc" data-i18n="rec.1desc">Edita textos, fotos, precios u horarios sin conocimientos técnicos. Con la web sin Cuidado, se añade por 150 €.</p>
+            </article>
           </div>
-          <p class="recurring__note" data-i18n="rec.note">Los primeros 6 meses son tu plan de lanzamiento, cuando la web más se ajusta; después continúas mes a mes y lo dejas cuando quieras. Con pago anual, 2 meses gratis (ahorras 110 €). El dominio se registra siempre a tu nombre: tu web es tuya.</p>
+          <p class="recurring__note" data-i18n="rec.note">Web + Cuidado tiene un compromiso inicial de 6 meses (450 € + 6 × 55 €). Después continúas mes a mes y puedes cancelarlo cuando quieras. Con pago anual del Cuidado, tienes 2 meses gratis. El dominio y la web siempre son tuyos.</p>
         </div>
 
         <!-- Extras a medida: ampliaciones con presupuesto cerrado -->
@@ -1170,9 +1235,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260726"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260726"></script>
-  <script defer src="lib/manifest.js?v=20260726"></script>
-  <script defer src="js/main.js?v=20260726"></script>
+  <script defer src="lib/gsap.min.js?v=20260727"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260727"></script>
+  <script defer src="lib/manifest.js?v=20260727"></script>
+  <script defer src="js/main.js?v=20260727"></script>
 </body>
 </html>
