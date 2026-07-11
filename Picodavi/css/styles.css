@@ -379,7 +379,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
   background: var(--surface); vertical-align: bottom; position: relative; }
 .ptable__grid tbody th[scope="row"], .ptable__rowhead { text-align: left; font-family: var(--font-body); font-weight: 600; color: var(--ink); font-size: .92rem; background: var(--surface); }
 .ptable__grid tbody tr:last-child th, .ptable__grid tbody tr:last-child td { border-bottom: 0; }
-.ptable__price td, .ptable__price th { background: #fafafa; }
+/* BUG FIX: llevaba background: #fafafa (resto del tema claro) y el texto es crema
+   (--ink) -> blanco sobre blanco = precios invisibles. Ahora un realce oscuro. */
+.ptable__price td, .ptable__price th { background: rgba(95,196,146,.07); }
 .ptable__price .mono { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
 .ptable__feat { background: var(--blue-tint) !important; box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(--blue); }
 thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(--blue), inset 0 2px 0 var(--blue); padding-top: 2rem; }
