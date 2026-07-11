@@ -1156,7 +1156,7 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F2F1E
 
 /* Color por secciones: menos "todo blanco" */
 .fit { background: var(--surface); }
-.commitment { background: linear-gradient(180deg, var(--bg) 0%, #1B2418 100%); }
+/* .commitment se restiliza al final (garantía firmada, clara) */
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -1180,7 +1180,7 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F2F1E
 .btn--ghost:hover { border-color: var(--ink); }
 
 /* Las zonas que eran "tinta sobre blanco" ahora son paneles aún más profundos */
-.why { background: #0B1710; }
+/* .why se restiliza al final (franja pino claro) */
 .contact__side { background: #0B1710; border: 1px solid var(--border); }
 .dfoot { background: #0B1710; }
 .footer { background: #0B1710; }
@@ -1249,16 +1249,54 @@ body::before { display: none !important; }
 .hero--dark .btn--spark { color: #16130E; }
 
 /* --- Paneles que eran oscuros -> claros (blanco definitivo, sin bandas verdes) --- */
-/* .why: de panel nocturno a sección clara */
-.why { background: var(--surface); color: var(--text); }
+/* ==========================================================================
+   POR QUÉ + PROMESAS — reescritas limpias (única fuente de verdad).
+   Tema claro (blanco + pino + oro). "Por qué" = lavado pino claro con razones
+   de número grande; "Promesas" = garantía firmada, tarjetas con sello y firma.
+   ========================================================================== */
+
+/* --- POR QUÉ TRABAJAR CONMIGO ----------------------------------------------- */
+.why { background: linear-gradient(180deg, #F1F6F2 0%, var(--blue-tint) 100%); color: var(--text); }
+.why .section__tag { color: var(--blue); }
+.why .section__title { color: var(--ink); }
 .why .section__lead { color: var(--muted); }
-.why__item { border-top-color: var(--border); }
-.why__item:hover { border-top-color: var(--blue); }
-.why__num { color: var(--ink); }
-.why__num em { color: var(--spark-800); }
-.why__title { color: var(--ink); }
-.why__desc { color: var(--muted); }
-.why__icon { background: var(--spark-tint); color: var(--spark-800); }
+.why__grid { gap: clamp(1.75rem, 3.5vw, 3rem); }
+.why__item { padding-top: var(--s-5); border-top: 2px solid rgba(21,83,59,.15);
+  transition: transform .35s var(--ease), border-color .35s var(--ease); }
+.why__item:hover { transform: translateY(-5px); border-top-color: var(--blue); }
+.why__icon { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
+  background: #fff; border: 1px solid var(--border); color: var(--blue);
+  box-shadow: 0 10px 22px -16px rgba(21,83,59,.55); margin-bottom: var(--s-4); }
+.why__icon svg { width: 24px; height: 24px; }
+.why__num { font-family: var(--font-display); font-size: clamp(2.1rem, 1.5rem + 2vw, 2.9rem);
+  font-weight: 800; color: var(--blue); letter-spacing: -.03em; line-height: 1; margin-bottom: var(--s-3); }
+.why__num em { font-style: normal; font-family: var(--font-mono); font-size: .78rem; font-weight: 700;
+  color: var(--spark-800); letter-spacing: .02em; }
+.why__title { font-size: 1.18rem; font-weight: 700; color: var(--ink); letter-spacing: -.01em; margin-bottom: var(--s-2); }
+.why__desc { color: var(--muted); font-size: .95rem; line-height: 1.6; }
+
+/* --- TRES PROMESAS, POR ESCRITO --------------------------------------------- */
+.commitment { background: var(--bg); }
+.commit__grid { gap: clamp(1.25rem, 2.5vw, 1.75rem); }
+.commit { position: relative; overflow: hidden; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.5rem, 2.6vw, 2.25rem); }
+.commit::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--spark));
+  transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+.commit:hover::before { transform: scaleX(1); }
+.commit:hover { transform: translateY(-5px); border-color: #C9D8CF; box-shadow: 0 26px 46px -32px rgba(21,83,59,.4); }
+.commit__num { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 50%;
+  font-family: var(--font-mono); font-size: .9rem; font-weight: 700; color: #fff; background: var(--blue);
+  margin-bottom: var(--s-4); box-shadow: 0 10px 20px -10px rgba(21,83,59,.6); }
+.commit__title { font-family: var(--font-display); font-size: 1.16rem; font-weight: 700; color: var(--ink);
+  letter-spacing: -.015em; margin-bottom: var(--s-3); }
+.commit__desc { color: var(--muted); font-size: .95rem; line-height: 1.6; }
+.commit__sign { margin-top: clamp(1.75rem, 3.5vw, 2.5rem); text-align: right; }
+.commit__sign span { display: inline-block; position: relative; font-family: var(--font-display); font-style: italic;
+  font-weight: 700; font-size: clamp(1.05rem, 1rem + .6vw, 1.35rem); color: var(--ink); padding-bottom: 8px; }
+.commit__sign span::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: linear-gradient(90deg, var(--spark), transparent); }
 
 /* Panel lateral de contacto: claro */
 .contact__side { background: var(--surface); color: var(--text); border-color: var(--border); }
