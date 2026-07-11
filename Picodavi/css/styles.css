@@ -13,9 +13,9 @@
   --ink:       #F4F1E7;   /* crema pergamino — titulares */
   --text:      #C9D2C4;   /* verde niebla claro */
   --muted:     #93A294;   /* secundario (AA sobre la noche) */
-  --blue:      #5FC492;   /* ACENTO = hoja luminosa (7:1 sobre la noche) */
-  --blue-700:  #7AD3A6;   /* hover texto */
-  --blue-tint: rgba(95,196,146,.12);
+  --blue:      #DE8E29;   /* ACENTO = ORO cálido (7:1 sobre la noche). Verde+oro: hace juego */
+  --blue-700:  #E9A040;   /* hover */
+  --blue-tint: rgba(222,142,41,.13);
   --spark:     #DE8E29;   /* chispa ámbar — sobre FONDO OSCURO (7.06:1) o como relleno */
   --spark-700: #B9701A;   /* ámbar medio — solo gráficos/bordes (3.89:1 sobre blanco) */
   --spark-800: #F2BE7B;   /* ámbar de TEXTO — 6.10:1 sobre blanco, 5.36:1 sobre el tint (AA) */
@@ -178,8 +178,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
   border: 1px solid transparent; }
 .btn--lg { padding: 15px 26px; font-size: 1rem; }
 .btn--block { width: 100%; }
-.btn--primary { background: var(--blue); color: #fff; box-shadow: 0 10px 24px -12px rgba(21,83,59,.7); }
-.btn--primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(21,83,59,.65); }
+/* Texto OSCURO sobre el oro (el blanco sobre oro no cumpliría contraste). */
+.btn--primary { background: var(--blue); color: #16130E; box-shadow: 0 10px 24px -12px rgba(222,142,41,.55); }
+.btn--primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(222,142,41,.5); }
 .btn--ghost { color: var(--ink); border-color: var(--border); background: var(--surface); }
 .btn--ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
 
@@ -259,7 +260,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 
 .card__badge { position: absolute; top: -12px; left: clamp(1.5rem, 2.5vw, 2.25rem);
   font-family: var(--font-mono); font-size: .72rem; font-weight: 700; letter-spacing: .03em;
-  background: var(--blue); color: #fff; padding: 5px 11px; border-radius: 999px; }
+  background: var(--blue); color: #16130E; padding: 5px 11px; border-radius: 999px; }
 .card__icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 12px;
   background: var(--blue-tint); color: var(--blue); margin-bottom: var(--s-5); }
 .card__icon svg { width: 28px; height: 28px; }
@@ -387,7 +388,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
 thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(--blue), inset 0 2px 0 var(--blue); padding-top: 2rem; }
 .ptable__featbadge { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); white-space: nowrap;
   font-family: var(--font-mono); font-size: .64rem; font-weight: 700; letter-spacing: .04em; color: var(--blue); }
-.ptable .yes { color: var(--blue); font-weight: 700; font-size: 1.05rem; }
+.ptable .yes { color: var(--yes); font-weight: 700; font-size: 1.05rem; }   /* ✓ en verde: hace juego con el oro */
 .ptable .no { color: var(--border); font-weight: 700; }
 .ptable .mono { font-family: var(--font-mono); }
 
@@ -777,7 +778,7 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
   margin-top: clamp(1.5rem, 3vw, 2.25rem); padding: clamp(1rem, 2vw, 1.4rem) clamp(1.25rem, 2.5vw, 1.75rem);
   background: var(--blue-tint); border: 1px solid #CDE0D5; border-radius: var(--radius); justify-content: center; }
 .guarantees li { display: inline-flex; align-items: center; gap: .55em; font-size: .9rem; font-weight: 600; color: var(--ink); }
-.guarantees svg { width: 18px; height: 18px; color: var(--blue); flex: 0 0 auto; }
+.guarantees svg { width: 18px; height: 18px; color: var(--yes); flex: 0 0 auto; }
 
 /* --- Comparador Antes / Después (deslizable) ----------------------------- */
 .ba { max-width: 980px; margin-inline: auto; }
@@ -817,7 +818,7 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .reccard--feature { border-color: var(--blue); box-shadow: 0 22px 44px -30px rgba(21,83,59,.5); }
 .reccard--feature:hover { border-color: var(--blue); }
 .reccard__badge { position: absolute; top: -12px; left: clamp(1.4rem, 2.4vw, 2rem); font-family: var(--font-mono);
-  font-size: .7rem; font-weight: 700; letter-spacing: .03em; background: var(--blue); color: #fff; padding: 5px 11px; border-radius: 999px; }
+  font-size: .7rem; font-weight: 700; letter-spacing: .03em; background: var(--blue); color: #16130E; padding: 5px 11px; border-radius: 999px; }
 .reccard__name { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--s-2); }
 .reccard__price { margin-bottom: var(--s-4); padding-bottom: var(--s-4); border-bottom: 1px solid var(--border); }
 .reccard__price .mono { font-size: 1.4rem; font-weight: 700; color: var(--ink); }
@@ -1170,10 +1171,10 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F2F1E
    (la hoja luminosa queda para texto e iconos); grano de película sutil.
    ========================================================================== */
 
-/* Botones: el verde claro es para texto; los botones usan pino sólido */
-.btn--primary { background: #1E6B4C; color: #fff; box-shadow: 0 12px 26px -12px rgba(0,0,0,.6); }
-.btn--primary:hover { background: #247E5A; }
-.card__badge { background: #1E6B4C; color: #fff; }
+/* Botones y badges: ORO sólido con texto oscuro (acento cálido sobre el bosque). */
+.btn--primary { background: var(--blue); color: #16130E; box-shadow: 0 12px 26px -12px rgba(222,142,41,.5); }
+.btn--primary:hover { background: var(--blue-700); }
+.card__badge { background: var(--blue); color: #16130E; }
 .btn--ghost { background: transparent; color: var(--ink); border-color: rgba(244,241,231,.28); }
 .btn--ghost:hover { border-color: var(--ink); }
 
