@@ -1444,3 +1444,142 @@ body::before { display: none !important; }
   .hero--dark .hero__lead { margin-inline: 0; }
   .hero--dark .hero__cta, .hero--dark .hero__chips { justify-content: stretch; }
 }
+
+/* ==========================================================================
+   HERO VIVO · bosque digital en movimiento
+   El resto de la web conserva la claridad; la entrada funciona como escaparate.
+   ========================================================================== */
+.hero--dark {
+  isolation: isolate;
+  color: #F5F1E8;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(222,142,41,.13), transparent 24%),
+    radial-gradient(circle at 18% 24%, rgba(58,134,96,.18), transparent 30%),
+    linear-gradient(145deg, #07130D 0%, #0D2419 52%, #07110B 100%);
+}
+.hero--dark .hero__scene { display: block; z-index: -1; overflow: hidden; }
+
+/* Aurora orgánica: dos masas de luz que derivan lentamente detrás del contenido. */
+.hero--dark .hero__scene::before {
+  content: ""; position: absolute; inset: -35%;
+  background:
+    radial-gradient(ellipse at 34% 38%, rgba(39,135,89,.34) 0 12%, transparent 38%),
+    radial-gradient(ellipse at 68% 42%, rgba(222,142,41,.22) 0 10%, transparent 34%),
+    radial-gradient(ellipse at 52% 72%, rgba(82,167,124,.18) 0 9%, transparent 30%);
+  filter: blur(22px) saturate(115%);
+  animation: pdAurora 16s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+/* Curvas topográficas: guiño al Montseny y al trabajo artesanal/técnico. */
+.hero--dark .hero__scene::after {
+  content: ""; position: absolute; width: 760px; height: 760px; right: -180px; top: -245px;
+  border-radius: 46% 54% 52% 48%; opacity: .24;
+  background: repeating-radial-gradient(ellipse at 50% 50%, transparent 0 28px, rgba(242,190,123,.23) 29px 30px, transparent 31px 48px);
+  -webkit-mask-image: radial-gradient(circle, #000 0 54%, transparent 76%);
+  mask-image: radial-gradient(circle, #000 0 54%, transparent 76%);
+  animation: pdContours 24s linear infinite;
+}
+
+.hero--dark .hero__glow {
+  display: block; top: -28%; right: -8%; opacity: .9;
+  background: conic-gradient(from 110deg, rgba(222,142,41,.18), rgba(95,196,146,.04), rgba(95,196,146,.22), rgba(222,142,41,.18));
+  filter: blur(18px); animation: pdGlow 11s ease-in-out infinite alternate;
+}
+.hero--dark .hero__glow::after { background: radial-gradient(circle, rgba(222,142,41,.15), transparent 66%); }
+
+/* Las montañas vuelven a aparecer y funden la escena con la siguiente sección. */
+.hero--dark .ridge { display: block; }
+.hero--dark .ridge--back { color: #1E5239; opacity: .42; }
+.hero--dark .ridge--mid { color: #103523; opacity: .78; }
+.hero--dark .ridge--front { color: #08150E; opacity: .96; }
+.hero--dark .fireflies { display: block; }
+
+/* Contraste editorial sobre la escena. */
+.hero--dark .kicker { color: #DCE5DC; background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.17); backdrop-filter: blur(10px); }
+.hero--dark .hero__title { color: #F8F5ED; text-shadow: 0 12px 42px rgba(0,0,0,.2); }
+.hero--dark .hero__title-offset { color: #EDA13E; }
+.hero--dark .hero__lead { color: #C6D0C5; }
+.hero--dark .hero__chips li { color: #E2E8E0; background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.16); backdrop-filter: blur(10px); }
+.hero--dark .hero__chips svg { color: #F1B45F; }
+.hero--dark .btn--ghost { color: #F7F4EC; background: rgba(255,255,255,.035); border-color: rgba(255,255,255,.32); }
+.hero--dark .btn--ghost:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.65); }
+.hero--dark .hero__scroll { color: #B7C2B7; }
+
+/* Navegación sobre el hero oscuro; al bajar vuelve a su versión sólida clara. */
+body:has(.hero--dark) .nav:not(.is-solid) .nav__brand,
+body:has(.hero--dark) .nav:not(.is-solid) .nav__links a,
+body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { color: #F5F2E9; }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__lang { border-color: rgba(255,255,255,.34); background: rgba(255,255,255,.035); }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__links a::after { background: #EDA13E; }
+body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E9; }
+
+/* El prototipo parece suspendido dentro del mismo paisaje. */
+.hero--dark .hero-lab {
+  background: linear-gradient(145deg, rgba(13,38,26,.94), rgba(5,16,10,.96));
+  border-color: rgba(151,207,176,.25);
+  box-shadow: 0 42px 100px -38px rgba(0,0,0,.95), 0 0 70px -38px rgba(222,142,41,.65), inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+@keyframes pdAurora {
+  0% { transform: translate3d(-3%, -2%, 0) rotate(-4deg) scale(1); }
+  52% { transform: translate3d(4%, 3%, 0) rotate(3deg) scale(1.08); }
+  100% { transform: translate3d(-1%, 5%, 0) rotate(-1deg) scale(1.03); }
+}
+@keyframes pdContours {
+  from { transform: rotate(0deg) scale(.96); }
+  to { transform: rotate(360deg) scale(1.04); }
+}
+@keyframes pdGlow {
+  0% { transform: translate3d(0, 0, 0) rotate(-8deg) scale(.92); opacity: .6; }
+  100% { transform: translate3d(-10%, 9%, 0) rotate(14deg) scale(1.08); opacity: 1; }
+}
+
+@media (max-width: 1100px) {
+  .hero--dark { min-height: auto; }
+  .hero--dark .hero__scene::after { right: -310px; top: -280px; opacity: .18; }
+}
+
+@media (max-width: 620px) {
+  .hero--dark .hero__scene::before { inset: -20% -75%; filter: blur(28px); }
+  .hero--dark .hero__scene::after { width: 520px; height: 520px; right: -335px; top: -150px; opacity: .15; }
+  .hero--dark .ridge { height: 210px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--dark .hero__scene::before,
+  .hero--dark .hero__scene::after,
+  .hero--dark .hero__glow { animation: none !important; transform: none !important; }
+}
+
+/* ==========================================================================
+   FONDO VIVO — el blanco deja de ser plano (investigado: 21st.dev / Aceternity
+   Aurora + Dot Pattern adaptados a tema claro, y curvas de nivel propias).
+   Aurora cálida a la deriva + mapa topográfico del Montseny + puntos tenues.
+   Las secciones con fondo propio (piedra/oscuras) lo tapan: eso crea el ritmo.
+   ========================================================================== */
+.bgfx { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+/* Aurora: sol entre pinos (transform-only, 2 capas, difuminado contenido) */
+.bgfx__orb { position: absolute; border-radius: 50%; filter: blur(70px); will-change: transform; }
+.bgfx__orb--pine { width: 58vw; height: 58vw; max-width: 900px; max-height: 900px; left: -14%; top: 4%;
+  background: radial-gradient(circle, rgba(21,83,59,.085) 0%, rgba(21,83,59,.03) 45%, transparent 70%);
+  animation: orbPine 38s var(--ease-soft) infinite alternate; }
+.bgfx__orb--gold { width: 48vw; height: 48vw; max-width: 760px; max-height: 760px; right: -10%; top: 38%;
+  background: radial-gradient(circle, rgba(222,142,41,.09) 0%, rgba(222,142,41,.03) 45%, transparent 70%);
+  animation: orbGold 46s var(--ease-soft) infinite alternate; }
+@keyframes orbPine { from { transform: translate3d(0,0,0) scale(1); }   to { transform: translate3d(9vw,14vh,0) scale(1.15); } }
+@keyframes orbGold { from { transform: translate3d(0,0,0) scale(1.1); } to { transform: translate3d(-8vw,-12vh,0) scale(.95); } }
+
+/* Curvas de nivel: el mapa del Montseny detrás de todo, apenas insinuado */
+.bgfx__topo { position: absolute; right: -8%; top: -6%; width: min(72vw, 980px); height: min(72vw, 980px);
+  stroke: #15533B; opacity: .05; }
+
+/* Puntos de taller enmascarados bajo la sección de servicios */
+.services { position: relative; }
+.services::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, #D8D2C4 1px, transparent 1px); background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 12%, #000 0%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 55% at 50% 12%, #000 0%, transparent 100%); }
+
+@media (prefers-reduced-motion: reduce) { .bgfx__orb { animation: none; } }

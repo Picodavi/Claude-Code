@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260727" />
+  <link rel="stylesheet" href="css/styles.css?v=20260729" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -267,6 +267,13 @@
 </head>
 <body>
 
+  <!-- Fondo vivo: aurora pino/oro + curvas de nivel del Montseny (decorativo) -->
+  <div class="bgfx" aria-hidden="true">
+    <i class="bgfx__orb bgfx__orb--pine"></i>
+    <i class="bgfx__orb bgfx__orb--gold"></i>
+    <svg class="bgfx__topo" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g stroke-width="1.1"><path d="M120,780 C240,700 200,560 340,520 C480,480 520,340 660,320 C770,304 820,220 880,200"/><path d="M60,820 C220,740 160,560 320,500 C470,444 500,300 660,270 C790,246 830,170 900,150"/><path d="M180,740 C280,670 250,560 370,540 C500,518 550,390 670,370 C760,355 810,280 860,260"/><path d="M0,860 C180,790 120,570 300,480 C450,405 480,260 650,220 C780,190 840,120 900,100"/><path d="M240,710 C320,650 300,570 400,555 C520,537 580,430 680,415 C755,404 795,330 840,315"/></g></svg>
+  </div>
+
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
   <!-- Cursor personalizado (oculto en touch) -->
@@ -330,8 +337,8 @@
         <div class="hero__col">
           <p class="kicker reveal" data-i18n="hero.kicker">Estudio web independiente · Catalunya</p>
           <h1 class="hero__title" id="hero-title">
-            <span class="reveal" data-split data-i18n="hero.title1">Diseño webs que</span>
-            <span class="hero__title-offset reveal" data-split data-i18n="hero.title2">hacen trabajar.</span>
+            <span class="reveal" data-i18n="hero.title1">Diseño webs que</span>
+            <span class="hero__title-offset reveal" data-i18n="hero.title2">hacen trabajar.</span>
           </h1>
           <p class="hero__lead lead reveal" data-i18n="hero.lead">Webs rápidas, memorables y pensadas para convertir visitas en reservas, llamadas y clientes. Yo también las cuido después de publicar.</p>
           <div class="hero__cta reveal">
@@ -718,7 +725,7 @@
         <!-- ============ CASO DESTACADO · Xalet La Coromina (real, visitable) ============ -->
         <article class="featured reveal">
           <a class="featured__shot" href="https://xaletcoromina.com" target="_blank" rel="noopener" aria-label="Visitar xaletcoromina.com (se abre en pestaña nueva)">
-            <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260726" width="1400" height="875" loading="lazy" decoding="async"
+            <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260729" width="1400" height="875" loading="lazy" decoding="async"
               alt="Portada de la web real xaletcoromina.com: la casa de piedra del Xalet La Coromina entre los árboles del Montseny"
               onerror="this.style.display=&quot;none&quot;;this.closest(&quot;.featured__shot&quot;).classList.add(&quot;featured__shot--empty&quot;);" />
             <span class="featured__live"><i aria-hidden="true"></i> <span data-i18n="feat.live">En línea</span></span>
@@ -1235,9 +1242,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260727"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260727"></script>
-  <script defer src="lib/manifest.js?v=20260727"></script>
-  <script defer src="js/main.js?v=20260727"></script>
+  <script defer src="lib/gsap.min.js?v=20260729"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260729"></script>
+  <script defer src="lib/manifest.js?v=20260729"></script>
+  <script defer src="js/main.js?v=20260729"></script>
 </body>
 </html>
