@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260732" />
+  <link rel="stylesheet" href="css/styles.css?v=20260801" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -725,7 +725,7 @@
         <!-- ============ CASO DESTACADO · Xalet La Coromina (real, visitable) ============ -->
         <article class="featured reveal">
           <a class="featured__shot" href="https://xaletlacoromina.com" target="_blank" rel="noopener" aria-label="Visitar xaletlacoromina.com (se abre en pestaña nueva)">
-            <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260732" width="1400" height="875" loading="lazy" decoding="async"
+            <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260801" width="1400" height="875" loading="lazy" decoding="async"
               alt="Portada de la web real xaletlacoromina.com: la casa de piedra del Xalet La Coromina entre los árboles del Montseny"
               onerror="this.style.display=&quot;none&quot;;this.closest(&quot;.featured__shot&quot;).classList.add(&quot;featured__shot--empty&quot;);" />
             <span class="featured__live"><i aria-hidden="true"></i> <span data-i18n="feat.live">En línea</span></span>
@@ -896,10 +896,46 @@
         <header class="section__head">
           <p class="section__tag reveal"><span data-i18n="price.tag">Precios</span></p>
           <h2 class="section__title reveal" id="pricing-h" data-i18n="price.heading">Una web que empieza bien y sigue funcionando</h2>
-          <p class="section__lead lead reveal" data-i18n="price.lead">La opción recomendada reparte la inversión y me mantiene a tu lado cuando la web ya está online.</p>
+          <p class="section__lead lead reveal" data-i18n="price.lead">Empiezas pagando menos y nunca te quedas solo: yo cuido tu web cada mes.</p>
         </header>
 
-        <div class="ptable reveal">
+        <div class="plans reveal">
+          <!-- Plan héroe: el que queremos que elijan -->
+          <article class="plan plan--hero glow">
+            <span class="plan__badge" data-i18n="plan.badge">Recomendada</span>
+            <h3 class="plan__name" data-i18n="plan.hName">Web + Cuidado mensual</h3>
+            <p class="plan__for" data-i18n="plan.hFor">La opción para la mayoría de negocios locales: tu web a medida y yo detrás, cada mes.</p>
+            <p class="plan__price"><span class="plan__amount mono" data-i18n="plan.hPrice">450 €</span> <span class="plan__then" data-i18n="plan.hThen">para empezar · luego 55 €/mes</span></p>
+            <p class="plan__day" data-i18n="plan.hDay">Menos de 2 € al día por no preocuparte de nada.</p>
+            <ul class="plan__list" role="list">
+              <li data-i18n="plan.h1">Web a medida, diseñada y publicada por mí</li>
+              <li data-i18n="plan.h2">Dominio, alojamiento, seguridad y copias: incluidos</li>
+              <li data-i18n="plan.h3">Hasta 60 min de cambios cada mes, sin coste</li>
+              <li data-i18n="plan.h4">Panel de edición gratis (150 € por separado)</li>
+              <li data-i18n="plan.h5">Soporte prioritario, horas a 35 € y 15 % en extras</li>
+            </ul>
+            <a href="#contact" class="btn btn--primary btn--lg plan__cta" data-wa-cta data-i18n="plan.hCta">Quiero mi web cuidada →</a>
+          </article>
+
+          <!-- Alternativas de pago único, en voz más baja -->
+          <div class="plan__side">
+            <article class="plan plan--mini glow">
+              <h4 class="plan__name" data-i18n="plan.aName">Web profesional</h4>
+              <p class="plan__price"><span class="plan__amount plan__amount--sm mono" data-i18n="plan.aPrice">650 €</span> <span class="plan__then" data-i18n="plan.aNote">pago único</span></p>
+              <p class="plan__desc" data-i18n="plan.aDesc">Te entrego la web y tú gestionas alojamiento y cambios (por horas, a 45 €/h).</p>
+            </article>
+            <article class="plan plan--mini glow">
+              <h4 class="plan__name" data-i18n="plan.bName">Landing Express</h4>
+              <p class="plan__price"><span class="plan__amount plan__amount--sm mono" data-i18n="plan.bPrice">390 €</span> <span class="plan__then" data-i18n="plan.bNote">pago único</span></p>
+              <p class="plan__desc" data-i18n="plan.bDesc">Una sola página para empezar. Si luego creces a web completa, se descuenta.</p>
+            </article>
+            <p class="plan__hint" data-i18n="plan.hint">¿Pago único? Sin problema. Solo recuerda: el mantenimiento y los cambios corren de tu parte.</p>
+          </div>
+        </div>
+
+        <details class="pricing-fold reveal">
+          <summary><span data-i18n="plan.compare">Ver la comparativa completa</span><span class="faq__plus" aria-hidden="true"></span></summary>
+          <div class="ptable reveal">
           <div class="ptable__scroll">
             <table class="ptable__grid">
               <thead>
@@ -972,35 +1008,23 @@
             </table>
           </div>
         </div>
+        </details>
 
         <!-- Bloque mantenimiento: por qué el plan mensual + panel de edición -->
-        <div class="recurring reveal">
-          <h3 class="recurring__title" data-i18n="rec.heading">Publicar es el comienzo, no el final</h3>
-          <p class="recurring__lead" data-i18n="rec.lead">Elige cuánto acompañamiento quieres. Siempre sabrás qué incluye y cuánto pagas.</p>
-          <div class="recurring__grid stagger">
-            <article class="reccard reccard--feature">
-              <span class="reccard__badge" data-i18n="rec.2badge">Recomendado</span>
-              <h4 class="reccard__name" data-i18n="rec.2name">Cuidado</h4>
-              <p class="reccard__price"><span class="mono" data-i18n="rec.2price">55 € / mes</span></p>
-              <p class="reccard__desc" data-i18n="rec.2desc">Alojamiento, dominio, seguridad, copias y hasta 60 min de cambios al mes. Además, panel de edición incluido, horas a 35 € y un 15 % de descuento en extras.</p>
-            </article>
-            <article class="reccard">
-              <span class="reccard__badge reccard__badge--spark" data-i18n="rec.3badge">Para crecer</span>
-              <h4 class="reccard__name" data-i18n="rec.3name">Cuidado + Google</h4>
-              <p class="reccard__price"><span class="mono" data-i18n="rec.3price">89 € / mes</span></p>
-              <p class="reccard__desc" data-i18n="rec.3desc">Todo el cuidado de la web más gestión de tu ficha de Google: publicaciones, seguimiento de reseñas e informe mensual.</p>
-            </article>
-            <article class="reccard">
-              <h4 class="reccard__name" data-i18n="rec.1name">Panel de edición</h4>
-              <p class="reccard__price"><span class="mono" data-i18n="rec.1price">Incluido con Cuidado</span></p>
-              <p class="reccard__desc" data-i18n="rec.1desc">Edita textos, fotos, precios u horarios sin conocimientos técnicos. Con la web sin Cuidado, se añade por 150 €.</p>
-            </article>
+        <div class="upgrade reveal">
+          <div class="upgrade__body">
+            <span class="upgrade__badge" data-i18n="rec.3badge">Para crecer</span>
+            <h3 class="upgrade__title" data-i18n="rec.3name">Cuidado + Google</h3>
+            <p class="upgrade__desc" data-i18n="rec.3desc">Todo el Cuidado mensual más la gestión de tu ficha de Google: publicaciones, seguimiento de reseñas e informe mensual. Que te encuentren y te elijan.</p>
           </div>
-          <p class="recurring__note" data-i18n="rec.note">Web + Cuidado tiene un compromiso inicial de 6 meses (450 € + 6 × 55 €). Después continúas mes a mes y puedes cancelarlo cuando quieras. Con pago anual del Cuidado, tienes 2 meses gratis. El dominio y la web siempre son tuyos.</p>
+          <p class="upgrade__price"><span class="mono" data-i18n="rec.3price">89 € / mes</span><span data-i18n="rec.3save">ahorras 15 € frente a contratarlo suelto</span></p>
         </div>
+        <p class="recurring__note reveal" data-i18n="rec.note">Web + Cuidado tiene un compromiso inicial de 6 meses (450 € + 6 × 55 €). Después continúas mes a mes y puedes cancelarlo cuando quieras. Con pago anual del Cuidado, tienes 2 meses gratis. El dominio y la web siempre son tuyos.</p>
 
         <!-- Extras a medida: ampliaciones con presupuesto cerrado -->
-        <div class="includes reveal">
+        <details class="pricing-fold reveal">
+          <summary><span data-i18n="ext.fold">Extras a medida (chatbot, reservas, carta QR…)</span><span class="faq__plus" aria-hidden="true"></span></summary>
+          <div class="includes reveal">
           <h3 class="includes__title" data-i18n="ext.heading">Extras a medida</h3>
           <p class="includes__lead" data-i18n="ext.lead">Ampliaciones que se añaden a cualquier web, con presupuesto cerrado antes de empezar.</p>
           <ul class="includes__grid stagger" role="list">
@@ -1031,6 +1055,7 @@
           </ul>
           <p class="note" data-i18n="ext.note">Todos los extras se presupuestan por escrito antes de empezar. Clientes con mantenimiento: 15 % de descuento en cualquier extra. Pack Crecimiento: Mantenimiento + Impulso Google juntos por 89 €/mes (en vez de 104 €).</p>
         </div>
+        </details>
 
         <ul class="guarantees reveal stagger" role="list">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg> <span data-i18n="guar.1">Presupuesto sin compromiso</span></li>
@@ -1242,9 +1267,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260732"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260732"></script>
-  <script defer src="lib/manifest.js?v=20260732"></script>
-  <script defer src="js/main.js?v=20260732"></script>
+  <script defer src="lib/gsap.min.js?v=20260801"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260801"></script>
+  <script defer src="lib/manifest.js?v=20260801"></script>
+  <script defer src="js/main.js?v=20260801"></script>
 </body>
 </html>

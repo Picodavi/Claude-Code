@@ -1621,3 +1621,76 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E
           mask-image: radial-gradient(ellipse 70% 55% at 50% 12%, #000 0%, transparent 100%); }
 
 @media (prefers-reduced-motion: reduce) { .bgfx__orb { animation: none; } }
+
+/* ==========================================================================
+   PRECIOS PRO-MENSUAL — la tarjeta "Web + Cuidado" manda; el resto acompaña.
+   Tabla y extras viven plegados: la decisión se toma de un vistazo.
+   ========================================================================== */
+.plans { display: grid; grid-template-columns: 1.25fr .85fr; gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch; margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+@media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
+
+.plan { border-radius: var(--radius-lg); }
+.plan--hero { position: relative; background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    linear-gradient(135deg, var(--blue) 0%, #7FB89D 45%, var(--spark) 100%) border-box;
+  border: 2px solid transparent; padding: clamp(1.75rem, 3.2vw, 2.75rem);
+  box-shadow: 0 30px 60px -35px rgba(21,83,59,.45); }
+.plan__badge { position: absolute; top: -13px; left: clamp(1.75rem, 3.2vw, 2.75rem);
+  background: var(--blue); color: #fff; font-family: var(--font-mono); font-size: .72rem;
+  font-weight: 700; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; }
+.plan__name { font-family: var(--font-display); font-weight: 800; letter-spacing: -.02em;
+  font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.8rem); color: var(--ink); margin-bottom: var(--s-2); }
+.plan--hero .plan__name { margin-top: var(--s-2); }
+.plan__for { color: var(--muted); font-size: .95rem; max-width: 46ch; margin-bottom: var(--s-5); }
+.plan__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5em; }
+.plan__amount { font-size: clamp(2rem, 1.6rem + 1.6vw, 2.8rem); font-weight: 700; color: var(--ink); letter-spacing: -.02em; }
+.plan__amount--sm { font-size: 1.35rem; }
+.plan__then { color: var(--muted); font-size: .9rem; }
+.plan__day { margin-top: var(--s-2); font-size: .85rem; font-weight: 600; color: var(--spark-800); margin-bottom: var(--s-4); }
+.plan__list { display: grid; gap: .55rem; margin-bottom: var(--s-6); }
+.plan__list li { position: relative; padding-left: 26px; font-size: .95rem; color: var(--text); }
+.plan__list li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 18px; height: 18px;
+  display: grid; place-items: center; border-radius: 50%; background: var(--blue-tint);
+  color: var(--blue); font-size: .7rem; font-weight: 700; }
+.plan__cta { width: 100%; }
+
+.plan__side { display: flex; flex-direction: column; gap: clamp(.9rem, 1.6vw, 1.25rem); }
+.plan--mini { background: var(--surface); border: 1px solid var(--border);
+  padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.2vw, 1.75rem); flex: 1; }
+.plan--mini .plan__name { font-size: 1.05rem; font-weight: 700; }
+.plan__desc { color: var(--muted); font-size: .88rem; line-height: 1.55; margin-top: var(--s-2); }
+.plan__hint { font-size: .82rem; color: var(--muted); font-style: italic; padding-inline: 4px; }
+
+/* Plegables de la sección precios (tabla completa y extras) */
+.pricing-fold { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); background: var(--bg); overflow: clip;
+  interpolate-size: allow-keywords; }
+.pricing-fold summary { list-style: none; cursor: pointer; display: flex; align-items: center;
+  justify-content: space-between; gap: var(--s-4); padding: clamp(1rem, 2vw, 1.35rem) clamp(1.25rem, 2.4vw, 1.75rem);
+  font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; color: var(--ink);
+  transition: color .25s var(--ease), background-color .25s var(--ease); }
+.pricing-fold summary::-webkit-details-marker { display: none; }
+.pricing-fold summary:hover { color: var(--blue); background: var(--blue-tint); }
+.pricing-fold[open] summary { border-bottom: 1px solid var(--border); }
+.pricing-fold::details-content { block-size: 0; overflow: clip;
+  transition: block-size .4s var(--ease), content-visibility .4s allow-discrete; }
+.pricing-fold[open]::details-content { block-size: auto; }
+.pricing-fold > .ptable, .pricing-fold > .includes { margin: clamp(1rem, 2vw, 1.5rem); margin-top: clamp(.75rem, 1.6vw, 1.25rem); }
+.pricing-fold .includes { border: 0; background: transparent; padding: 0; }
+
+/* Mejora única mensual: Cuidado + Google */
+.upgrade { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--s-5); margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 2.6vw, 1.9rem) clamp(1.5rem, 3vw, 2.25rem); }
+.upgrade__badge { display: inline-block; font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+  letter-spacing: .04em; color: var(--spark-800); background: var(--spark-tint);
+  border-radius: 999px; padding: 4px 10px; margin-bottom: var(--s-2); }
+.upgrade__title { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem;
+  color: var(--ink); letter-spacing: -.015em; margin-bottom: var(--s-2); }
+.upgrade__desc { color: var(--muted); font-size: .92rem; max-width: 56ch; }
+.upgrade__price { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; text-align: right; }
+.upgrade__price .mono { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+.upgrade__price span:last-child { font-size: .78rem; color: var(--spark-800); }
+@media (max-width: 640px) { .upgrade__price { align-items: flex-start; text-align: left; } }
