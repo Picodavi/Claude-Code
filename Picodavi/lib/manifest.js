@@ -52,7 +52,7 @@
        Para AÑADIR un proyecto, lee el README (sección "Añadir un proyecto").
        ---------------------------------------------------------------------- */
     projects: [
-      { id: "coromina", name: "Xalet La Coromina", type: "Restaurante & Hotel de montaña", place: "Viladrau (Montseny)", status: "real", url: "https://xaletcoromina.com" }
+      { id: "coromina", name: "Xalet La Coromina", type: "Restaurante & Hotel de montaña", place: "Viladrau (Montseny)", status: "real", url: "https://xaletlacoromina.com" }
     ],
 
     /* ----------------------------------------------------------------------
