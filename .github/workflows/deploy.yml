@@ -2,6 +2,7 @@ name: Desplegar Picodavi en Hostinger
 
 # Cada vez que se sube un cambio a "main" que toque la carpeta Picodavi/,
 # este robot sube automáticamente la web a Hostinger por FTP.
+# (Nota: el FTP de Hostinger falla a veces por red; basta con relanzar el deploy.)
 on:
   push:
     branches: [main]
