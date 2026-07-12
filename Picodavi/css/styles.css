@@ -884,19 +884,23 @@ img, svg, video, table { max-width: 100%; }
   background: var(--blue-tint); border: 1px solid #CDE0D5; padding: 5px 11px; border-radius: 999px; }
 .featured__cta { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: auto; padding-top: var(--s-2); }
 
-/* --- Sectores (capacidades, sin ejemplos ficticios) ------------------------ */
+/* --- Demos por sector ----------------------------------------------------- */
 .sectors { margin-top: clamp(2.5rem, 5vw, 4rem); }
 .sectors__title { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: var(--s-2); }
 .sectors__lead { color: var(--muted); margin-bottom: clamp(1.5rem, 3vw, 2.25rem); max-width: 56ch; }
 .sectors__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: clamp(1rem, 2vw, 1.5rem); margin-bottom: clamp(2rem, 4vw, 3rem); }
 .sector { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-  padding: clamp(1.4rem, 2.4vw, 1.9rem); transition: transform .3s var(--ease), box-shadow .3s, border-color .3s; }
+  padding: clamp(1.4rem, 2.4vw, 1.9rem); transition: transform .3s var(--ease), box-shadow .3s, border-color .3s;
+  display: flex; flex-direction: column; align-items: flex-start; }
 .sector:hover { transform: translateY(-4px); box-shadow: 0 26px 46px -34px rgba(10,10,10,.4); border-color: #d9dde3; }
 .sector__icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px;
   background: var(--blue-tint); color: var(--blue); margin-bottom: var(--s-4); }
 .sector__icon svg { width: 24px; height: 24px; }
 .sector h4 { font-size: 1.12rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: var(--s-2); }
 .sector p { color: var(--text); font-size: .92rem; line-height: 1.55; }
+.sector__link { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--s-4); color: var(--blue); font-weight: 700;
+  border-bottom: 1px solid rgba(21,83,59,.25); transition: color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
+.sector__link:hover { color: var(--blue-700); border-color: currentColor; transform: translateX(3px); }
 
 /* --- Mi compromiso (sustituto honesto de las reseñas) ---------------------- */
 .commitment { background: var(--surface); }
