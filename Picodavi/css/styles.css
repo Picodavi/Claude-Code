@@ -58,7 +58,7 @@
 /* --- Reset -------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
 html.is-locked { overflow: hidden; }
 
 body {
@@ -193,6 +193,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-heigh
    SECCIÓN genérica + watermark + tags
    ========================================================================== */
 .section { position: relative; padding-block: var(--section-y); overflow: clip; }
+main section[id] { scroll-margin-top: 84px; }
 
 .watermark { position: absolute; top: clamp(-1rem, -2vw, 0rem); right: var(--gutter); z-index: 0;
   font-family: var(--font-display); font-weight: 800; font-size: clamp(7rem, 22vw, 16rem);
@@ -553,6 +554,16 @@ thead .ptable__feat { box-shadow: inset 1px 0 0 var(--blue), inset -1px 0 0 var(
 .includes__chips li:hover { border-color: var(--blue); transform: translateY(-2px);
   box-shadow: 0 10px 20px -14px rgba(21,83,59,.55); }
 .includes__chips svg { width: 17px; height: 17px; color: var(--blue); flex: 0 0 auto; }
+.includes__route { display: flex; align-items: center; justify-content: space-between; gap: var(--s-6);
+  margin-top: clamp(1.5rem, 3vw, 2.25rem); padding-top: clamp(1.25rem, 2.5vw, 1.75rem); border-top: 1px solid var(--border); }
+.includes__route > div { display: grid; gap: .2rem; max-width: 58ch; }
+.includes__routeLabel { color: var(--spark-800); font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.includes__route p { color: var(--text); line-height: 1.45; }
+.includes__routeLink { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: .65rem 1rem;
+  border: 1px solid rgba(21,83,59,.28); border-radius: 999px; color: var(--blue); background: var(--blue-tint);
+  font-weight: 700; transition: color .2s, background-color .2s, border-color .2s, transform .2s var(--ease); }
+.includes__routeLink:hover { color: #fff; background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
+.includes__routeLink:active { transform: translateY(0) scale(.98); }
 .includes__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(1.1rem, 2.4vw, 1.75rem); }
 .includes__grid li { display: flex; gap: var(--s-3); align-items: flex-start; }
 /* Ámbar aquí y pino en .valuegrid__icon: dos familias de color, no un bloque monocromo. */
@@ -1309,6 +1320,17 @@ body::before { display: none !important; }
 .contact__info a { color: var(--ink); border-bottom-color: rgba(22,19,14,.2); }
 .contact__info a:hover { border-bottom-color: var(--blue); }
 .contact__infoLabel { color: var(--spark-800); }
+.contact__info li.contact__availability { flex-direction: row; align-items: center; gap: .8rem; }
+.contact__availability > span:last-child { display: grid; gap: 3px; }
+.contact__availabilityMark { position: relative; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--blue-tint); border: 1px solid rgba(21,83,59,.18); }
+.contact__availabilityMark::after { content: ""; position: absolute; inset: 50% auto auto 50%; width: 9px; height: 9px;
+  border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px rgba(21,83,59,.1); transform: translate(-50%, -50%); }
+
+@media (max-width: 620px) {
+  .includes__route { align-items: stretch; flex-direction: column; gap: var(--s-4); }
+  .includes__routeLink { width: 100%; justify-content: center; }
+}
 
 /* Footer principal: claro (su texto ya es oscuro; el fondo forzado lo rompía) */
 .footer { background: var(--bg); }

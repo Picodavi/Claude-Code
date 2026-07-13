@@ -312,6 +312,7 @@
         "contact.sideWhats": "WhatsApp",
         "contact.sideArea": "Zona de trabajo",
         "contact.sideAreaVal": "Catalunya, España",
+        "contact.sideAvailability": "Disponibilidad",
         "contact.sideResp": "Respuesta en menos de 24 h",
         "contact.waLabel": "Escríbeme por WhatsApp",
 
@@ -348,6 +349,9 @@
         "inc.4t": "SEO básico",
         "inc.5t": "Seguridad SSL",
         "inc.6t": "Todos los navegadores",
+        "inc.routeLabel": "El siguiente paso",
+        "inc.routeText": "Elige una entrega única o el cuidado mensual, con todo claro desde el principio.",
+        "inc.routeCta": "Ver planes y precios →",
 
         // Sobre mí
         "about.tag": "Sobre mí",
@@ -726,6 +730,7 @@
         "contact.sideWhats": "WhatsApp",
         "contact.sideArea": "Working area",
         "contact.sideAreaVal": "Catalonia, Spain",
+        "contact.sideAvailability": "Availability",
         "contact.sideResp": "Reply within 24 h",
         "contact.waLabel": "Message me on WhatsApp",
 
@@ -758,6 +763,9 @@
         "inc.4t": "Basic SEO",
         "inc.5t": "SSL security",
         "inc.6t": "Every browser",
+        "inc.routeLabel": "The next step",
+        "inc.routeText": "Choose a one-off delivery or monthly care, with everything clear from day one.",
+        "inc.routeCta": "See plans and pricing →",
 
         "about.tag": "About me",
         "about.heading": "Hi, I'm David",

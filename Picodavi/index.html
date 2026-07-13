@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260803" />
+  <link rel="stylesheet" href="css/styles.css?v=20260804" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -475,6 +475,13 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-i18n="inc.5t">Seguridad SSL</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg><span data-i18n="inc.6t">Todos los navegadores</span></li>
           </ul>
+          <div class="includes__route">
+            <div>
+              <span class="includes__routeLabel mono" data-i18n="inc.routeLabel">El siguiente paso</span>
+              <p data-i18n="inc.routeText">Elige una entrega única o el cuidado mensual, con todo claro desde el principio.</p>
+            </div>
+            <a href="#pricing" class="includes__routeLink" data-i18n="inc.routeCta">Ver planes y precios →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1175,9 +1182,12 @@
               <span class="contact__infoLabel mono" data-i18n="contact.sideArea">Zona de trabajo</span>
               <span data-i18n="contact.sideAreaVal">Catalunya, España</span>
             </li>
-            <li>
-              <span class="contact__infoLabel mono">·</span>
-              <span data-i18n="contact.sideResp">Respuesta en menos de 24 h</span>
+            <li class="contact__availability">
+              <span class="contact__availabilityMark" aria-hidden="true"></span>
+              <span>
+                <span class="contact__infoLabel mono" data-i18n="contact.sideAvailability">Disponibilidad</span>
+                <span data-i18n="contact.sideResp">Respuesta en menos de 24 h</span>
+              </span>
             </li>
           </ul>
         </aside>
@@ -1245,7 +1255,7 @@
        ==================================================================== -->
   <script defer src="lib/gsap.min.js?v=20260801"></script>
   <script defer src="lib/ScrollTrigger.min.js?v=20260801"></script>
-  <script defer src="lib/manifest.js?v=20260803"></script>
+  <script defer src="lib/manifest.js?v=20260804"></script>
   <script defer src="js/main.js?v=20260802"></script>
 </body>
 </html>
