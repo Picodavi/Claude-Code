@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260806" />
+  <link rel="stylesheet" href="css/styles.css?v=20260807" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -267,11 +267,26 @@
 </head>
 <body>
 
-  <!-- Fondo vivo: aurora pino/oro + curvas de nivel del Montseny (decorativo) -->
-  <div class="bgfx" aria-hidden="true">
+  <!-- Fondo vivo: luz orgánica + corriente topográfica que responde al scroll -->
+  <div class="bgfx" data-scene="hero" aria-hidden="true">
+    <i class="bgfx__mesh"></i>
     <i class="bgfx__orb bgfx__orb--pine"></i>
     <i class="bgfx__orb bgfx__orb--gold"></i>
     <svg class="bgfx__topo" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g stroke-width="1.1"><path d="M120,780 C240,700 200,560 340,520 C480,480 520,340 660,320 C770,304 820,220 880,200"/><path d="M60,820 C220,740 160,560 320,500 C470,444 500,300 660,270 C790,246 830,170 900,150"/><path d="M180,740 C280,670 250,560 370,540 C500,518 550,390 670,370 C760,355 810,280 860,260"/><path d="M0,860 C180,790 120,570 300,480 C450,405 480,260 650,220 C780,190 840,120 900,100"/><path d="M240,710 C320,650 300,570 400,555 C520,537 580,430 680,415 C755,404 795,330 840,315"/></g></svg>
+    <svg class="bgfx__current" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="bgfxCurrentGradient" x1="760" y1="-40" x2="250" y2="1040" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#15533B" />
+          <stop offset=".48" stop-color="#5D9B79" />
+          <stop offset=".72" stop-color="#DE8E29" />
+          <stop offset="1" stop-color="#15533B" />
+        </linearGradient>
+      </defs>
+      <path class="bgfx__current-bed" d="M780 -80 C920 120 720 224 748 382 C780 560 422 520 472 700 C512 846 208 850 258 1080" />
+      <path class="bgfx__current-line" id="bgfxCurrentPath" d="M780 -80 C920 120 720 224 748 382 C780 560 422 520 472 700 C512 846 208 850 258 1080" />
+    </svg>
+    <i class="bgfx__signal"></i>
+    <i class="bgfx__pointer"></i>
   </div>
 
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -327,6 +342,23 @@
       <!-- Escena: la cresta del Montseny de noche, en tres planos con parallax -->
       <div class="hero__scene" aria-hidden="true">
         <div class="hero__glow"></div>
+        <svg class="hero__trace" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="heroTraceGradient" x1="0" y1="500" x2="1440" y2="190" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#74B393" stop-opacity="0" />
+              <stop offset=".42" stop-color="#74B393" />
+              <stop offset=".72" stop-color="#F1B45F" />
+              <stop offset="1" stop-color="#F1B45F" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path class="hero__trace-base" d="M-80 520 C220 180 470 150 672 418 C850 654 1088 312 1520 166" />
+          <path class="hero__trace-pulse" d="M-80 520 C220 180 470 150 672 418 C850 654 1088 312 1520 166" />
+          <g class="hero__trace-nodes">
+            <circle cx="338" cy="204" r="4" />
+            <circle cx="672" cy="418" r="5" />
+            <circle cx="1120" cy="298" r="4" />
+          </g>
+        </svg>
         <svg class="ridge ridge--back" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,170 C120,130 240,95 360,115 C480,135 560,75 690,85 C820,95 890,145 1010,125 C1130,105 1250,65 1440,105 L1440,320 L0,320 Z"/></svg>
         <svg class="ridge ridge--mid" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,205 C150,175 280,125 420,155 C560,185 650,115 790,135 C930,155 1050,195 1170,165 C1290,135 1370,155 1440,145 L1440,320 L0,320 Z"/></svg>
         <svg class="ridge ridge--front" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,245 C180,215 320,185 470,215 C620,245 730,175 880,195 C1030,215 1150,255 1290,225 C1370,209 1410,219 1440,214 L1440,320 L0,320 Z"/></svg>
@@ -1256,6 +1288,6 @@
   <script defer src="lib/gsap.min.js?v=20260801"></script>
   <script defer src="lib/ScrollTrigger.min.js?v=20260801"></script>
   <script defer src="lib/manifest.js?v=20260806"></script>
-  <script defer src="js/main.js?v=20260806"></script>
+  <script defer src="js/main.js?v=20260807"></script>
 </body>
 </html>

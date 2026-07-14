@@ -564,7 +564,8 @@
       [".ridge--mid",  14,  0],
       [".ridge--front", 24, 0],
       [".hero__glow",  -28, 0],   // en sentido opuesto: refuerza la profundidad
-      [".fireflies",   18, 11]
+      [".fireflies",   18, 11],
+      [".hero__trace", -12, 6]
     ];
     var layers = [];
     defs.forEach(function (d) {
@@ -591,6 +592,83 @@
   }
 
   /* ======================================================================
+     PAISAJE VIVO — una corriente topográfica conecta el hero con el final.
+     El scroll dibuja la ruta y mueve el punto de energía; cada sección cambia
+     sutilmente la atmósfera. En escritorio, un halo profundo sigue al ratón.
+     Todo queda fuera del flujo de layout y desaparece con reduced-motion.
+     ====================================================================== */
+  function initLivingBackdrop() {
+    var bg = $(".bgfx");
+    if (!bg || REDUCE) return;
+
+    var pointer = $(".bgfx__pointer", bg);
+    var finePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+    if (pointer && finePointer && window.gsap && window.gsap.quickTo) {
+      window.gsap.set(pointer, { xPercent: -50, yPercent: -50, x: window.innerWidth * .5, y: window.innerHeight * .5 });
+      var pointerX = window.gsap.quickTo(pointer, "x", { duration: 1.15, ease: "power3.out" });
+      var pointerY = window.gsap.quickTo(pointer, "y", { duration: 1.15, ease: "power3.out" });
+      doc.addEventListener("pointermove", function (e) {
+        bg.classList.add("is-pointer-active");
+        pointerX(e.clientX); pointerY(e.clientY);
+      }, { passive: true });
+      doc.documentElement.addEventListener("mouseleave", function () { bg.classList.remove("is-pointer-active"); });
+    }
+
+    if (!hasGSAP) return;
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    var main = $("main");
+    var topo = $(".bgfx__topo", bg);
+    var svg = $(".bgfx__current", bg);
+    var path = $("#bgfxCurrentPath", bg);
+    var signal = $(".bgfx__signal", bg);
+
+    if (main && topo) {
+      window.gsap.to(topo, {
+        xPercent: -7, yPercent: 10, rotation: 9, scale: 1.08, ease: "none",
+        scrollTrigger: { trigger: main, start: "top top", end: "bottom bottom", scrub: 1.2 }
+      });
+    }
+
+    if (main && svg && path && signal && path.getTotalLength) {
+      var length = path.getTotalLength();
+      path.style.strokeDasharray = length + " " + length;
+      path.style.strokeDashoffset = String(length);
+      window.gsap.set(signal, { xPercent: -50, yPercent: -50 });
+
+      function placeSignal(progress) {
+        var point = path.getPointAtLength(length * (.035 + progress * .93));
+        var rect = svg.getBoundingClientRect();
+        var box = svg.viewBox.baseVal;
+        var x = rect.left + ((point.x - box.x) / box.width) * rect.width;
+        var y = rect.top + ((point.y - box.y) / box.height) * rect.height;
+        path.style.strokeDashoffset = String(length * (1 - progress * .97));
+        window.gsap.set(signal, { x: x, y: y });
+        bg.classList.toggle("is-current-ready", progress > .045 && progress < .985);
+      }
+
+      var currentTrigger = window.ScrollTrigger.create({
+        trigger: main, start: "top top", end: "bottom bottom",
+        onUpdate: function (self) { placeSignal(self.progress); },
+        onRefresh: function (self) { placeSignal(self.progress); }
+      });
+      placeSignal(currentTrigger.progress || 0);
+    }
+
+    [
+      ["#hero", "hero"], ["#services", "services"], ["#about", "about"],
+      ["#work", "work"], ["#pricing", "pricing"], ["#contact", "contact"]
+    ].forEach(function (scene) {
+      var section = $(scene[0]);
+      if (!section) return;
+      function activate() { bg.setAttribute("data-scene", scene[1]); }
+      window.ScrollTrigger.create({
+        trigger: section, start: "top 58%", end: "bottom 42%",
+        onEnter: activate, onEnterBack: activate
+      });
+    });
+  }
+
+  /* ======================================================================
      ARRANQUE
      ====================================================================== */
   function boot() {
@@ -610,6 +688,7 @@
     safe(initHeroIntro, "hero-intro");
     safe(initMagnetic, "magnetic");
     safe(initSceneMouse, "scene-mouse");
+    safe(initLivingBackdrop, "living-backdrop");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
