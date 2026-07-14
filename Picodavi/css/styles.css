@@ -1652,30 +1652,54 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E
    PRECIOS PRO-MENSUAL — la tarjeta "Web + Cuidado" manda; el resto acompaña.
    Tabla y extras viven plegados: la decisión se toma de un vistazo.
    ========================================================================== */
+.pricing { background: linear-gradient(180deg, rgba(245,243,238,.92) 0%, rgba(255,255,255,.88) 23%, #fff 100%); }
+.pricing .section__head { max-width: 840px; }
 .plans { display: grid; grid-template-columns: 1.25fr .85fr; gap: clamp(1.25rem, 2.5vw, 2rem);
   align-items: stretch; margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
 @media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
 
 .plan { border-radius: var(--radius-lg); }
-.plan--hero { position: relative; background:
-    linear-gradient(var(--bg), var(--bg)) padding-box,
-    linear-gradient(135deg, var(--blue) 0%, #7FB89D 45%, var(--spark) 100%) border-box;
-  border: 2px solid transparent; padding: clamp(1.75rem, 3.2vw, 2.75rem);
-  box-shadow: 0 30px 60px -35px rgba(21,83,59,.45); }
+.plan--hero { position: relative; isolation: isolate; overflow: hidden;
+  color: #E5ECE7;
+  background:
+    radial-gradient(circle at 92% 2%, rgba(222,142,41,.22), transparent 30%),
+    radial-gradient(circle at 8% 92%, rgba(76,157,111,.17), transparent 32%),
+    linear-gradient(145deg, #102A1D 0%, #07170F 72%, #06120C 100%);
+  border: 1px solid rgba(160,207,181,.32); padding: clamp(1.85rem, 3.4vw, 2.9rem);
+  box-shadow: 0 38px 78px -38px rgba(6,30,18,.72), inset 0 1px 0 rgba(255,255,255,.08); }
+.plan--hero::before { content: ""; position: absolute; z-index: 0; width: 440px; height: 440px; right: -190px; top: -210px;
+  border-radius: 50%; opacity: .2; pointer-events: none;
+  background: repeating-radial-gradient(circle, transparent 0 22px, rgba(242,190,123,.5) 23px 24px, transparent 25px 38px);
+  -webkit-mask-image: radial-gradient(circle, #000 0 48%, transparent 75%); mask-image: radial-gradient(circle, #000 0 48%, transparent 75%); }
+.plan--hero > * { position: relative; z-index: 2; }
 .plan__badge { position: absolute; top: -13px; left: clamp(1.75rem, 3.2vw, 2.75rem);
-  background: var(--blue); color: #fff; font-family: var(--font-mono); font-size: .72rem;
-  font-weight: 700; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; }
+  background: var(--spark); color: #16130E; font-family: var(--font-mono); font-size: .7rem;
+  font-weight: 700; letter-spacing: .04em; padding: 6px 12px; border-radius: 999px;
+  box-shadow: 0 10px 24px -12px rgba(222,142,41,.8); }
 .plan__name { font-family: var(--font-display); font-weight: 800; letter-spacing: -.02em;
   font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.8rem); color: var(--ink); margin-bottom: var(--s-2); }
-.plan--hero .plan__name { margin-top: var(--s-2); }
+.plan--hero .plan__name { margin-top: var(--s-2); color: #fff; font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.15rem); }
 .plan__for { color: var(--muted); font-size: .95rem; max-width: 46ch; margin-bottom: var(--s-5); }
+.plan--hero .plan__for { color: #C5D2C9; font-size: 1rem; }
 .plan__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5em; }
 .plan__amount { font-size: clamp(2rem, 1.6rem + 1.6vw, 2.8rem); font-weight: 700; color: var(--ink); letter-spacing: -.02em; }
 .plan__amount--sm { font-size: 1.35rem; }
 .plan__then { color: var(--muted); font-size: .9rem; }
+.plan__price--hero { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center;
+  gap: clamp(.75rem, 2vw, 1.25rem); margin-bottom: var(--s-2); }
+.plan__priceBlock { display: flex; flex-direction: column; align-items: flex-start; gap: .1rem; }
+.plan--hero .plan__amount { color: #fff; font-size: clamp(2.25rem, 1.7rem + 2vw, 3.15rem); line-height: 1; }
+.plan__priceBlock small, .plan__monthly small { color: #AEBEB2; font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; }
+.plan__pricePlus { color: rgba(255,255,255,.35); font-family: var(--font-mono); font-size: 1.2rem; }
+.plan__monthly { display: flex; flex-direction: column; align-items: flex-start; gap: .1rem; padding: .8rem 1rem;
+  border: 1px solid rgba(242,190,123,.28); border-radius: var(--radius-sm); background: rgba(255,255,255,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+.plan__monthly strong { color: #F5B65E; font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem); line-height: 1.1; }
 .plan__day { margin-top: var(--s-2); font-size: .85rem; font-weight: 600; color: var(--spark-800); margin-bottom: var(--s-4); }
+.plan--hero .plan__day { color: #F1B45F; }
 .care-radar { margin-bottom: var(--s-5); overflow: hidden; border: 1px solid #D8D2C4;
   border-top: 4px solid var(--spark); border-radius: var(--radius-sm); background: var(--surface); }
+.plan--hero .care-radar { box-shadow: 0 20px 45px -30px rgba(0,0,0,.8); }
 .care-radar__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4);
   padding: .85rem 1rem .75rem; }
 .care-radar__head strong { color: var(--ink); font-family: var(--font-display); font-size: .95rem;
@@ -1694,19 +1718,30 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E
 .care-radar > p { padding: .7rem 1rem .8rem; color: var(--muted); font-size: .78rem; line-height: 1.5; }
 .plan__list { display: grid; gap: .55rem; margin-bottom: var(--s-6); }
 .plan__list li { position: relative; padding-left: 26px; font-size: .95rem; color: var(--text); }
+.plan--hero .plan__list li { color: #DFE8E1; }
 .plan__list li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 18px; height: 18px;
   display: grid; place-items: center; border-radius: 50%; background: var(--blue-tint);
   color: var(--blue); font-size: .7rem; font-weight: 700; }
+.plan--hero .plan__list li::before { color: #F2BA6A; background: rgba(242,186,106,.13); }
 .plan__cta { width: 100%; }
+.plan--hero .plan__cta { color: #16130E; background: var(--spark); border-color: var(--spark);
+  box-shadow: 0 18px 36px -18px rgba(222,142,41,.78); }
+.plan--hero .plan__cta:hover { color: #16130E; background: #F0A94E; border-color: #F0A94E; }
+.plan__fine { margin-top: .85rem; color: #9FB0A4; font-size: .73rem; line-height: 1.45; text-align: center; }
 
 .plan__side { display: flex; flex-direction: column; gap: clamp(.9rem, 1.6vw, 1.25rem); }
 .plan--mini { background: var(--surface); border: 1px solid var(--border);
-  padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.2vw, 1.75rem); flex: 1; }
+  padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.2vw, 1.75rem); flex: 1;
+  transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); }
+.plan--mini:hover { border-color: rgba(21,83,59,.32); transform: translateY(-2px); box-shadow: 0 20px 38px -32px rgba(21,83,59,.55); }
 .plan--mini .plan__name { font-size: 1.05rem; font-weight: 700; }
 .plan__desc { color: var(--muted); font-size: .88rem; line-height: 1.55; margin-top: var(--s-2); }
 .plan__hint { font-size: .82rem; color: var(--muted); font-style: italic; padding-inline: 4px; }
 
 @media (max-width: 600px) {
+  .plan__price--hero { grid-template-columns: 1fr; align-items: stretch; }
+  .plan__pricePlus { display: none; }
+  .plan__monthly { width: 100%; }
   .care-radar__head { display: block; }
   .care-radar__head strong { display: block; margin-top: .35rem; text-align: left; }
   .care-radar__grid { grid-template-columns: 1fr; }
@@ -1735,7 +1770,7 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E
 /* Mejora única mensual: Cuidado + Google */
 .upgrade { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: var(--s-5); margin-top: clamp(1.5rem, 3vw, 2.25rem);
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #F8F4EA, #F1F6F2); border: 1px solid #D9D4C8; border-top: 3px solid var(--spark); border-radius: var(--radius-lg);
   padding: clamp(1.25rem, 2.6vw, 1.9rem) clamp(1.5rem, 3vw, 2.25rem); }
 .upgrade__badge { display: inline-block; font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
   letter-spacing: .04em; color: var(--spark-800); background: var(--spark-tint);
@@ -1746,4 +1781,14 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E
 .upgrade__price { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; text-align: right; }
 .upgrade__price .mono { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
 .upgrade__price span:last-child { font-size: .78rem; color: var(--spark-800); }
-@media (max-width: 640px) { .upgrade__price { align-items: flex-start; text-align: left; } }
+.upgrade__action { display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
+.upgrade__link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .65rem 1rem;
+  border: 1px solid var(--blue); border-radius: 999px; color: #fff; background: var(--blue); font-weight: 700;
+  transition: color .2s, background-color .2s, border-color .2s, transform .2s var(--ease), box-shadow .2s; }
+.upgrade__link:hover { color: #fff; background: var(--blue-700); border-color: var(--blue-700); transform: translateY(-2px);
+  box-shadow: 0 14px 28px -18px rgba(21,83,59,.7); }
+.upgrade__link:active { transform: translateY(0) scale(.98); }
+@media (max-width: 640px) {
+  .upgrade__action, .upgrade__price { width: 100%; align-items: flex-start; text-align: left; }
+  .upgrade__link { width: 100%; }
+}

@@ -89,6 +89,7 @@
     if (toggle) {
       toggle.addEventListener("click", function () {
         applyLang(currentLang === "es" ? "en" : "es");
+        initLinks();
       });
     }
   }
@@ -135,6 +136,23 @@
       var msg = currentLang === "en"
         ? "Hi David, I saw your pricing and I'm not sure which plan I need. Can we talk?"
         : "Hola David, he visto los precios y no sé qué plan necesito. ¿Hablamos?";
+      a.setAttribute("href", waUrl(msg));
+      a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
+    });
+
+    // CTA de plan elegido → elimina dudas y abre la conversación correcta
+    $all("[data-wa-plan]").forEach(function (a) {
+      var plan = a.getAttribute("data-wa-plan");
+      var msg;
+      if (plan === "growth") {
+        msg = currentLang === "en"
+          ? "Hi David, I'm interested in Local Growth (€89/month). Can we see if it fits my business?"
+          : "Hola David, me interesa Crecimiento local (89 €/mes). ¿Vemos si encaja con mi negocio?";
+      } else {
+        msg = currentLang === "en"
+          ? "Hi David, I'm interested in Website + Proactive Care (€450 + €55/month). Can I tell you about my business?"
+          : "Hola David, me interesa Web + Cuidado Proactivo (450 € + 55 €/mes). ¿Te cuento mi negocio?";
+      }
       a.setAttribute("href", waUrl(msg));
       a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener");
     });

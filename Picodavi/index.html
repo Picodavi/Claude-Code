@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260804" />
+  <link rel="stylesheet" href="css/styles.css?v=20260805" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -869,7 +869,17 @@
             <span class="plan__badge" data-i18n="plan.badge">Opción recomendada</span>
             <h3 class="plan__name" data-i18n="plan.hName">Web + Cuidado Proactivo</h3>
             <p class="plan__for" data-i18n="plan.hFor">Tu web a medida y un seguimiento mensual para mantenerla rápida, segura y útil para el negocio.</p>
-            <p class="plan__price"><span class="plan__amount mono" data-i18n="plan.hPrice">450 €</span> <span class="plan__then" data-i18n="plan.hThen">para empezar · luego 55 €/mes</span></p>
+            <div class="plan__price plan__price--hero" role="group" aria-label="450 euros para empezar y 55 euros al mes" data-i18n-aria="plan.hPriceAria">
+              <span class="plan__priceBlock">
+                <strong class="plan__amount mono" data-i18n="plan.hPrice">450 €</strong>
+                <small data-i18n="plan.hStartLabel">puesta en marcha</small>
+              </span>
+              <span class="plan__pricePlus" aria-hidden="true">+</span>
+              <span class="plan__monthly">
+                <strong class="mono" data-i18n="plan.hMonthly">55 € / mes</strong>
+                <small data-i18n="plan.hMonthlyLabel">cuidado continuo</small>
+              </span>
+            </div>
             <p class="plan__day" data-i18n="plan.hDay">Menos de 2 € al día para tener tu web atendida.</p>
 
             <div class="care-radar">
@@ -891,7 +901,8 @@
               <li data-i18n="plan.h3">Hasta 60 min de cambios cada mes, sin coste</li>
               <li data-i18n="plan.h4">Panel incluido, soporte prioritario y 15 % en extras</li>
             </ul>
-            <a href="#contact" class="btn btn--primary btn--lg plan__cta" data-wa-cta data-i18n="plan.hCta">Quiero cuidado proactivo →</a>
+            <a href="#contact" class="btn btn--primary btn--lg plan__cta" data-wa-plan="care" data-i18n="plan.hCta">Quiero una web que mejore →</a>
+            <p class="plan__fine" data-i18n="plan.hFine">6 meses iniciales · después, mes a mes · la web y el dominio son tuyos.</p>
           </article>
 
           <!-- Alternativas de pago único, en voz más baja -->
@@ -1000,7 +1011,10 @@
             <h3 class="upgrade__title" data-i18n="rec.3name">Crecimiento local</h3>
             <p class="upgrade__desc" data-i18n="rec.3desc">Todo el Cuidado Proactivo más la gestión de tu ficha de Google: dos publicaciones al mes, seguimiento de reseñas y resumen de visibilidad local.</p>
           </div>
-          <p class="upgrade__price"><span class="mono" data-i18n="rec.3price">89 € / mes</span><span data-i18n="rec.3save">ahorras 15 € frente a contratarlo suelto</span></p>
+          <div class="upgrade__action">
+            <p class="upgrade__price"><span class="mono" data-i18n="rec.3price">89 € / mes</span><span data-i18n="rec.3save">ahorras 15 € frente a contratarlo suelto</span></p>
+            <a href="#contact" class="upgrade__link" data-wa-plan="growth" data-i18n="rec.3cta">Quiero crecer en Google →</a>
+          </div>
         </div>
         <p class="recurring__note reveal" data-i18n="rec.note">Web + Cuidado Proactivo tiene un compromiso inicial de 6 meses (450 € + 6 × 55 €). Después continúas mes a mes y puedes cancelarlo cuando quieras. Con pago anual del plan, tienes 2 meses gratis. El dominio y la web siempre son tuyos.</p>
 
@@ -1255,7 +1269,7 @@
        ==================================================================== -->
   <script defer src="lib/gsap.min.js?v=20260801"></script>
   <script defer src="lib/ScrollTrigger.min.js?v=20260801"></script>
-  <script defer src="lib/manifest.js?v=20260804"></script>
-  <script defer src="js/main.js?v=20260802"></script>
+  <script defer src="lib/manifest.js?v=20260805"></script>
+  <script defer src="js/main.js?v=20260805"></script>
 </body>
 </html>
