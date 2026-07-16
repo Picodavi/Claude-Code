@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 // Fuentes de marca (self-host vía next/font, sin FOUT). Exponen variables CSS
 // que consume el tema de Tailwind v4 en globals.css.
@@ -39,7 +42,11 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text font-sans">
-        {children}
+        <LanguageProvider>
+          <Nav />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
