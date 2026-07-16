@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/lib/i18n";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Backdrop } from "@/components/Backdrop";
 
 // Fuentes de marca (self-host vía next/font, sin FOUT). Exponen variables CSS
 // que consume el tema de Tailwind v4 en globals.css.
@@ -71,6 +72,7 @@ export default function RootLayout({
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
+        <Backdrop />
         <LanguageProvider>
           <SmoothScroll />
           <Nav />

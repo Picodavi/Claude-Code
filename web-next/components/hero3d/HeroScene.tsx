@@ -1,87 +1,69 @@
 "use client";
 
-import { Suspense, useMemo, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import {
-  Float,
-  PresentationControls,
-  RoundedBox,
-  useTexture,
-} from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import coverImg from "@/assets/xalet-cover.jpg";
 
-// La "pantalla" del dispositivo: un plano con la captura real de la web.
-function Screen() {
-  const tex = useTexture(coverImg.src);
-  useMemo(() => {
-    tex.colorSpace = THREE.SRGBColorSpace;
-    tex.anisotropy = 8;
-  }, [tex]);
-  return (
-    <mesh position={[0, 0, 0.09]}>
-      <planeGeometry args={[3.62, 2.26]} />
-      <meshBasicMaterial map={tex} toneMapped={false} />
-    </mesh>
-  );
-}
+// Grupo de formas (pino + oro) que gira con el scroll, con giro propio suave
+// y una ligera inclinación hacia el cursor.
+function Cluster() {
+  const g = useRef<THREE.Group>(null);
+  useFrame((state) => {
+    if (!g.current) return;
+    const scroll = typeof window !== "undefined" ? window.scrollY : 0;
+    g.current.rotation.y = scroll * 0.0016 + state.clock.elapsedTime * 0.14;
+    g.current.rotation.x =
+      scroll * 0.0009 + state.pointer.y * 0.18 + Math.sin(state.clock.elapsedTime * 0.6) * 0.05;
+    g.current.position.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.12;
+  });
 
-// Dispositivo 3D: marco redondeado (verde pino) + pantalla con la web.
-function Device() {
   return (
-    <group rotation={[0, 0, 0]}>
-      <RoundedBox args={[3.9, 2.5, 0.16]} radius={0.09} smoothness={6}>
-        <meshStandardMaterial
-          color="#0F3F2D"
-          roughness={0.35}
-          metalness={0.15}
-        />
-      </RoundedBox>
-      <Suspense fallback={null}>
-        <Screen />
-      </Suspense>
-      {/* piecita dorada (detalle de marca) */}
-      <mesh position={[0, -1.4, 0.05]}>
-        <boxGeometry args={[0.9, 0.09, 0.09]} />
-        <meshStandardMaterial color="#DE8E29" roughness={0.3} metalness={0.4} />
+    <group ref={g}>
+      <mesh>
+        <torusKnotGeometry args={[1, 0.33, 180, 32]} />
+        <meshStandardMaterial color="#15533B" roughness={0.22} metalness={0.55} />
+      </mesh>
+      <mesh position={[1.9, 1.15, 0.4]}>
+        <icosahedronGeometry args={[0.52, 0]} />
+        <meshStandardMaterial color="#DE8E29" roughness={0.18} metalness={0.6} flatShading />
+      </mesh>
+      <mesh position={[-2, -1.05, 0.3]}>
+        <icosahedronGeometry args={[0.34, 0]} />
+        <meshStandardMaterial color="#0F3F2D" roughness={0.3} metalness={0.45} flatShading />
+      </mesh>
+      <mesh position={[1.5, -1.35, -0.4]}>
+        <sphereGeometry args={[0.3, 48, 48]} />
+        <meshStandardMaterial color="#DE8E29" roughness={0.12} metalness={0.7} />
+      </mesh>
+      <mesh position={[-1.7, 1.3, -0.6]}>
+        <sphereGeometry args={[0.22, 48, 48]} />
+        <meshStandardMaterial color="#f5f3ee" roughness={0.5} metalness={0.1} />
       </mesh>
     </group>
   );
 }
 
 export default function HeroScene() {
-  // R3F a veces mide 0 al montar (tras el swap del póster); forzamos re-medida.
+  // R3F a veces mide 0 al montar; forzamos re-medida.
   useEffect(() => {
     const ping = () => window.dispatchEvent(new Event("resize"));
     const timers = [80, 250, 600].map((ms) => window.setTimeout(ping, ms));
     return () => timers.forEach(clearTimeout);
   }, []);
+
   return (
     <Canvas
-      camera={{ position: [0, 0, 6], fov: 40 }}
+      camera={{ position: [0, 0, 6], fov: 42 }}
       dpr={[1, 2]}
+      frameloop="always"
       gl={{ antialias: true, alpha: true }}
       style={{ width: "100%", height: "100%" }}
     >
       <ambientLight intensity={0.7} />
-      <directionalLight position={[4, 5, 5]} intensity={1.4} />
-      <pointLight position={[-5, 2, 3]} intensity={40} color="#DE8E29" />
-      <pointLight position={[4, -2, 4]} intensity={22} color="#15533B" />
-      <Suspense fallback={null}>
-        <PresentationControls
-          global
-          cursor
-          polar={[-0.25, 0.25]}
-          azimuth={[-0.5, 0.5]}
-          speed={1.4}
-          damping={0.2}
-          snap
-        >
-          <Float rotationIntensity={0.5} floatIntensity={0.7} speed={2}>
-            <Device />
-          </Float>
-        </PresentationControls>
-      </Suspense>
+      <directionalLight position={[4, 5, 5]} intensity={1.6} />
+      <pointLight position={[-5, 2, 3]} intensity={55} color="#DE8E29" />
+      <pointLight position={[4, -2, 4]} intensity={32} color="#15533B" />
+      <Cluster />
     </Canvas>
   );
 }

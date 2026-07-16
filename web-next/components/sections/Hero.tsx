@@ -2,11 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useT } from "@/lib/i18n";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import coverImg from "@/assets/xalet-cover.jpg";
 
 // La escena WebGL solo se carga en el cliente (nunca en el HTML del servidor).
 const HeroScene = dynamic(() => import("@/components/hero3d/HeroScene"), {
@@ -26,17 +24,15 @@ const item: Variants = {
   },
 };
 
-function Poster() {
+// Panel decorativo para móvil (sin WebGL): degradado pino/oro animado.
+function DecorFallback() {
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border shadow-xl">
-      <Image
-        src={coverImg}
-        alt="Ejemplo de web hecha por Picodavi"
-        fill
-        className="object-cover"
-        priority
-        sizes="(max-width: 1024px) 100vw, 40vw"
-      />
+    <div className="relative h-full w-full overflow-hidden rounded-3xl border border-border">
+      <div className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-pine/30 blur-2xl" />
+      <div className="absolute -bottom-8 right-0 h-40 w-40 rounded-full bg-gold/40 blur-2xl" />
+      <div className="absolute inset-0 grid place-items-center">
+        <div className="h-24 w-24 rotate-12 rounded-3xl bg-gradient-to-br from-pine to-gold shadow-xl" />
+      </div>
     </div>
   );
 }
@@ -44,11 +40,15 @@ function Poster() {
 export function Hero() {
   const t = useT();
   const reduce = useReducedMotion();
-  // Solo cargamos WebGL en pantallas grandes y sin "menos movimiento".
+  // El 3D se muestra en pantallas grandes (independiente de reduced-motion,
+  // porque gira sobre todo con el scroll, que el usuario controla).
   const [enable3d, setEnable3d] = useState(false);
   useEffect(() => {
-    const reduceQ = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setEnable3d(window.innerWidth >= 1024 && !reduceQ);
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setEnable3d(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
   return (
@@ -96,7 +96,7 @@ export function Hero() {
             </MagneticButton>
             <a
               href="#work"
-              className="rounded-full border border-border bg-bg px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:border-pine hover:text-pine"
+              className="rounded-full border border-border bg-bg/70 px-7 py-3.5 text-base font-semibold text-ink backdrop-blur transition-colors hover:border-pine hover:text-pine"
             >
               {t("hero.ctaSecondary")}
             </a>
@@ -121,7 +121,7 @@ export function Hero() {
         </motion.div>
 
         <div className="h-[340px] sm:h-[440px] lg:h-[520px]">
-          {enable3d ? <HeroScene /> : <Poster />}
+          {enable3d ? <HeroScene /> : <DecorFallback />}
         </div>
       </div>
     </section>
