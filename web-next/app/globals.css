@@ -40,3 +40,24 @@ body {
   color: var(--text);
   font-family: var(--font-hanken), system-ui, sans-serif;
 }
+
+/* Scroll suave (Lenis) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Accesibilidad: con "menos movimiento", el contenido animado se muestra fijo
+   y visible (el !important gana a los estilos inline de Framer Motion). */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
