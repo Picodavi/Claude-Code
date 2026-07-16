@@ -2,6 +2,7 @@ name: Deploy Next (staging /beta)
 
 # Compila la web nueva (Next.js) y la sube a una subcarpeta /beta de Hostinger.
 # NO toca la web de producción (raíz). Solo se dispara desde la rama `next`.
+# (El FTP de Hostinger falla a veces por red; basta con relanzar.)
 on:
   push:
     branches: [next]
