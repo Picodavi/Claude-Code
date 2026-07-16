@@ -65,7 +65,7 @@ verificable. No es un "de un día para otro".
 | Scroll suave | **Lenis** (ligero) | Suavidad sin coste de peso relevante |
 | Inteligencia de diseño/UX | Skill **ui-ux-pro-max** | Paletas, pairings tipográficos, guías UX, patrones |
 | i18n | Contexto React propio + diccionario portado de `manifest.js` | Simple, sin dependencias pesadas |
-| Estilos | CSS Modules o Tailwind (a decidir en el plan) | Consistencia con tokens de la identidad |
+| Estilos | **Tailwind CSS con tema 100% personalizado** (tokens de marca: verde pino, oro, blanco cálido; fuentes Bricolage Grotesque / Hanken Grotesk / Space Mono ya en uso) | Rápido, buen CV para David, moderno — pero con tokens propios para NO parecer Tailwind de fábrica |
 
 ## 6. Experiencia 3D y de scroll (el "wow")
 
@@ -92,6 +92,33 @@ mismo efecto. WebGL pesado **solo en el hero**; el resto es Framer Motion + CSS 
 
 Hilo transversal: scroll suave (Lenis), barra de progreso, contadores animados, revelado de
 texto. Todo respeta `prefers-reduced-motion`.
+
+## 6.5 Diseño distintivo — que NO parezca una plantilla de IA (requisito clave)
+
+Regla rectora: cada decisión visual debe sentirse **intencionada y propia de Picodavi**, no un
+default. Responde directamente al "cookie-cutter template que parece de todos" del crítico.
+
+**Evitar (el look "IA/SaaS genérico"):**
+- Degradados morados/azules, glassmorphism por defecto, neón sobre oscuro.
+- Fuente Inter/otra genérica; hero centrado + tres tarjetas idénticas con iconitos sueltos.
+- Componentes de librería (shadcn, etc.) usados **con sus estilos de fábrica**.
+- Ilustraciones/fotos de stock genéricas, viñetas con emoji, simetría perfecta en todo.
+- Espaciado uniforme sin ritmo, sombras por defecto, esquinas redondeadas iguales en todo.
+
+**Buscar (sello propio):**
+- Sistema visual anclado a la marca: **blanco cálido + verde pino + oro**, Montseny (curvas de
+  nivel, texturas de bosque) como motivo recurrente propio.
+- **Tipografía editorial con carácter**: Bricolage Grotesque para display con jerarquía real,
+  tamaños grandes y contraste; Space Mono para detalles técnicos/etiquetas.
+- **Asimetría intencionada** y rejilla que se rompe con criterio; whitespace con ritmo.
+- **Detalles dibujados a mano** (SVG propios) y el 3D como pieza única, en vez de stock.
+- Un **motivo de interacción con firma** (p. ej. el ensamblado del navegador, el aura pino-oro)
+  repetido con coherencia.
+- Contenido **real** (proyecto Xalet, textos ya pulidos), nunca lorem ni placeholders.
+- Movimiento con punto de vista: contenido, no decoración; siempre con `reduced-motion`.
+
+Fuente de criterio: skills **frontend-design** y **ui-ux-pro-max** (paletas, pairings, guías UX)
+durante la implementación.
 
 ## 7. SEO, rendimiento y seguridad
 
@@ -177,3 +204,15 @@ en la Fase 5, tras verificación y visto bueno del cliente.
 - Cabeceras de seguridad presentes y verificadas.
 - Deploy automático por push funcionando (build + export + FTP).
 - Rollback a la versión estática probado y documentado (< 1 min).
+- **No parece una plantilla de IA/SaaS genérica**: diseño distintivo según la sección 6.5
+  (identidad Montseny, tipografía editorial, asimetría intencionada, detalles propios).
+
+## 15. Decisiones tomadas de forma autónoma (por encargo del cliente)
+
+El cliente pidió avanzar sin consultar cada detalle. Decisiones que asumo:
+- **Estilos: Tailwind con tema personalizado** (ver sección 5).
+- **Fase 1 = paridad exacta** de contenido/SEO antes de añadir 3D (garantiza no perder
+  posicionamiento). Confirmado.
+- **Staging:** el rebuild se sirve en una subcarpeta/subdominio de staging en Hostinger hasta la
+  Fase 5; producción intacta.
+- Cualquier duda no legal y que esté en mi mano se resuelve informándome y con criterio propio.
