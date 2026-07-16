@@ -1,0 +1,42 @@
+name: Deploy Next (staging /beta)
+
+# Compila la web nueva (Next.js) y la sube a una subcarpeta /beta de Hostinger.
+# NO toca la web de producción (raíz). Solo se dispara desde la rama `next`.
+on:
+  push:
+    branches: [next]
+    paths:
+      - "web-next/**"
+      - ".github/workflows/deploy-next-staging.yml"
+  workflow_dispatch: {}
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web-next/package-lock.json
+
+      - name: Instalar y compilar (export estático con basePath /beta)
+        working-directory: web-next
+        env:
+          STAGING: "1"
+        run: |
+          npm ci
+          npm run build
+
+      - name: Subir a /beta por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./web-next/out/
+          server-dir: /domains/picodavi.com/public_html/beta/
