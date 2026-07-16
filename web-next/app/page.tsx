@@ -12,10 +12,14 @@ import { Extras } from "@/components/sections/Extras";
 import { About } from "@/components/sections/About";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
+import { JsonLd } from "@/components/JsonLd";
+import { professionalService, faqPage } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <main>
+      <JsonLd data={professionalService()} />
+      <JsonLd data={faqPage()} />
       <Hero />
       <Services />
       <Process />

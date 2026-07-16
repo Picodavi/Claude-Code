@@ -24,11 +24,35 @@ const mono = Space_Mono({
   display: "swap",
 });
 
+const STAGING = process.env.STAGING === "1";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://picodavi.com"),
   title: "Diseño web en Catalunya para negocios locales | Picodavi",
   description:
-    "Diseño y desarrollo web para negocios locales de Catalunya. Rápido, claro y a medida.",
+    "Diseño y desarrollo web a medida para negocios locales de Catalunya: restaurantes, hoteles, clínicas y comercios. Rápido, claro y con precio cerrado.",
+  keywords: [
+    "diseño web Catalunya",
+    "diseño web Barcelona",
+    "páginas web para restaurantes",
+    "web para hoteles rurales",
+    "diseño web Montseny",
+    "desarrollo web negocios locales",
+    "web para clínicas",
+    "diseñador web freelance Catalunya",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: "https://picodavi.com/",
+    siteName: "Picodavi",
+    title: "Diseño web en Catalunya para negocios locales | Picodavi",
+    description:
+      "Webs a medida para negocios locales: rápidas, claras y con precio cerrado.",
+  },
+  // En staging (/beta) evitamos que Google la indexe.
+  robots: STAGING ? { index: false, follow: false } : undefined,
 };
 
 export default function RootLayout({
