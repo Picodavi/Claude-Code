@@ -1,0 +1,11 @@
+# Cabeceras de seguridad (Hostinger / Apache). Protegen sin romper el sitio.
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  # CSP: permite lo que usa Next/Framer/Three (inline styles/scripts, blobs, data
+  # URIs) y bloquea recursos de otros dominios. Sin backend = superficie mínima.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+</IfModule>
