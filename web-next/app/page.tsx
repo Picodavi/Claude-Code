@@ -1,8 +1,14 @@
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
-import { Fit } from "@/components/sections/Fit";
+import { Work } from "@/components/sections/Work";
+import { Sectors } from "@/components/sections/Sectors";
+import { Promises } from "@/components/sections/Promises";
 import { Why } from "@/components/sections/Why";
+import { Fit } from "@/components/sections/Fit";
+import { About } from "@/components/sections/About";
+import { Faq } from "@/components/sections/Faq";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -10,8 +16,14 @@ export default function Home() {
       <Hero />
       <Services />
       <Process />
-      <Fit />
+      <Work />
+      <Sectors />
+      <Promises />
       <Why />
+      <Fit />
+      <About />
+      <Faq />
+      <Contact />
     </main>
   );
 }
