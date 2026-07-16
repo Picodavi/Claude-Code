@@ -6,6 +6,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Backdrop } from "@/components/Backdrop";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 // Fuentes de marca (self-host vía next/font, sin FOUT). Exponen variables CSS
 // que consume el tema de Tailwind v4 en globals.css.
@@ -75,6 +76,7 @@ export default function RootLayout({
         <Backdrop />
         <LanguageProvider>
           <SmoothScroll />
+          <ScrollProgress />
           <Nav />
           <div className="flex-1">{children}</div>
           <Footer />
