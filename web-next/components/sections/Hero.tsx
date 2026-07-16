@@ -1,13 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useT } from "@/lib/i18n";
-
-const HeroScene = dynamic(() => import("@/components/hero3d/HeroScene"), {
-  ssr: false,
-});
+import { BrowserMock } from "@/components/hero3d/BrowserMock";
 
 const container: Variants = {
   hidden: {},
@@ -18,38 +13,17 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-// Objetos flotantes en CSS para móvil (sin WebGL).
-function DecorFallback() {
-  return (
-    <div className="relative h-full w-full">
-      <div className="absolute left-6 top-8 h-24 w-24 rounded-full bg-[#16130e] shadow-2xl" />
-      <div className="absolute right-10 top-4 h-14 w-14 rounded-full bg-[#f5f3ee] shadow-xl" />
-      <div className="absolute bottom-10 left-16 h-20 w-20 rounded-full bg-pine shadow-2xl" />
-      <div className="absolute bottom-4 right-8 h-28 w-28 rounded-full bg-[#16130e] shadow-2xl" />
-      <div className="absolute right-24 top-24 h-10 w-10 rounded-full bg-[#f5f3ee]/90" />
-    </div>
-  );
-}
-
 export function Hero() {
   const t = useT();
   const reduce = useReducedMotion();
-  const [enable3d, setEnable3d] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const update = () => setEnable3d(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
 
   return (
     <section id="top" className="px-4 pt-6 sm:px-6">
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#E9A94D_0%,#D98A34_45%,#B4671A_100%)] px-6 py-10 shadow-[0_30px_80px_-20px_rgba(180,103,26,0.5)] sm:px-10 sm:py-14 lg:px-14">
         <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
-          {/* Objetos 3D */}
-          <div className="order-2 h-[320px] sm:h-[420px] lg:order-1 lg:h-[540px]">
-            {enable3d ? <HeroScene /> : <DecorFallback />}
+          {/* Mockup de la web (perspectiva 3D en CSS) */}
+          <div className="order-2 h-[320px] sm:h-[420px] lg:order-1 lg:h-[520px]">
+            <BrowserMock />
           </div>
 
           {/* Texto */}

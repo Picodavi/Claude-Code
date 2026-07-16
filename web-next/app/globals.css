@@ -98,6 +98,20 @@ body {
   }
 }
 
+/* Flotación suave del mockup del navegador en el hero */
+@keyframes mock-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+.mock-float {
+  animation: mock-float 5.5s ease-in-out infinite;
+}
+
 /* Scroll suave (Lenis) */
 html.lenis,
 html.lenis body {
