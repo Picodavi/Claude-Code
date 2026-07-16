@@ -41,3 +41,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./web-next/out/
           server-dir: /domains/picodavi.com/public_html/beta/
+
