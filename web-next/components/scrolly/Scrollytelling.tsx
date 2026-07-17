@@ -177,6 +177,26 @@ export function Scrollytelling() {
           },
         );
 
+        /* ---- 5b) Halo de luz que acompaña el scroll (escritorio) ---- */
+        if (isDesktop && document.querySelector(".backdrop__halo")) {
+          gsap.fromTo(
+            ".backdrop__halo",
+            { yPercent: -6, xPercent: -4 },
+            {
+              yPercent: 105,
+              xPercent: 10,
+              ease: "none",
+              scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "max",
+                scrub: 1.4,
+                invalidateOnRefresh: true,
+              },
+            },
+          );
+        }
+
         /* ---- 6) La esfera dorada viaja por toda la página ---- */
         if (isDesktop && orbRef.current) {
           const W = () => window.innerWidth;

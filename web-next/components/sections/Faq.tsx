@@ -9,7 +9,7 @@ const QA = ["1", "2", "6", "8", "10", "12", "13", "15", "18", "19", "20"];
 export function Faq() {
   const t = useT();
   return (
-    <Section id="faq" className="bg-surface">
+    <Section id="faq" className="bg-surface/55">
       <div className="mx-auto max-w-3xl">
         <SectionHeader
           tagKey="faq.tag"

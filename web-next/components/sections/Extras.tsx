@@ -15,7 +15,7 @@ const EXTRAS: [string, string][] = [
 export function Extras() {
   const t = useT();
   return (
-    <Section id="extras" className="bg-surface">
+    <Section id="extras" className="bg-surface/55">
       <div className="mx-auto max-w-6xl">
         <h2 className="max-w-3xl font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
           {t("ext.heading")}

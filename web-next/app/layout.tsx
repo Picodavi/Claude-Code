@@ -54,6 +54,14 @@ export const metadata: Metadata = {
     title: "Diseño web en Catalunya para negocios locales | Picodavi",
     description:
       "Webs a medida para negocios locales: rápidas, claras y con precio cerrado.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Picodavi — diseño web para negocios locales" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Diseño web en Catalunya para negocios locales | Picodavi",
+    description:
+      "Webs a medida para negocios locales: rápidas, claras y con precio cerrado.",
+    images: ["/og-image.png"],
   },
   // En staging (/beta) evitamos que Google la indexe.
   robots: STAGING ? { index: false, follow: false } : undefined,

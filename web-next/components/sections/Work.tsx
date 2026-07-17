@@ -26,7 +26,7 @@ export function Work() {
             alt="Xalet La Coromina — web real diseñada por Picodavi"
             url="xaletlacoromina.com"
             href="https://xaletlacoromina.com"
-            priority
+
           />
 
           {/* Detalles del proyecto */}

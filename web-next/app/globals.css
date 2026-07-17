@@ -77,6 +77,49 @@ body {
   will-change: opacity;
 }
 
+/* Halo de luz que viaja con el scroll (GSAP lo desplaza; solo escritorio) */
+.backdrop__halo {
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  width: 90vw;
+  height: 90vw;
+  max-width: 1100px;
+  max-height: 1100px;
+  margin-left: -45vw;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(242, 178, 92, 0.32) 0%, rgba(222, 142, 41, 0.12) 40%, transparent 70%);
+  will-change: transform;
+}
+
+/* Grid con perspectiva bajo el hero (plano de "taller de construcción web") */
+.backdrop__grid {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  top: 4vh;
+  height: 90vh;
+  background-image:
+    linear-gradient(rgba(21, 83, 59, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 83, 59, 0.16) 1px, transparent 1px);
+  background-size: 54px 54px;
+  transform: perspective(900px) rotateX(52deg);
+  transform-origin: top center;
+  opacity: 0.4;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 70%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 70%);
+}
+
+/* Móvil: fondo simplificado (solo malla + grano; fuera capas decorativas) */
+@media (max-width: 767px) {
+  .backdrop__blob,
+  .backdrop__grid,
+  .backdrop__halo,
+  .backdrop__pball {
+    display: none;
+  }
+}
+
 /* Grano/textura premium por encima de la malla */
 .backdrop__grain {
   position: absolute;

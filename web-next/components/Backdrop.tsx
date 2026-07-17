@@ -18,21 +18,23 @@ export function Backdrop() {
     <div className="backdrop" aria-hidden>
       <div className="backdrop__mesh" />
       <div className="backdrop__mesh--pine" />
+      <div className="backdrop__grid" />
+      <div className="backdrop__halo" />
       <div className="backdrop__blob backdrop__blob--a" />
       <div className="backdrop__blob backdrop__blob--b" />
       <div className="backdrop__blob backdrop__blob--c" />
 
       {/* Esferas con parallax de scroll (profundidad) */}
-      <motion.div style={{ y: y1, rotate: rot }} className="absolute left-[5%] top-[30%]">
+      <motion.div style={{ y: y1, rotate: rot }} className="backdrop__pball absolute left-[5%] top-[30%]">
         <Ball size={90} color="#DE8E29" style={{ position: "relative", opacity: 0.85 }} />
       </motion.div>
-      <motion.div style={{ y: y2 }} className="absolute right-[7%] top-[38%]">
+      <motion.div style={{ y: y2 }} className="backdrop__pball absolute right-[7%] top-[38%]">
         <Ball size={56} color="#201a14" style={{ position: "relative", opacity: 0.8 }} />
       </motion.div>
-      <motion.div style={{ y: y3 }} className="absolute left-[12%] top-[74%]">
+      <motion.div style={{ y: y3 }} className="backdrop__pball absolute left-[12%] top-[74%]">
         <Ball size={40} color="#15533B" style={{ position: "relative", opacity: 0.8 }} />
       </motion.div>
-      <motion.div style={{ y: y4 }} className="absolute right-[16%] top-[82%]">
+      <motion.div style={{ y: y4 }} className="backdrop__pball absolute right-[16%] top-[82%]">
         <Ball size={68} color="#f7f3ea" style={{ position: "relative", opacity: 0.9 }} />
       </motion.div>
 
