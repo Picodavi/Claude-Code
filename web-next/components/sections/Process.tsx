@@ -25,7 +25,10 @@ export function Process() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
             {t("process.tag")}
           </p>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl">
+          <h2
+            data-sr
+            className="mt-3 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl"
+          >
             {t("process.heading")}
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-white/70">{t("process.lead")}</p>
@@ -35,6 +38,7 @@ export function Process() {
           {STEPS.map(([tag, title, desc], i) => (
             <li
               key={tag}
+              data-step
               className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur transition-colors hover:border-gold/50"
             >
               <span className="font-mono text-xs uppercase tracking-widest text-gold">

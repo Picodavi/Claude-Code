@@ -20,14 +20,20 @@ export function Hero() {
 
   return (
     <section id="top" className="px-4 pt-6 sm:px-6">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(140deg,#F2B25C_0%,#DE8E29_40%,#A85D14_80%,#7c4712_100%)] px-6 py-12 shadow-[0_40px_90px_-25px_rgba(124,71,18,0.6)] sm:px-10 sm:py-16 lg:px-14">
+      <div
+        data-hero-panel
+        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(140deg,#F2B25C_0%,#DE8E29_40%,#A85D14_80%,#7c4712_100%)] px-6 py-12 shadow-[0_40px_90px_-25px_rgba(124,71,18,0.6)] sm:px-10 sm:py-16 lg:px-14"
+      >
         {/* decoración: círculos oscuros translúcidos (profundidad, estilo ref) */}
         <div aria-hidden className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-black/10" />
         <div aria-hidden className="absolute -bottom-32 right-1/3 h-96 w-96 rounded-full bg-black/10" />
 
         <div className="relative grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
           {/* Portátil + esferas flotantes */}
-          <div className="relative order-2 h-[360px] sm:h-[440px] lg:order-1 lg:h-[540px]">
+          <div
+            data-hero-visual
+            className="relative order-2 h-[360px] sm:h-[440px] lg:order-1 lg:h-[540px]"
+          >
             {/* esferas detrás */}
             <Ball size={130} color="#201a14" className="ball-a -left-2 top-2 sm:left-0 sm:top-6" />
             <Ball size={56} color="#f7f3ea" className="ball-b right-6 top-0" />
@@ -44,6 +50,7 @@ export function Hero() {
 
           {/* Texto */}
           <motion.div
+            data-hero-copy
             className="order-1 lg:order-2"
             variants={container}
             initial={reduce ? false : "hidden"}

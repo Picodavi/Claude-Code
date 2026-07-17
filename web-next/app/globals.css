@@ -64,6 +64,19 @@ body {
     linear-gradient(180deg, #fbf3e3 0%, #f7eedd 50%, #f3e8d3 100%);
 }
 
+/* Capa de atmósfera pino: entra en fundido hacia el cierre (scrub por scroll) */
+.backdrop__mesh--pine {
+  position: absolute;
+  inset: -20%;
+  opacity: 0;
+  background:
+    radial-gradient(46% 40% at 16% 12%, rgba(21, 83, 59, 0.4), transparent 60%),
+    radial-gradient(40% 36% at 84% 20%, rgba(222, 142, 41, 0.18), transparent 60%),
+    radial-gradient(52% 46% at 76% 86%, rgba(15, 63, 45, 0.42), transparent 62%),
+    linear-gradient(180deg, #eef0e4 0%, #e4ead9 55%, #dbe4d2 100%);
+  will-change: opacity;
+}
+
 /* Grano/textura premium por encima de la malla */
 .backdrop__grain {
   position: absolute;

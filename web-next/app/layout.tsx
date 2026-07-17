@@ -5,7 +5,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { Scrollytelling } from "@/components/scrolly/Scrollytelling";
 import { Backdrop } from "@/components/Backdrop";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
@@ -77,7 +77,7 @@ export default function RootLayout({
         <Backdrop />
         <MotionConfig reducedMotion="never">
           <LanguageProvider>
-            <SmoothScroll />
+            <Scrollytelling />
             <ScrollProgress />
             <Nav />
             <div className="flex-1">{children}</div>

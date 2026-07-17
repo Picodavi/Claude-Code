@@ -17,6 +17,7 @@ export function Backdrop() {
   return (
     <div className="backdrop" aria-hidden>
       <div className="backdrop__mesh" />
+      <div className="backdrop__mesh--pine" />
       <div className="backdrop__blob backdrop__blob--a" />
       <div className="backdrop__blob backdrop__blob--b" />
       <div className="backdrop__blob backdrop__blob--c" />

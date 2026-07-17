@@ -17,7 +17,10 @@ export function SectionHeader({
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold-800">
         {t(tagKey)}
       </p>
-      <h2 className="mt-3 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ink sm:text-5xl">
+      <h2
+        data-sr
+        className="mt-3 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ink sm:text-5xl"
+      >
         {t(headingKey)}
       </h2>
       {leadKey ? (

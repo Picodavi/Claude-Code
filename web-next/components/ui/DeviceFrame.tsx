@@ -24,15 +24,18 @@ export function DeviceFrame({
           {url}
         </span>
       </div>
-      <Image
-        src={src}
-        alt={alt}
-        width={1400}
-        height={875}
-        className="h-auto w-full"
-        priority={priority}
-        sizes="(max-width: 1024px) 100vw, 60vw"
-      />
+      {/* Contenedor con overflow para el parallax interno de la captura */}
+      <div data-parallax className="overflow-hidden">
+        <Image
+          src={src}
+          alt={alt}
+          width={1400}
+          height={875}
+          className="h-auto w-full will-change-transform"
+          priority={priority}
+          sizes="(max-width: 1024px) 100vw, 60vw"
+        />
+      </div>
     </div>
   );
 
