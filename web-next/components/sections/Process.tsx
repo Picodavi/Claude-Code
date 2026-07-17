@@ -2,7 +2,6 @@
 
 import { useT } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
-import { Ball } from "@/components/ui/Ball";
 
 const STEPS: [string, string, string][] = [
   ["p1.tag", "p1.title", "p1.desc"],
@@ -10,16 +9,17 @@ const STEPS: [string, string, string][] = [
   ["p3.tag", "p3.title", "p3.desc"],
 ];
 
-// Bloque OSCURO (ritmo de color): fondo tinta, texto claro, esferas decorativas.
+// Bloque OSCURO (ritmo de color): fondo tinta, texto claro, luz ambiental.
 export function Process() {
   const t = useT();
   return (
     <Section id="process" className="!px-4 sm:!px-6">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#181410] px-6 py-14 sm:px-10 lg:px-14">
-        {/* esferas decorativas */}
-        <Ball size={90} color="#DE8E29" className="ball-a -right-6 -top-6 opacity-90" />
-        <Ball size={46} color="#15533B" className="ball-b left-10 -bottom-4" />
-        <Ball size={26} color="#f7f3ea" className="ball-c right-1/4 bottom-8 hidden sm:block" />
+        {/* Haz de luz dorado en la esquina (ambiente integrado, sin tapar contenido) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(222,142,41,0.28),transparent_70%)]"
+        />
 
         <header className="relative">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold">

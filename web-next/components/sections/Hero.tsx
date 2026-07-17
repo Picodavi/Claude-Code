@@ -3,7 +3,6 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useT } from "@/lib/i18n";
 import { LaptopMock } from "@/components/hero3d/LaptopMock";
-import { Ball } from "@/components/ui/Ball";
 
 const container: Variants = {
   hidden: {},
@@ -28,30 +27,37 @@ export function Hero() {
         <div aria-hidden className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-black/10" />
         <div aria-hidden className="absolute -bottom-32 right-1/3 h-96 w-96 rounded-full bg-black/10" />
 
+        {/* Tipografía decorativa en capas (aria-hidden: el h1 real es el semántico).
+            Capa trasera: palabra gigante en trazo, medio oculta tras el Mac. */}
+        <div
+          aria-hidden
+          data-deco-back
+          className="pointer-events-none absolute left-[-2%] top-[12%] z-0 select-none whitespace-nowrap font-display text-[15vw] font-extrabold uppercase leading-none tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.34)] lg:text-[11vw]"
+        >
+          Picodavi
+        </div>
+        {/* Capa delantera: banda editorial vertical (solo tablet/escritorio). */}
+        <div
+          aria-hidden
+          data-deco-front
+          className="pointer-events-none absolute bottom-[10%] right-[4%] z-30 hidden origin-bottom-right -rotate-90 select-none font-mono text-xs font-bold uppercase tracking-[0.4em] text-white/70 sm:block"
+        >
+          Disseny · Web · Catalunya
+        </div>
+
         <div className="relative grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
-          {/* Portátil + esferas flotantes */}
+          {/* Mac protagonista, integrado entre las capas tipográficas */}
           <div
             data-hero-visual
-            className="relative order-2 h-[360px] sm:h-[440px] lg:order-1 lg:h-[540px]"
+            className="relative z-10 order-2 h-[320px] sm:h-[440px] lg:order-1 lg:h-[540px]"
           >
-            {/* esferas detrás */}
-            <Ball size={130} color="#201a14" className="ball-a -left-2 top-2 sm:left-0 sm:top-6" />
-            <Ball size={56} color="#f7f3ea" className="ball-b right-6 top-0" />
-            <Ball size={44} color="#15533B" className="ball-c left-10 bottom-24 z-0" />
-            {/* portátil */}
-            <div className="absolute inset-0 z-10 px-4 py-6 sm:px-8">
-              <LaptopMock />
-            </div>
-            {/* esferas delante (solapan el portátil, como la referencia) */}
-            <Ball size={84} color="#DE8E29" className="ball-b -right-2 bottom-16 z-20 sm:right-2" />
-            <Ball size={38} color="#201a14" className="ball-a bottom-4 left-1/4 z-20" />
-            <Ball size={26} color="#f7f3ea" className="ball-c right-1/4 top-10 z-20" />
+            <LaptopMock />
           </div>
 
           {/* Texto */}
           <motion.div
             data-hero-copy
-            className="order-1 lg:order-2"
+            className="relative z-20 order-1 lg:order-2"
             variants={container}
             initial={reduce ? false : "hidden"}
             animate="show"

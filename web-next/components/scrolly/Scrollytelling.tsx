@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,27 +10,18 @@ import Lenis from "lenis";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /**
- * Orquestador del scrollytelling de toda la página.
- *
- * Narrativa (adaptada del storyboard de references/):
- *  0%   Hero estable y legible.
- *  ~10% Empieza el scroll: el hero se "pinea", la cámara empuja (el Mac crece
- *       y gira — el giro 360 ya lo aporta LaptopMock ligado a scrollY), los
- *       textos se despiden con intención y las esferas abren en profundidad.
- *  ...  La ESFERA DORADA (objeto de continuidad) viaja entre secciones,
- *       cambiando de escala y posición; los titulares se revelan con máscara;
- *       el bloque oscuro del proceso "enciende" sus pasos con el scroll;
- *       la captura del proyecto tiene parallax interno (ventana con vida).
- *  100% La atmósfera vira a pino, la esfera aterriza junto al CTA final.
- *
- * Todo con scrub → reversible al subir. Lenis va sincronizado con
- * ScrollTrigger a través del ticker de GSAP (un solo bucle).
+ * Orquestador del scrollytelling.
+ *  - Hero pineado: la cámara empuja, el Mac evoluciona (gira 360 vía LaptopMock),
+ *    el titular se despide por bloques y las CAPAS TIPOGRÁFICAS se mueven en
+ *    profundidad a ritmos distintos (la palabra trasera avanza, la banda
+ *    delantera se retira) — composición editorial, reversible.
+ *  - Titulares con reveal de máscara; pasos del proceso que se encienden;
+ *    parallax interno de la captura; atmósfera oro→pino; halo de luz viajero.
+ *  - Lenis sincronizado con ScrollTrigger (un solo rAF). Móvil sin pin.
  */
 export function Scrollytelling() {
-  const orbRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Lenis + sincronización con ScrollTrigger (un único rAF: el ticker de GSAP).
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
     lenis.on("scroll", ScrollTrigger.update);
@@ -54,7 +45,7 @@ export function Scrollytelling() {
       (ctx) => {
         const isDesktop = !!ctx.conditions?.isDesktop;
 
-        /* ---- 1) HERO: pin + cámara que empuja (solo escritorio) ---- */
+        /* ---- 1) HERO: pin + cámara + tipografía en profundidad ---- */
         if (isDesktop && document.querySelector("[data-hero-panel]")) {
           gsap
             .timeline({
@@ -77,18 +68,21 @@ export function Scrollytelling() {
               { scale: 1.17, yPercent: 7, ease: "none" },
               0,
             )
+            // la palabra gigante trasera AVANZA (crece y deriva, plano lejano→medio)
             .to(
-              "[data-hero-panel]",
-              { borderRadius: 0, scale: 1.015, ease: "none" },
+              "[data-deco-back]",
+              { xPercent: -14, yPercent: 12, scale: 1.22, ease: "none" },
+              0,
+            )
+            // la banda delantera SE RETIRA hacia arriba (plano cercano, más rápida)
+            .to(
+              "[data-deco-front]",
+              { yPercent: -220, autoAlpha: 0.15, ease: "none" },
               0,
             )
             .to(
-              "#top .ball",
-              {
-                yPercent: (i: number) => (i % 2 ? -45 : 32),
-                xPercent: (i: number) => (i % 2 ? 20 : -16),
-                ease: "none",
-              },
+              "[data-hero-panel]",
+              { borderRadius: 0, scale: 1.015, ease: "none" },
               0,
             );
         }
@@ -112,7 +106,7 @@ export function Scrollytelling() {
           );
         });
 
-        /* ---- 3) Proceso (bloque oscuro): los pasos se encienden ---- */
+        /* ---- 3) Proceso: los pasos se encienden con el scroll ---- */
         if (document.querySelector("#process [data-step]")) {
           gsap.fromTo(
             "#process [data-step]",
@@ -132,7 +126,7 @@ export function Scrollytelling() {
           );
         }
 
-        /* ---- 4) Proyecto real: parallax interno de la captura ---- */
+        /* ---- 4) Proyecto: parallax interno de la captura ---- */
         if (document.querySelector("#work [data-parallax] img")) {
           gsap.fromTo(
             "#work [data-parallax] img",
@@ -151,7 +145,7 @@ export function Scrollytelling() {
           );
         }
 
-        /* ---- 5) Atmósfera: la luz vira de oro a pino hacia el cierre ---- */
+        /* ---- 5) Atmósfera: oro → pino hacia el cierre ---- */
         gsap.to(".backdrop__mesh--pine", {
           opacity: 0.95,
           ease: "none",
@@ -196,83 +190,10 @@ export function Scrollytelling() {
             },
           );
         }
-
-        /* ---- 6) La esfera dorada viaja por toda la página ---- */
-        if (isDesktop && orbRef.current) {
-          const W = () => window.innerWidth;
-          const H = () => window.innerHeight;
-          gsap
-            .timeline({
-              scrollTrigger: {
-                trigger: document.body,
-                start: "top top",
-                end: "max",
-                scrub: 1.1,
-                invalidateOnRefresh: true,
-              },
-            })
-            // cámara empuja: crece hacia el centro
-            .fromTo(
-              orbRef.current,
-              { x: () => W() * 0.66, y: () => H() * 0.28, scale: 0.5, autoAlpha: 0.95 },
-              { x: () => W() * 0.44, y: () => H() * 0.5, scale: 1, ease: "none" },
-            )
-            // se aparta a la izquierda mientras se leen los servicios
-            .to(orbRef.current, {
-              x: () => W() * 0.05,
-              y: () => H() * 0.64,
-              scale: 0.38,
-              ease: "none",
-            })
-            // cruza al lado derecho sobre el bloque oscuro (brilla en contraste)
-            .to(orbRef.current, {
-              x: () => W() * 0.86,
-              y: () => H() * 0.38,
-              scale: 0.55,
-              ease: "none",
-            })
-            // baja discreta durante precios (no molesta la lectura)
-            .to(orbRef.current, {
-              x: () => W() * 0.06,
-              y: () => H() * 0.78,
-              scale: 0.32,
-              ease: "none",
-            })
-            // aterriza junto al CTA final
-            .to(orbRef.current, {
-              x: () => W() * 0.72,
-              y: () => H() * 0.5,
-              scale: 0.85,
-              ease: "none",
-            });
-        } else if (orbRef.current) {
-          gsap.set(orbRef.current, { autoAlpha: 0 });
-        }
       },
     );
     // Re-crea las escenas al cambiar de ruta (limpieza automática vía revert).
   }, { dependencies: [pathname], revertOnUpdate: true });
 
-  return (
-    <div
-      ref={orbRef}
-      aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-30 will-change-transform"
-      // Posición inicial equivalente al primer fotograma del timeline, para
-      // evitar un flash en (0,0) antes del primer tick de GSAP.
-      style={{ transform: "translate(66vw, 28vh) scale(0.5)", opacity: 0.95 }}
-    >
-      <div
-        className="ball"
-        style={
-          {
-            position: "relative",
-            width: 150,
-            height: 150,
-            "--ball-color": "#DE8E29",
-          } as React.CSSProperties
-        }
-      />
-    </div>
-  );
+  return null;
 }
