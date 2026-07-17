@@ -4,6 +4,7 @@ import { useT } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { DeviceFrame } from "@/components/ui/DeviceFrame";
+import xaletCover from "@/assets/xalet-cover.jpg";
 
 const FEATS = ["feat.1", "feat.2", "feat.3", "feat.4"];
 
@@ -21,7 +22,7 @@ export function Work() {
         <div className="mt-10 grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
           {/* Web real en un marco de navegador */}
           <DeviceFrame
-            src="/xalet-cover.jpg"
+            src={xaletCover}
             alt="Xalet La Coromina — web real diseñada por Picodavi"
             url="xaletlacoromina.com"
             href="https://xaletlacoromina.com"

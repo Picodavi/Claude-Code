@@ -2,7 +2,8 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useT } from "@/lib/i18n";
-import { BrowserMock } from "@/components/hero3d/BrowserMock";
+import { LaptopMock } from "@/components/hero3d/LaptopMock";
+import { Ball } from "@/components/ui/Ball";
 
 const container: Variants = {
   hidden: {},
@@ -19,11 +20,26 @@ export function Hero() {
 
   return (
     <section id="top" className="px-4 pt-6 sm:px-6">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#E9A94D_0%,#D98A34_45%,#B4671A_100%)] px-6 py-10 shadow-[0_30px_80px_-20px_rgba(180,103,26,0.5)] sm:px-10 sm:py-14 lg:px-14">
-        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
-          {/* Mockup de la web (perspectiva 3D en CSS) */}
-          <div className="order-2 h-[320px] sm:h-[420px] lg:order-1 lg:h-[520px]">
-            <BrowserMock />
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(140deg,#F2B25C_0%,#DE8E29_40%,#A85D14_80%,#7c4712_100%)] px-6 py-12 shadow-[0_40px_90px_-25px_rgba(124,71,18,0.6)] sm:px-10 sm:py-16 lg:px-14">
+        {/* decoración: círculos oscuros translúcidos (profundidad, estilo ref) */}
+        <div aria-hidden className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-black/10" />
+        <div aria-hidden className="absolute -bottom-32 right-1/3 h-96 w-96 rounded-full bg-black/10" />
+
+        <div className="relative grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
+          {/* Portátil + esferas flotantes */}
+          <div className="relative order-2 h-[360px] sm:h-[440px] lg:order-1 lg:h-[540px]">
+            {/* esferas detrás */}
+            <Ball size={130} color="#201a14" className="ball-a -left-2 top-2 sm:left-0 sm:top-6" />
+            <Ball size={56} color="#f7f3ea" className="ball-b right-6 top-0" />
+            <Ball size={44} color="#15533B" className="ball-c left-10 bottom-24 z-0" />
+            {/* portátil */}
+            <div className="absolute inset-0 z-10 px-4 py-6 sm:px-8">
+              <LaptopMock />
+            </div>
+            {/* esferas delante (solapan el portátil, como la referencia) */}
+            <Ball size={84} color="#DE8E29" className="ball-b -right-2 bottom-16 z-20 sm:right-2" />
+            <Ball size={38} color="#201a14" className="ball-a bottom-4 left-1/4 z-20" />
+            <Ball size={26} color="#f7f3ea" className="ball-c right-1/4 top-10 z-20" />
           </div>
 
           {/* Texto */}

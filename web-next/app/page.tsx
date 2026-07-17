@@ -5,7 +5,6 @@ import { Work } from "@/components/sections/Work";
 import { Sectors } from "@/components/sections/Sectors";
 import { Promises } from "@/components/sections/Promises";
 import { Why } from "@/components/sections/Why";
-import { Fit } from "@/components/sections/Fit";
 import { Pricing } from "@/components/sections/Pricing";
 import { Care } from "@/components/sections/Care";
 import { Extras } from "@/components/sections/Extras";
@@ -27,7 +26,6 @@ export default function Home() {
       <Sectors />
       <Promises />
       <Why />
-      <Fit />
       <Pricing />
       <Care />
       <Extras />

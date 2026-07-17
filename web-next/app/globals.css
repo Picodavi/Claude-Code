@@ -5,8 +5,8 @@
    NO es el Tailwind de fábrica: colores y fuentes propios para no parecer plantilla.
    ========================================================================== */
 :root {
-  --bg: #ffffff;
-  --surface: #f5f3ee;
+  --bg: #faf5ec;
+  --surface: #f1ebdf;
   --ink: #16130e;
   --text: #2c271f;
   --muted: #6e675f;
@@ -110,6 +110,46 @@ body {
 }
 .mock-float {
   animation: mock-float 5.5s ease-in-out infinite;
+}
+
+/* ===== Esferas 3D glossy (estilo referencia: bolas con brillo y sombra) ===== */
+.ball {
+  position: absolute;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.25) 16%, transparent 42%),
+    radial-gradient(circle at 68% 82%, rgba(0, 0, 0, 0.28) 0%, transparent 55%),
+    var(--ball-color, #de8e29);
+  box-shadow:
+    0 30px 50px -18px rgba(0, 0, 0, 0.45),
+    inset 0 -10px 24px rgba(0, 0, 0, 0.2);
+}
+@keyframes ball-float-a {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-18px) translateX(6px);
+  }
+}
+@keyframes ball-float-b {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(14px) translateX(-8px);
+  }
+}
+.ball-a {
+  animation: ball-float-a 6s ease-in-out infinite;
+}
+.ball-b {
+  animation: ball-float-b 7.5s ease-in-out infinite;
+}
+.ball-c {
+  animation: ball-float-a 9s ease-in-out infinite reverse;
 }
 
 /* Scroll suave (Lenis) */
