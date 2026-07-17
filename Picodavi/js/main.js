@@ -592,80 +592,85 @@
   }
 
   /* ======================================================================
-     PAISAJE VIVO — una corriente topográfica conecta el hero con el final.
-     El scroll dibuja la ruta y mueve el punto de energía; cada sección cambia
-     sutilmente la atmósfera. En escritorio, un halo profundo sigue al ratón.
-     Todo queda fuera del flujo de layout y desaparece con reduced-motion.
+     FONDO CINEMATOGRÁFICO — tres profundidades (lejos/medio/cerca) con
+     parallax real ligado al scroll en un ÚNICO timeline scrubbed, más tinte
+     y luminosidad por sección. Reversible (baja avanza, sube retrocede) y sin
+     seguir al cursor. matchMedia adapta escritorio / tablet / móvil / RM.
      ====================================================================== */
-  function initLivingBackdrop() {
+  function initBgfx() {
     var bg = $(".bgfx");
-    if (!bg || REDUCE) return;
+    if (!bg) return;
 
-    var pointer = $(".bgfx__pointer", bg);
-    var finePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
-    if (pointer && finePointer && window.gsap && window.gsap.quickTo) {
-      window.gsap.set(pointer, { xPercent: -50, yPercent: -50, x: window.innerWidth * .5, y: window.innerHeight * .5 });
-      var pointerX = window.gsap.quickTo(pointer, "x", { duration: 1.15, ease: "power3.out" });
-      var pointerY = window.gsap.quickTo(pointer, "y", { duration: 1.15, ease: "power3.out" });
-      doc.addEventListener("pointermove", function (e) {
-        bg.classList.add("is-pointer-active");
-        pointerX(e.clientX); pointerY(e.clientY);
-      }, { passive: true });
-      doc.documentElement.addEventListener("mouseleave", function () { bg.classList.remove("is-pointer-active"); });
-    }
-
-    if (!hasGSAP) return;
+    // Reduced-motion o sin GSAP: la composición estática del CSS ya es válida
+    // (sin ScrollTriggers, sin transforms). Todo el contenido se ve al instante.
+    if (REDUCE || !hasGSAP) return;
     window.gsap.registerPlugin(window.ScrollTrigger);
-    var main = $("main");
-    var topo = $(".bgfx__topo", bg);
-    var svg = $(".bgfx__current", bg);
-    var path = $("#bgfxCurrentPath", bg);
-    var signal = $(".bgfx__signal", bg);
 
-    if (main && topo) {
-      window.gsap.to(topo, {
-        xPercent: -7, yPercent: 10, rotation: 9, scale: 1.08, ease: "none",
-        scrollTrigger: { trigger: main, start: "top top", end: "bottom bottom", scrub: 1.2 }
+    // Tinte y luminosidad por sección (cambio de atmósfera; sin coste por frame).
+    [["#hero", "hero"], ["#services", "services"], ["#process", "process"],
+     ["#about", "about"], ["#work", "work"], ["#pricing", "pricing"], ["#contact", "contact"]]
+      .forEach(function (s) {
+        var el = $(s[0]); if (!el) return;
+        var set = function () { bg.setAttribute("data-scene", s[1]); };
+        window.ScrollTrigger.create({ trigger: el, start: "top 55%", end: "bottom 45%", onEnter: set, onEnterBack: set });
       });
-    }
 
-    if (main && svg && path && signal && path.getTotalLength) {
-      var length = path.getTotalLength();
-      path.style.strokeDasharray = length + " " + length;
-      path.style.strokeDashoffset = String(length);
-      window.gsap.set(signal, { xPercent: -50, yPercent: -50 });
+    var far = $(".bgfx__far", bg), mid = $(".bgfx__mid", bg), near = $(".bgfx__near", bg);
+    var grid = $(".bgfx__grid", bg), word = $(".bgfx__word", bg);
+    var beamA = $(".bgfx__beam--a", bg), beamB = $(".bgfx__beam--b", bg);
+    var shardA = $(".bgfx__shard--a", bg), shardB = $(".bgfx__shard--b", bg);
+    var paths = $all(".bgfx__topo path", bg);
 
-      function placeSignal(progress) {
-        var point = path.getPointAtLength(length * (.035 + progress * .93));
-        var rect = svg.getBoundingClientRect();
-        var box = svg.viewBox.baseVal;
-        var x = rect.left + ((point.x - box.x) / box.width) * rect.width;
-        var y = rect.top + ((point.y - box.y) / box.height) * rect.height;
-        path.style.strokeDashoffset = String(length * (1 - progress * .97));
-        window.gsap.set(signal, { x: x, y: y });
-        bg.classList.toggle("is-current-ready", progress > .045 && progress < .985);
+    // Curvas listas para dibujarse con el progreso (se deforman al hacer scroll).
+    paths.forEach(function (p) {
+      if (!p.getTotalLength) return;
+      var L = p.getTotalLength();
+      p.style.strokeDasharray = L; p.style.strokeDashoffset = L; p.__len = L;
+    });
+
+    // matchMedia: adapta capas/distancia por dispositivo y auto-revierte al cambiar.
+    window.gsap.matchMedia().add({
+      desktop: "(min-width: 1024px)",
+      tablet: "(min-width: 700px) and (max-width: 1023px)",
+      mobile: "(max-width: 699px)"
+    }, function (ctx) {
+      var c = ctx.conditions, d = c.desktop, t = c.tablet;
+
+      // Un ÚNICO timeline scrubbed mueve las tres capas a velocidades distintas.
+      // Reversible por definición: al bajar avanza, al subir retrocede.
+      var tl = window.gsap.timeline({
+        scrollTrigger: { trigger: doc.documentElement, start: "top top", end: "bottom bottom", scrub: c.mobile ? 0.5 : 1.1 }
+      });
+      tl.fromTo(far,  { yPercent: -2 }, { yPercent: d ? 6 : 4,  ease: "none" }, 0)
+        .fromTo(mid,  { yPercent: -3 }, { yPercent: d ? 12 : 8, ease: "none" }, 0)
+        .fromTo(near, { yPercent: -6 }, { yPercent: d ? 24 : 14, ease: "none" }, 0);
+
+      // Retícula: sensación de avanzar hacia el horizonte.
+      if (grid) tl.fromTo(grid, { "--grid-y": "0px" }, { "--grid-y": "128px", ease: "none" }, 0);
+
+      // Tipografía ambiental: deriva en sentido contrario (profundidad). Solo escritorio.
+      if (word && d) tl.fromTo(word, { xPercent: -5 }, { xPercent: 7, ease: "none" }, 0);
+
+      // Curvas se dibujan / deforman con el progreso.
+      if (!c.mobile) paths.forEach(function (p) {
+        if (p.__len) tl.fromTo(p, { strokeDashoffset: p.__len }, { strokeDashoffset: 0, ease: "none" }, 0);
+      });
+
+      // Bandas de luz que atraviesan la página (conservan su inclinación).
+      if (d || t) {
+        window.gsap.set([beamA, beamB], { rotate: -11 });
+        tl.fromTo(beamA, { xPercent: -22, yPercent: -8 }, { xPercent: 16, yPercent: 26, ease: "none" }, 0)
+          .fromTo(beamB, { xPercent: 18, yPercent: 6 }, { xPercent: -14, yPercent: 30, ease: "none" }, 0);
       }
 
-      var currentTrigger = window.ScrollTrigger.create({
-        trigger: main, start: "top top", end: "bottom bottom",
-        onUpdate: function (self) { placeSignal(self.progress); },
-        onRefresh: function (self) { placeSignal(self.progress); }
-      });
-      placeSignal(currentTrigger.progress || 0);
-    }
-
-    [
-      ["#hero", "hero"], ["#services", "services"], ["#about", "about"],
-      ["#work", "work"], ["#pricing", "pricing"], ["#contact", "contact"]
-    ].forEach(function (scene) {
-      var section = $(scene[0]);
-      if (!section) return;
-      function activate() { bg.setAttribute("data-scene", scene[1]); }
-      window.ScrollTrigger.create({
-        trigger: section, start: "top 58%", end: "bottom 42%",
-        onEnter: activate, onEnterBack: activate
-      });
+      // Planos geométricos: escala y rotación controladas. Solo escritorio.
+      if (d) {
+        tl.fromTo(shardA, { yPercent: -8, rotate: -4, scale: .95 }, { yPercent: 22, rotate: 3, scale: 1.05, ease: "none" }, 0)
+          .fromTo(shardB, { yPercent: 8, rotate: 5, scale: 1.06 }, { yPercent: -14, rotate: -3, scale: .97, ease: "none" }, 0);
+      }
     });
+
+    window.addEventListener("load", function () { window.ScrollTrigger.refresh(); });
   }
 
   /* ======================================================================
@@ -688,7 +693,7 @@
     safe(initHeroIntro, "hero-intro");
     safe(initMagnetic, "magnetic");
     safe(initSceneMouse, "scene-mouse");
-    safe(initLivingBackdrop, "living-backdrop");
+    safe(initBgfx, "bgfx");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);

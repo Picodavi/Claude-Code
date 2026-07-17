@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20260807" />
+  <link rel="stylesheet" href="css/styles.css?v=20260809" />
   <!-- Datos estructurados (SEO): negocio + FAQ -->
   <script type="application/ld+json">
 {
@@ -267,26 +267,29 @@
 </head>
 <body>
 
-  <!-- Fondo vivo: luz orgánica + corriente topográfica que responde al scroll -->
+  <!-- Fondo cinematográfico multicapa · 100% decorativo (fuera del árbol
+       accesible). Tres profundidades con parallax real ligado al scroll
+       (GSAP ScrollTrigger, scrub). Sin círculos, sin seguir al cursor. -->
   <div class="bgfx" data-scene="hero" aria-hidden="true">
-    <i class="bgfx__mesh"></i>
-    <i class="bgfx__orb bgfx__orb--pine"></i>
-    <i class="bgfx__orb bgfx__orb--gold"></i>
-    <svg class="bgfx__topo" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g stroke-width="1.1"><path d="M120,780 C240,700 200,560 340,520 C480,480 520,340 660,320 C770,304 820,220 880,200"/><path d="M60,820 C220,740 160,560 320,500 C470,444 500,300 660,270 C790,246 830,170 900,150"/><path d="M180,740 C280,670 250,560 370,540 C500,518 550,390 670,370 C760,355 810,280 860,260"/><path d="M0,860 C180,790 120,570 300,480 C450,405 480,260 650,220 C780,190 840,120 900,100"/><path d="M240,710 C320,650 300,570 400,555 C520,537 580,430 680,415 C755,404 795,330 840,315"/></g></svg>
-    <svg class="bgfx__current" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="bgfxCurrentGradient" x1="760" y1="-40" x2="250" y2="1040" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#15533B" />
-          <stop offset=".48" stop-color="#5D9B79" />
-          <stop offset=".72" stop-color="#DE8E29" />
-          <stop offset="1" stop-color="#15533B" />
-        </linearGradient>
-      </defs>
-      <path class="bgfx__current-bed" d="M780 -80 C920 120 720 224 748 382 C780 560 422 520 472 700 C512 846 208 850 258 1080" />
-      <path class="bgfx__current-line" id="bgfxCurrentPath" d="M780 -80 C920 120 720 224 748 382 C780 560 422 520 472 700 C512 846 208 850 258 1080" />
-    </svg>
-    <i class="bgfx__signal"></i>
-    <i class="bgfx__pointer"></i>
+    <!-- LEJOS · retícula en perspectiva + horizonte de luz (muy lento) -->
+    <div class="bgfx__layer bgfx__far">
+      <div class="bgfx__grid"></div>
+      <div class="bgfx__horizon"></div>
+    </div>
+    <!-- MEDIO · tinte cromático por sección + curvas del Montseny + tipografía ambiental -->
+    <div class="bgfx__layer bgfx__mid">
+      <div class="bgfx__wash"></div>
+      <span class="bgfx__word">MONTSENY</span>
+      <svg class="bgfx__topo" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g stroke="#15533B" stroke-width="1.2" vector-effect="non-scaling-stroke"><path d="M120,780 C240,700 200,560 340,520 C480,480 520,340 660,320 C770,304 820,220 880,200"/><path d="M60,820 C220,740 160,560 320,500 C470,444 500,300 660,270 C790,246 830,170 900,150"/><path d="M180,740 C280,670 250,560 370,540 C500,518 550,390 670,370 C760,355 810,280 860,260"/><path d="M0,860 C180,790 120,570 300,480 C450,405 480,260 650,220 C780,190 840,120 900,100"/><path d="M240,710 C320,650 300,570 400,555 C520,537 580,430 680,415 C755,404 795,330 840,315"/></g></svg>
+    </div>
+    <!-- CERCA · bandas de luz + planos geométricos translúcidos (más rápido) -->
+    <div class="bgfx__layer bgfx__near">
+      <span class="bgfx__beam bgfx__beam--a"></span>
+      <span class="bgfx__beam bgfx__beam--b"></span>
+      <span class="bgfx__shard bgfx__shard--a"></span>
+      <span class="bgfx__shard bgfx__shard--b"></span>
+    </div>
+    <div class="bgfx__grain"></div>
   </div>
 
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -717,7 +720,7 @@
         <!-- ============ CASO DESTACADO · Xalet La Coromina (real, visitable) ============ -->
         <article class="featured reveal">
           <a class="featured__shot" href="https://xaletlacoromina.com" target="_blank" rel="noopener" aria-label="Visitar xaletlacoromina.com (se abre en pestaña nueva)">
-            <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260801" width="1400" height="875" loading="lazy" decoding="async"
+            <img class="featured__img" src="assets/img/xalet-cover.jpg?v=20260809" width="1400" height="875" loading="lazy" decoding="async"
               alt="Portada de la web real xaletlacoromina.com: la casa de piedra del Xalet La Coromina entre los árboles del Montseny"
               onerror="this.style.display=&quot;none&quot;;this.closest(&quot;.featured__shot&quot;).classList.add(&quot;featured__shot--empty&quot;);" />
             <span class="featured__live"><i aria-hidden="true"></i> <span data-i18n="feat.live">En línea</span></span>
@@ -1285,9 +1288,9 @@
        SCRIPTS · defer clásicos (NUNCA type="module") con cache-buster
        GSAP es opcional: si no carga, main.js usa el fallback nativo.
        ==================================================================== -->
-  <script defer src="lib/gsap.min.js?v=20260801"></script>
-  <script defer src="lib/ScrollTrigger.min.js?v=20260801"></script>
-  <script defer src="lib/manifest.js?v=20260806"></script>
-  <script defer src="js/main.js?v=20260807"></script>
+  <script defer src="lib/gsap.min.js?v=20260809"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260809"></script>
+  <script defer src="lib/manifest.js?v=20260809"></script>
+  <script defer src="js/main.js?v=20260809"></script>
 </body>
 </html>

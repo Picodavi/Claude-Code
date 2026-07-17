@@ -1646,106 +1646,113 @@ body:has(.hero--dark) .nav:not(.is-solid) .nav__burger span { background: #F5F2E
 }
 
 /* ==========================================================================
-   FONDO VIVO — paisaje topográfico continuo
-   La página ya no descansa sobre blanco plano: una atmósfera pino/oro respira,
-   una corriente se dibuja con el scroll y un halo responde al puntero.
-   Las bandas sólidas lo tapan a propósito para crear ritmo y descanso visual.
+   FONDO CINEMATOGRÁFICO MULTICAPA — atmósfera continua con parallax real.
+   Tres profundidades (lejos/medio/cerca) a velocidades distintas, tinte por
+   sección (ritmo) y grano sutil. 100% decorativo: aria-hidden, sin clics.
+   Solo transforms/opacity: nada de blur animado ni filtros costosos.
    ========================================================================== */
 .bgfx {
   position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
-  --scene-pine: .8; --scene-gold: .72; --scene-current: .42;
+  --power: 1;                 /* intensidad de la escena (crea el ritmo) */
+  --hue: 0deg;                /* deriva cromática entre secciones */
+}
+.bgfx__layer { position: absolute; inset: -12% -6%; will-change: transform; }
+
+/* --- LEJOS · retícula en perspectiva + horizonte de luz --------------------- */
+.bgfx__far { perspective: 680px; perspective-origin: 50% 40%; }
+.bgfx__grid {
+  position: absolute; left: -35%; right: -35%; bottom: -6%; height: 150%;
+  transform-origin: 50% 100%; transform: rotateX(72deg) translateY(var(--grid-y, 0px));
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 63px, rgba(21,83,59,.5) 63px 64px),
+    repeating-linear-gradient(0deg,  transparent 0 63px, rgba(21,83,59,.34) 63px 64px);
+  -webkit-mask-image: linear-gradient(to top, #000 3%, transparent 58%);
+          mask-image: linear-gradient(to top, #000 3%, transparent 58%);
+  opacity: calc(.1 * var(--power)); transition: opacity .9s var(--ease-soft);
+}
+.bgfx__horizon {
+  position: absolute; left: 0; right: 0; top: 44%; height: 44%;
+  background: radial-gradient(130% 78% at 50% 100%, rgba(222,142,41,.16) 0%, transparent 60%);
+  opacity: calc(.9 * var(--power)); transition: opacity .9s var(--ease-soft);
 }
 
-/* Mancha de color amplia: la forma cambia despacio y evita el aspecto de
-   degradado prefabricado. Solo transforma una capa, sin provocar reflow. */
-.bgfx__mesh {
-  position: absolute; inset: -28%; opacity: .7; will-change: transform;
+/* --- MEDIO · tinte cromático + tipografía ambiental + curvas ---------------- */
+.bgfx__wash {
+  position: absolute; inset: -22%;
   background:
-    radial-gradient(ellipse at 18% 28%, rgba(21,83,59,.11) 0 8%, transparent 34%),
-    radial-gradient(ellipse at 78% 36%, rgba(222,142,41,.105) 0 7%, transparent 31%),
-    radial-gradient(ellipse at 54% 82%, rgba(92,151,117,.08) 0 6%, transparent 28%);
-  filter: blur(26px) saturate(112%);
-  animation: bgfxMeshDrift 26s var(--ease-soft) infinite alternate;
+    linear-gradient(135deg, rgba(21,83,59,.12) 0%, transparent 44%),
+    linear-gradient(305deg, rgba(222,142,41,.11) 0%, transparent 48%);
+  opacity: calc(.9 * var(--power)); filter: hue-rotate(var(--hue));
+  transition: opacity 1s var(--ease-soft), filter 1s var(--ease-soft);
 }
-@keyframes bgfxMeshDrift {
-  0% { transform: translate3d(-2%, -2%, 0) rotate(-3deg) scale(1); }
-  55% { transform: translate3d(4%, 3%, 0) rotate(2deg) scale(1.08); }
-  100% { transform: translate3d(-1%, 5%, 0) rotate(-1deg) scale(1.03); }
+.bgfx__word {
+  position: absolute; right: -3%; top: 14%; white-space: nowrap;
+  font-family: var(--font-display); font-weight: 800; letter-spacing: -.055em; line-height: .8;
+  font-size: clamp(9rem, 30vw, 33rem); color: transparent;
+  -webkit-text-stroke: 1.5px rgba(21,83,59,.05); text-stroke: 1.5px rgba(21,83,59,.05);
+  opacity: calc(.85 * var(--power));
 }
+.bgfx__topo { position: absolute; right: -6%; top: -8%; width: min(76vw, 1040px); height: min(76vw, 1040px);
+  opacity: calc(.95 * var(--power)); transition: opacity 1s var(--ease-soft); }
+.bgfx__topo path { stroke: #15533B; opacity: .085; }
 
-/* Aurora: sol entre pinos (transform-only, 2 capas, difuminado contenido) */
-.bgfx__orb { position: absolute; border-radius: 50%; filter: blur(70px); will-change: transform; transition: opacity 1.2s var(--ease-soft); }
-.bgfx__orb--pine { width: 58vw; height: 58vw; max-width: 900px; max-height: 900px; left: -14%; top: 4%;
-  opacity: var(--scene-pine); background: radial-gradient(circle, rgba(21,83,59,.12) 0%, rgba(21,83,59,.04) 45%, transparent 70%);
-  animation: orbPine 38s var(--ease-soft) infinite alternate; }
-.bgfx__orb--gold { width: 48vw; height: 48vw; max-width: 760px; max-height: 760px; right: -10%; top: 38%;
-  opacity: var(--scene-gold); background: radial-gradient(circle, rgba(222,142,41,.12) 0%, rgba(222,142,41,.04) 45%, transparent 70%);
-  animation: orbGold 46s var(--ease-soft) infinite alternate; }
-@keyframes orbPine { from { transform: translate3d(0,0,0) scale(1); }   to { transform: translate3d(9vw,14vh,0) scale(1.15); } }
-@keyframes orbGold { from { transform: translate3d(0,0,0) scale(1.1); } to { transform: translate3d(-8vw,-12vh,0) scale(.95); } }
+/* --- CERCA · bandas de luz + planos geométricos translúcidos ---------------- */
+.bgfx__beam { position: absolute; left: -30%; width: 160%; height: clamp(64px, 12vh, 150px);
+  opacity: calc(.7 * var(--power)); transition: opacity .9s var(--ease-soft); }
+.bgfx__beam--a { top: 22%;
+  background: linear-gradient(90deg, transparent, rgba(222,142,41,.16) 46%, rgba(255,255,255,.12) 52%, transparent 70%); }
+.bgfx__beam--b { top: 60%;
+  background: linear-gradient(90deg, transparent, rgba(21,83,59,.13) 50%, transparent 74%); }
+.bgfx__shard { position: absolute; opacity: calc(.85 * var(--power)); transition: opacity .9s var(--ease-soft); }
+.bgfx__shard--a { left: 7%; top: 28%; width: 26vw; max-width: 380px; aspect-ratio: 1.3;
+  clip-path: polygon(18% 0, 100% 22%, 82% 100%, 0 74%);
+  background: linear-gradient(135deg, rgba(21,83,59,.07), rgba(21,83,59,.012));
+  border: 1px solid rgba(21,83,59,.09); }
+.bgfx__shard--b { right: 5%; top: 52%; width: 22vw; max-width: 330px; aspect-ratio: 1.5;
+  clip-path: polygon(0 20%, 84% 0, 100% 80%, 12% 100%);
+  background: linear-gradient(135deg, rgba(222,142,41,.06), transparent);
+  border: 1px solid rgba(222,142,41,.1); }
 
-/* Curvas de nivel: el mapa del Montseny detrás de todo, apenas insinuado */
-.bgfx__topo { position: absolute; right: -8%; top: -6%; width: min(72vw, 980px); height: min(72vw, 980px);
-  stroke: #15533B; opacity: .075; transform-origin: 55% 45%; will-change: transform; }
+/* --- Grano de película (paint-once, no anima) ------------------------------ */
+.bgfx__grain { position: absolute; inset: 0; opacity: .035; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-/* La corriente conecta toda la página. El trazo iluminado se revela según el
-   scroll; el punto de energía viaja por la misma ruta. */
-.bgfx__current { position: absolute; inset: -3% 0; width: 100%; height: 106%; overflow: visible; }
-.bgfx__current-bed { stroke: rgba(21,83,59,.075); stroke-width: 1.1; vector-effect: non-scaling-stroke; }
-.bgfx__current-line {
-  stroke: url(#bgfxCurrentGradient); stroke-width: 2; stroke-linecap: round;
-  opacity: var(--scene-current); filter: drop-shadow(0 0 7px rgba(21,83,59,.22));
-  vector-effect: non-scaling-stroke; transition: opacity 1.2s var(--ease-soft);
-}
-.bgfx__signal {
-  position: fixed; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%;
-  opacity: 0; background: #F2A640; border: 2px solid rgba(255,255,255,.9);
-  box-shadow: 0 0 0 7px rgba(222,142,41,.11), 0 0 30px 8px rgba(222,142,41,.34);
-  will-change: transform; transition: opacity .5s var(--ease-soft);
-}
-.bgfx.is-current-ready .bgfx__signal { opacity: .92; }
+/* --- RITMO · intensidad y color por sección (transición suave de luminosidad).
+   Fuertes en hero / cómo funciona / proyectos / cierre; calma en lectura. --- */
+.bgfx[data-scene="hero"]     { --power: 1;   --hue: 0deg; }
+.bgfx[data-scene="services"] { --power: .42; --hue: -8deg; }   /* lectura: calma */
+.bgfx[data-scene="process"]  { --power: .95; --hue: 10deg; }   /* transición fuerte */
+.bgfx[data-scene="about"]    { --power: .6;  --hue: 6deg; }
+.bgfx[data-scene="work"]     { --power: 1;   --hue: 14deg; }    /* entrada a proyectos */
+.bgfx[data-scene="pricing"]  { --power: .4;  --hue: -6deg; }    /* lectura: calma */
+.bgfx[data-scene="contact"]  { --power: .95; --hue: 2deg; }     /* cierre */
 
-/* Halo bajo el cursor: profundidad inmediata en escritorio, invisible en touch. */
-.bgfx__pointer {
-  position: fixed; left: 0; top: 0; width: min(48rem, 70vw); aspect-ratio: 1;
-  border-radius: 50%; opacity: 0; will-change: transform, opacity;
-  background: radial-gradient(circle, rgba(21,83,59,.1) 0, rgba(222,142,41,.045) 32%, transparent 68%);
-  mix-blend-mode: multiply; transition: opacity .7s var(--ease-soft);
-}
-.bgfx.is-pointer-active .bgfx__pointer { opacity: .75; }
-
-/* La luz cambia de carácter según la parte del relato, sin tocar las secciones. */
-.bgfx[data-scene="services"] { --scene-pine: 1; --scene-gold: .48; --scene-current: .46; }
-.bgfx[data-scene="about"] { --scene-pine: .62; --scene-gold: .94; --scene-current: .38; }
-.bgfx[data-scene="work"] { --scene-pine: .9; --scene-gold: 1; --scene-current: .58; }
-.bgfx[data-scene="pricing"] { --scene-pine: .72; --scene-gold: .92; --scene-current: .5; }
-.bgfx[data-scene="contact"] { --scene-pine: 1; --scene-gold: .54; --scene-current: .42; }
-
-/* Puntos de taller enmascarados bajo la sección de servicios */
+/* Puntos de taller enmascarados bajo la sección de servicios (textura sutil) */
 .services { position: relative; }
-.services::before { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(circle, #D8D2C4 1px, transparent 1px); background-size: 22px 22px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 12%, #000 0%, transparent 100%);
-          mask-image: radial-gradient(ellipse 70% 55% at 50% 12%, #000 0%, transparent 100%); }
+.services::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle, #D8D2C4 1px, transparent 1px); background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 10%, #000 0%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 55% at 50% 10%, #000 0%, transparent 100%); }
 
-@media (max-width: 700px) {
-  .bgfx__mesh { inset: -18% -70%; opacity: .55; filter: blur(18px); }
-  .bgfx__orb { filter: blur(48px); }
-  .bgfx__orb--pine { width: 110vw; height: 110vw; left: -62%; }
-  .bgfx__orb--gold { width: 96vw; height: 96vw; right: -58%; }
-  .bgfx__topo { width: 150vw; height: 150vw; right: -90%; opacity: .055; }
-  .bgfx__current { left: 8%; width: 115%; }
-  .bgfx__current-bed { opacity: .7; }
-  .bgfx__current-line { stroke-width: 1.5; }
-  .bgfx__signal { width: 8px; height: 8px; }
-  .bgfx__pointer { display: none; }
+/* --- Responsive: menos capas, menos profundidad --------------------------- */
+@media (max-width: 1023px) {
+  .bgfx__word { display: none; }               /* tablet: sin tipografía ambiental */
+  .bgfx__grid { opacity: calc(.07 * var(--power)); }
+  .bgfx__shard { opacity: calc(.5 * var(--power)); }
+}
+@media (max-width: 699px) {
+  .bgfx__far, .bgfx__near { display: none; }    /* móvil: solo tinte + curvas + grano */
+  .bgfx__topo { width: 155vw; height: 155vw; right: -62%; }
+  .bgfx__grain { opacity: .028; }
 }
 
+/* --- Reducción de movimiento: composición cuidada y estática --------------- */
 @media (prefers-reduced-motion: reduce) {
-  .bgfx__mesh, .bgfx__orb { animation: none !important; transform: none !important; }
-  .bgfx__pointer, .bgfx__signal { display: none !important; }
-  .bgfx__current-line { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; opacity: .16; }
-  .bgfx__topo { transform: none !important; }
+  .bgfx__layer { transform: none !important; }
+  .bgfx__beam, .bgfx__word { display: none; }
+  .bgfx__grid { opacity: .05; }
+  .bgfx__topo path { opacity: .06; }
+  .bgfx__shard { opacity: .4; }
 }
 
 /* ==========================================================================
