@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionConfig } from "framer-motion";
 import { Bricolage_Grotesque, Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
@@ -74,13 +75,15 @@ export default function RootLayout({
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
         <Backdrop />
-        <LanguageProvider>
-          <SmoothScroll />
-          <ScrollProgress />
-          <Nav />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </LanguageProvider>
+        <MotionConfig reducedMotion="never">
+          <LanguageProvider>
+            <SmoothScroll />
+            <ScrollProgress />
+            <Nav />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </LanguageProvider>
+        </MotionConfig>
       </body>
     </html>
   );

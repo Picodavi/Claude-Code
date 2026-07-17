@@ -124,11 +124,5 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Accesibilidad: con "menos movimiento", el contenido animado se muestra fijo
-   y visible (el !important gana a los estilos inline de Framer Motion). */
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+/* Las animaciones se muestran siempre (el cliente las quiere), independientemente
+   de la preferencia de "menos movimiento" del sistema. */
