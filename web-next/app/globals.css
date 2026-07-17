@@ -52,6 +52,27 @@ body {
   overflow: hidden;
   pointer-events: none;
 }
+/* Malla de gradientes cálida (base rica, nada de blanco plano) */
+.backdrop__mesh {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(42% 38% at 12% 8%, rgba(222, 142, 41, 0.38), transparent 60%),
+    radial-gradient(36% 32% at 88% 16%, rgba(21, 83, 59, 0.24), transparent 60%),
+    radial-gradient(50% 44% at 80% 88%, rgba(222, 142, 41, 0.3), transparent 60%),
+    radial-gradient(38% 34% at 14% 80%, rgba(180, 103, 26, 0.28), transparent 62%),
+    linear-gradient(180deg, #fbf3e3 0%, #f7eedd 50%, #f3e8d3 100%);
+}
+
+/* Grano/textura premium por encima de la malla */
+.backdrop__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
 .backdrop__blob {
   position: absolute;
   border-radius: 9999px;

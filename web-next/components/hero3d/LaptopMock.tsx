@@ -1,16 +1,28 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef, type MouseEvent } from "react";
 
 // Portátil estilo MacBook con una web dentro, en perspectiva 3D (CSS).
-// Se inclina hacia el cursor y flota. Fiable y verificable (sin WebGL).
+// GIRA 360° con el scroll (interactivo), se inclina hacia el cursor y flota.
+// La trasera lleva el logo para que el giro luzca.
 export function LaptopMock() {
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const ry = useSpring(mx, { stiffness: 110, damping: 16, mass: 0.6 });
+  const pointerRy = useSpring(mx, { stiffness: 110, damping: 16, mass: 0.6 });
   const rx = useSpring(my, { stiffness: 110, damping: 16, mass: 0.6 });
+
+  // Giro 360 ligado al scroll: una vuelta completa al recorrer el hero.
+  const { scrollY } = useScroll();
+  const spin = useTransform(scrollY, [0, 800], [0, 360], { clamp: true });
+  const ry = useTransform(() => spin.get() + pointerRy.get());
 
   function onMove(e: MouseEvent<HTMLDivElement>) {
     const r = ref.current?.getBoundingClientRect();
@@ -36,8 +48,24 @@ export function LaptopMock() {
           style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
           className="relative"
         >
-          {/* Tapa / pantalla */}
-          <div className="relative z-10 rounded-[1.1rem] bg-[#1d1a16] p-[10px] pb-[14px] shadow-[0_50px_100px_-30px_rgba(0,0,0,0.6)]">
+          {/* Trasera de la tapa (se ve al girar): logo */}
+          <div
+            className="absolute inset-0 z-20 flex items-center justify-center rounded-[1.1rem] bg-[linear-gradient(160deg,#332c24_0%,#1a1510_70%)] shadow-[0_50px_100px_-30px_rgba(0,0,0,0.6)]"
+            style={{
+              transform: "rotateY(180deg) translateZ(2px)",
+              backfaceVisibility: "hidden",
+            }}
+          >
+            <span className="font-display text-3xl font-extrabold text-white/90">
+              Picodavi<span className="text-gold">.</span>
+            </span>
+          </div>
+
+          {/* Tapa / pantalla (frontal) */}
+          <div
+            className="relative z-10 rounded-[1.1rem] bg-[#1d1a16] p-[10px] pb-[14px] shadow-[0_50px_100px_-30px_rgba(0,0,0,0.6)]"
+            style={{ backfaceVisibility: "hidden" }}
+          >
             {/* cámara */}
             <span className="absolute left-1/2 top-[5px] h-1 w-1 -translate-x-1/2 rounded-full bg-[#3a352d]" />
             <div className="overflow-hidden rounded-lg bg-white">
@@ -82,6 +110,7 @@ export function LaptopMock() {
               </div>
             </div>
           </div>
+
           {/* Base / teclado */}
           <div className="relative left-[-7%] z-0 -mt-[2px] h-[16px] w-[114%] rounded-b-2xl rounded-t-[4px] bg-[linear-gradient(180deg,#4a4238_0%,#2b251e_45%,#15110d_100%)] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.55)]">
             <span className="absolute left-1/2 top-0 h-[7px] w-24 -translate-x-1/2 rounded-b-xl bg-[#0f0c09]" />
