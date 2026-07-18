@@ -20,6 +20,7 @@ export function Why() {
           {WHY.map((w) => (
             <div
               key={w}
+              data-scene-card
               className="rounded-2xl border border-border bg-bg/85 p-7 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_24px_50px_-20px_rgba(8,52,38,0.3)]"
             >
               <div className="flex items-baseline gap-2">

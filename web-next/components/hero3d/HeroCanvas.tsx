@@ -67,7 +67,7 @@ export default function HeroCanvas({
         <Canvas
           dpr={dpr}
           frameloop={active ? "always" : "demand"}
-          camera={{ fov: 42, near: 0.1, far: 30, position: [0, 0.05, 7.8] }}
+          camera={{ fov: 42, near: 0.1, far: 30, position: [0, 0.08, 8.2] }}
           gl={{
             alpha: true,
             antialias: quality !== "low",

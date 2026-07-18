@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
+import { useMotionPreference } from "@/components/motion/MotionPreference";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -15,9 +16,10 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  */
 export function Scrollytelling() {
   const pathname = usePathname();
+  const { reduceMotion } = useMotionPreference();
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reduceMotion) return;
 
     const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
     lenis.on("scroll", ScrollTrigger.update);
@@ -29,7 +31,7 @@ export function Scrollytelling() {
       gsap.ticker.remove(tick);
       lenis.destroy();
     };
-  }, []);
+  }, [reduceMotion]);
 
   useGSAP(
     () => {
@@ -38,11 +40,9 @@ export function Scrollytelling() {
       mm.add(
         {
           isDesktop: "(min-width: 1024px)",
-          reduceMotion: "(prefers-reduced-motion: reduce)",
         },
         (ctx) => {
           const isDesktop = Boolean(ctx.conditions?.isDesktop);
-          const reduceMotion = Boolean(ctx.conditions?.reduceMotion);
 
           if (reduceMotion) {
             gsap.set("[data-sr], [data-step], [data-depth-far], [data-depth-near], [data-section-ghost]", { clearProps: "all" });
@@ -86,6 +86,39 @@ export function Scrollytelling() {
                 0,
               );
             }
+          });
+
+          const cardScenes = [
+            { id: "#services", x: 0, y: 44, rotate: 0, scale: 0.94 },
+            { id: "#why", x: isDesktop ? 52 : 0, y: 10, rotate: 1.8, scale: 0.96 },
+            { id: "#promises", x: isDesktop ? -44 : 0, y: 22, rotate: -1.6, scale: 0.92 },
+            { id: "#extras", x: 0, y: 36, rotate: 0, scale: 0.9 },
+            { id: "#sectors", x: isDesktop ? 36 : 0, y: 18, rotate: 1.2, scale: 0.95 },
+            { id: "#care", x: 0, y: 42, rotate: 0, scale: 0.94 },
+          ];
+
+          cardScenes.forEach(({ id, x, y, rotate, scale }) => {
+            const cards = gsap.utils.toArray<HTMLElement>(`${id} [data-scene-card]`);
+            if (!cards.length) return;
+            gsap.fromTo(
+              cards,
+              { autoAlpha: 0.3, x, y, rotation: rotate, scale },
+              {
+                autoAlpha: 1,
+                x: 0,
+                y: 0,
+                rotation: 0,
+                scale: 1,
+                stagger: 0.08,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: id,
+                  start: "top 78%",
+                  end: "center 58%",
+                  scrub: isDesktop ? 0.65 : 0.35,
+                },
+              },
+            );
           });
 
           gsap.utils.toArray<HTMLElement>("[data-sr]").forEach((element) => {
@@ -166,28 +199,12 @@ export function Scrollytelling() {
                 },
               })
               .to(".backdrop__word", { xPercent: -12, yPercent: 26, scale: 1.08, ease: "none" }, 0)
+              .to(".backdrop__editorial", { yPercent: -42, xPercent: -8, ease: "none" }, 0)
               .to(".backdrop__beams", { yPercent: -34, xPercent: 8, ease: "none" }, 0)
+              .to(".backdrop__strata--a", { yPercent: 36, xPercent: 10, rotation: -4, ease: "none" }, 0)
+              .to(".backdrop__strata--b", { yPercent: -28, xPercent: -8, rotation: 16, ease: "none" }, 0)
               .to(".backdrop__grid", { yPercent: -30, autoAlpha: 0.12, ease: "none" }, 0)
               .to(".backdrop__grid2", { autoAlpha: 0.55, ease: "none" }, 0.72);
-
-            if (document.querySelector(".backdrop__halo")) {
-              gsap.fromTo(
-                ".backdrop__halo",
-                { yPercent: -6, xPercent: -4 },
-                {
-                  yPercent: 105,
-                  xPercent: 10,
-                  ease: "none",
-                  scrollTrigger: {
-                    trigger: document.body,
-                    start: "top top",
-                    end: "max",
-                    scrub: 1.4,
-                    invalidateOnRefresh: true,
-                  },
-                },
-              );
-            }
 
             const beamSkew = gsap.quickTo(".backdrop__beams", "skewY", {
               duration: 0.45,
@@ -197,20 +214,20 @@ export function Scrollytelling() {
               duration: 1.2,
               ease: "power3.out",
             });
-            const haloPointerX = gsap.quickTo(".backdrop__halo", "x", {
-              duration: 1.4,
+            const editorialPointerX = gsap.quickTo(".backdrop__editorial", "x", {
+              duration: 1.1,
               ease: "power3.out",
             });
-            const haloPointerY = gsap.quickTo(".backdrop__halo", "y", {
-              duration: 1.4,
+            const strataPointerY = gsap.quickTo(".backdrop__strata--b", "y", {
+              duration: 1.2,
               ease: "power3.out",
             });
             const onPointerMove = (event: PointerEvent) => {
               const normalizedX = event.clientX / window.innerWidth - 0.5;
               const normalizedY = event.clientY / window.innerHeight - 0.5;
               wordPointerX(normalizedX * 34);
-              haloPointerX(normalizedX * 52);
-              haloPointerY(normalizedY * 34);
+              editorialPointerX(normalizedX * -28);
+              strataPointerY(normalizedY * 24);
             };
             const velocityTrigger = ScrollTrigger.create({
               start: 0,
@@ -232,7 +249,7 @@ export function Scrollytelling() {
 
       return () => mm.revert();
     },
-    { dependencies: [pathname], revertOnUpdate: true },
+    { dependencies: [pathname, reduceMotion], revertOnUpdate: true },
   );
 
   return null;

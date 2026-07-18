@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { MotionConfig } from "framer-motion";
 import { Bricolage_Grotesque, Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
@@ -8,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Scrollytelling } from "@/components/scrolly/Scrollytelling";
 import { Backdrop } from "@/components/Backdrop";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { MotionPreferenceProvider } from "@/components/motion/MotionPreference";
 
 // Fuentes de marca (self-host vía next/font, sin FOUT). Exponen variables CSS
 // que consume el tema de Tailwind v4 en globals.css.
@@ -86,7 +86,7 @@ export default function RootLayout({
           <style>{`.reveal,.hero-experience__copy>*{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
         <Backdrop />
-        <MotionConfig reducedMotion="user">
+        <MotionPreferenceProvider>
           <LanguageProvider>
             <Scrollytelling />
             <ScrollProgress />
@@ -96,7 +96,7 @@ export default function RootLayout({
             </div>
             <Footer />
           </LanguageProvider>
-        </MotionConfig>
+        </MotionPreferenceProvider>
       </body>
     </html>
   );

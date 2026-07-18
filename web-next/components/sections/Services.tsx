@@ -51,6 +51,7 @@ export function Services() {
           {VALUES.map(([tk, dk]) => (
             <motion.div
               key={tk}
+              data-scene-card
               variants={card}
               className="rounded-2xl border border-border bg-bg/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_24px_50px_-20px_rgba(8,52,38,0.3)]"
             >
@@ -60,7 +61,7 @@ export function Services() {
           ))}
         </motion.div>
 
-        <div className="mt-14 rounded-2xl border border-border bg-bg/80 p-8 shadow-sm backdrop-blur">
+        <div data-scene-card className="mt-14 rounded-2xl border border-border bg-bg/80 p-8 shadow-sm backdrop-blur">
           <p className="font-mono text-xs uppercase tracking-widest text-gold-800">
             {t("inc.heading")}
           </p>

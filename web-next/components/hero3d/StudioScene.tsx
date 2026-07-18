@@ -2,7 +2,7 @@
 
 import { useFrame } from "@react-three/fiber";
 import type { MotionValue } from "framer-motion";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
 import type { SceneQuality } from "./quality";
 
@@ -14,153 +14,108 @@ type StudioSceneProps = {
   quality: SceneQuality;
 };
 
-const EMERALD = "#1f7655";
-const LICHEN = "#c4dc7d";
+const COLORS = ["#cfff6a", "#55e6b4", "#66a7ff", "#8d7dff"];
 
-function DepthRings({ quality }: { quality: SceneQuality }) {
-  const rings = quality === "high" ? 7 : quality === "medium" ? 5 : 4;
-
+function RectFrame({ width, height, depth, color, opacity }: {
+  width: number;
+  height: number;
+  depth: number;
+  color: string;
+  opacity: number;
+}) {
+  const thickness = 0.022;
   return (
-    <group rotation={[0.04, 0.02, -0.08]}>
-      {Array.from({ length: rings }, (_, index) => {
-        const scale = 1 + index * 0.34;
+    <group position={[0, 0, depth]}>
+      <mesh position={[0, height / 2, 0]}><boxGeometry args={[width, thickness, thickness]} /><meshBasicMaterial color={color} transparent opacity={opacity} /></mesh>
+      <mesh position={[0, -height / 2, 0]}><boxGeometry args={[width, thickness, thickness]} /><meshBasicMaterial color={color} transparent opacity={opacity} /></mesh>
+      <mesh position={[-width / 2, 0, 0]}><boxGeometry args={[thickness, height, thickness]} /><meshBasicMaterial color={color} transparent opacity={opacity} /></mesh>
+      <mesh position={[width / 2, 0, 0]}><boxGeometry args={[thickness, height, thickness]} /><meshBasicMaterial color={color} transparent opacity={opacity} /></mesh>
+    </group>
+  );
+}
+
+function FrameTunnel({ quality }: { quality: SceneQuality }) {
+  const count = quality === "high" ? 8 : quality === "medium" ? 6 : 4;
+  return (
+    <group rotation={[0.04, -0.03, -0.07]}>
+      {Array.from({ length: count }, (_, index) => {
+        const scale = 1 + index * 0.31;
         return (
-          <mesh
+          <RectFrame
             key={index}
-            position={[0, 0, -0.7 - index * 0.72]}
-            scale={[1.28 * scale, scale, 1]}
-          >
-            <torusGeometry
-              args={[2.05, 0.018 + index * 0.004, 8, quality === "low" ? 48 : 96]}
-            />
-            <meshBasicMaterial
-              color={index % 2 === 0 ? LICHEN : EMERALD}
-              transparent
-              opacity={Math.max(0.08, 0.32 - index * 0.035)}
-            />
-          </mesh>
+            width={3.7 * scale}
+            height={2.25 * scale}
+            depth={-0.75 - index * 0.82}
+            color={COLORS[index % COLORS.length]}
+            opacity={Math.max(0.1, 0.38 - index * 0.038)}
+          />
         );
       })}
     </group>
   );
 }
 
-function LightField({ quality }: { quality: SceneQuality }) {
-  const count = quality === "high" ? 150 : quality === "medium" ? 76 : 32;
-  const positions = useMemo(() => {
-    const values = new Float32Array(count * 3);
-    let seed = 19;
-    const random = () => {
-      seed = (seed * 16807) % 2147483647;
-      return (seed - 1) / 2147483646;
-    };
-    for (let index = 0; index < count; index += 1) {
-      values[index * 3] = (random() - 0.5) * 15;
-      values[index * 3 + 1] = (random() - 0.5) * 9;
-      values[index * 3 + 2] = -random() * 10 + 2;
-    }
-    return values;
-  }, [count]);
-
-  return (
-    <points>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        color={LICHEN}
-        size={quality === "low" ? 0.024 : 0.036}
-        transparent
-        opacity={0.48}
-        sizeAttenuation
-      />
-    </points>
-  );
-}
-
-function LightRibbons({ quality }: { quality: SceneQuality }) {
+function ArchitecturalPlanes({ quality }: { quality: SceneQuality }) {
   if (quality === "low") return null;
-
   return (
-    <group rotation={[0, 0, -0.16]}>
-      {[-2.2, 2.1].map((y, index) => (
-        <mesh key={y} position={[0, y, -2.5]} rotation={[0, 0, index ? -0.05 : 0.05]}>
-          <planeGeometry args={[10, 0.028]} />
-          <meshBasicMaterial
-            color={index ? EMERALD : LICHEN}
-            transparent
-            opacity={0.18}
-            side={THREE.DoubleSide}
-          />
+    <group>
+      <mesh position={[-2.8, 1.4, -3.2]} rotation={[0.05, 0.22, -0.3]}>
+        <planeGeometry args={[3.8, 0.6]} />
+        <meshBasicMaterial color="#55e6b4" transparent opacity={0.1} side={THREE.DoubleSide} depthWrite={false} />
+      </mesh>
+      <mesh position={[2.7, -1.45, -2.1]} rotation={[-0.08, -0.18, 0.24]}>
+        <planeGeometry args={[4.5, 0.52]} />
+        <meshBasicMaterial color="#8d7dff" transparent opacity={0.11} side={THREE.DoubleSide} depthWrite={false} />
+      </mesh>
+      {quality === "high" ? (
+        <mesh position={[0.6, 2.15, -5.4]} rotation={[0.1, 0.05, -0.12]}>
+          <planeGeometry args={[7, 0.28]} />
+          <meshBasicMaterial color="#cfff6a" transparent opacity={0.12} side={THREE.DoubleSide} depthWrite={false} />
         </mesh>
-      ))}
+      ) : null}
     </group>
   );
 }
 
-export function StudioScene({
-  progress,
-  pointerX,
-  pointerY,
-  pointerEnabled,
-  quality,
-}: StudioSceneProps) {
+export function StudioScene({ progress, pointerX, pointerY, pointerEnabled, quality }: StudioSceneProps) {
   const rig = useRef<THREE.Group>(null);
-  const rings = useRef<THREE.Group>(null);
-  const lights = useRef<THREE.Group>(null);
-  const ribbons = useRef<THREE.Group>(null);
+  const frames = useRef<THREE.Group>(null);
+  const planes = useRef<THREE.Group>(null);
 
   useFrame(({ camera, size }, delta) => {
     const p = progress.get();
     const px = pointerEnabled ? pointerX.get() : 0;
     const py = pointerEnabled ? pointerY.get() : 0;
     const compact = size.width < 900;
-    const anchorX = compact ? 0 : 1.65;
-    const cameraTargetZ = 7.8 - p * 2.25;
+    const anchorX = compact ? 0 : 1.45;
 
-    camera.position.x = THREE.MathUtils.damp(camera.position.x, px * 0.12, 4.2, delta);
-    camera.position.y = THREE.MathUtils.damp(camera.position.y, 0.05 + py * 0.08 - p * 0.05, 4.2, delta);
-    camera.position.z = THREE.MathUtils.damp(camera.position.z, cameraTargetZ, 4.2, delta);
-    camera.lookAt(anchorX * 0.34, 0.04, -1.2);
+    camera.position.x = THREE.MathUtils.damp(camera.position.x, px * 0.16 - p * 0.18, 4.4, delta);
+    camera.position.y = THREE.MathUtils.damp(camera.position.y, 0.08 + py * 0.09 - p * 0.12, 4.4, delta);
+    camera.position.z = THREE.MathUtils.damp(camera.position.z, 8.2 - p * 3.65, 4.4, delta);
+    camera.lookAt(anchorX * 0.32, 0.02, -1.8 - p * 0.7);
 
     if (rig.current) {
-      rig.current.position.x = THREE.MathUtils.damp(
-        rig.current.position.x,
-        anchorX + px * 0.1,
-        4,
-        delta,
-      );
-      rig.current.position.y = THREE.MathUtils.damp(
-        rig.current.position.y,
-        Math.sin(p * Math.PI) * 0.12 - py * 0.05,
-        4,
-        delta,
-      );
-      rig.current.rotation.x = THREE.MathUtils.damp(
-        rig.current.rotation.x,
-        -0.02 - py * 0.018,
-        4,
-        delta,
-      );
+      rig.current.position.x = THREE.MathUtils.damp(rig.current.position.x, anchorX + px * 0.12, 4, delta);
+      rig.current.position.y = THREE.MathUtils.damp(rig.current.position.y, -py * 0.05, 4, delta);
+      rig.current.rotation.y = THREE.MathUtils.damp(rig.current.rotation.y, -0.08 + p * 0.19, 4, delta);
     }
-    if (rings.current) rings.current.rotation.z = p * 0.28 + px * 0.025;
-    if (lights.current) {
-      lights.current.rotation.y += delta * 0.024;
-      lights.current.position.z = p * 0.9;
+    if (frames.current) {
+      frames.current.rotation.z = -0.08 + p * 0.16 + px * 0.018;
+      frames.current.position.z = p * 1.25;
+      frames.current.scale.setScalar(0.94 + p * 0.24);
     }
-    if (ribbons.current) ribbons.current.rotation.z = -p * 0.08;
+    if (planes.current) {
+      planes.current.position.x = p * -0.7;
+      planes.current.position.y = p * 0.24;
+    }
   });
 
   return (
     <>
-      <fog attach="fog" args={["#062219", 6, 16]} />
-      <ambientLight intensity={0.72} />
-      <pointLight position={[4, 1, 4]} color="#79e2ac" intensity={3.5} distance={10} />
-
+      <fog attach="fog" args={["#041d18", 6.5, 17]} />
       <group ref={rig}>
-        <group ref={rings}><DepthRings quality={quality} /></group>
-        <group ref={lights}><LightField quality={quality} /></group>
-        <group ref={ribbons}><LightRibbons quality={quality} /></group>
+        <group ref={frames}><FrameTunnel quality={quality} /></group>
+        <group ref={planes}><ArchitecturalPlanes quality={quality} /></group>
       </group>
     </>
   );

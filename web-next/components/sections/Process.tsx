@@ -15,10 +15,9 @@ export function Process() {
   return (
     <Section id="process" className="!px-4 sm:!px-6">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#071d16] px-6 py-14 sm:px-10 lg:px-14">
-        {/* Haz de luz dorado en la esquina (ambiente integrado, sin tapar contenido) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(196,220,125,0.25),transparent_70%)]"
+          className="process-light-sheet pointer-events-none absolute -right-16 -top-20 h-64 w-[32rem] rotate-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(196,220,125,0.2),rgba(85,230,180,0.12),transparent)]"
         />
 
         <header className="relative">
@@ -39,6 +38,7 @@ export function Process() {
             <li
               key={tag}
               data-step
+              data-scene-card
               className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur transition-colors hover:border-gold/50"
             >
               <span className="font-mono text-xs uppercase tracking-widest text-gold">

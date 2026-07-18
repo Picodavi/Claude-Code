@@ -23,6 +23,7 @@ export function Care() {
           {PLANS.map((p) => (
             <div
               key={p.name}
+              data-scene-card
               className={`flex flex-col rounded-2xl border p-7 ${
                 p.featured
                   ? "border-pine bg-pine/5"
