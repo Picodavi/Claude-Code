@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import picodaviScreen from "@/assets/picodavi-screen.png";
+import picodaviScreen from "@/assets/picodavi-screen.webp";
 
 export function LaptopMock() {
   return (

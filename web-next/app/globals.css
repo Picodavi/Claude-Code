@@ -641,8 +641,8 @@ button {
 
 .hero-mac__capture img {
   object-fit: cover;
-  object-position: center 46%;
-  transform: scale(1.015);
+  object-position: center 58%;
+  transform: scale(1.2);
 }
 
 .hero-mac__hinge {
