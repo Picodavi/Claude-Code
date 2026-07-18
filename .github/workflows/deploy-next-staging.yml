@@ -42,3 +42,5 @@ jobs:
           local-dir: ./web-next/out/
           server-dir: /domains/picodavi.com/public_html/beta/
 
+
+# retry 1784342319
