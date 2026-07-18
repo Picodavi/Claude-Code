@@ -30,7 +30,7 @@ const card: Variants = {
 export function Services() {
   const t = useT();
   return (
-    <Section id="services">
+    <Section id="services" className="services-intro">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           tagKey="services.tag"
@@ -52,7 +52,7 @@ export function Services() {
             <motion.div
               key={tk}
               variants={card}
-              className="rounded-2xl border border-border bg-bg/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_24px_50px_-20px_rgba(124,71,18,0.35)]"
+              className="rounded-2xl border border-border bg-bg/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_24px_50px_-20px_rgba(8,52,38,0.3)]"
             >
               <h3 className="font-display text-lg font-bold text-ink">{t(tk)}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{t(dk)}</p>

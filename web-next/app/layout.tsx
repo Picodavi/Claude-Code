@@ -78,17 +78,22 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text font-sans">
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido
+        </a>
         {/* Sin JS, las secciones animadas se muestran igualmente. */}
         <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`.reveal,.hero-experience__copy>*{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
         <Backdrop />
-        <MotionConfig reducedMotion="never">
+        <MotionConfig reducedMotion="user">
           <LanguageProvider>
             <Scrollytelling />
             <ScrollProgress />
             <Nav />
-            <div className="flex-1">{children}</div>
+            <div id="main-content" tabIndex={-1} className="flex-1">
+              {children}
+            </div>
             <Footer />
           </LanguageProvider>
         </MotionConfig>

@@ -100,7 +100,7 @@ export function LaptopMock() {
                 </span>
               </div>
               {/* "foto" + tarjetas */}
-              <div className="h-14 bg-[linear-gradient(120deg,#E9A94D_0%,#B4671A_55%,#7c4712_100%)]" />
+              <div className="h-14 bg-[linear-gradient(120deg,#C4DC7D_0%,#1F7655_55%,#0D3D2D_100%)]" />
               <div className="grid grid-cols-3 gap-2 p-3">
                 {[0, 1, 2].map((i) => (
                   <div key={i} className="rounded-md border border-border bg-surface p-2">

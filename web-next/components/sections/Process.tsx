@@ -14,11 +14,11 @@ export function Process() {
   const t = useT();
   return (
     <Section id="process" className="!px-4 sm:!px-6">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#181410] px-6 py-14 sm:px-10 lg:px-14">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#071d16] px-6 py-14 sm:px-10 lg:px-14">
         {/* Haz de luz dorado en la esquina (ambiente integrado, sin tapar contenido) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(222,142,41,0.28),transparent_70%)]"
+          className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(196,220,125,0.25),transparent_70%)]"
         />
 
         <header className="relative">
