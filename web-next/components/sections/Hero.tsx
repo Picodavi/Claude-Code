@@ -41,7 +41,7 @@ export function Hero() {
   const pointerY = useMotionValue(0);
   const [canvasReady, setCanvasReady] = useState(false);
   const [canvasFailed, setCanvasFailed] = useState(false);
-  const { hydrated, reduceMotion, systemReduced, toggleMotion } = useMotionPreference();
+  const { hydrated, reduceMotion, toggleMotion } = useMotionPreference();
   const capabilities = useSceneCapabilities(reduceMotion);
   const renderCanvas =
     capabilities.ready && capabilities.webgl && !canvasFailed && !reduceMotion;
@@ -292,12 +292,12 @@ export function Hero() {
           <i><b data-hero-progress /></i>
         </div>
 
-        {hydrated && systemReduced ? (
+        {hydrated ? (
           <button
             type="button"
             className="hero-motion-toggle"
             onClick={toggleMotion}
-            aria-pressed={!reduceMotion}
+            aria-pressed={reduceMotion}
           >
             {reduceMotion ? "Activar movimiento 3D" : "Reducir movimiento"}
           </button>

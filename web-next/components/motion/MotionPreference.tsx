@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionConfig, useReducedMotion } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import {
   createContext,
   useContext,
@@ -13,7 +13,6 @@ import {
 type MotionPreferenceValue = {
   hydrated: boolean;
   reduceMotion: boolean;
-  systemReduced: boolean;
   toggleMotion: () => void;
 };
 
@@ -23,15 +22,12 @@ const getClientHydration = () => true;
 const getServerHydration = () => false;
 
 export function MotionPreferenceProvider({ children }: { children: ReactNode }) {
-  const prefersReducedMotion = useReducedMotion();
   const hydrated = useSyncExternalStore(
     subscribeToHydration,
     getClientHydration,
     getServerHydration,
   );
-  const systemReduced = hydrated && Boolean(prefersReducedMotion);
-  const [motionOverride, setMotionOverride] = useState(false);
-  const reduceMotion = systemReduced && !motionOverride;
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.motion = reduceMotion ? "reduced" : "full";
@@ -42,8 +38,7 @@ export function MotionPreferenceProvider({ children }: { children: ReactNode }) 
       value={{
         hydrated,
         reduceMotion,
-        systemReduced,
-        toggleMotion: () => setMotionOverride((enabled) => !enabled),
+        toggleMotion: () => setReduceMotion((reduced) => !reduced),
       }}
     >
       <MotionConfig reducedMotion={reduceMotion ? "always" : "never"}>
