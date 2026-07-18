@@ -45,7 +45,7 @@ export function Scrollytelling() {
           const isDesktop = Boolean(ctx.conditions?.isDesktop);
 
           if (reduceMotion) {
-            gsap.set("[data-sr], [data-step], [data-depth-far], [data-depth-near], [data-section-ghost]", { clearProps: "all" });
+            gsap.set("[data-sr], [data-step], [data-depth-far], [data-depth-near], [data-section-ghost], [data-parallax-image], [data-parallax-frame], [data-parallax-copy]", { clearProps: "all" });
             return;
           }
 
@@ -83,6 +83,54 @@ export function Scrollytelling() {
                 ghost,
                 { yPercent: 18, xPercent: -5 },
                 { yPercent: -18, xPercent: 5, ease: "none" },
+                0,
+              );
+            }
+          });
+
+          gsap.utils.toArray<HTMLElement>("[data-parallax-scene]").forEach((scene) => {
+            const image = scene.querySelector<HTMLElement>("[data-parallax-image]");
+            const farFrame = scene.querySelector<HTMLElement>('[data-parallax-frame="far"]');
+            const nearFrame = scene.querySelector<HTMLElement>('[data-parallax-frame="near"]');
+            const copy = scene.querySelector<HTMLElement>("[data-parallax-copy]");
+            const sceneTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: scene,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: isDesktop ? 0.85 : 0.45,
+              },
+            });
+
+            if (image) {
+              sceneTimeline.fromTo(
+                image,
+                { yPercent: isDesktop ? -9 : -4, scale: isDesktop ? 1.14 : 1.08 },
+                { yPercent: isDesktop ? 9 : 4, scale: isDesktop ? 1.14 : 1.08, ease: "none" },
+                0,
+              );
+            }
+            if (farFrame) {
+              sceneTimeline.fromTo(
+                farFrame,
+                { yPercent: -14, xPercent: -4, rotation: -2 },
+                { yPercent: 14, xPercent: 4, rotation: 2, ease: "none" },
+                0,
+              );
+            }
+            if (nearFrame) {
+              sceneTimeline.fromTo(
+                nearFrame,
+                { yPercent: 16, xPercent: 5, rotation: 2.5 },
+                { yPercent: -16, xPercent: -5, rotation: -2.5, ease: "none" },
+                0,
+              );
+            }
+            if (copy) {
+              sceneTimeline.fromTo(
+                copy,
+                { yPercent: isDesktop ? 12 : 5 },
+                { yPercent: isDesktop ? -12 : -5, ease: "none" },
                 0,
               );
             }

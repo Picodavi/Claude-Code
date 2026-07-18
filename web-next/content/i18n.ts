@@ -438,7 +438,16 @@ export const dict: Record<Lang, Record<string, string>> = {
     "ext.5d": "Gestiono tu ficha de Google y tus reseñas para que te encuentren y te elijan: 2 publicaciones al mes, seguimiento de reseñas e informe mensual. 49 €/mes.",
     "ext.6t": "Automatización de avisos",
     "ext.6d": "Confirmaciones y peticiones de reseña por WhatsApp o email. Desde 120 €.",
-    "ext.note": "Todos los extras se presupuestan por escrito antes de empezar. Clientes con Cuidado Proactivo: 15 % de descuento en cualquier extra. Crecimiento local reúne Cuidado Proactivo + Impulso Google por 89 €/mes (en vez de 104 €)."
+    "ext.note": "Todos los extras se presupuestan por escrito antes de empezar. Clientes con Cuidado Proactivo: 15 % de descuento en cualquier extra. Crecimiento local reúne Cuidado Proactivo + Impulso Google por 89 €/mes (en vez de 104 €).",
+    "techscene.ai.tag": "Inteligencia aplicada",
+    "techscene.ai.title": "Ideas que se convierten en sistemas útiles.",
+    "techscene.ai.note": "Diseño · Automatización · IA",
+    "techscene.code.tag": "Construido con criterio",
+    "techscene.code.title": "Tecnología moderna detrás de una experiencia sencilla.",
+    "techscene.code.note": "Código · Rendimiento · Seguridad",
+    "techscene.data.tag": "Preparada para crecer",
+    "techscene.data.title": "Una base sólida para lo que venga después.",
+    "techscene.data.note": "Escala · Integraciones · Evolución"
   },
   "en": {
     "meta.title": "Web design in Catalonia for local businesses | Picodavi",
@@ -817,6 +826,15 @@ export const dict: Record<Lang, Record<string, string>> = {
     "ext.5d": "I manage your Google profile and reviews so people find and choose you: 2 posts a month, review monitoring and a monthly report. €49/mo.",
     "ext.6t": "Automated notifications",
     "ext.6d": "Confirmations and review requests via WhatsApp or email. From €120.",
-    "ext.note": "Every extra is quoted in writing before starting. Proactive Care clients get 15% off any extra. Local Growth combines Proactive Care + Google Boost for €89/mo (instead of €104)."
+    "ext.note": "Every extra is quoted in writing before starting. Proactive Care clients get 15% off any extra. Local Growth combines Proactive Care + Google Boost for €89/mo (instead of €104).",
+    "techscene.ai.tag": "Applied intelligence",
+    "techscene.ai.title": "Ideas turned into useful systems.",
+    "techscene.ai.note": "Design · Automation · AI",
+    "techscene.code.tag": "Built with judgement",
+    "techscene.code.title": "Modern technology behind a simple experience.",
+    "techscene.code.note": "Code · Performance · Security",
+    "techscene.data.tag": "Ready to grow",
+    "techscene.data.title": "A solid foundation for whatever comes next.",
+    "techscene.data.note": "Scale · Integrations · Evolution"
   }
 };
