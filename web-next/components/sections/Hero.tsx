@@ -110,7 +110,7 @@ export function Hero() {
           className="hero-experience__copy"
           style={reduce ? undefined : { opacity: copyOpacity, y: copyY }}
           variants={container}
-          initial={reduce ? false : "hidden"}
+          initial={false}
           animate="show"
         >
           <motion.p variants={item} className="hero-experience__kicker">
