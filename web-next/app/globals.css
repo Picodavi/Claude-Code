@@ -237,6 +237,55 @@ body {
   animation: mock-float 5.5s ease-in-out infinite;
 }
 
+/* Reflejo cálido que proyecta la pantalla del Mac (references), pulso lento */
+@keyframes screen-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scaleX(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) scaleX(1.1);
+  }
+}
+.mac-reflection {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  width: 78%;
+  height: 26%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(242, 178, 92, 0.55), rgba(21, 83, 59, 0.18) 45%, transparent 72%);
+  filter: blur(26px);
+  animation: screen-glow 4.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Barrido de luz de entrada del hero (una sola vez, elegante) */
+@keyframes panel-sweep {
+  from {
+    transform: translateX(-140%) skewX(-14deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-14deg);
+  }
+}
+.panel-sweep {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  animation: panel-sweep 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s 1 both;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel-sweep,
+  .mac-reflection {
+    animation: none;
+  }
+}
+
 
 /* Scroll suave (Lenis) */
 html.lenis,

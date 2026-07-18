@@ -187,6 +187,22 @@ export function Scrollytelling() {
             .to(".backdrop__beams", { yPercent: -34, xPercent: 8, ease: "none" }, 0)
             .to(".backdrop__grid", { yPercent: -30, autoAlpha: 0.12, ease: "none" }, 0)
             .to(".backdrop__grid2", { autoAlpha: 0.55, ease: "none" }, 0.72);
+
+          // Los haces de luz se inclinan según la VELOCIDAD del scroll
+          // (streak cinematográfico); vuelven a 0 con suavidad.
+          if (document.querySelector(".backdrop__beams")) {
+            const skewTo = gsap.quickTo(".backdrop__beams", "skewY", {
+              duration: 0.6,
+              ease: "power3",
+            });
+            ScrollTrigger.create({
+              trigger: document.body,
+              start: "top top",
+              end: "max",
+              onUpdate: (self) =>
+                skewTo(gsap.utils.clamp(-7, 7, self.getVelocity() / -260)),
+            });
+          }
         }
 
         /* ---- 5b) Halo de luz que acompaña el scroll (escritorio) ---- */
