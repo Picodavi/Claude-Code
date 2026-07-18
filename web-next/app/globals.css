@@ -110,10 +110,59 @@ body {
   -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 70%);
 }
 
+/* Capa LEJANA: palabra ambiental gigante en trazo (deriva lentísima) */
+.backdrop__word {
+  position: absolute;
+  top: 34%;
+  left: -4%;
+  white-space: nowrap;
+  font-family: var(--font-bricolage), sans-serif;
+  font-weight: 800;
+  font-size: 18vw;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(21, 83, 59, 0.1);
+  will-change: transform;
+}
+
+/* Capa CERCANA: haces de luz diagonales que atraviesan la página */
+.backdrop__beams {
+  position: absolute;
+  inset: -30% -10%;
+  background:
+    linear-gradient(115deg, transparent 42%, rgba(242, 178, 92, 0.16) 47%, transparent 52%),
+    linear-gradient(115deg, transparent 66%, rgba(21, 83, 59, 0.1) 70%, transparent 74%);
+  will-change: transform;
+}
+
+/* Grid inferior de cierre (emerge al final, espejo del grid del hero) */
+.backdrop__grid2 {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: -4vh;
+  height: 70vh;
+  opacity: 0;
+  background-image:
+    linear-gradient(rgba(21, 83, 59, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 83, 59, 0.14) 1px, transparent 1px);
+  background-size: 54px 54px;
+  transform: perspective(900px) rotateX(-52deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent 70%);
+  -webkit-mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent 70%);
+  will-change: opacity, transform;
+}
+
 /* Móvil: fondo simplificado (solo malla + grano; fuera capas decorativas) */
 @media (max-width: 767px) {
   .backdrop__blob,
   .backdrop__grid,
+  .backdrop__grid2,
+  .backdrop__word,
+  .backdrop__beams,
   .backdrop__halo {
     display: none;
   }

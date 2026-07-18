@@ -171,6 +171,24 @@ export function Scrollytelling() {
           },
         );
 
+        /* ---- 5a) Parallax multicapa del fondo: lejana/media/cercana ---- */
+        if (isDesktop) {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "max",
+                scrub: 1.2,
+                invalidateOnRefresh: true,
+              },
+            })
+            .to(".backdrop__word", { xPercent: -12, yPercent: 26, scale: 1.08, ease: "none" }, 0)
+            .to(".backdrop__beams", { yPercent: -34, xPercent: 8, ease: "none" }, 0)
+            .to(".backdrop__grid", { yPercent: -30, autoAlpha: 0.12, ease: "none" }, 0)
+            .to(".backdrop__grid2", { autoAlpha: 0.55, ease: "none" }, 0.72);
+        }
+
         /* ---- 5b) Halo de luz que acompaña el scroll (escritorio) ---- */
         if (isDesktop && document.querySelector(".backdrop__halo")) {
           gsap.fromTo(
