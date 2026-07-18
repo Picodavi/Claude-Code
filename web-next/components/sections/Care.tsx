@@ -4,9 +4,9 @@ import { useT } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
 
 const PLANS = [
-  { name: "rec.1name", price: "rec.1price", desc: "rec.1desc", badge: null, save: null, featured: false },
-  { name: "rec.2name", price: "rec.2price", desc: "rec.2desc", badge: "rec.2badge", save: null, featured: true },
-  { name: "rec.3name", price: "rec.3price", desc: "rec.3desc", badge: "rec.3badge", save: "rec.3save", featured: false },
+  { name: "rec.1name", price: "rec.1price", desc: "rec.1desc", badge: null, save: null, total: null, featured: false },
+  { name: "rec.2name", price: "rec.2price", desc: "rec.2desc", badge: "rec.2badge", save: null, total: "rec.2total", featured: true },
+  { name: "rec.3name", price: "rec.3price", desc: "rec.3desc", badge: "rec.3badge", save: "rec.3save", total: null, featured: false },
 ] as const;
 
 export function Care() {
@@ -41,6 +41,11 @@ export function Care() {
               <p className="mt-1 font-mono text-lg font-bold text-pine">
                 {t(p.price)}
               </p>
+              {p.total ? (
+                <p className="mt-2 rounded-lg bg-pine px-3 py-2 text-xs font-semibold leading-snug text-white">
+                  {t(p.total)}
+                </p>
+              ) : null}
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 {t(p.desc)}
               </p>

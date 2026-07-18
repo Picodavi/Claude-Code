@@ -24,6 +24,7 @@ export default function Home() {
       <JsonLd data={professionalService()} />
       <JsonLd data={faqPage()} />
       <Hero />
+      <Work />
       <Services />
       <TechnologyScene
         id="intelligence"
@@ -32,7 +33,6 @@ export default function Home() {
         index="01"
       />
       <Process />
-      <Work />
       <Sectors />
       <Promises />
       <TechnologyScene
