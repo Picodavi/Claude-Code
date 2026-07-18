@@ -13,7 +13,10 @@ export function SectionHeader({
 }) {
   const t = useT();
   return (
-    <header>
+    <header className="section-header-immersive">
+      <span className="section-header-immersive__ghost" data-section-ghost aria-hidden>
+        {t(headingKey)}
+      </span>
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold-800">
         {t(tagKey)}
       </p>

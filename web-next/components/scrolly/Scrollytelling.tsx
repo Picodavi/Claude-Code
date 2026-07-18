@@ -45,9 +45,48 @@ export function Scrollytelling() {
           const reduceMotion = Boolean(ctx.conditions?.reduceMotion);
 
           if (reduceMotion) {
-            gsap.set("[data-sr], [data-step]", { clearProps: "all" });
+            gsap.set("[data-sr], [data-step], [data-depth-far], [data-depth-near], [data-section-ghost]", { clearProps: "all" });
             return;
           }
+
+          gsap.utils.toArray<HTMLElement>(".section-immersive").forEach((section) => {
+            const far = section.querySelector<HTMLElement>("[data-depth-far]");
+            const near = section.querySelector<HTMLElement>("[data-depth-near]");
+            const ghost = section.querySelector<HTMLElement>("[data-section-ghost]");
+            const depthTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: isDesktop ? 0.8 : 0.45,
+              },
+            });
+
+            if (far) {
+              depthTimeline.fromTo(
+                far,
+                { yPercent: -10, xPercent: -2 },
+                { yPercent: 12, xPercent: 2, ease: "none" },
+                0,
+              );
+            }
+            if (near) {
+              depthTimeline.fromTo(
+                near,
+                { yPercent: 9, xPercent: 3 },
+                { yPercent: -11, xPercent: -3, ease: "none" },
+                0,
+              );
+            }
+            if (ghost) {
+              depthTimeline.fromTo(
+                ghost,
+                { yPercent: 18, xPercent: -5 },
+                { yPercent: -18, xPercent: 5, ease: "none" },
+                0,
+              );
+            }
+          });
 
           gsap.utils.toArray<HTMLElement>("[data-sr]").forEach((element) => {
             gsap.fromTo(
@@ -149,6 +188,44 @@ export function Scrollytelling() {
                 },
               );
             }
+
+            const beamSkew = gsap.quickTo(".backdrop__beams", "skewY", {
+              duration: 0.45,
+              ease: "power3.out",
+            });
+            const wordPointerX = gsap.quickTo(".backdrop__word", "x", {
+              duration: 1.2,
+              ease: "power3.out",
+            });
+            const haloPointerX = gsap.quickTo(".backdrop__halo", "x", {
+              duration: 1.4,
+              ease: "power3.out",
+            });
+            const haloPointerY = gsap.quickTo(".backdrop__halo", "y", {
+              duration: 1.4,
+              ease: "power3.out",
+            });
+            const onPointerMove = (event: PointerEvent) => {
+              const normalizedX = event.clientX / window.innerWidth - 0.5;
+              const normalizedY = event.clientY / window.innerHeight - 0.5;
+              wordPointerX(normalizedX * 34);
+              haloPointerX(normalizedX * 52);
+              haloPointerY(normalizedY * 34);
+            };
+            const velocityTrigger = ScrollTrigger.create({
+              start: 0,
+              end: "max",
+              onUpdate: (self) => {
+                beamSkew(gsap.utils.clamp(-2.6, 2.6, self.getVelocity() / -900));
+              },
+            });
+
+            window.addEventListener("pointermove", onPointerMove, { passive: true });
+
+            return () => {
+              window.removeEventListener("pointermove", onPointerMove);
+              velocityTrigger.kill();
+            };
           }
         },
       );

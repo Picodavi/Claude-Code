@@ -9,10 +9,11 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import { useRef, useState, type PointerEvent } from "react";
+import { useRef, useState, useSyncExternalStore, type PointerEvent } from "react";
 import { useT } from "@/lib/i18n";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { HeroFallback } from "@/components/hero3d/HeroFallback";
+import { LaptopMock } from "@/components/hero3d/LaptopMock";
 import { useSceneCapabilities } from "@/components/hero3d/quality";
 
 const HeroCanvas = dynamic(() => import("@/components/hero3d/HeroCanvas"), {
@@ -33,15 +34,26 @@ const item: Variants = {
   },
 };
 
+const subscribeToHydration = () => () => {};
+const getClientHydration = () => true;
+const getServerHydration = () => false;
+
 export function Hero() {
   const t = useT();
-  const reduce = Boolean(useReducedMotion());
+  const prefersReducedMotion = Boolean(useReducedMotion());
+  const hydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getClientHydration,
+    getServerHydration,
+  );
+  const reduce = hydrated && prefersReducedMotion;
   const section = useRef<HTMLElement>(null);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
   const [canvasReady, setCanvasReady] = useState(false);
   const [canvasFailed, setCanvasFailed] = useState(false);
   const capabilities = useSceneCapabilities(reduce);
+
   const { scrollYProgress } = useScroll({
     target: section,
     offset: ["start start", "end end"],
@@ -49,7 +61,7 @@ export function Hero() {
 
   const copyOpacity = useTransform(scrollYProgress, [0, 0.38, 0.64], [1, 1, 0]);
   const copyY = useTransform(scrollYProgress, [0, 0.62], [0, -72]);
-  const visualScale = useTransform(scrollYProgress, [0, 0.7, 1], [0.98, 1.03, 1.2]);
+  const visualScale = useTransform(scrollYProgress, [0, 0.7, 1], [0.98, 1.03, 1.1]);
   const signalOpacity = useTransform(
     scrollYProgress,
     [0.22, 0.4, 0.7, 0.84],
@@ -105,6 +117,14 @@ export function Hero() {
             />
           ) : null}
         </motion.div>
+
+        <LaptopMock
+          progress={scrollYProgress}
+          pointerX={pointerX}
+          pointerY={pointerY}
+          pointerEnabled={capabilities.pointerFine}
+          reducedMotion={reduce}
+        />
 
         <motion.div
           className="hero-experience__copy"
