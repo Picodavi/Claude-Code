@@ -19,9 +19,11 @@ export function LaptopMock() {
   const pointerRy = useSpring(mx, { stiffness: 110, damping: 16, mass: 0.6 });
   const rx = useSpring(my, { stiffness: 110, damping: 16, mass: 0.6 });
 
-  // Giro 360 ligado al scroll: una vuelta completa al recorrer el hero.
+  // Giro 360 ligado al scroll, espaciado: una vuelta completa cada ~1500px
+  // (más lento y elegante al bajar). Suavizado extra con un muelle ligero.
   const { scrollY } = useScroll();
-  const spin = useTransform(scrollY, [0, 800], [0, 360], { clamp: true });
+  const spinRaw = useTransform(scrollY, [0, 1500], [0, 360], { clamp: true });
+  const spin = useSpring(spinRaw, { stiffness: 80, damping: 20, mass: 0.5 });
   const ry = useTransform(() => spin.get() + pointerRy.get());
 
   function onMove(e: MouseEvent<HTMLDivElement>) {
