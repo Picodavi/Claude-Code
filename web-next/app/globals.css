@@ -1594,7 +1594,7 @@ button {
 }
 
 @media (max-width: 900px) {
-  .hero-experience { height: 190svh; }
+  .hero-experience { height: 210svh; }
   .hero-experience__sticky { min-height: 610px; }
   .hero-experience__copy {
     inset: 0 1.1rem auto;
@@ -1649,9 +1649,9 @@ button {
   }
   .hero-kinetic__word--front { display: none; }
   .hero-mac__float {
-    top: 79%;
-    right: 5vw;
-    width: 90vw;
+    top: 78%;
+    right: 4vw;
+    width: 86vw;
     transform: translateY(-48%);
   }
   .section-immersive__depth { opacity: 0.68; }
@@ -1686,7 +1686,7 @@ button {
   .hero-experience__lead { font-size: 0.82rem; line-height: 1.4; }
   .hero-experience__actions { margin-top: 0.85rem; }
   .hero-experience__proof { display: none; }
-  .hero-mac__float { top: 84%; }
+  .hero-mac__float { top: 82%; }
 }
 
 @media (max-width: 900px) and (max-height: 600px) and (orientation: landscape) {

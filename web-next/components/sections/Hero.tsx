@@ -97,29 +97,29 @@ export function Hero() {
               mac,
               desktop
                 ? { xPercent: 8, yPercent: 8, rotationX: 5, rotationY: -13, rotationZ: -1, scale: 0.78 }
-                : { xPercent: 4, yPercent: 7, rotationX: 3, rotationY: -9, scale: 0.86 },
+                : { xPercent: 2, yPercent: 4, rotationX: 3, rotationY: -8, scale: 0.8 },
               desktop
                 ? { xPercent: 0, yPercent: 0, rotationX: -2, rotationY: 7, rotationZ: 0, scale: 1, duration: 0.2 }
-                : { xPercent: 0, yPercent: -3, rotationX: -1, rotationY: 5, scale: 0.98, duration: 0.22 },
+                : { xPercent: 0, yPercent: -2, rotationX: -1, rotationY: 5, scale: 0.9, duration: 0.24 },
               0,
             )
             .to(
               mac,
               desktop
                 ? { xPercent: -16, yPercent: -5, rotationX: 4, rotationY: -24, rotationZ: 1.5, scale: 1.16, duration: 0.25 }
-                : { xPercent: -5, yPercent: -8, rotationX: 3, rotationY: -14, scale: 1.08, duration: 0.27 },
+                : { xPercent: -2, yPercent: -6, rotationX: 3, rotationY: -12, scale: 1, duration: 0.28 },
             )
             .to(
               mac,
               desktop
                 ? { xPercent: -34, yPercent: 3, rotationX: -4, rotationY: 10, rotationZ: -1, scale: 1.52, duration: 0.25 }
-                : { xPercent: -8, yPercent: -3, rotationX: -2, rotationY: 7, scale: 1.22, duration: 0.25 },
+                : { xPercent: -3, yPercent: -2, rotationX: -2, rotationY: 7, scale: 1.08, duration: 0.27 },
             )
             .to(
               mac,
               desktop
                 ? { xPercent: -48, yPercent: 12, rotationX: 0, rotationY: 0, rotationZ: 0, scale: 2.85, duration: 0.3 }
-                : { xPercent: -10, yPercent: 9, rotationX: 0, rotationY: 0, scale: 1.9, duration: 0.26 },
+                : { xPercent: 2, yPercent: 6, rotationX: 0, rotationY: 0, scale: 1.18, duration: 0.21 },
             )
             .to("[data-hero-copy]", { autoAlpha: 0, yPercent: -20, duration: 0.28 }, 0.2)
             .to(".hero-title-line--one", { xPercent: -16, yPercent: -65, duration: 0.28 }, 0.18)
@@ -145,9 +145,9 @@ export function Hero() {
                 autoAlpha: 1,
                 scale: desktop ? 4.8 : 4.2,
                 borderRadius: 0,
-                duration: 0.3,
+                duration: desktop ? 0.3 : 0.18,
               },
-              0.7,
+              desktop ? 0.7 : 0.82,
             );
 
           if (!desktop || !capabilities.pointerFine || !pointerLayer) return;
