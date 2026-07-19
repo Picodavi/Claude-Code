@@ -3,6 +3,7 @@ import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { Work } from "@/components/sections/Work";
 import { Sectors } from "@/components/sections/Sectors";
+import { Examples } from "@/components/sections/Examples";
 import { Promises } from "@/components/sections/Promises";
 import { Why } from "@/components/sections/Why";
 import { Pricing } from "@/components/sections/Pricing";
@@ -34,6 +35,7 @@ export default function Home() {
       />
       <Process />
       <Sectors />
+      <Examples />
       <Promises />
       <TechnologyScene
         id="craft"
