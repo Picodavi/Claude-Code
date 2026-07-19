@@ -96,9 +96,9 @@
   transform-style: preserve-3d;
   transform-origin: center;
   transition:
-    transform 680ms cubic-bezier(0.22, 0.9, 0.25, 1),
-    opacity 480ms ease,
-    filter 480ms ease;
+    transform 920ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 720ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -128,7 +128,7 @@
 
 .back {
   z-index: 1;
-  opacity: 0.15;
+  opacity: 0.2;
   filter: saturate(0.4) brightness(0.55);
   transform: translate(-50%, -50%) translateZ(-560px) rotateY(180deg) scale(0.62);
   pointer-events: none;
@@ -268,6 +268,10 @@
   transform: translateY(-50%) scale(1.08);
 }
 
+.arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
 .footer {
   position: relative;
   z-index: 8;
@@ -304,16 +308,9 @@
   .arrowNext { right: calc(50% - 4rem); }
   .arrow:hover,
   .arrow:focus-visible { transform: scale(1.06); }
+  .arrow:active { transform: scale(0.94); }
   .footer { display: block; text-align: center; }
   .hint { margin-top: 0.65rem; text-align: center; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  .surface,
-  .image img,
-  .shine,
-  .arrow { transition: none; }
 }
 
 :global(html[data-motion="reduced"]) .card,
