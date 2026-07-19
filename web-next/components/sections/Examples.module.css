@@ -279,12 +279,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  color: rgba(246, 244, 234, 0.56);
+  color: #244b40;
   font-size: 0.76rem;
 }
 
 .hint {
-  color: rgba(201, 239, 103, 0.72);
+  color: #246447;
   font: 500 0.66rem/1.5 var(--font-mono, monospace);
   letter-spacing: 0.08em;
   text-align: right;
