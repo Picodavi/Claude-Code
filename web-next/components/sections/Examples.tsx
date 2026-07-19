@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useT } from "@/lib/i18n";
-import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import brasa from "@/assets/plantillas/brasa.jpg";
 import clinica from "@/assets/plantillas/clinica.jpg";
@@ -16,50 +15,92 @@ const ITEMS = [
   { img: hotelRural, sec: "ex.sec4", href: "/plantillas/hotel-rural/" },
 ] as const;
 
-// Ejemplos de diseño por sector: capturas reales de plantillas conceptuales,
-// cada una enlaza a su demo en vivo (/plantillas/...). Suman prueba visual.
+// En escritorio, Scrollytelling fija esta sección y convierte el avance
+// vertical en un recorrido horizontal. En táctil conserva scroll-snap nativo.
 export function Examples() {
   const t = useT();
   return (
-    <Section id="examples">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeader tagKey="ex.tag" headingKey="ex.heading" leadKey="ex.lead" />
+    <section
+      id="examples"
+      className="examples-horizontal section-immersive scroll-mt-20"
+      data-examples-scene
+    >
+      <span
+        className="section-immersive__depth section-immersive__depth--far"
+        data-depth-far
+        aria-hidden
+      />
+      <span
+        className="section-immersive__depth section-immersive__depth--near"
+        data-depth-near
+        aria-hidden
+      />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {ITEMS.map((it) => (
-            <a
-              key={it.href}
-              href={it.href}
-              target="_blank"
-              rel="noopener"
-              className="group block overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-pine/40 hover:shadow-[0_24px_50px_-20px_rgba(8,52,38,0.3)]"
-            >
-              <div className="flex items-center gap-1.5 bg-[#efeae0] px-4 py-2.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-gold" />
-                <span className="h-2.5 w-2.5 rounded-full bg-pine" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#c9c2b5]" />
-              </div>
-              <Image
-                src={it.img}
-                alt={`Ejemplo de web para ${t(it.sec)} — plantilla conceptual de Picodavi`}
-                placeholder="blur"
-                className="h-auto w-full"
-                sizes="(max-width: 640px) 100vw, 45vw"
-              />
-              <div className="flex items-center justify-between px-5 py-4">
-                <span className="font-display text-base font-bold text-ink">
-                  {t(it.sec)}
-                </span>
-                <span className="font-mono text-xs font-bold text-pine transition-colors group-hover:text-pine-700">
-                  {t("ex.cta")}
-                </span>
-              </div>
-            </a>
-          ))}
+      <div className="examples-horizontal__pin" data-examples-pin>
+        <div className="examples-horizontal__header">
+          <SectionHeader tagKey="ex.tag" headingKey="ex.heading" leadKey="ex.lead" />
+          <div className="examples-horizontal__direction" aria-hidden>
+            <span>{t("ex.scroll")}</span>
+            <i />
+            <b>01&nbsp;&nbsp;02&nbsp;&nbsp;03&nbsp;&nbsp;04</b>
+          </div>
         </div>
 
-        <p className="mt-6 text-sm text-muted">{t("ex.note")}</p>
+        <div
+          className="examples-horizontal__viewport"
+          aria-label={t("ex.heading")}
+        >
+          <div className="examples-horizontal__track" data-examples-track>
+            {ITEMS.map((it, index) => (
+              <a
+                key={it.href}
+                href={it.href}
+                target="_blank"
+                rel="noopener"
+                className="examples-horizontal__card group"
+                data-example-card
+              >
+                <span className="examples-horizontal__number" aria-hidden>
+                  0{index + 1}
+                </span>
+                <div className="examples-horizontal__surface">
+                  <div className="examples-horizontal__bar">
+                    <span />
+                    <span />
+                    <span />
+                    <b>PICODAVI / {t(it.sec)}</b>
+                  </div>
+                  <div className="examples-horizontal__image">
+                    <Image
+                      src={it.img}
+                      alt={`Ejemplo de web para ${t(it.sec)} — plantilla conceptual de Picodavi`}
+                      placeholder="blur"
+                      sizes="(max-width: 640px) 82vw, (max-width: 1023px) 68vw, 48vw"
+                      data-example-image
+                    />
+                    <span className="examples-horizontal__shine" aria-hidden />
+                  </div>
+                  <div className="examples-horizontal__meta">
+                    <span>{t(it.sec)}</span>
+                    <span>{t("ex.cta")}</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="examples-horizontal__footer">
+          <p>{t("ex.note")}</p>
+          <div className="examples-horizontal__progress" aria-hidden>
+            <span data-examples-progress />
+          </div>
+        </div>
+
+        <noscript>
+          <style>{`.examples-horizontal__viewport{overflow-x:auto!important}`}</style>
+        </noscript>
       </div>
-    </Section>
+    </section>
   );
 }

@@ -45,7 +45,7 @@ export function Scrollytelling() {
           const isDesktop = Boolean(ctx.conditions?.isDesktop);
 
           if (reduceMotion) {
-            gsap.set("[data-sr], [data-step], [data-depth-far], [data-depth-near], [data-section-ghost], [data-parallax-image], [data-parallax-frame], [data-parallax-copy]", { clearProps: "all" });
+            gsap.set("[data-sr], [data-step], [data-depth-far], [data-depth-near], [data-section-ghost], [data-parallax-image], [data-parallax-frame], [data-parallax-copy], [data-examples-track], [data-example-card], [data-example-image], [data-examples-progress]", { clearProps: "all" });
             return;
           }
 
@@ -135,6 +135,85 @@ export function Scrollytelling() {
               );
             }
           });
+
+          if (isDesktop) {
+            const examplesScene = document.querySelector<HTMLElement>("[data-examples-scene]");
+            const examplesPin = examplesScene?.querySelector<HTMLElement>("[data-examples-pin]");
+            const examplesTrack = examplesScene?.querySelector<HTMLElement>("[data-examples-track]");
+            const exampleCards = examplesScene
+              ? gsap.utils.toArray<HTMLElement>("[data-example-card]", examplesScene)
+              : [];
+            const exampleImages = examplesScene
+              ? gsap.utils.toArray<HTMLElement>("[data-example-image]", examplesScene)
+              : [];
+            const examplesProgress = examplesScene?.querySelector<HTMLElement>("[data-examples-progress]");
+
+            if (examplesScene && examplesPin && examplesTrack && exampleCards.length) {
+              const horizontalTravel = () =>
+                Math.max(
+                  0,
+                  examplesTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.08,
+                );
+
+              gsap.set(exampleCards, {
+                transformPerspective: 1500,
+                transformOrigin: "center center",
+              });
+
+              const examplesTimeline = gsap.timeline({
+                scrollTrigger: {
+                  trigger: examplesScene,
+                  start: "top top",
+                  end: () =>
+                    `+=${Math.max(window.innerHeight * 2.4, horizontalTravel() * 1.18)}`,
+                  pin: examplesPin,
+                  scrub: 0.9,
+                  anticipatePin: 1,
+                  invalidateOnRefresh: true,
+                },
+              });
+
+              examplesTimeline
+                .fromTo(
+                  examplesTrack,
+                  { x: () => window.innerWidth * 0.07 },
+                  { x: () => -horizontalTravel(), ease: "none" },
+                  0,
+                )
+                .fromTo(
+                  exampleCards,
+                  {
+                    rotationY: (index) => (index % 2 === 0 ? -13 : 11),
+                    rotationX: (index) => (index % 2 === 0 ? 2.5 : -2),
+                    z: (index) => (index % 2 === 0 ? -150 : -55),
+                    y: (index) => (index % 2 === 0 ? 28 : -18),
+                  },
+                  {
+                    rotationY: (index) => (index % 2 === 0 ? 7 : -8),
+                    rotationX: (index) => (index % 2 === 0 ? -1.5 : 2),
+                    z: (index) => (index % 2 === 0 ? -20 : -120),
+                    y: (index) => (index % 2 === 0 ? -18 : 24),
+                    ease: "none",
+                  },
+                  0,
+                )
+                .fromTo(
+                  exampleImages,
+                  { xPercent: -4, scale: 1.08 },
+                  { xPercent: 4, scale: 1.08, ease: "none" },
+                  0,
+                );
+
+              if (examplesProgress) {
+                examplesTimeline.fromTo(
+                  examplesProgress,
+                  { scaleX: 0 },
+                  { scaleX: 1, ease: "none" },
+                  0,
+                );
+              }
+            }
+          }
 
           const cardScenes = [
             { id: "#services", x: 0, y: 44, rotate: 0, scale: 0.94 },
