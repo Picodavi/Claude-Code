@@ -54,7 +54,7 @@ export function Hero() {
       progress.set(0);
       if (reduceMotion) {
         gsap.set(
-          "[data-hero-mac], [data-hero-copy], [data-hero-word], [data-hero-plane], [data-hero-portal], [data-hero-progress]",
+          "[data-hero-mac], [data-hero-phone], [data-hero-copy], [data-hero-word], [data-hero-plane], [data-hero-portal], [data-hero-progress]",
           { clearProps: "all" },
         );
         return;
@@ -68,11 +68,13 @@ export function Hero() {
         },
         (context) => {
           const desktop = Boolean(context.conditions?.desktop);
-          const mac = root.querySelector<HTMLElement>("[data-hero-mac]");
+          const device = root.querySelector<HTMLElement>(
+            desktop ? "[data-hero-mac]" : "[data-hero-phone]",
+          );
           const pointerLayer = root.querySelector<HTMLElement>("[data-hero-pointer]");
-          if (!mac) return;
+          if (!device) return;
 
-          gsap.set(mac, {
+          gsap.set(device, {
             transformPerspective: desktop ? 1500 : 1100,
             transformOrigin: "50% 52%",
             force3D: true,
@@ -94,7 +96,7 @@ export function Hero() {
 
           timeline
             .fromTo(
-              mac,
+              device,
               desktop
                 ? { xPercent: 8, yPercent: 8, rotationX: 5, rotationY: -13, rotationZ: -1, scale: 0.78 }
                 : { xPercent: 2, yPercent: 4, rotationX: 3, rotationY: -8, scale: 0.8 },
@@ -104,19 +106,19 @@ export function Hero() {
               0,
             )
             .to(
-              mac,
+              device,
               desktop
                 ? { xPercent: -16, yPercent: -5, rotationX: 4, rotationY: -24, rotationZ: 1.5, scale: 1.16, duration: 0.25 }
                 : { xPercent: -2, yPercent: -6, rotationX: 3, rotationY: -12, scale: 1, duration: 0.28 },
             )
             .to(
-              mac,
+              device,
               desktop
                 ? { xPercent: -34, yPercent: 3, rotationX: -4, rotationY: 10, rotationZ: -1, scale: 1.52, duration: 0.25 }
                 : { xPercent: -3, yPercent: -2, rotationX: -2, rotationY: 7, scale: 1.08, duration: 0.27 },
             )
             .to(
-              mac,
+              device,
               desktop
                 ? { xPercent: -48, yPercent: 12, rotationX: 0, rotationY: 0, rotationZ: 0, scale: 2.85, duration: 0.3 }
                 : { xPercent: 2, yPercent: 6, rotationX: 0, rotationY: 0, scale: 1.18, duration: 0.21 },
