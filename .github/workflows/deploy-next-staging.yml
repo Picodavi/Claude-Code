@@ -33,6 +33,12 @@ jobs:
           npm ci
           npm run build
 
+      - name: Adaptar la página 404 al subdirectorio /beta
+        working-directory: web-next
+        run: |
+          sed -i 's#ErrorDocument 404 /404.html#ErrorDocument 404 /beta/404.html#' out/.htaccess
+          grep -q 'ErrorDocument 404 /beta/404.html' out/.htaccess
+
       - name: Subir a /beta por FTP (intento 1/3)
         id: deploy_ftp_1
         continue-on-error: true
