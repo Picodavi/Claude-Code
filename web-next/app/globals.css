@@ -732,7 +732,8 @@ button {
 .hero-phone__screen img {
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.015);
+  transform: scale(1.08);
+  will-change: transform;
 }
 
 .hero-phone__frame {
@@ -1675,10 +1676,10 @@ button {
     width: auto;
     height: 61%;
     justify-content: flex-start;
-    padding-top: clamp(6.5rem, 15svh, 8rem);
+    padding-top: clamp(5.75rem, 12svh, 6.75rem);
   }
   .hero-experience:has(.hero-motion-toggle) .hero-experience__copy {
-    padding-top: clamp(8rem, 17svh, 9rem);
+    padding-top: clamp(6.9rem, 14svh, 7.6rem);
   }
   .hero-experience__kicker { font-size: 0.62rem; letter-spacing: 0.13em; }
   .hero-experience__kicker span { width: 1.25rem; }
@@ -1694,10 +1695,13 @@ button {
     font-size: 0.92rem;
     line-height: 1.48;
   }
-  .hero-experience__actions { margin-top: 1.2rem; gap: 0.6rem; }
-  .hero-cta { min-height: 46px; padding: 0.65rem 1.05rem; font-size: 0.67rem; }
-  .hero-experience__proof { margin-top: 0.9rem; gap: 0.3rem 0.85rem; font-size: 0.7rem; }
-  .hero-experience__proof li:last-child { display: none; }
+  .hero-experience__actions {
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+  .hero-cta { min-height: 46px; padding: 0.65rem 0.8rem; font-size: 0.65rem; }
+  .hero-experience__proof { display: none; }
   .hero-experience__visual {
     transform-origin: 50% 68%;
   }
@@ -1725,7 +1729,7 @@ button {
   .hero-mac__float {
     display: none;
   }
-  .hero-phone__float { display: block; }
+  .hero-phone__float { top: 72%; display: block; }
   .section-immersive__depth { opacity: 0.68; }
   .section-header-immersive__ghost { left: 12vw; max-width: 88vw; font-size: clamp(3.2rem, 17vw, 7rem); }
   .hero-experience__scroll { right: 1rem; bottom: 1.1rem; }
@@ -1756,9 +1760,21 @@ button {
   .hero-experience__copy { height: 70%; padding-top: 5.2rem; }
   .hero-experience__title { max-width: 12ch; font-size: clamp(2.25rem, 11.5vw, 3.2rem); }
   .hero-experience__lead { font-size: 0.82rem; line-height: 1.4; }
-  .hero-experience__actions { margin-top: 0.85rem; }
+  .hero-experience__actions {
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+  }
+  .hero-experience__actions .hero-cta {
+    min-height: 42px;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.56rem;
+  }
   .hero-experience__proof { display: none; }
-  .hero-phone__float { top: 78%; }
+  .hero-phone__float {
+    top: 76%;
+    width: clamp(8rem, 38vw, 9.5rem);
+  }
 }
 
 @media (max-width: 900px) and (max-height: 600px) and (orientation: landscape) {

@@ -54,7 +54,7 @@ export function Hero() {
       progress.set(0);
       if (reduceMotion) {
         gsap.set(
-          "[data-hero-mac], [data-hero-phone], [data-hero-copy], [data-hero-word], [data-hero-plane], [data-hero-portal], [data-hero-progress]",
+          "[data-hero-mac], [data-hero-phone], [data-hero-phone-screen], [data-hero-copy], [data-hero-word], [data-hero-plane], [data-hero-portal], [data-hero-progress]",
           { clearProps: "all" },
         );
         return;
@@ -151,6 +151,21 @@ export function Hero() {
               },
               desktop ? 0.7 : 0.82,
             );
+
+          if (!desktop) {
+            timeline
+              .fromTo(
+                "[data-hero-phone-screen]",
+                { yPercent: 0, scale: 1.08 },
+                { yPercent: -10, scale: 1.18, duration: 0.82 },
+                0.04,
+              )
+              .to(
+                ".hero-phone__screen-accent",
+                { xPercent: 220, duration: 0.68 },
+                0.12,
+              );
+          }
 
           if (!desktop || !capabilities.pointerFine || !pointerLayer) return;
 

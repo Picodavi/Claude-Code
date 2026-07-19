@@ -56,6 +56,7 @@ export function LaptopMock() {
                 alt=""
                 fill
                 sizes="44vw"
+                data-hero-phone-screen
               />
               <span className="hero-phone__screen-accent" />
               <span className="panel-sweep" />
