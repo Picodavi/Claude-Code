@@ -1,5 +1,7 @@
 name: Desplegar Picodavi en Hostinger
 
+# Reintento de publicación: 2026-07-19 13:02 CEST
+
 # Compila la web nueva de Next.js sin basePath y la publica en la raíz de
 # picodavi.com. /beta y las demos sectoriales se conservan expresamente.
 on:
