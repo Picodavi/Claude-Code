@@ -5,7 +5,7 @@ import { Work } from "@/components/sections/Work";
 import { Sectors } from "@/components/sections/Sectors";
 import { Examples } from "@/components/sections/Examples";
 import { Promises } from "@/components/sections/Promises";
-import { Why } from "@/components/sections/Why";
+import { InitialReview } from "@/components/sections/InitialReview";
 import { Pricing } from "@/components/sections/Pricing";
 import { Care } from "@/components/sections/Care";
 import { Extras } from "@/components/sections/Extras";
@@ -44,7 +44,7 @@ export default function Home() {
         index="02"
         align="right"
       />
-      <Why />
+      <InitialReview />
       <Pricing />
       <Care />
       <Extras />

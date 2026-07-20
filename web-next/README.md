@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Picodavi — web de producción
 
-## Getting Started
+Esta es la versión que se publica en **picodavi.com**. Está hecha con Next.js y se
+exporta como web estática para Hostinger. La carpeta `Picodavi/` de la raíz se
+conserva como versión anterior y como fuente de las demos, pero no es la página
+principal de producción.
 
-First, run the development server:
+## Trabajar en local
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Comprobaciones antes de publicar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm test
+npm run lint
+npm run build
+```
 
-## Learn More
+La compilación genera `out/`. Las fuentes se autoalojan mediante `next/font` y
+las animaciones respetan la preferencia de movimiento reducido.
 
-To learn more about Next.js, take a look at the following resources:
+## Publicación
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Un push a `main` que cambie `web-next/**`, las demos o el workflow activa
+`.github/workflows/deploy.yml`. GitHub Actions ejecuta las pruebas, compila y
+sube `out/` por FTPS a Hostinger. Las credenciales viven en GitHub Secrets; no
+deben guardarse en el repositorio.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contenido y datos pendientes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Los textos comerciales e idiomas están en `content/i18n.ts`.
+- Los textos legales están en `content/legal.ts`.
+- Antes de aceptar pagos o encargos hay que completar el alta, incorporar el NIF
+  real y validar con una gestoría el tratamiento fiscal aplicable.
+- Los precios públicos son importes base sin IVA; cada presupuesto debe mostrar
+  base imponible, impuestos y total.

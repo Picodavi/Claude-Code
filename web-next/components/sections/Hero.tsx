@@ -12,6 +12,7 @@ import { HeroFallback } from "@/components/hero3d/HeroFallback";
 import { LaptopMock } from "@/components/hero3d/LaptopMock";
 import { useSceneCapabilities } from "@/components/hero3d/quality";
 import { useMotionPreference } from "@/components/motion/MotionPreference";
+import { trackEvent } from "@/lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -280,7 +281,11 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="hero-experience__actions">
-            <MagneticButton href="#contact" className="hero-cta hero-cta--primary">
+            <MagneticButton
+              href="#contact"
+              className="hero-cta hero-cta--primary"
+              onClick={() => trackEvent("cta_clicked", { placement: "hero", action: "proposal" })}
+            >
               {t("hero.ctaPrimary")}
             </MagneticButton>
             <a href="#work" className="hero-cta hero-cta--secondary">

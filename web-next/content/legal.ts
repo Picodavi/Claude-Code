@@ -21,14 +21,14 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
     es: {
       kicker: "Legal",
       title: "Aviso legal",
-      updated: "Última actualización: junio de 2026",
+      updated: "Última actualización: julio de 2026",
       blocks: [
-        { type: "box", text: "Picodavi es una marca personal de David Picoiu (no es una sociedad). Los datos identificativos del titular figuran a continuación. Por seguridad, el NIF/DNI se facilita bajo solicitud y consta en las facturas." },
+        { type: "box", text: "Picodavi es una marca personal de David Picoiu (no es una sociedad) y está completando el alta censal de su actividad. Hasta que ese trámite finalice, esta web funciona como portfolio e información: no se aceptarán pagos ni se formalizarán encargos. El NIF y los datos fiscales definitivos se incorporarán aquí antes de iniciar la actividad." },
         { type: "h2", text: "1. Datos identificativos del titular" },
         { type: "p", text: "En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:" },
         { type: "ul", items: [
           "Titular: David Picoiu («Picodavi» es nombre comercial / marca personal).",
-          "NIF: disponible bajo solicitud y en la facturación.",
+          "NIF: pendiente de publicación hasta completar el alta censal, antes de iniciar la actividad profesional.",
           "Domicilio a efectos de notificaciones: Viladrau (Girona), 17406, Catalunya.",
           "Correo electrónico: picoiudavid@gmail.com",
           "Teléfono: 643 78 07 53",
@@ -37,7 +37,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
         { type: "h2", text: "2. Objeto" },
         { type: "p", text: "Este sitio web tiene como finalidad presentar los servicios de diseño y desarrollo web de Picodavi y facilitar el contacto con personas interesadas. El acceso y uso del sitio atribuye la condición de usuario e implica la aceptación de este aviso legal." },
         { type: "h2", text: "3. Condiciones de uso" },
-        { type: "p", text: "El usuario se compromete a hacer un uso adecuado de los contenidos del sitio y a no emplearlos para actividades ilícitas, contrarias a la buena fe o que puedan dañar el sitio o a terceros. La información de precios y servicios es orientativa; cualquier encargo se formaliza mediante presupuesto y aceptación expresa." },
+        { type: "p", text: "El usuario se compromete a hacer un uso adecuado de los contenidos del sitio y a no emplearlos para actividades ilícitas, contrarias a la buena fe o que puedan dañar el sitio o a terceros. La información de precios y servicios es orientativa. Los precios publicados son importes base y no incluyen IVA; cuando se active la contratación, cualquier encargo se formalizará mediante un presupuesto que desglose base imponible, impuestos y total, y requerirá aceptación expresa." },
         { type: "h2", text: "4. Propiedad intelectual e industrial" },
         { type: "p", text: "Los textos, el diseño, el código y los elementos gráficos propios de este sitio pertenecen al titular o cuentan con licencia para su uso. Las fotografías de stock proceden de Unsplash bajo su licencia de uso libre. No se permite la reproducción total o parcial de los contenidos propios sin autorización." },
         { type: "h2", text: "5. Responsabilidad" },
@@ -53,14 +53,14 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
     en: {
       kicker: "Legal",
       title: "Legal notice",
-      updated: "Last updated: June 2026",
+      updated: "Last updated: July 2026",
       blocks: [
-        { type: "box", text: "Picodavi is a personal brand of David Picoiu (not a company). The owner's identifying details are set out below. For security, the tax ID (NIF/DNI) is provided on request and appears on invoices." },
+        { type: "box", text: "Picodavi is David Picoiu's personal brand (not a company) and its tax registration is being completed. Until that process is finished, this website serves as a portfolio and information page: no payments will be accepted and no projects will be formally commissioned. The tax ID and final tax details will be added here before professional activity begins." },
         { type: "h2", text: "1. Owner identification" },
         { type: "p", text: "In compliance with article 10 of Spanish Law 34/2002 on Information Society Services and Electronic Commerce (LSSI-CE), the details of the owner of this website are provided:" },
         { type: "ul", items: [
           "Owner: David Picoiu (“Picodavi” is a trade name / personal brand).",
-          "Tax ID (NIF): available on request and on invoices.",
+          "Tax ID (NIF): pending publication until tax registration is complete, before professional activity begins.",
           "Address for notifications: Viladrau (Girona), 17406, Catalonia.",
           "Email: picoiudavid@gmail.com",
           "Phone: 643 78 07 53",
@@ -69,7 +69,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
         { type: "h2", text: "2. Purpose" },
         { type: "p", text: "This website aims to present Picodavi's web design and development services and to make it easier for interested people to get in touch. Accessing and using the site grants you the status of user and implies acceptance of this legal notice." },
         { type: "h2", text: "3. Terms of use" },
-        { type: "p", text: "The user agrees to make appropriate use of the site's content and not to use it for unlawful activities, activities contrary to good faith, or activities that may harm the site or third parties. Price and service information is indicative; any project is formalised through a written quote and express acceptance." },
+        { type: "p", text: "The user agrees to make appropriate use of the site's content and not to use it for unlawful activities, activities contrary to good faith, or activities that may harm the site or third parties. Price and service information is indicative. Published prices are base amounts and exclude VAT; once commissioning opens, each project will be formalised through a written quote showing the taxable base, taxes and total, with express acceptance." },
         { type: "h2", text: "4. Intellectual and industrial property" },
         { type: "p", text: "The texts, design, code and original graphic elements of this site belong to the owner or are licensed for use. Stock photographs come from Unsplash under its free-use licence. Total or partial reproduction of the original content is not permitted without authorisation." },
         { type: "h2", text: "5. Liability" },
@@ -88,13 +88,13 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
     es: {
       kicker: "Legal",
       title: "Política de privacidad",
-      updated: "Última actualización: junio de 2026",
+      updated: "Última actualización: julio de 2026",
       blocks: [
         { type: "box", text: "Esta política describe cómo se tratan tus datos cuando contactas a través de la web: un formulario de contacto y los canales de contacto directo." },
         { type: "h2", text: "1. Responsable del tratamiento" },
         { type: "ul", items: [
           "Responsable: David Picoiu (marca personal «Picodavi»).",
-          "NIF: disponible bajo solicitud.",
+          "NIF: pendiente de publicación hasta completar el alta censal, antes de iniciar la actividad profesional.",
           "Ubicación: Viladrau (Girona), 17406, Catalunya.",
           "Email: picoiudavid@gmail.com",
           "Teléfono: 643 78 07 53",
@@ -121,13 +121,13 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
     en: {
       kicker: "Legal",
       title: "Privacy policy",
-      updated: "Last updated: June 2026",
+      updated: "Last updated: July 2026",
       blocks: [
         { type: "box", text: "This policy describes how your data is handled when you get in touch through the website: a contact form and the direct contact channels." },
         { type: "h2", text: "1. Data controller" },
         { type: "ul", items: [
           "Controller: David Picoiu (personal brand “Picodavi”).",
-          "Tax ID (NIF): available on request.",
+          "Tax ID (NIF): pending publication until tax registration is complete, before professional activity begins.",
           "Location: Viladrau (Girona), 17406, Catalonia.",
           "Email: picoiudavid@gmail.com",
           "Phone: 643 78 07 53",

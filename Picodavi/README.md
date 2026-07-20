@@ -1,5 +1,9 @@
 # Picodavi — tu web
 
+> **Versión anterior.** La portada que se publica actualmente está en
+> `../web-next/`. Esta carpeta se conserva como referencia y para las demos que
+> el despliegue copia a producción.
+
 Esta es la web de **Picodavi** (David). Es una web estática: solo archivos, sin
 programas raros, sin instalar nada. Funciona arrastrándola a Hostinger tal cual.
 
@@ -300,9 +304,9 @@ sección de reseñas con opiniones verdaderas (idealmente enlazadas a Google).
 Lo que **ya está hecho**:
 
 - **Precios** actualizados: Landing Express 390 €, Web profesional 650 €, Web + Cuidado 450 € + 55 €/mes y Crecimiento Local 89 €/mes.
-- **Datos legales** rellenados (David Picoiu · Viladrau · Hostinger). El **DNI no se
-  publica** a propósito (riesgo de suplantación): figura como "disponible bajo
-  solicitud", que es lo correcto y suficiente.
+- **Datos legales provisionales** rellenados (David Picoiu · Viladrau · Hostinger).
+  Antes de aceptar pagos o encargos hay que completar el alta e incorporar el NIF
+  real al aviso legal de la versión de producción.
 - **Favicon** (el iconito de la pestaña) e **imagen para compartir**
   (`assets/og-image.png`) creados.
 - Sección **"Antes y después"** (deslizable) y **FAQ de objeciones** añadidas.

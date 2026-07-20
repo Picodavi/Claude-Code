@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useT, useLang } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { brand, waTemplate } from "@/content/i18n";
+import { trackEvent } from "@/lib/analytics";
 
 export function Contact() {
   const t = useT();
@@ -14,6 +15,13 @@ export function Contact() {
   const [contact, setContact] = useState("");
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
+  const formStarted = useRef(false);
+
+  function onFormFocus() {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackEvent("lead_form_started", { placement: "contact" });
+  }
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -23,6 +31,7 @@ export function Contact() {
       .replace("{type}", type.trim() || "—")
       .replace("{business}", type.trim() || "—")
       .replace("{message}", [contact.trim(), message.trim()].filter(Boolean).join(" · "));
+    trackEvent("lead_form_submitted", { placement: "contact", language: lang });
     window.open(
       `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(text)}`,
       "_blank",
@@ -42,7 +51,7 @@ export function Contact() {
             headingKey="contact.heading"
             leadKey="contact.lead"
           />
-          <form onSubmit={onSubmit} className="mt-8 space-y-4">
+          <form onSubmit={onSubmit} onFocusCapture={onFormFocus} className="mt-8 space-y-4">
             <label className="block text-sm font-medium text-text">
               {t("contact.l1")}
               <input
@@ -137,7 +146,7 @@ export function Contact() {
               <dt className="font-mono text-xs uppercase tracking-widest text-gold-800">
                 {t("contact.sideResp")}
               </dt>
-              <dd className="mt-1 text-text">{brand.responseTime}</dd>
+              <dd className="mt-1 text-text">{t("contact.sideRespVal")}</dd>
             </div>
           </dl>
         </aside>

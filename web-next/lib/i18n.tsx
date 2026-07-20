@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { resolve, DEFAULT_LANG, type Lang } from "./i18n-core";
+import { trackEvent } from "./analytics";
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };
 
@@ -32,6 +33,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLangState(l);
     localStorage.setItem(STORAGE_KEY, l);
     document.documentElement.lang = l;
+    trackEvent("language_changed", { language: l });
   }, []);
 
   const t = useCallback((k: string) => resolve(lang, k), [lang]);

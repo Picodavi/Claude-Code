@@ -3,6 +3,7 @@
 import { useT } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { trackEvent } from "@/lib/analytics";
 
 type Cell =
   | { kind: "val"; key: string }
@@ -144,6 +145,7 @@ export function Pricing() {
         <p className="mt-6 text-sm text-muted">{t("price.note")}</p>
         <a
           href="#contact"
+          onClick={() => trackEvent("cta_clicked", { placement: "pricing", action: "plan_help" })}
           className="mt-6 inline-block rounded-full border border-pine px-6 py-3 text-sm font-semibold text-pine transition-colors hover:bg-pine hover:text-white"
         >
           {t("price.cta")}

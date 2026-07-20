@@ -13,10 +13,12 @@ export function MagneticButton({
   href,
   children,
   className = "",
+  onClick,
 }: {
   href: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const reduce = useReducedMotion();
@@ -40,6 +42,7 @@ export function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      onClick={onClick}
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={{ x: sx, y: sy }}

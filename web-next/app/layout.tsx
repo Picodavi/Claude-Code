@@ -34,10 +34,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://picodavi.com"),
   title: "Diseño web en Catalunya para negocios locales | Picodavi",
   description:
-    "Diseño y desarrollo web a medida para negocios locales de Catalunya: restaurantes, hoteles, clínicas y comercios. Rápido, claro y con precio cerrado.",
+    "Diseño y desarrollo web a medida para restaurantes, alojamientos y negocios locales de Catalunya. Trato directo, alcance claro y cuidado mensual opcional.",
   keywords: [
     "diseño web Catalunya",
     "diseño web Barcelona",
+    "diseño web Girona",
+    "diseño web Viladrau",
     "páginas web para restaurantes",
     "web para hoteles rurales",
     "diseño web Montseny",
@@ -53,14 +55,14 @@ export const metadata: Metadata = {
     siteName: "Picodavi",
     title: "Diseño web en Catalunya para negocios locales | Picodavi",
     description:
-      "Webs a medida para negocios locales: rápidas, claras y con precio cerrado.",
+      "Webs a medida para negocios locales de Catalunya, con trato directo, alcance claro y cuidado mensual opcional.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Picodavi — diseño web para negocios locales" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Diseño web en Catalunya para negocios locales | Picodavi",
     description:
-      "Webs a medida para negocios locales: rápidas, claras y con precio cerrado.",
+      "Webs a medida para negocios locales de Catalunya, con trato directo, alcance claro y cuidado mensual opcional.",
     images: ["/og-image.png"],
   },
   // En staging (/beta) evitamos que Google la indexe.
