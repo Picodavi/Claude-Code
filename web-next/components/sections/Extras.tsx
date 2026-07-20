@@ -24,7 +24,7 @@ export function Extras() {
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {EXTRAS.map(([tk, dk]) => (
-            <div key={tk} className="rounded-2xl border border-border bg-bg p-6">
+            <div key={tk} data-scene-card className="rounded-2xl border border-border bg-bg p-6">
               <h3 className="font-display text-lg font-bold text-ink">{t(tk)}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{t(dk)}</p>
             </div>

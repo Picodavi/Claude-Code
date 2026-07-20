@@ -1,115 +1,324 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import dynamic from "next/dynamic";
+import { motion, useMotionValue, type Variants } from "framer-motion";
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { useT } from "@/lib/i18n";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { HeroFallback } from "@/components/hero3d/HeroFallback";
 import { LaptopMock } from "@/components/hero3d/LaptopMock";
+import { useSceneCapabilities } from "@/components/hero3d/quality";
+import { useMotionPreference } from "@/components/motion/MotionPreference";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const HeroCanvas = dynamic(() => import("@/components/hero3d/HeroCanvas"), {
+  ssr: false,
+});
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.065, delayChildren: 0.04 } },
 };
+
 const item: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 export function Hero() {
   const t = useT();
-  const reduce = useReducedMotion();
+  const section = useRef<HTMLElement>(null);
+  const progress = useMotionValue(0);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const [canvasReady, setCanvasReady] = useState(false);
+  const [canvasFailed, setCanvasFailed] = useState(false);
+  const { hydrated, reduceMotion, toggleMotion } = useMotionPreference();
+  const capabilities = useSceneCapabilities(reduceMotion);
+  const renderCanvas =
+    capabilities.ready && capabilities.webgl && !canvasFailed && !reduceMotion;
+
+  useGSAP(
+    () => {
+      const root = section.current;
+      if (!root) return;
+
+      progress.set(0);
+      if (reduceMotion) {
+        gsap.set(
+          "[data-hero-mac], [data-hero-phone], [data-hero-phone-screen], [data-hero-copy], [data-hero-word], [data-hero-plane], [data-hero-portal], [data-hero-progress]",
+          { clearProps: "all" },
+        );
+        return;
+      }
+
+      const mm = gsap.matchMedia();
+      mm.add(
+        {
+          desktop: "(min-width: 901px)",
+          compact: "(max-width: 900px)",
+        },
+        (context) => {
+          const desktop = Boolean(context.conditions?.desktop);
+          const device = root.querySelector<HTMLElement>(
+            desktop ? "[data-hero-mac]" : "[data-hero-phone]",
+          );
+          const pointerLayer = root.querySelector<HTMLElement>("[data-hero-pointer]");
+          if (!device) return;
+
+          gsap.set(device, {
+            transformPerspective: desktop ? 1500 : 1100,
+            transformOrigin: "50% 52%",
+            force3D: true,
+          });
+          gsap.set("[data-hero-portal]", { autoAlpha: 0, scale: 0.18 });
+          gsap.set("[data-hero-progress]", { scaleX: 0, transformOrigin: "left center" });
+
+          const timeline = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: root,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: desktop ? 0.65 : 0.35,
+              invalidateOnRefresh: true,
+              onUpdate: (self) => progress.set(self.progress),
+            },
+          });
+
+          timeline
+            .fromTo(
+              device,
+              desktop
+                ? { xPercent: 8, yPercent: 8, rotationX: 5, rotationY: -13, rotationZ: -1, scale: 0.78 }
+                : { xPercent: 2, yPercent: 4, rotationX: 3, rotationY: -8, scale: 0.8 },
+              desktop
+                ? { xPercent: 0, yPercent: 0, rotationX: -2, rotationY: 7, rotationZ: 0, scale: 1, duration: 0.2 }
+                : { xPercent: 0, yPercent: -2, rotationX: -1, rotationY: 5, scale: 0.9, duration: 0.24 },
+              0,
+            )
+            .to(
+              device,
+              desktop
+                ? { xPercent: -16, yPercent: -5, rotationX: 4, rotationY: -24, rotationZ: 1.5, scale: 1.16, duration: 0.25 }
+                : { xPercent: -2, yPercent: -6, rotationX: 3, rotationY: -12, scale: 1, duration: 0.28 },
+            )
+            .to(
+              device,
+              desktop
+                ? { xPercent: -34, yPercent: 3, rotationX: -4, rotationY: 10, rotationZ: -1, scale: 1.52, duration: 0.25 }
+                : { xPercent: -3, yPercent: -2, rotationX: -2, rotationY: 7, scale: 1.08, duration: 0.27 },
+            )
+            .to(
+              device,
+              desktop
+                ? { xPercent: -48, yPercent: 12, rotationX: 0, rotationY: 0, rotationZ: 0, scale: 2.85, duration: 0.3 }
+                : { xPercent: 2, yPercent: 6, rotationX: 0, rotationY: 0, scale: 1.18, duration: 0.21 },
+            )
+            .to("[data-hero-copy]", { autoAlpha: 0, yPercent: -20, duration: 0.28 }, 0.2)
+            .to(".hero-title-line--one", { xPercent: -16, yPercent: -65, duration: 0.28 }, 0.18)
+            .to(".hero-title-line--three", { xPercent: -22, yPercent: 28, duration: 0.36 }, 0.2)
+            .fromTo(".hero-kinetic__word--back", { xPercent: 18, scale: 0.86 }, { xPercent: -26, scale: 1.12, duration: 1 }, 0)
+            .fromTo(".hero-kinetic__word--mid", { xPercent: -34, yPercent: 18 }, { xPercent: 30, yPercent: -16, duration: 1 }, 0)
+            .fromTo(".hero-kinetic__word--front", { xPercent: 35, yPercent: -20 }, { xPercent: -48, yPercent: 24, duration: 1 }, 0)
+            .to(".hero-plane--a", { xPercent: -22, yPercent: -18, rotation: -9, duration: 1 }, 0)
+            .to(".hero-plane--b", { xPercent: 18, yPercent: 24, rotation: 14, duration: 1 }, 0)
+            .to(".hero-plane--c", { xPercent: -12, yPercent: -30, rotation: -4, duration: 1 }, 0)
+            .to(".hero-mac__screen-accent", { xPercent: 210, duration: 0.72 }, 0.12)
+            .fromTo(
+              ".hero-experience__signal",
+              { autoAlpha: 0, x: 32 },
+              { autoAlpha: 1, x: 0, duration: 0.18 },
+              0.2,
+            )
+            .to(".hero-experience__signal", { autoAlpha: 0, x: -22, duration: 0.16 }, 0.58)
+            .to("[data-hero-progress]", { scaleX: 1, duration: 1 }, 0)
+            .to(
+              "[data-hero-portal]",
+              {
+                autoAlpha: 1,
+                scale: desktop ? 4.8 : 4.2,
+                borderRadius: 0,
+                duration: desktop ? 0.3 : 0.18,
+              },
+              desktop ? 0.7 : 0.82,
+            );
+
+          if (!desktop) {
+            timeline
+              .fromTo(
+                "[data-hero-phone-screen]",
+                { yPercent: 0, scale: 1.08 },
+                { yPercent: -10, scale: 1.18, duration: 0.82 },
+                0.04,
+              )
+              .to(
+                ".hero-phone__screen-accent",
+                { xPercent: 220, duration: 0.68 },
+                0.12,
+              );
+          }
+
+          if (!desktop || !capabilities.pointerFine || !pointerLayer) return;
+
+          const pointerRotateX = gsap.quickTo(pointerLayer, "rotationX", {
+            duration: 0.55,
+            ease: "power3.out",
+          });
+          const pointerRotateY = gsap.quickTo(pointerLayer, "rotationY", {
+            duration: 0.55,
+            ease: "power3.out",
+          });
+          const planeX = gsap.quickTo(".hero-plane--b", "x", {
+            duration: 0.9,
+            ease: "power3.out",
+          });
+          const onPointerMove = (event: PointerEvent) => {
+            const x = (event.clientX / window.innerWidth - 0.5) * 2;
+            const y = (event.clientY / window.innerHeight - 0.5) * 2;
+            pointerX.set(x);
+            pointerY.set(y);
+            pointerRotateX(y * -4);
+            pointerRotateY(x * 7);
+            planeX(x * 24);
+          };
+          const onPointerLeave = () => {
+            pointerX.set(0);
+            pointerY.set(0);
+            pointerRotateX(0);
+            pointerRotateY(0);
+            planeX(0);
+          };
+
+          root.addEventListener("pointermove", onPointerMove, { passive: true });
+          root.addEventListener("pointerleave", onPointerLeave);
+          return () => {
+            root.removeEventListener("pointermove", onPointerMove);
+            root.removeEventListener("pointerleave", onPointerLeave);
+          };
+        },
+      );
+
+      return () => mm.revert();
+    },
+    { scope: section, dependencies: [reduceMotion, capabilities.pointerFine], revertOnUpdate: true },
+  );
 
   return (
-    <section id="top" className="px-4 pt-6 sm:px-6">
-      <div
-        data-hero-panel
-        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(140deg,#F2B25C_0%,#DE8E29_40%,#A85D14_80%,#7c4712_100%)] px-6 py-12 shadow-[0_40px_90px_-25px_rgba(124,71,18,0.6)] sm:px-10 sm:py-16 lg:px-14"
-      >
-        {/* decoración: círculos oscuros translúcidos (profundidad, estilo ref) */}
-        <div aria-hidden className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-black/10" />
-        <div aria-hidden className="absolute -bottom-32 right-1/3 h-96 w-96 rounded-full bg-black/10" />
-
-        {/* Tipografía decorativa en capas (aria-hidden: el h1 real es el semántico).
-            Capa trasera: palabra gigante en trazo, medio oculta tras el Mac. */}
-        <div
-          aria-hidden
-          data-deco-back
-          className="pointer-events-none absolute left-[-2%] top-[12%] z-0 select-none whitespace-nowrap font-display text-[15vw] font-extrabold uppercase leading-none tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.34)] lg:text-[11vw]"
-        >
-          Picodavi
-        </div>
-        {/* Capa delantera: banda editorial vertical (solo tablet/escritorio). */}
-        <div
-          aria-hidden
-          data-deco-front
-          className="pointer-events-none absolute bottom-[10%] right-[4%] z-30 hidden origin-bottom-right -rotate-90 select-none font-mono text-xs font-bold uppercase tracking-[0.4em] text-white/70 sm:block"
-        >
-          Disseny · Web · Catalunya
+    <section
+      ref={section}
+      id="top"
+      className={`hero-experience ${reduceMotion ? "hero-experience--reduced" : ""}`}
+    >
+      <div className="hero-experience__sticky">
+        <div className="hero-experience__atmosphere" aria-hidden>
+          <span className="hero-atmosphere__grid" />
+          <span className="hero-atmosphere__beam" />
+          <span className="hero-atmosphere__sheet hero-atmosphere__sheet--a" />
+          <span className="hero-atmosphere__sheet hero-atmosphere__sheet--b" />
+          <span className="hero-experience__grain" />
         </div>
 
-        <div className="relative grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
-          {/* Mac protagonista, integrado entre las capas tipográficas */}
-          <div
-            data-hero-visual
-            className="relative z-10 order-2 h-[320px] sm:h-[440px] lg:order-1 lg:h-[540px]"
-          >
-            <LaptopMock />
-          </div>
+        <div className="hero-experience__planes" aria-hidden>
+          <span className="hero-plane hero-plane--a" data-hero-plane />
+          <span className="hero-plane hero-plane--b" data-hero-plane />
+          <span className="hero-plane hero-plane--c" data-hero-plane />
+        </div>
 
-          {/* Texto */}
-          <motion.div
-            data-hero-copy
-            className="relative z-20 order-1 lg:order-2"
-            variants={container}
-            initial={reduce ? false : "hidden"}
-            animate="show"
-          >
-            <motion.p
-              variants={item}
-              className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-white/80"
-            >
-              {t("hero.kicker")}
-            </motion.p>
+        <div className="hero-kinetic hero-kinetic--back" aria-hidden>
+          <span className="hero-kinetic__word hero-kinetic__word--back" data-hero-word>WEB</span>
+          <span className="hero-kinetic__word hero-kinetic__word--mid" data-hero-word>DISEÑO</span>
+        </div>
+        <div className="hero-kinetic hero-kinetic--front" aria-hidden>
+          <span className="hero-kinetic__word hero-kinetic__word--front" data-hero-word>CONVIERTE</span>
+        </div>
 
-            <motion.h1
-              variants={item}
-              className="mt-5 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl"
-            >
-              {t("hero.title1")} {t("hero.title2")}
-            </motion.h1>
+        <div className="hero-experience__visual">
+          <HeroFallback canvasReady={canvasReady && renderCanvas} />
+          {renderCanvas ? (
+            <HeroCanvas
+              progress={progress}
+              pointerX={pointerX}
+              pointerY={pointerY}
+              pointerEnabled={capabilities.pointerFine}
+              quality={capabilities.quality}
+              onReady={() => setCanvasReady(true)}
+              onError={() => setCanvasFailed(true)}
+            />
+          ) : null}
+        </div>
 
-            <motion.p
-              variants={item}
-              className="mt-6 max-w-md text-base leading-relaxed text-white/85"
-            >
-              {t("hero.lead")}
-            </motion.p>
+        <LaptopMock />
 
-            <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="#contact"
-                className="rounded-full bg-[#16130e] px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-transform hover:scale-105"
-              >
-                {t("hero.ctaPrimary")}
-              </a>
-              <a
-                href="#work"
-                className="rounded-full border-2 border-white/80 px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#16130e]"
-              >
-                {t("hero.ctaSecondary")}
-              </a>
-            </motion.div>
+        <motion.div
+          className="hero-experience__copy"
+          data-hero-copy
+          variants={container}
+          initial={false}
+          animate="show"
+        >
+          <motion.p variants={item} className="hero-experience__kicker">
+            <span aria-hidden />
+            {t("hero.kicker")}
+          </motion.p>
 
-            <motion.ul variants={item} className="mt-10 flex flex-wrap gap-x-7 gap-y-2">
-              {["hero.chip1", "hero.chip2", "hero.chip3"].map((k) => (
-                <li key={k} className="flex items-center gap-2 text-sm font-medium text-white/90">
-                  <span aria-hidden className="text-white">
-                    ✓
-                  </span>
-                  {t(k)}
-                </li>
-              ))}
-            </motion.ul>
+          <motion.h1 variants={item} className="hero-experience__title">
+            <span className="hero-title-line--one">{t("hero.title1")}</span>
+            <strong className="hero-title-line--three">{t("hero.title2")}</strong>
+          </motion.h1>
+
+          <motion.p variants={item} className="hero-experience__lead">
+            {t("hero.lead")}
+          </motion.p>
+
+          <motion.div variants={item} className="hero-experience__actions">
+            <MagneticButton href="#contact" className="hero-cta hero-cta--primary">
+              {t("hero.ctaPrimary")}
+            </MagneticButton>
+            <a href="#work" className="hero-cta hero-cta--secondary">
+              {t("hero.ctaSecondary")}
+            </a>
           </motion.div>
+
+          <motion.ul variants={item} className="hero-experience__proof">
+            {["hero.chip1", "hero.chip2", "hero.chip3"].map((key) => (
+              <li key={key}><span aria-hidden>✓</span>{t(key)}</li>
+            ))}
+          </motion.ul>
+        </motion.div>
+
+        <div aria-hidden className="hero-experience__signal">
+          <span>01 / 04</span>
+          <p>Diseño que avanza contigo</p>
+          <i />
+          <span>Web · estrategia · código</span>
         </div>
+
+        <div className="hero-experience__portal" data-hero-portal aria-hidden />
+
+        <div className="hero-experience__scroll" aria-hidden>
+          <span>{t("hero.scroll")}</span>
+          <i><b data-hero-progress /></i>
+        </div>
+
+        {hydrated ? (
+          <button
+            type="button"
+            className="hero-motion-toggle"
+            onClick={toggleMotion}
+            aria-pressed={reduceMotion}
+          >
+            {reduceMotion ? "Activar movimiento 3D" : "Reducir movimiento"}
+          </button>
+        ) : null}
       </div>
     </section>
   );

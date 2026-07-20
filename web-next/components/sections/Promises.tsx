@@ -24,6 +24,7 @@ export function Promises() {
           {PROMISES.map(([tk, dk], i) => (
             <div
               key={tk}
+              data-scene-card
               className="rounded-2xl border border-border bg-surface p-7"
             >
               <span className="font-display text-5xl font-extrabold leading-none text-gold/40">

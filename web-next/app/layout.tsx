@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { MotionConfig } from "framer-motion";
 import { Bricolage_Grotesque, Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
@@ -8,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Scrollytelling } from "@/components/scrolly/Scrollytelling";
 import { Backdrop } from "@/components/Backdrop";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { MotionPreferenceProvider } from "@/components/motion/MotionPreference";
 
 // Fuentes de marca (self-host vía next/font, sin FOUT). Exponen variables CSS
 // que consume el tema de Tailwind v4 en globals.css.
@@ -78,20 +78,25 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text font-sans">
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido
+        </a>
         {/* Sin JS, las secciones animadas se muestran igualmente. */}
         <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`.reveal,.hero-experience__copy>*{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
         <Backdrop />
-        <MotionConfig reducedMotion="never">
+        <MotionPreferenceProvider>
           <LanguageProvider>
             <Scrollytelling />
             <ScrollProgress />
             <Nav />
-            <div className="flex-1">{children}</div>
+            <div id="main-content" tabIndex={-1} className="flex-1">
+              {children}
+            </div>
             <Footer />
           </LanguageProvider>
-        </MotionConfig>
+        </MotionPreferenceProvider>
       </body>
     </html>
   );

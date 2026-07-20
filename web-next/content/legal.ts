@@ -23,7 +23,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
       title: "Aviso legal",
       updated: "Última actualización: junio de 2026",
       blocks: [
-        { type: "box", text: "Picodavi es una marca personal de David Picoiu (no es una sociedad). Los datos identificativos del titular figuran a continuación. Por seguridad, el NIF/DNI se facilita bajo solicitud y consta en las facturas. Conviene que una gestoría revise estos textos para tu caso concreto." },
+        { type: "box", text: "Picodavi es una marca personal de David Picoiu (no es una sociedad). Los datos identificativos del titular figuran a continuación. Por seguridad, el NIF/DNI se facilita bajo solicitud y consta en las facturas." },
         { type: "h2", text: "1. Datos identificativos del titular" },
         { type: "p", text: "En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:" },
         { type: "ul", items: [
@@ -55,7 +55,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
       title: "Legal notice",
       updated: "Last updated: June 2026",
       blocks: [
-        { type: "box", text: "Picodavi is a personal brand of David Picoiu (not a company). The owner's identifying details are set out below. For security, the tax ID (NIF/DNI) is provided on request and appears on invoices. It is advisable to have an accountant review these texts for your specific case." },
+        { type: "box", text: "Picodavi is a personal brand of David Picoiu (not a company). The owner's identifying details are set out below. For security, the tax ID (NIF/DNI) is provided on request and appears on invoices." },
         { type: "h2", text: "1. Owner identification" },
         { type: "p", text: "In compliance with article 10 of Spanish Law 34/2002 on Information Society Services and Electronic Commerce (LSSI-CE), the details of the owner of this website are provided:" },
         { type: "ul", items: [
@@ -90,7 +90,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
       title: "Política de privacidad",
       updated: "Última actualización: junio de 2026",
       blocks: [
-        { type: "box", text: "Este texto describe cómo funciona la web hoy: un formulario que abre WhatsApp y unos datos de contacto. Si en el futuro añades analítica, newsletter o pagos, habrá que ampliarlo." },
+        { type: "box", text: "Esta política describe cómo se tratan tus datos cuando contactas a través de la web: un formulario de contacto y los canales de contacto directo." },
         { type: "h2", text: "1. Responsable del tratamiento" },
         { type: "ul", items: [
           "Responsable: David Picoiu (marca personal «Picodavi»).",
@@ -109,7 +109,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
         { type: "h2", text: "5. Conservación" },
         { type: "p", text: "Conservo tus datos el tiempo necesario para atender tu solicitud y, si se convierte en un encargo, durante la relación profesional y los plazos legales aplicables. Después se eliminan o se anonimizan." },
         { type: "h2", text: "6. Destinatarios y encargados" },
-        { type: "p", text: "Para funcionar, la web y el contacto se apoyan en servicios de terceros que actúan como proveedores: WhatsApp / Meta (cuando envías el formulario o me escribes por WhatsApp), Google / Gmail (si me escribes por correo, y para servir las fuentes tipográficas) y Hostinger (alojamiento de la web, con servidores en la UE según el plan contratado). Cada uno tiene su propia política de privacidad y sus propias garantías." },
+        { type: "p", text: "Para funcionar, la web y el contacto se apoyan en servicios de terceros que actúan como proveedores: WhatsApp / Meta (cuando envías el formulario o me escribes por WhatsApp), Google / Gmail (solo si me escribes por correo) y Hostinger (alojamiento de la web, con servidores en la UE según el plan contratado). Las tipografías están autoalojadas, así que no se envía ningún dato a terceros para cargarlas. Cada proveedor tiene su propia política de privacidad y sus propias garantías." },
         { type: "h2", text: "7. Tus derechos" },
         { type: "p", text: "Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a picoiudavid@gmail.com, indicando qué derecho deseas ejercer. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es) si consideras que el tratamiento no es correcto." },
         { type: "h2", text: "8. Seguridad" },
@@ -123,7 +123,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
       title: "Privacy policy",
       updated: "Last updated: June 2026",
       blocks: [
-        { type: "box", text: "This text describes how the website works today: a form that opens WhatsApp and some contact details. If you later add analytics, a newsletter or payments, it will need to be expanded." },
+        { type: "box", text: "This policy describes how your data is handled when you get in touch through the website: a contact form and the direct contact channels." },
         { type: "h2", text: "1. Data controller" },
         { type: "ul", items: [
           "Controller: David Picoiu (personal brand “Picodavi”).",
@@ -142,7 +142,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
         { type: "h2", text: "5. Retention" },
         { type: "p", text: "I keep your data for as long as needed to handle your request and, if it becomes a project, for the duration of the professional relationship and the applicable legal periods. Afterwards it is deleted or anonymised." },
         { type: "h2", text: "6. Recipients and processors" },
-        { type: "p", text: "To work, the website and contact rely on third-party services acting as providers: WhatsApp / Meta (when you send the form or message me on WhatsApp), Google / Gmail (if you email me, and to serve the fonts) and Hostinger (website hosting, with servers in the EU depending on the plan). Each has its own privacy policy and safeguards." },
+        { type: "p", text: "To work, the website and contact rely on third-party services acting as providers: WhatsApp / Meta (when you send the form or message me on WhatsApp), Google / Gmail (only if you email me) and Hostinger (website hosting, with servers in the EU depending on the plan). The fonts are self-hosted, so no data is sent to third parties to load them. Each provider has its own privacy policy and safeguards." },
         { type: "h2", text: "7. Your rights" },
         { type: "p", text: "You may exercise your rights of access, rectification, erasure, objection, restriction and portability at any time by writing to picoiudavid@gmail.com, stating which right you wish to exercise. You may also lodge a complaint with the Spanish Data Protection Agency (www.aepd.es) if you consider the processing to be incorrect." },
         { type: "h2", text: "8. Security" },
@@ -167,7 +167,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
         { type: "ul", items: [
           "picodavi-lang — guarda tu idioma (español o inglés) para recordarlo en tu próxima visita. Técnica / necesaria.",
           "picodavi-cookies — recuerda que ya has visto el aviso de cookies, para no mostrártelo cada vez. Técnica / necesaria.",
-          "Google Fonts — las tipografías se cargan desde los servidores de Google, que puede recibir tu dirección IP al servir las fuentes. No instala cookies de seguimiento en este sitio.",
+          "Tipografías propias — las fuentes se sirven desde este mismo sitio (autoalojadas). No se hacen peticiones a servidores externos ni se instalan cookies al cargarlas.",
         ] },
         { type: "p", text: "No se utiliza Google Analytics, ni píxeles de redes sociales, ni cookies de publicidad." },
         { type: "h2", text: "3. Enlaces y servicios de terceros" },
@@ -191,7 +191,7 @@ export const legal: Record<LegalKey, Record<Lang, LegalDoc>> = {
         { type: "ul", items: [
           "picodavi-lang — stores your language (Spanish or English) to remember it on your next visit. Technical / necessary.",
           "picodavi-cookies — remembers that you have already seen the cookie notice, so it is not shown every time. Technical / necessary.",
-          "Google Fonts — the fonts load from Google's servers, which may receive your IP address when serving them. It does not install tracking cookies on this site.",
+          "Self-hosted fonts — the fonts are served from this site itself. No requests are made to external servers and no cookies are set when loading them.",
         ] },
         { type: "p", text: "No Google Analytics, social-media pixels or advertising cookies are used." },
         { type: "h2", text: "3. Third-party links and services" },
