@@ -54,8 +54,8 @@ Antes de activar GA4, GTM, Plausible u otra herramienta hay que elegir cuenta, r
 
 ## Datos que David debe confirmar
 
-- Si los precios publicados incluyen o no IVA y cómo debe mostrarse legalmente.
-- Situación fiscal y contenido definitivo del aviso legal.
+- Decisión provisional adoptada: los precios públicos son importes base sin IVA para proteger el margen B2B. Cada presupuesto deberá desglosar base imponible, IVA y total.
+- Antes de aceptar un pago o iniciar un encargo: completar el alta censal, confirmar con una gestoría el tratamiento fiscal aplicable e incorporar el NIF y los datos fiscales definitivos al aviso legal.
 - Coste real de dominio, hosting y herramientas incluidas en cada mensualidad.
 - Capacidad real de responder en menos de 24 horas y entregar en 7–10 días.
 - Alcance exacto de “seguimiento de reseñas” y qué acceso se pedirá a Google Business.

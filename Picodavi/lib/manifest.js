@@ -280,7 +280,7 @@
         "price.hour1": "45 €/h",
         "price.hour2": "35 €/h",
         "price.hour3": "45 €/h",
-        "price.note": "Precios de partida. Antes de empezar recibes por escrito las páginas, funciones, plazo y precio final.",
+        "price.note": "Precios base, IVA no incluido. Antes de empezar recibes por escrito las páginas, funciones, plazo, impuestos y precio final.",
         "price.cta": "¿No sabes cuál te conviene? Hablamos 10 minutos y te lo digo. →",
 
         // Contacto (07)
@@ -691,7 +691,7 @@
         "price.hour1": "€45/h",
         "price.hour2": "€35/h",
         "price.hour3": "€45/h",
-        "price.note": "Starting prices. Before work begins, you receive the pages, features, timing and final price in writing.",
+        "price.note": "Base prices exclude VAT. Before work begins, you receive the pages, features, timing, taxes and final price in writing.",
         "price.cta": "Not sure which one suits you? Let's talk for 10 minutes and I'll tell you. →",
 
         "contact.tag": "Contact",
