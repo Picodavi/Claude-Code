@@ -134,6 +134,7 @@ En 3 clientes, tu web pasa de "1 proyecto" a "4 proyectos + reseñas" y todo se 
 
 ## EL PRIMER CLIENTE ES EL MÁS CARO DE CONSEGUIR
 
-Ofrece a los 2-3 primeros un **precio de lanzamiento** (ej. web a 450 € en vez de 650)
-**a cambio de una reseña y de usarlo como caso** en tu web. No es rebajar: es comprar
-tu prueba social, que ahora vale más que el dinero. A partir del 4.º, cobras precio completo.
+Para los primeros proyectos, ofrece una **revisión inicial gratuita de 3 puntos** y,
+si hace falta reducir alcance, hazlo por escrito (menos páginas o funciones), no con un
+descuento ambiguo. Después de entregar, pide una reseña honesta y permiso para usar el
+trabajo como caso; nunca condiciones la opinión ni inventes resultados.

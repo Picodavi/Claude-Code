@@ -77,7 +77,7 @@ email: "picoiudavid@gmail.com",
 
 ### Cambiar precios y textos de servicios
 Los textos visibles de las tarjetas y precios están en dos sitios:
-- **`index.html`** → el texto que se ve (busca, por ejemplo, `Desde 320 €`).
+- **`index.html`** → el texto que se ve (busca, por ejemplo, `650 €`).
 - **`lib/manifest.js`** → dentro de `i18n` → `es` y `en` (las traducciones).
 
 Para que un cambio salga en español **y** en inglés, edítalo en `index.html`
@@ -299,7 +299,7 @@ sección de reseñas con opiniones verdaderas (idealmente enlazadas a Google).
 
 Lo que **ya está hecho**:
 
-- **Precios** actualizados: Landing 190 €, Web completa 320 €, Mantenimiento 55 €/mes.
+- **Precios** actualizados: Landing Express 390 €, Web profesional 650 €, Web + Cuidado 450 € + 55 €/mes y Crecimiento Local 89 €/mes.
 - **Datos legales** rellenados (David Picoiu · Viladrau · Hostinger). El **DNI no se
   publica** a propósito (riesgo de suplantación): figura como "disponible bajo
   solicitud", que es lo correcto y suficiente.

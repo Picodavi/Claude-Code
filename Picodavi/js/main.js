@@ -21,6 +21,21 @@
   function $(sel, ctx) { return (ctx || doc).querySelector(sel); }
   function $all(sel, ctx) { return Array.prototype.slice.call((ctx || doc).querySelectorAll(sel)); }
 
+  /* --- Medición preparada, sin enviar datos a terceros ------------------
+     Los eventos se guardan en dataLayer para conectar GTM/GA4 más adelante.
+     No incluyen nombres, teléfonos, emails ni el texto del formulario. */
+  function trackEvent(name, details) {
+    var payload = {
+      event: name,
+      page_path: location.pathname || "/",
+      language: currentLang || doc.documentElement.lang || "es"
+    };
+    Object.keys(details || {}).forEach(function (key) { payload[key] = details[key]; });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+    try { doc.dispatchEvent(new CustomEvent("picodavi:track", { detail: payload })); } catch (e) {}
+  }
+
   /* ======================================================================
      1) SPLASH — doble red de seguridad (CSS ~3.7s + hide forzado JS)
      ====================================================================== */
@@ -90,6 +105,7 @@
       toggle.addEventListener("click", function () {
         applyLang(currentLang === "es" ? "en" : "es");
         initLinks();
+        trackEvent("language_changed", { selected_language: currentLang });
       });
     }
   }
@@ -147,6 +163,12 @@
   function initForm() {
     var form = $("#contactForm");
     if (!form) return;
+    var started = false;
+    form.addEventListener("focusin", function () {
+      if (started) return;
+      started = true;
+      trackEvent("lead_form_started", { form_id: "contact" });
+    });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
@@ -158,12 +180,34 @@
       var message = v("message");
 
       var tpl = (DATA.waTemplate && DATA.waTemplate[currentLang]) ||
-                "Hola David, soy {name}. Tengo un negocio de {type} y te escribo desde tu web sobre un proyecto. {message}";
+                "Hola David, soy {name}. Necesito: {type}. Te escribo desde tu web para hablar del proyecto. {message}";
       var msg = tpl.replace("{name}", name).replace("{type}", type).replace("{message}", message || "");
       if (contactInfo) {
         msg += currentLang === "en" ? "  · Contact: " + contactInfo : "  · Contacto: " + contactInfo;
       }
+      trackEvent("lead_form_submitted", { form_id: "contact", destination: "whatsapp" });
       window.open(waUrl(msg), "_blank", "noopener");
+    });
+  }
+
+  /* ======================================================================
+     4B) EVENTOS DE CONVERSIÓN — nomenclatura lista para GTM/GA4
+     ====================================================================== */
+  function initMeasurement() {
+    doc.addEventListener("click", function (e) {
+      var el = e.target && e.target.closest ? e.target.closest("[data-track], [data-wa-project], [data-wa-cta], [data-wa-link]") : null;
+      if (!el) return;
+      var id = el.getAttribute("data-track");
+      if (!id && el.hasAttribute("data-wa-project")) id = "project_interest";
+      if (!id && el.hasAttribute("data-wa-cta")) id = "pricing_question";
+      if (!id && el.hasAttribute("data-wa-link")) id = "whatsapp_direct";
+      trackEvent("cta_clicked", { cta_id: id || "unknown", destination: el.hasAttribute("data-wa-link") || el.hasAttribute("data-wa-cta") || el.hasAttribute("data-wa-project") ? "whatsapp" : "page" });
+    });
+
+    $all(".pricing-fold").forEach(function (details, index) {
+      details.addEventListener("toggle", function () {
+        if (details.open) trackEvent("pricing_details_opened", { panel_index: index + 1 });
+      });
     });
   }
 
@@ -377,7 +421,7 @@
   function initGlow() {
     if (REDUCE) return;
     if (!(window.matchMedia && window.matchMedia("(pointer: fine)").matches)) return;
-    var els = $all(".card, .reccard, .sector, .commit, .audience__item, .featured, .step, .about__stats li, .includes");
+    var els = $all(".card, .reccard, .sector, .commit, .audience__item, .featured, .step, .about__stats li, .includes, .audit-offer__sheet");
     els.forEach(function (el) {
       el.classList.add("glow");
       el.addEventListener("pointermove", function (e) {
@@ -608,7 +652,8 @@
 
     // Tinte y luminosidad por sección (cambio de atmósfera; sin coste por frame).
     [["#hero", "hero"], ["#services", "services"], ["#process", "process"],
-     ["#about", "about"], ["#work", "work"], ["#pricing", "pricing"], ["#contact", "contact"]]
+     ["#about", "about"], ["#work", "work"], ["#revision", "work"],
+     ["#pricing", "pricing"], ["#contact", "contact"]]
       .forEach(function (s) {
         var el = $(s[0]); if (!el) return;
         var set = function () { bg.setAttribute("data-scene", s[1]); };
@@ -681,6 +726,7 @@
     safe(initLang, "i18n");
     safe(initLinks, "links");
     safe(initForm, "form");
+    safe(initMeasurement, "measurement");
     safe(initNav, "nav");
     safe(initReveal, "reveal");
     safe(initFloat, "float");

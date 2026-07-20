@@ -8,3 +8,9 @@ Thumbs.db
 # Artefactos npm sueltos (no forman parte de la web)
 package-lock.json
 .claude/package-lock.json
+
+# Contexto estratégico local para skills/agentes (no se publica en Hostinger)
+.agents/
+
+# Contexto estratégico local para skills/agentes (no se publica en Hostinger)
+.agents/

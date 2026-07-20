@@ -26,7 +26,7 @@ aquí en Viladrau, la hice yo». Mejor aún si te acercas en persona.
 > la del Xalet La Coromina (xaletlacoromina.com — mírala desde el móvil).
 > He visto que [NOMBRE] no tiene página web, y la gente que os busca en Google
 > para ver la carta o el horario no encuentra nada. Os la puedo hacer en una
-> semana, desde 190 €, con carta digital y reservas. ¿Me paso un día y os lo
+> semana, desde 390 €, con carta digital y reservas. ¿Me paso un día y os lo
 > enseño en 10 minutos?
 
 **La Cerve 3.0 (está en la Plaça Major — tono más cercano):**
@@ -34,7 +34,7 @@ aquí en Viladrau, la hice yo». Mejor aún si te acercas en persona.
 > Soy diseñador web — la web nueva del Xalet La Coromina es mía
 > (xaletlacoromina.com). He visto que La Cerve no tiene web y creo que con lo
 > que se mueve la plaça en temporada os vendría genial: carta online, horarios
-> y que os encuentren en Google. Desde 190 € y en una semana. ¿Me paso y os lo
+> y que os encuentren en Google. Desde 390 € y en una semana. ¿Me paso y os lo
 > enseño?
 
 ---
@@ -60,7 +60,7 @@ muestra webs propias; verificar uno a uno):
 > Hola [NOMBRE] 👋 Soy David, diseñador web del Montseny (Viladrau). Os busqué
 > en Google para ver la carta y no encontré página web — solo directorios que
 > no controláis vosotros. Yo hago webs para restaurantes de la zona: la del
-> Xalet La Coromina de Viladrau es mía (xaletlacoromina.com). Desde 190 € y
+> Xalet La Coromina de Viladrau es mía (xaletlacoromina.com). Desde 390 € y
 > lista en una semana. ¿Os preparo una propuesta sin compromiso?
 
 **Mensaje tipo para fisios:**
@@ -68,7 +68,7 @@ muestra webs propias; verificar uno a uno):
 > encontrado solo en directorios tipo ProntoPro — sin web propia, las citas
 > dependen de que os llamen. Una web sencilla con botón de cita por WhatsApp
 > os llenaría la agenda mejor. La última que hice: xaletlacoromina.com.
-> Desde 190 €. ¿Os cuento en 10 minutos?
+> Desde 390 €. ¿Os cuento en 10 minutos?
 
 ---
 

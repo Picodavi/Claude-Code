@@ -10,12 +10,12 @@
 
 **Lo que está bien (no tocar):**
 - Posicionamiento "web + acompañamiento" con el mantenimiento como opción recomendada. Es el modelo correcto: ingresos recurrentes + relación larga.
-- Precios dentro de mercado: 650 € está en banda media-baja para web a medida; 55 €/mes en el punto dulce del mantenimiento.
+- Precios accesibles para empezar, pero todavía sin datos suficientes de horas y costes para afirmar el margen. Medir cada proyecto y revisar después de los primeros 3 clientes.
 - Estructura de la web: hero claro, barra de confianza, compromiso por escrito, caso real (Xalet), FAQ potente, formulario → WhatsApp (fricción mínima).
 - Honestidad como marca: proyecto real vs. ejemplo, sin humo. Es tu mejor activo a largo plazo.
 
 **Lo que falta o cojea (por orden de gravedad):**
-1. **Prueba social insuficiente.** 1 proyecto real y 0 testimonios. A 650 € es tu mayor freno de conversión. Prioridad absoluta: conseguir 2–3 proyectos más aunque sea con descuento de lanzamiento a cambio de reseña.
+1. **Prueba social insuficiente.** 1 proyecto real y 0 testimonios. Prioridad: conseguir 2–3 proyectos con alcance cerrado, pedir después una reseña honesta y documentar el proceso; nunca condicionar la opinión a un descuento.
 2. **Sin producto de entrada.** Se eliminó la landing (190 €) y la escalera quedó sin primer peldaño. Un negocio que duda no tiene forma barata de probarte. → Solución: **Landing Express 390 €** (ya implementado en la web).
 3. **Precio por horas opaco.** "Bajo consulta" genera desconfianza. → Solución: **45 €/h con presupuesto cerrado antes** (ya implementado).
 4. **Sin captación activa.** La web sola no trae clientes sin tráfico. Necesitas prospección (plan de 30 días abajo).
@@ -56,7 +56,7 @@
 
 ```
 GRATIS          390 €           650–950 €        450 € + 55 €/mes      EXTRAS
-Auditoría   →   Landing     →   Web completa  →  Web + Mantenimiento → Panel +190 €
+Auditoría   →   Landing     →   Web completa  →  Web + Mantenimiento → Panel +150 €
 3 puntos        Express         (o carta QR                            SEO local +190 €
 por vídeo       (o carta        240 € para                             Horas 45 €/h
                 digital)        restaurantes)                          Idioma +150 €
@@ -71,7 +71,7 @@ Cliente típico: auditoría gratis → ve que su web falla → Landing o carta d
 | Sector | Su dolor | Qué venderle primero | Precio | Mensaje clave | Objeción típica → respuesta |
 |---|---|---|---|---|---|
 | Restaurantes | Carta en PDF ilegible, sin reservas online | Carta digital QR | 240 € | "Tus clientes miran la carta en el móvil antes de venir" | "Ya tengo Instagram" → "Instagram no sale en Google cuando buscan 'restaurante + tu pueblo'" |
-| Hoteles/turismo | Comisiones de Booking (15–25 %) | Web con reserva directa | 750 €+ | "Cada reserva directa te ahorra la comisión del portal" | "Booking ya me llena" → "Te llena pagando. La web amortiza en X reservas" |
+| Hoteles/turismo | Dependencia de portales y sus comisiones | Web con reserva directa | 750 €+ | "Facilita que una parte de las reservas llegue por tu propio canal" | "Booking ya me llena" → "Puede seguir haciéndolo; la web reduce dependencia y presenta mejor el alojamiento" |
 | Clínicas | Teléfono saturado, citas por llamada | Landing con cita previa | 390–650 € | "Que pidan cita a las 23 h sin llamarte" | "Mis pacientes son mayores" → "Sus hijos les buscan la clínica en Google" |
 | Comercios | Invisibles en Google | SEO local + web básica | 190 + 650 € | "Cuando buscan lo que vendes, sales tú o sale tu competencia" | "No vendo online" → "No es vender online, es que te encuentren" |
 | Servicios profesionales | Imagen poco seria, presupuestos por teléfono | Web + formulario cualificado | 650 €+ | "Tu web filtra curiosos y te trae clientes serios" | "El boca a boca me basta" → "El boca a boca ahora te googlea antes de llamar" |
@@ -113,8 +113,8 @@ Opciones valoradas:
 - "Mi sobrino me lo hace más barato" → "Genial si te lo mantiene: una web se rompe, caduca el dominio, cambian los precios… Lo que yo vendo no es solo hacerla, es que funcione siempre. Si tu sobrino la hace, el mantenimiento te lo puedo llevar yo igualmente."
 - "Ya tengo Instagram" → "Instagram es alquilado: el algoritmo decide quién te ve. La web es tuya y sale en Google cuando alguien busca exactamente lo que vendes."
 - "Ahora no necesito web" → "Perfecto. Te dejo el análisis gratuito para cuando toque, y si te parece te escribo en un par de meses. Sin agobios."
-- "No quiero pagar mantenimiento" → "No hay problema: web con pago único de 650 € y tú gestionas el hosting. El mantenimiento existe porque el 90 % prefiere olvidarse de lo técnico, pero es opcional de verdad."
-- "He visto webs por 200 €" → "Y las hay por 50. Son plantillas: lentas, iguales que otras mil y sin nadie detrás cuando fallan. Lo barato en webs suele salir caro; yo te doy precio cerrado, a medida y con alguien que responde."
+- "No quiero pagar mantenimiento" → "No hay problema: web con pago único de 650 € y tú gestionas el hosting. El cuidado mensual es para quien prefiere delegar la parte técnica, pero es opcional de verdad."
+- "He visto webs por 200 €" → "Puede encajarte si el alcance es el mismo. Comparemos páginas, diseño, soporte, propiedad y qué ocurre después de publicar; yo te lo dejo todo por escrito."
 
 **Instagram (ideas de publicación semanal):**
 1. Antes/después de una web (aunque sea mockup del sector).

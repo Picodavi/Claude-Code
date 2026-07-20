@@ -14,7 +14,7 @@ Si lo que encuentra está vacío, no responde. Prepara el escaparate primero:
 1. **Publica la web** (dominio + Hostinger + SSL). Es lo único bloqueante:
    sin web online, cada conversación muere en «enséñame algo tuyo».
 2. **WhatsApp Business** (gratis, 10 min): perfil con el logo (la "P" azul),
-   descripción («Diseño web para negocios locales · desde 190 €»), horario,
+   descripción («Diseño web para negocios locales · revisión inicial gratuita»), horario,
    enlace a tu web. Configura **respuestas rápidas** con los textos de abajo.
 3. **Instagram de Picodavi**: logo de perfil, bio clara, y **6–9 publicaciones
    antes del primer mensaje** (nadie confía en un perfil vacío). Ideas: el
@@ -86,14 +86,14 @@ señor». Nunca mientas ni exageres.
 > y no encontré nada). Yo hago webs para negocios como el vuestro — la última:
 > xaletlacoromina.com, el restaurante y hotel de Viladrau. Échale un ojo desde
 > el móvil. Si os interesa, os preparo una propuesta sin compromiso (desde
-> 190 €, lista en una semana). ¿Os cuento en 10 minutos?
+> 390 €, lista en una semana). ¿Os cuento en 10 minutos?
 
 ### B) Negocio con web anticuada
 > Hola [nombre] 👋 Soy David, diseñador web de la zona. He entrado en vuestra
 > web desde el móvil y se ve descuadrada / tarda en cargar — y hoy el 80 % de
 > vuestros clientes os mira desde el móvil. Acabo de hacer la del Xalet La
 > Coromina (xaletlacoromina.com): mírala y compara. Renovar la vuestra son
-> unos días y desde 190 €. ¿Te preparo una propuesta sin compromiso?
+> unos días y desde 390 €. ¿Te preparo una propuesta sin compromiso?
 
 ### C) A un conocido / círculo cálido
 > ¡Hola [nombre]! Te cuento rápido: he montado Picodavi, mi negocio de diseño
@@ -105,7 +105,7 @@ señor». Nunca mientas ni exageres.
 ### D) Guion en persona (20 segundos)
 > «Hola, soy David, hago páginas web para negocios de la zona — hice la del
 > Xalet La Coromina, en Viladrau. He visto que no tenéis web / que la vuestra
-> es antigua. Os la puedo hacer en una semana desde 190 €. ¿Le echáis un ojo
+> es antigua. Os la puedo hacer en una semana desde 390 €. ¿Le echáis un ojo
 > a la mía y os paso una propuesta? Os dejo mi WhatsApp.»
 
 ### E) Seguimiento (UNO solo, a los 3-4 días)
@@ -114,10 +114,10 @@ señor». Nunca mientas ni exageres.
 > lo que incluiría la web de [Negocio]: [1 línea personalizada]. Un saludo.
 
 ### F) Respuesta a «¿cuánto cuesta?»
-> Depende de lo que necesites, pero los puntos de partida son claros: landing
-> de 1 página 190 €, web completa de hasta 5 páginas 320 € (pago único, la web
-> es tuya). Y si quieres desentenderte, 12 €/mes con hosting y copias, o
-> 55 €/mes con cambios incluidos. Antes de pagar el total ves el diseño. ¿Te
+> Depende de lo que necesites, pero los puntos de partida son claros: Landing
+> Express de 1 página desde 390 €, web profesional de hasta 5 páginas desde
+> 650 € (pago único), o Web + Cuidado desde 450 € + 55 €/mes, con un compromiso
+> inicial de 6 meses. Antes de empezar recibes alcance y precio por escrito. ¿Te
 > preparo el presupuesto exacto por escrito?
 
 ### G) Respuesta a «me lo tengo que pensar»
