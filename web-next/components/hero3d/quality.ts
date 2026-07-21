@@ -46,6 +46,7 @@ export function useSceneCapabilities(reducedMotion: boolean) {
     const cores = nav.hardwareConcurrency || 4;
     const memory = nav.deviceMemory || 4;
     const pointerFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const isFirefox = /Firefox\//.test(navigator.userAgent);
     const saveData = Boolean(nav.connection?.saveData);
     const webgl = supportsWebGL();
 
@@ -57,7 +58,7 @@ export function useSceneCapabilities(reducedMotion: boolean) {
       setCapabilities({
         quality,
         webgl: webgl && !saveData && !reducedMotion,
-        pointerFine,
+        pointerFine: pointerFine && !isFirefox,
         saveData,
         ready: true,
       });

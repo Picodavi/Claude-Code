@@ -143,6 +143,15 @@ export function Hero() {
             .to(".hero-experience__signal", { autoAlpha: 0, x: -22, duration: 0.16 }, 0.58)
             .to("[data-hero-progress]", { scaleX: 1, duration: 1 }, 0)
             .to(
+              device,
+              {
+                autoAlpha: 0,
+                duration: desktop ? 0.1 : 0.12,
+                ease: "power1.in",
+              },
+              desktop ? 0.66 : 0.86,
+            )
+            .to(
               "[data-hero-portal]",
               {
                 autoAlpha: 1,
@@ -150,7 +159,7 @@ export function Hero() {
                 borderRadius: 0,
                 duration: desktop ? 0.3 : 0.18,
               },
-              desktop ? 0.7 : 0.82,
+              desktop ? 0.66 : 0.82,
             );
 
           if (!desktop) {
