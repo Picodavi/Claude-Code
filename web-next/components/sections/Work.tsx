@@ -55,7 +55,7 @@ export function Work() {
               <a
                 href="https://xaletlacoromina.com"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="inline-block rounded-full bg-pine px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-pine-700"
               >
                 {t("feat.visit")}

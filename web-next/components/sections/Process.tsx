@@ -44,7 +44,7 @@ export function Process() {
               <span className="font-mono text-xs uppercase tracking-widest text-gold">
                 {t(tag)}
               </span>
-              <span className="mt-3 block font-display text-6xl font-extrabold leading-none text-white/15">
+              <span className="mt-3 block font-display text-6xl font-extrabold leading-none text-white/35">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-4 font-display text-xl font-bold text-white">

@@ -30,7 +30,6 @@ export function LaptopMock() {
                       src={picodaviScreen}
                       alt=""
                       fill
-                      priority
                       sizes="(max-width: 900px) 90vw, 48vw"
                     />
                   </div>
@@ -57,6 +56,7 @@ export function LaptopMock() {
                 fill
                 sizes="44vw"
                 data-hero-phone-screen
+                priority
               />
               <span className="hero-phone__screen-accent" />
               <span className="panel-sweep" />

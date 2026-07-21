@@ -1,13 +1,22 @@
 # Cabeceras de seguridad (Hostinger / Apache). Protegen sin romper el sitio.
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
-  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Frame-Options "DENY"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   # CSP: permite lo que usa Next/Framer/Three (inline styles/scripts, blobs, data
   # URIs) y bloquea recursos de otros dominios. Sin backend = superficie mínima.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
+# Los recursos de Next llevan hash en el nombre: se pueden cachear para siempre
+# sin servir una version antigua cuando cambie la web.
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "^/_next/static/" picodavi_next_static
+</IfModule>
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000, immutable" env=picodavi_next_static
 </IfModule>
 
 # Página 404 de marca en producción. El workflow de staging adapta esta

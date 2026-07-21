@@ -40,7 +40,7 @@ export function DeviceFrame({
   );
 
   return href ? (
-    <a href={href} target="_blank" rel="noopener" className="block">
+    <a href={href} target="_blank" rel="noopener noreferrer" className="block">
       {inner}
     </a>
   ) : (

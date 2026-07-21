@@ -15,7 +15,7 @@ export function professionalService() {
     email: brand.email,
     telephone: `+${brand.whatsapp}`,
     areaServed: ["Viladrau", "Montseny", "Girona", "Catalunya", "Barcelona", "España"],
-    knowsLanguage: ["es", "ca", "en"],
+    knowsLanguage: ["es", "en"],
     founder: { "@type": "Person", name: "David Picoiu", url: SITE_URL },
     sameAs: [`https://instagram.com/${brand.instagram}`],
     priceRange: "€€",

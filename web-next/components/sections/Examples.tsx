@@ -85,7 +85,7 @@ export function Examples() {
               key={item.href}
               href={item.href}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className={`${styles.card} ${styles[position]}`}
               aria-hidden={!isActive}
               tabIndex={isActive ? 0 : -1}
@@ -107,7 +107,6 @@ export function Examples() {
                     alt={`Ejemplo de web para ${t(item.sec)} — plantilla conceptual de Picodavi`}
                     placeholder="blur"
                     sizes="(max-width: 640px) 84vw, (max-width: 1023px) 70vw, 54vw"
-                    priority={index === 0}
                   />
                   <span className={styles.shine} aria-hidden />
                 </div>

@@ -27,7 +27,7 @@ export function Promises() {
               data-scene-card
               className="rounded-2xl border border-border bg-surface p-7"
             >
-              <span className="font-display text-5xl font-extrabold leading-none text-gold/40">
+              <span className="font-display text-5xl font-extrabold leading-none text-gold-800">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-3 font-display text-lg font-bold text-ink">

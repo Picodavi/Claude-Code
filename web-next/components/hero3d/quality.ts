@@ -48,7 +48,10 @@ export function useSceneCapabilities(reducedMotion: boolean) {
     const pointerFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const isFirefox = /Firefox\//.test(navigator.userAgent);
     const saveData = Boolean(nav.connection?.saveData);
-    const webgl = supportsWebGL();
+    // Firefox compone esta escena WebGL de pantalla completa junto al portatil
+    // CSS 3D con bastante mas coste en algunos equipos. El fallback mantiene
+    // la misma direccion visual y toda la animacion GSAP, sin el bucle WebGL.
+    const webgl = width >= 901 && !isFirefox && supportsWebGL();
 
     let quality: SceneQuality = "high";
     if (width < 540 || cores <= 4 || memory <= 4 || saveData) quality = "low";

@@ -13,7 +13,7 @@
   --pine: #0e4a35;
   --pine-700: #083426;
   --gold: #c4dc7d;
-  --gold-800: #5e742e;
+  --gold-800: #566c28;
   --border: #d8ded2;
 }
 
@@ -665,7 +665,9 @@ button {
   border-radius: 3px 3px 18px 18px;
   background: linear-gradient(180deg, #68736e 0%, #303a35 32%, #121914 100%);
   box-shadow: 0 34px 65px -22px rgba(0,0,0,0.88);
-  transform: perspective(400px) rotateX(34deg);
+  /* La perspectiva ya vive en .hero-mac; duplicarla aqui hace que Firefox
+     proyecte la base sobre la pantalla al escalar el rig. */
+  transform: rotateX(34deg);
   transform-origin: top;
 }
 .hero-mac__base span {

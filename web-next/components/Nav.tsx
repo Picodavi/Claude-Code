@@ -36,7 +36,7 @@ export function Nav() {
 
   return (
     <header
-      className={`site-header ${isHome ? "fixed" : "sticky"} left-0 right-0 top-0 z-50 transition-all duration-300 ${
+      className={`site-header ${isHome ? "fixed" : "sticky"} left-0 right-0 top-0 z-50 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
         solid
           ? "border-b border-border/80 bg-bg/88 shadow-[0_12px_40px_-28px_rgba(6,34,25,0.45)] backdrop-blur-xl"
           : "bg-transparent"
@@ -89,7 +89,7 @@ export function Nav() {
                 action: "contact",
               })
             }
-            className={`inline-flex min-h-11 items-center rounded-full px-4 py-2 text-xs font-semibold transition-all sm:px-5 sm:text-sm ${
+            className={`inline-flex min-h-11 items-center rounded-full px-4 py-2 text-xs font-semibold transition-colors sm:px-5 sm:text-sm ${
               overHero
                 ? "bg-white text-pine hover:bg-[#dceba6]"
                 : "bg-pine text-white hover:bg-pine-700"

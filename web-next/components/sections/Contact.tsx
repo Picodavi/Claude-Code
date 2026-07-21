@@ -14,6 +14,7 @@ export function Contact() {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
+  const [fallbackUrl, setFallbackUrl] = useState<string | null>(null);
   const formStarted = useRef(false);
 
   useEffect(() => {
@@ -41,12 +42,24 @@ export function Contact() {
       .replace("{name}", name.trim() || "—")
       .replace("{type}", type.trim() || "—")
       .replace("{message}", message.trim());
+    const url = `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(text)}`;
+    setFallbackUrl(null);
     trackEvent("lead_form_submitted", { placement: "contact", language: lang });
-    window.open(
-      `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(text)}`,
-      "_blank",
-      "noopener",
-    );
+
+    const popup = window.open("", "_blank");
+    if (!popup) {
+      setFallbackUrl(url);
+      trackEvent("lead_form_open_failed", { placement: "contact", language: lang });
+      return;
+    }
+
+    popup.opener = null;
+    popup.location.replace(url);
+    trackEvent("contact_clicked", { placement: "contact_form", channel: "whatsapp" });
+  }
+
+  function onDirectContact(channel: "email" | "whatsapp") {
+    trackEvent("contact_clicked", { placement: "contact_details", channel });
   }
 
   const field =
@@ -71,6 +84,7 @@ export function Contact() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={t("contact.ph1")}
+                maxLength={80}
                 required
               />
             </label>
@@ -83,6 +97,8 @@ export function Contact() {
                 value={type}
                 onChange={(e) => setType(e.target.value)}
                 placeholder={t("contact.ph3")}
+                maxLength={160}
+                required
               />
             </label>
             <label className="block text-sm font-medium text-text">
@@ -94,6 +110,7 @@ export function Contact() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder={t("contact.ph4")}
+                maxLength={500}
               />
             </label>
             <button
@@ -106,6 +123,19 @@ export function Contact() {
             <p id="whatsapp-note" className="text-xs leading-relaxed text-muted">
               {t("contact.whatsappNote")}
             </p>
+            {fallbackUrl ? (
+              <p role="status" aria-live="polite" className="rounded-xl border border-gold/60 bg-gold/10 p-3 text-sm text-text">
+                {t("contact.popupBlocked")} {" "}
+                <a
+                  className="font-semibold text-pine underline underline-offset-2"
+                  href={fallbackUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("contact.popupLink")}
+                </a>
+              </p>
+            ) : null}
             <p className="text-xs text-muted">
               {t("contact.privacyPre")}
               <Link
@@ -130,7 +160,11 @@ export function Contact() {
                 {t("contact.sideEmail")}
               </dt>
               <dd className="mt-1">
-                <a className="text-ink hover:text-pine" href={`mailto:${brand.email}`}>
+                <a
+                  className="text-ink hover:text-pine"
+                  href={`mailto:${brand.email}`}
+                  onClick={() => onDirectContact("email")}
+                >
                   {brand.email}
                 </a>
               </dd>
@@ -144,7 +178,8 @@ export function Contact() {
                   className="text-ink hover:text-pine"
                   href={`https://wa.me/${brand.whatsapp}`}
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
+                  onClick={() => onDirectContact("whatsapp")}
                 >
                   {brand.phoneDisplay}
                 </a>

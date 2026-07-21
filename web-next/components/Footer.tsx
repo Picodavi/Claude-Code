@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useT } from "@/lib/i18n";
 import { brand } from "@/content/i18n";
+import { trackEvent } from "@/lib/analytics";
 
 export function Footer() {
   const t = useT();
@@ -22,12 +23,20 @@ export function Footer() {
           </p>
           <ul className="mt-3 space-y-2 text-sm text-text">
             <li>
-              <a className="hover:text-pine" href={`mailto:${brand.email}`}>
+              <a
+                className="hover:text-pine"
+                href={`mailto:${brand.email}`}
+                onClick={() => trackEvent("contact_clicked", { placement: "footer", channel: "email" })}
+              >
                 {brand.email}
               </a>
             </li>
             <li>
-              <a className="hover:text-pine" href={`https://wa.me/${brand.whatsapp}`}>
+              <a
+                className="hover:text-pine"
+                href={`https://wa.me/${brand.whatsapp}`}
+                onClick={() => trackEvent("contact_clicked", { placement: "footer", channel: "whatsapp" })}
+              >
                 {brand.phoneDisplay}
               </a>
             </li>

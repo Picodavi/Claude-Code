@@ -53,7 +53,7 @@ export function Services() {
               key={tk}
               data-scene-card
               variants={card}
-              className="rounded-2xl border border-border bg-bg/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_24px_50px_-20px_rgba(8,52,38,0.3)]"
+              className="rounded-2xl border border-border bg-bg/80 p-6 shadow-sm backdrop-blur transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-2 hover:border-gold/60 hover:shadow-[0_24px_50px_-20px_rgba(8,52,38,0.3)]"
             >
               <h3 className="font-display text-lg font-bold text-ink">{t(tk)}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{t(dk)}</p>

@@ -330,7 +330,7 @@ export function Hero() {
             onClick={toggleMotion}
             aria-pressed={reduceMotion}
           >
-            {reduceMotion ? "Activar movimiento 3D" : "Reducir movimiento"}
+            {reduceMotion ? t("motion.enable") : t("motion.reduce")}
           </button>
         ) : null}
       </div>
