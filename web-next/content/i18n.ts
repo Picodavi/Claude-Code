@@ -1,5 +1,5 @@
 // AUTOGENERADO desde Picodavi/lib/manifest.js (Fase 1). Fuente de verdad a partir de aquí.
-// ES: 377 claves · EN: 377 claves.
+// Diccionario bilingüe ES/EN. Mantener las mismas claves en ambos idiomas.
 
 export type Lang = "es" | "en";
 
@@ -57,8 +57,8 @@ export const projects = [
 ] as const;
 
 export const waTemplate = {
-  "es": "Hola David, soy {name}. Tengo un negocio de {type} y te escribo desde tu web sobre un proyecto. {message}",
-  "en": "Hi David, I'm {name}. I run a {type} business and I'm writing from your website about a project. {message}"
+  "es": "Hola David, soy {name}. Te escribo desde tu web. Necesito: {type}. {message}",
+  "en": "Hi David, I'm {name}. I'm writing from your website. I need: {type}. {message}"
 } as const;
 
 export const dict: Record<Lang, Record<string, string>> = {
@@ -69,6 +69,7 @@ export const dict: Record<Lang, Record<string, string>> = {
     "nav.work": "Proyectos",
     "nav.pricing": "Precios",
     "nav.contact": "Pide propuesta →",
+    "nav.contactMobile": "Hablemos",
     "nav.langToggle": "EN",
     "nav.langAria": "Cambiar idioma a inglés",
     "nav.menuAria": "Abrir menú",
@@ -276,6 +277,24 @@ export const dict: Record<Lang, Record<string, string>> = {
     "price.p1": "Desde 650 € único",
     "price.p2": "Desde 450 € + 55 €/mes",
     "price.p3": "Desde 390 € único",
+    "price.compareCaption": "Comparativa de los planes Picodavi",
+    "price.included": "Incluido",
+    "price.notIncluded": "No incluido",
+    "price.fit1": "Para quien quiere una web completa y prefiere gestionar después el alojamiento y los cambios.",
+    "price.fit2": "Para quien quiere delegar la parte técnica y seguir mejorando la web cada mes.",
+    "price.fit3": "Para validar una oferta o captar contactos con una sola página enfocada.",
+    "price.m1a": "Hasta 5 páginas diseñadas a medida",
+    "price.m1b": "Diseño adaptable y SEO técnico básico",
+    "price.m1c": "Código listo para publicar y de tu propiedad",
+    "price.m1d": "Alojamiento, seguridad y cambios por tu cuenta",
+    "price.m2a": "Hasta 5 páginas diseñadas a medida",
+    "price.m2b": "Alojamiento, dominio, seguridad y copias",
+    "price.m2c": "Hasta 60 min de cambios y una revisión mensual",
+    "price.m2d": "Panel de edición y soporte prioritario",
+    "price.m3a": "Una página centrada en un objetivo",
+    "price.m3b": "Diseño adaptable y SEO técnico básico",
+    "price.m3c": "Código listo para publicar y de tu propiedad",
+    "price.m3d": "Lo pagado se descuenta si después amplías la web",
     "price.rowPages": "Páginas incluidas",
     "price.pages1": "Hasta 5",
     "price.pages2": "Hasta 5",
@@ -312,6 +331,9 @@ export const dict: Record<Lang, Record<string, string>> = {
     "contact.ph3": "Web nueva, rediseño, cuidado mensual…",
     "contact.ph4": "Qué tienes en mente, plazos, lo que sea",
     "contact.submit": "Enviar por WhatsApp →",
+    "contact.whatsappNote": "Se abrirá WhatsApp con el texto preparado. Nada se envía hasta que pulses enviar allí.",
+    "contact.intentAudit": "Revisión gratuita de 3 mejoras",
+    "contact.intentPlan": "Ayuda para elegir el plan adecuado",
     "contact.altPre": "…o escríbeme directamente a ",
     "contact.altLink": "picoiudavid@gmail.com →",
     "contact.sideTitle": "Hablamos",
@@ -485,6 +507,7 @@ export const dict: Record<Lang, Record<string, string>> = {
     "nav.work": "Work",
     "nav.pricing": "Pricing",
     "nav.contact": "Request a proposal →",
+    "nav.contactMobile": "Let's talk",
     "nav.langToggle": "ES",
     "nav.langAria": "Switch language to Spanish",
     "nav.menuAria": "Open menu",
@@ -692,6 +715,24 @@ export const dict: Record<Lang, Record<string, string>> = {
     "price.p1": "From €650 one-time",
     "price.p2": "From €450 + €55/mo",
     "price.p3": "From €390 one-time",
+    "price.compareCaption": "Comparison of Picodavi plans",
+    "price.included": "Included",
+    "price.notIncluded": "Not included",
+    "price.fit1": "For anyone who wants a complete website and prefers to manage hosting and changes afterwards.",
+    "price.fit2": "For anyone who wants to delegate the technical work and keep improving the website every month.",
+    "price.fit3": "For validating an offer or generating enquiries with one focused page.",
+    "price.m1a": "Up to 5 custom-designed pages",
+    "price.m1b": "Responsive design and basic technical SEO",
+    "price.m1c": "Publish-ready code that you own",
+    "price.m1d": "You manage hosting, security and changes",
+    "price.m2a": "Up to 5 custom-designed pages",
+    "price.m2b": "Hosting, domain, security and backups",
+    "price.m2c": "Up to 60 min of changes and a monthly review",
+    "price.m2d": "Editing panel and priority support",
+    "price.m3a": "One page focused on one goal",
+    "price.m3b": "Responsive design and basic technical SEO",
+    "price.m3c": "Publish-ready code that you own",
+    "price.m3d": "The fee is deducted if you later expand the website",
     "price.rowPages": "Pages included",
     "price.pages1": "Up to 5",
     "price.pages2": "Up to 5",
@@ -728,6 +769,9 @@ export const dict: Record<Lang, Record<string, string>> = {
     "contact.ph3": "New website, redesign, monthly care…",
     "contact.ph4": "What you have in mind, timing, anything",
     "contact.submit": "Send via WhatsApp →",
+    "contact.whatsappNote": "WhatsApp will open with the text ready. Nothing is sent until you press send there.",
+    "contact.intentAudit": "Free review with 3 improvements",
+    "contact.intentPlan": "Help choosing the right plan",
     "contact.altPre": "…or write to me directly at ",
     "contact.altLink": "picoiudavid@gmail.com →",
     "contact.sideTitle": "Let's talk",

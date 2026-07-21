@@ -14,6 +14,7 @@ export function LegalPage({ docKey }: { docKey: LegalKey }) {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/"
+          prefetch={false}
           className="font-mono text-sm text-muted transition-colors hover:text-pine"
         >
           ← {t("dp.back")}

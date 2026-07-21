@@ -1,21 +1,32 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useT, useLang } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { brand, waTemplate } from "@/content/i18n";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, type ContactIntent } from "@/lib/analytics";
 
 export function Contact() {
   const t = useT();
   const { lang } = useLang();
   const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
   const formStarted = useRef(false);
+
+  useEffect(() => {
+    function onContactIntent(event: Event) {
+      const detail = (event as CustomEvent<{ intent?: ContactIntent }>).detail;
+      if (detail?.intent === "audit") setType(t("contact.intentAudit"));
+      if (detail?.intent === "plan_help") setType(t("contact.intentPlan"));
+    }
+
+    window.addEventListener("picodavi:contact-intent", onContactIntent);
+    return () =>
+      window.removeEventListener("picodavi:contact-intent", onContactIntent);
+  }, [t]);
 
   function onFormFocus() {
     if (formStarted.current) return;
@@ -29,8 +40,7 @@ export function Contact() {
     const text = tpl
       .replace("{name}", name.trim() || "—")
       .replace("{type}", type.trim() || "—")
-      .replace("{business}", type.trim() || "—")
-      .replace("{message}", [contact.trim(), message.trim()].filter(Boolean).join(" · "));
+      .replace("{message}", message.trim());
     trackEvent("lead_form_submitted", { placement: "contact", language: lang });
     window.open(
       `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(text)}`,
@@ -40,7 +50,7 @@ export function Contact() {
   }
 
   const field =
-    "mt-1 w-full rounded-xl border border-border bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-pine";
+    "mt-1 w-full rounded-xl border border-border bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-pine focus-visible:ring-2 focus-visible:ring-pine/20";
 
   return (
     <Section id="contact">
@@ -56,6 +66,8 @@ export function Contact() {
               {t("contact.l1")}
               <input
                 className={field}
+                name="name"
+                autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={t("contact.ph1")}
@@ -63,18 +75,11 @@ export function Contact() {
               />
             </label>
             <label className="block text-sm font-medium text-text">
-              {t("contact.l2")}
-              <input
-                className={field}
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
-                placeholder={t("contact.ph2")}
-              />
-            </label>
-            <label className="block text-sm font-medium text-text">
               {t("contact.l3")}
               <input
                 className={field}
+                name="need"
+                autoComplete="off"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
                 placeholder={t("contact.ph3")}
@@ -85,6 +90,7 @@ export function Contact() {
               <span className="text-muted">{t("contact.l4opt")}</span>
               <textarea
                 className={`${field} min-h-24`}
+                name="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder={t("contact.ph4")}
@@ -92,13 +98,21 @@ export function Contact() {
             </label>
             <button
               type="submit"
-              className="w-full rounded-full bg-pine px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-pine-700"
+              aria-describedby="whatsapp-note"
+              className="w-full rounded-full bg-pine px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine"
             >
               {t("contact.submit")}
             </button>
+            <p id="whatsapp-note" className="text-xs leading-relaxed text-muted">
+              {t("contact.whatsappNote")}
+            </p>
             <p className="text-xs text-muted">
               {t("contact.privacyPre")}
-              <Link className="underline hover:text-pine" href="/legal/privacidad/">
+              <Link
+                className="underline hover:text-pine"
+                href="/legal/privacidad/"
+                prefetch={false}
+              >
                 {t("contact.privacyLink")}
               </Link>
               {t("contact.privacyPost")}

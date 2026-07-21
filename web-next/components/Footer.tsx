@@ -51,17 +51,17 @@ export function Footer() {
           </p>
           <ul className="mt-3 space-y-2 text-sm text-text">
             <li>
-              <Link className="hover:text-pine" href="/legal/aviso-legal/">
+              <Link className="hover:text-pine" href="/legal/aviso-legal/" prefetch={false}>
                 {t("footer.legalAviso")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-pine" href="/legal/privacidad/">
+              <Link className="hover:text-pine" href="/legal/privacidad/" prefetch={false}>
                 {t("footer.legalPriv")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-pine" href="/legal/cookies/">
+              <Link className="hover:text-pine" href="/legal/cookies/" prefetch={false}>
                 {t("footer.legalCookies")}
               </Link>
             </li>

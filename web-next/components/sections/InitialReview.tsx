@@ -2,7 +2,7 @@
 
 import { useT } from "@/lib/i18n";
 import { Section } from "@/components/ui/Section";
-import { trackEvent } from "@/lib/analytics";
+import { setContactIntent, trackEvent } from "@/lib/analytics";
 
 const POINTS = ["audit.1", "audit.2", "audit.3"] as const;
 
@@ -27,7 +27,13 @@ export function InitialReview() {
               <div className="mt-8">
                 <a
                   href="#contact"
-                  onClick={() => trackEvent("cta_clicked", { placement: "initial_review", action: "three_improvements" })}
+                  onClick={() => {
+                    setContactIntent("audit");
+                    trackEvent("cta_clicked", {
+                      placement: "initial_review",
+                      action: "three_improvements",
+                    });
+                  }}
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-pine px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine"
                 >
                   {t("audit.cta")}

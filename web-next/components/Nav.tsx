@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useT, useLang } from "@/lib/i18n";
+import { trackEvent } from "@/lib/analytics";
 
 const LINKS = [
   { href: "#services", key: "nav.services" },
@@ -82,13 +83,20 @@ export function Nav() {
           </button>
           <a
             href={isHome ? "#contact" : "/#contact"}
-            className={`hidden min-h-11 items-center rounded-full px-5 py-2 text-sm font-semibold transition-all sm:inline-flex ${
+            onClick={() =>
+              trackEvent("cta_clicked", {
+                placement: "navigation",
+                action: "contact",
+              })
+            }
+            className={`inline-flex min-h-11 items-center rounded-full px-4 py-2 text-xs font-semibold transition-all sm:px-5 sm:text-sm ${
               overHero
                 ? "bg-white text-pine hover:bg-[#dceba6]"
                 : "bg-pine text-white hover:bg-pine-700"
             }`}
           >
-            {t("nav.contact")}
+            <span className="sm:hidden">{t("nav.contactMobile")}</span>
+            <span className="hidden sm:inline">{t("nav.contact")}</span>
           </a>
         </div>
       </nav>
